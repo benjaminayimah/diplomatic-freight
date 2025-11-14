@@ -1,0 +1,44 @@
+.isoWrapper {
+    --dimension: 70%;
+    height: var(--dimension);
+    width: var(--dimension);
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.circleWrapper {
+    --dimension: 120px;
+    width: var(--dimension);
+    height: var(--dimension);
+}
+  
+.circleText {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: .7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff;
+    animation: spin 10s linear infinite;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 50%;
+}
+  
+.circleText span {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform-origin: 0 60px;
+}
+  
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+  

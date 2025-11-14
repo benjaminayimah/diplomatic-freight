@@ -51,7 +51,7 @@ function HomeAbout() {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-10 mt-10 md:mt-20'>
           <div className='relative aspect-square w-full rounded-[5%] overflow-hidden'>
             <Image
-              src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1762964249/about-image-1_hzpxge.png'}
+              src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763150133/loaded-onto-transport_wqzptw.jpg'}
               alt={'About image'}
               className='object-cover'
               fill
@@ -59,7 +59,7 @@ function HomeAbout() {
           </div>
           <div className='relative aspect-square w-full rounded-[5%] overflow-hidden'>
             <Image
-              src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1762964250/about-image-2_xjw89d.png'}
+              src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763149619/two-workers_dc4dpp.jpg'}
               alt={'Product image'}
               className='object-cover'
               fill

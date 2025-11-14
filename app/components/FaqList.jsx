@@ -18,7 +18,7 @@ function FaqList({ data }) {
           aria-expanded={isOpen}
           aria-controls={contentId}
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full flex items-center justify-between text-left text-2xl font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2665E4] transition-colors ${
+          className={`w-full flex items-center justify-between text-left text-xl  md:text-2xl font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2665E4] transition-colors ${
             isOpen ? 'text-black' : 'text-[#4F535B]'
           }`}
         >

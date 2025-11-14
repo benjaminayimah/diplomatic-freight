@@ -1,6 +1,5 @@
 
 // 'use client'
-// import { useUIStore } from '@/app/store'
 import HomeBanner from '../components/sections/HomeBanner'
 import HomeAbout from '../components/sections/HomeAbout'
 import SpinBadge from '../components/SpinBadge'
@@ -14,7 +13,6 @@ import HomeProcess from '../components/sections/HomeProcess'
 
 
 export default function Home() {
-  // const { device, width, height } = useUIStore()
 
   return (
     <>

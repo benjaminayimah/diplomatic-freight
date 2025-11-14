@@ -14,11 +14,11 @@ function Header() {
 
   const menus = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Our Process', href: '/our-process' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'FAQs', href: '/faqs' }
+    { name: 'About', href: '/#' },
+    { name: 'Services', href: '/#' },
+    { name: 'Our Process', href: '/#' },
+    { name: 'Contact', href: '/#' },
+    { name: 'FAQs', href: '/#' }
   ]
 
   return (

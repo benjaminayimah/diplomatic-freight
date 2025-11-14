@@ -34,7 +34,7 @@ function Nav({ links }) {
         className="relative"
       >
         { links.map((link) => (
-          <li key={link.href} className={`h-full inline-flex items-center justify-center`}>
+          <li key={link.name} className={`h-full inline-flex items-center justify-center`}>
             <Tab href={link.href} setPosition={setPosition}>
               {link.name}
             </Tab>

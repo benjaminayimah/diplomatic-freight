@@ -15,7 +15,7 @@ const words = [
 ]
 
 function HomeBanner() {
-  const MotionImage = motion(Image)
+  const MotionImage = motion.create(Image)
   const targetRef = useRef(null)
   const height = useUIStore((state) => state.height, shallow)
 
@@ -51,6 +51,7 @@ function HomeBanner() {
         alt="Hero background"
         fill
         priority
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         initial={{ x: '10vw', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{

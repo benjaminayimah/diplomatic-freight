@@ -166,12 +166,12 @@ header {
       li {
         height: 3.8rem;
         display: flex;
-        padding-inline: 10%;
         a {
           width: 100%;
           color: #ffffff;
           font-weight: 400;
           font-size: 2.5rem; 
+          padding-inline: 10%;
         }
       }
       li:hover {

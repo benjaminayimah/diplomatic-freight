@@ -6,7 +6,7 @@ import { useScroll, useTransform, motion } from 'framer-motion'
 
 function HomeCallNow() {
 
-  const MotionImage = motion(Image)
+  const MotionImage = motion.create(Image)
   
   const targetRef = useRef(null)
 
@@ -29,6 +29,7 @@ function HomeCallNow() {
             alt="Call Now"
             fill
             className='object-cover'
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <div className='bg-[#232730] flex items-center p-10 rounded-3xl min-h-80 lg:min-h-130 overflow-hidden'>

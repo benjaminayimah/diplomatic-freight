@@ -54,6 +54,7 @@ function HomeAbout() {
               src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763150133/loaded-onto-transport_wqzptw.jpg'}
               alt={'About image'}
               className='object-cover'
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
             />
           </div>
@@ -62,6 +63,7 @@ function HomeAbout() {
               src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763149619/two-workers_dc4dpp.jpg'}
               alt={'Product image'}
               className='object-cover'
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
             />
           </div>
@@ -70,6 +72,7 @@ function HomeAbout() {
               src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1762964255/about-image-3_gyllra.png'}
               alt={'About image'}
               className='object-cover'
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
             />
           </div>

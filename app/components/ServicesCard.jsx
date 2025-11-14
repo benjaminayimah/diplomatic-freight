@@ -7,7 +7,8 @@ import { useScroll, useTransform, motion } from 'framer-motion'
 
 function ServicesCard({ service, index }) {
 
-  const MotionImage = motion(Image)
+  const MotionImage = motion.create(Image)
+  
   const targetRef = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -38,6 +39,7 @@ function ServicesCard({ service, index }) {
           alt={service.name}
           fill
           className="object-cover transition-transform duration-700 ease-out scale-105 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
     </div>
   )

@@ -15,7 +15,7 @@ function Footer() {
   const translateY = useTransform(scrollYProgress, [0, 1], ['-300px', '0px']);
   return (
     <footer ref={targetRef} id='footer' className='relative w-full py-15 bg-black text-[#9B9DA2] flex items-center justify-center overflow-hidden'>
-      <motion.div style={{translateY}} className='container w-[88vw] flex flex-col gap-8'>
+      <motion.div style={{translateY}} className='container w-[92vw] sm:w-[88vw] flex flex-col gap-8'>
         <div className='flex flex-col gap-6 md:flex-row items-center border-b border-[#2A2A2B] md:justify-between pt-2 pb-7.5'>
           <p className='font-medium text-[24px] sm:text-[28px] max-w-100 md:max-w-[26%] text-center md:text-left'>Subscribe to our newsletter to stay updated!</p>
           <form id='newsletter_form' name='newsletter' className='flex overflow-hidden gap-4 rounded-4xl relative w-full max-w-100 md:w-100'>

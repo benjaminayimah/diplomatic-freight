@@ -29,7 +29,7 @@ function Header() {
       animate={{ y: 0, }}
       transition={{ duration: 0.5, ease: ['easeInOut'] }}
       >
-      <div className='container w-[88vw] justify-between flex items-center'>
+      <div className='container w-[92vw] sm:w-[88vw] justify-between flex items-center'>
         <a href="#home" id='logo' className="logo">
             <Logo />
         </a>

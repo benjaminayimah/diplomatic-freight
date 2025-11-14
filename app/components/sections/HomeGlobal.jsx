@@ -33,7 +33,7 @@ function HomeGlobal() {
 
   return (
     <section ref={targetRef} className='bg-[#0A47C9] relative py-15 md:py-30'>
-      <div className='container w-[88vw]'>
+      <div className='container w-[92vw] sm:w-[88vw]'>
         <div className={`mb-15 ${(device === 'desktop' || device === 'tablet') ? 'h-[200vh]' : ''}`}>
           <div className='sticky top-30'>
             <div className='md:max-w-[500px] max-w-[70%] mb-15'>

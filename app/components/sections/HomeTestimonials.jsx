@@ -25,7 +25,7 @@ function HomeTestimonials() {
 
   return (
     <section id='testimonials' className='py-10 md:py-15 bg-white relative flex justify-center'>
-      <div className='container w-[88vw] flex justify-center'>
+      <div className='container w-[92vw] sm:w-[88vw] flex justify-center'>
         <div className='flex flex-col w-full md:items-center'>
           <div className='max-w-[76vw] sm:max-w-[56vw] md:max-w-[30vw] md:text-center mb-10 md:mb-18'>
             <span className='pill-tag mb-4 text-black border border-black/10'>Testimonials</span>

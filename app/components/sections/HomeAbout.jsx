@@ -27,7 +27,7 @@ const why_choose_card = [
 function HomeAbout() {
   return (
     <section className='bg-white relative py-15 md:py-30'>
-      <div className='container w-[88vw]'>
+      <div className='container w-[92vw] sm:w-[88vw]'>
         <div className='grid md:grid-cols-2 gap-6'>
           <div>
             <h2 className='text-3xl md:text-4xl font-bold'>Who we are</h2>

@@ -21,7 +21,7 @@ function HomeCallNow() {
 
   return (
     <section ref={targetRef} className='shadow-[0_30px_103px_10px_#000] z-1 pt-10 md:pt-15 pb-20 md:pb-30  bg-white relative flex justify-center'>
-      <div className='container w-[88vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+      <div className='container w-[92vw] sm:w-[88vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
         <div className='md:col-span-1 lg:col-span-2 relative min-h-80 lg:min-h-130 w-full rounded-3xl overflow-hidden'>
           <MotionImage
             src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763146057/call-now-image_z2vsyd.jpg'}

@@ -13,7 +13,7 @@ function FAQs() {
 
   return (
     <section className='py-10 md:py-15 bg-white relative flex justify-center z-2'>
-      <div className='container w-[88vw] flex justify-center'>
+      <div className='container w-[92vw] sm:w-[88vw] flex justify-center'>
         <div className='max-w-4xl w-full'>
           <div className=' md:text-center mb-10 md:mb-18'>
             <span className='pill-tag text-black border border-black/10 mb-4'>FAQs</span>

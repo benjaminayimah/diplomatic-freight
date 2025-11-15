@@ -85,6 +85,7 @@ video {
 
 
 
+
 @media (min-width: 768px) {
   #hero_image {
     display: block;
@@ -103,6 +104,46 @@ video {
 header {
   visibility: hidden;
 }
+
+.logo-wrapper {
+  svg {
+    transition: 300ms all ease-out;
+  }
+}
+
+.switch-logo {
+  .icon-wrapper {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.19);
+    backdrop-filter: blur(6.5px);
+    display: grid;
+    place-items: center;
+  }
+  path {
+    fill: #000000;
+  }
+  #logo_name {
+    transform: translateX(-100%);
+  }
+}
+
+.switch-logo {
+    #logo_icon {
+      height: calc(38px - 6px);
+    }
+  }
+
+@media (min-width: 640px) {
+  .switch-logo {
+    #logo_icon {
+      height: calc(45px - 12px);
+    }
+  }
+}
+
 
 
 /* custom nav */

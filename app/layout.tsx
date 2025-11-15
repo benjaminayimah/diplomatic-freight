@@ -17,7 +17,7 @@ const ibmPlexSansCondensed = IBM_Plex_Sans_Condensed({
 
 export const metadata: Metadata = {
   title: "Home - Diplomatic Freight & Logistic Services Ltd.",
-  description: "We guarantee fast, reliable and secure logistics solutions tailored to your needs"
+  description: "We guarantee fast, reliable and secure logistics solutions tailored to your needs."
 };
 
 export default function RootLayout({

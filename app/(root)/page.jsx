@@ -9,6 +9,7 @@ import HomeTestimonials from '../components/sections/HomeTestimonials'
 import HomeServices from '../components/sections/HomeServices'
 import HomeGlobal from '../components/sections/HomeGlobal'
 import HomeProcess from '../components/sections/HomeProcess'
+import CookieConsent from '../components/CookieConsent'
 
 
 
@@ -25,6 +26,7 @@ export default function Home() {
       <HomeFAQs />
       <HomeCallNow />
       <SpinBadge />
+      <CookieConsent />
     </>      
   );
 }

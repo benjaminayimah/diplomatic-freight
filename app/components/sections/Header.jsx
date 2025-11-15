@@ -29,29 +29,15 @@ function Header() {
       animate={{ y: 0, }}
       transition={{ duration: 0.5, ease: ['easeInOut'] }}
       >
-      <div className='container w-[92vw] sm:w-[88vw] justify-between flex items-center'>
-        <a href="#home" id='logo' className="logo">
+      <div className='relative h-12 container w-[92vw] sm:w-[88vw] justify-between flex items-center'>
+        <a href="#home" id='logo' className="logo absolute left-0">
             <Logo />
         </a>
         <CustomNav links={menus} />
-        {/* <nav 
-          id='menu'
-          className={ mobileMenu ? 'menu-open' : 'menu-close' }
-          aria-label="Menu" 
-          >
-            <ul>
-                { menus.map((menu, index) => (
-                  <NavList
-                  key={index}
-                  data={{ name: menu.name, href: menu.href }} 
-                  />
-                ))}
-            </ul>
-          </nav> */}
-          <div className='inline-flex items-center gap-4'>
-            <Button />
-            <HamburgerMenu />
-          </div>
+        <div className='inline-flex items-center gap-4 absolute right-0'>
+          <Button />
+          <HamburgerMenu />
+        </div>
       </div>
     </motion.header>
   )

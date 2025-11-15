@@ -36,9 +36,17 @@ body {
   max-width: 1792px;
   margin: 0 auto;
 }
-button {
+button, a {
   cursor: pointer;
 }
+
+a {
+  &:focus {
+    outline: thin dotted;
+  }
+}
+
+
 .pill-tag {
   display: inline-block;
   padding: 4px 14px;
@@ -155,7 +163,9 @@ header {
     visibility: visible;
   
     nav {
-      position: relative;
+      position: absolute;
+      left: 50%;
+      translate: -50%;
       ul {
         height: var(--height);
         padding: var(--padding);

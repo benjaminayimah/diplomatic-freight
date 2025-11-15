@@ -208,7 +208,8 @@ header {
     content: '';
     position: absolute;
     border-radius: inherit;
-    background: linear-gradient(to right, color(display-p3 1 0.08 0.58), color(display-p3 0 0.4 1) );
+    /* background: linear-gradient(to right, color(display-p3 1 0.08 0.58), color(display-p3 0 0.4 1)); */
+    background: linear-gradient(to right, #2a2a2b, #2a2a2b);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);

@@ -17,25 +17,20 @@ const words = [
 function HomeBanner() {
   const MotionImage = motion.create(Image)
   const targetRef = useRef(null)
-  const height = useUIStore((state) => state.height, shallow)
 
-  const { scrollY } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start start', 'end start']
   })
 
-  const from = 0
-  const to = height * 0.8
-  const translateY = useTransform(scrollY, [from, to], ['0px', '-60vh'])
-  const translateY2 = useTransform(scrollY, [from, to], ['0px', '-30vh'])
-
-  const opacity = useTransform(scrollY, [from, to], [1, 0])
+  const translateY = useTransform(scrollYProgress, [0, 1], ['0px', '20vh'])
+  const translateY2 = useTransform(scrollYProgress, [0, 1], ['0px', '40vh'])
 
   return (
     <motion.section
       ref={targetRef}
-      id="home_banner"
-      className="h-dvh sticky top-0 overflow-hidden"
+      id="home"
+      className="h-dvh relative overflow-hidden"
       initial={{ background: 'linear-gradient(110deg, #000 0%, #000 100%)'}}
       animate={{ background: 'linear-gradient(110deg, #000 7.63%, #2665E4 83.83%)'}}
       transition={{
@@ -46,7 +41,7 @@ function HomeBanner() {
     >
       <MotionImage
         id="hero_image"
-        style={{ translateY: translateY2, opacity, objectFit: "cover" }}
+        style={{ translateY: translateY2, objectFit: "cover" }}
         src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763145907/hero-image_nvqf8w.png'}
         alt="Hero background"
         fill
@@ -61,7 +56,7 @@ function HomeBanner() {
       />
 
       <motion.div
-        style={{ translateY, opacity }}
+        style={{ translateY }}
         className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-[60px] lg:pl-[130px]"
       >
         <div className="text-white h-full flex items-center shrink-0">
@@ -106,7 +101,6 @@ function HomeBanner() {
 
         <div className="absolute bottom-6 md:bottom-10 overflow-hidden">
           <motion.div
-            style={{ opacity }}
             initial={{ y: 300 }}
             animate={{ y: 0 }}
             transition={{

@@ -12,7 +12,7 @@ function FAQs() {
   ]
 
   return (
-    <section className='py-10 md:py-15 bg-white relative flex justify-center z-2'>
+    <section id='faqs' className='pt-20 md:pt-30 bg-white relative flex justify-center z-2'>
       <div className='container w-[92vw] sm:w-[88vw] flex justify-center'>
         <div className='max-w-4xl w-full'>
           <div className=' md:text-center mb-10 md:mb-18'>

@@ -121,15 +121,15 @@ function HomeBanner() {
 
         <motion.div
           initial={{ y: 300 }}
-            animate={{ y: 0 }}
-            transition={{
-              duration: 1.3,
-              delay: words.length * 0.1,
-              ease: 'easeOut',
-              type: 'spring',
-              stiffness: 200,
-              damping: 50,
-            }}
+          animate={{ y: 0 }}
+          transition={{
+            duration: 1.3,
+            delay: words.length * 0.1,
+            ease: 'easeOut',
+            type: 'spring',
+            stiffness: 200,
+            damping: 50,
+          }}
           className="absolute bottom-6 md:bottom-10 overflow-hidden flex flex-col-reverse md:flex-row gap-6 justify-between lg:w-[50%]">
           <div className="text-white text-[0.88rem] max-w-90 inline-flex gap-1.5">
             <span className="block bg-white h-2 w-2 mt-1.5 shrink-0" />

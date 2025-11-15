@@ -1,8 +1,23 @@
+'use client'
+
 import React from 'react'
+import { motion } from 'framer-motion'
+
 
 function CookieConsent() {
   return (
-    <div className='fixed bg-white p-5 w-full bottom-0 sm:w-100 sm:right-45 sm:bottom-10 shadow-[0px_100px_200px_0px_rgba(35,36,45,0.3)] z-10'>
+    <motion.div
+      initial={{ y: 300 }}
+      animate={{ y: 0 }}
+      transition={{
+        duration: 1,
+        delay: 2,
+        ease: 'easeOut',
+        type: 'spring',
+        stiffness: 200,
+        damping: 50,
+      }}
+      className='fixed bg-white p-5 w-full bottom-0 sm:w-100 sm:right-45 sm:bottom-10 shadow-[0px_100px_200px_0px_rgba(35,36,45,0.3)] z-10'>
       <div className='flex items-center gap-5'>
         <div className='flex-1'>
           <p className='text-[0.88rem] w-full'>
@@ -13,7 +28,7 @@ function CookieConsent() {
           <button className='bg-black text-white px-4 py-3 text-[0.88rem] rounded-4xl font-medium'>Okay!</button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

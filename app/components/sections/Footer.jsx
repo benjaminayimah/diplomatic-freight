@@ -117,18 +117,18 @@ function Footer() {
           </div>
           <div className='flex flex-col md:flex-row md:flex-wrap md:gap-40 gap-8'>
             <div>
-              <h3 className='font-semibold text-lg text-white mb-3'>Quick Links</h3>
+              <h3 className='font-semibold text-lg text-white mb-5'>Quick Links</h3>
               <ul className='flex flex-col gap-2'>
-                <li><a href='#' className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Home</a></li>
-                <li><a href='#' className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>About Us</a></li>
-                <li><a href='#' className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Services</a></li>
-                <li><a href='#' className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Contact</a></li>
-                <li><a href='#' className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Login</a></li>
-                <li><a href='#' className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
+                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Home</a></li>
+                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>About Us</a></li>
+                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Services</a></li>
+                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Contact</a></li>
+                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Login</a></li>
+                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
               </ul>
             </div>
             <div className='md:w-80'>
-              <h3 className='font-semibold text-lg mb-3 text-white '>Contact Us</h3>
+              <h3 className='font-semibold text-lg mb-5 text-white'>Contact Us</h3>
               <ul className='flex flex-col gap-2'>
                 <li className='flex items-start gap-3'>
                   <svg className='shrink-0 mt-1' width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,13 +147,13 @@ function Footer() {
                   <svg className='shrink-0 mt-1' width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.0283 0C18.4412 0.000215242 19.5869 1.14565 19.5869 2.55859V13.4111C19.5866 14.8239 18.4411 15.9695 17.0283 15.9697H2.55859C1.14571 15.9697 0.000321137 14.824 0 13.4111V2.55859C5.29553e-05 1.14555 1.14555 5.29551e-05 2.55859 0H17.0283ZM1.5 13.4111C1.50032 13.9955 1.97414 14.4697 2.55859 14.4697H17.0283C17.6126 14.4695 18.0866 13.9954 18.0869 13.4111V4.8291L11.1084 9.27344C11.1 9.27879 11.0916 9.285 11.083 9.29004C10.6929 9.51665 10.249 9.63563 9.79785 9.63574C9.34663 9.63574 8.90292 9.51658 8.5127 9.29004C8.50397 9.28497 8.49485 9.27886 8.48633 9.27344L1.5 4.82715V13.4111ZM2.55859 1.5C1.97397 1.50005 1.50005 1.97397 1.5 2.55859V3.0498L9.26562 7.99219C9.42711 8.08596 9.61112 8.13574 9.79785 8.13574C9.98441 8.13563 10.1678 8.08589 10.3291 7.99219L18.0869 3.0498V2.55859C18.0869 1.97407 17.6128 1.50022 17.0283 1.5H2.55859Z" fill="#0A47C9"/>
                   </svg>
-                  <a className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="mailTo:info@diplomaticfreight.com">info@diplomaticfreight.com</a>
+                  <a className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="mailTo:info@diplomaticfreight.com">info@diplomaticfreight.com</a>
                 </li>
                 <li className='flex items-start gap-3'>
                   <svg className='shrink-0 mt-1' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.3988 13.8612C11.5847 13.9466 11.7941 13.9661 11.9925 13.9165C12.191 13.8669 12.3666 13.7512 12.4905 13.5885L12.81 13.17C12.9777 12.9464 13.1951 12.765 13.445 12.64C13.695 12.5151 13.9706 12.45 14.25 12.45H16.95C17.4274 12.45 17.8852 12.6396 18.2228 12.9772C18.5604 13.3148 18.75 13.7726 18.75 14.25V16.95C18.75 17.4274 18.5604 17.8852 18.2228 18.2228C17.8852 18.5604 17.4274 18.75 16.95 18.75C12.6535 18.75 8.53296 17.0432 5.49487 14.0051C2.45678 10.967 0.75 6.84651 0.75 2.55C0.75 2.07261 0.939642 1.61477 1.27721 1.27721C1.61477 0.939642 2.07261 0.75 2.55 0.75H5.25C5.72739 0.75 6.18523 0.939642 6.52279 1.27721C6.86036 1.61477 7.05 2.07261 7.05 2.55V5.25C7.05 5.52944 6.98494 5.80504 6.85997 6.05498C6.735 6.30492 6.55355 6.52234 6.33 6.69L5.9088 7.0059C5.74357 7.13206 5.62712 7.31153 5.57921 7.51382C5.53131 7.7161 5.5549 7.92874 5.646 8.1156C6.87601 10.6139 8.89898 12.6343 11.3988 13.8612Z" stroke="#0A47C9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <a className='font-medium hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="tel:+233(0) 30 290 8064/5">+233(0) 30 290 8064/5</a>
+                  <a className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="tel:+233(0) 30 290 8064/5">+233(0) 30 290 8064/5</a>
                 </li>
               </ul>
             </div>

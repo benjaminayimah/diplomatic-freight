@@ -59,19 +59,19 @@ function HomeBanner() {
       animate={{ background: 'linear-gradient(110deg, #000 7.63%, #2665E4 83.83%)'}}
       transition={{ duration: 1, ease: 'easeInOut', delay: 1, }} */}
       <MotionImage
-        id="hero_image"
-        style={{ translateY: translateY2, objectFit: "cover" }}
-        src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763145907/hero-image_nvqf8w.png'}
-        alt="Hero background"
-        fill
-        priority
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        initial={{ x: '10vw', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{
-          duration: 1.8,
-          ease: [0.7, 0.11, 0.2, 1],
-        }}
+         id="hero_image"
+          className="bottom-[-100px]"
+          style={{ translateY: translateY2, objectFit: "cover" }}
+          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763145907/hero-image_nvqf8w.png"
+          alt="Hero background"
+          fill
+          priority
+          initial={{ x: '10vw', opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{
+            duration: 1.8,
+            ease: [0.7, 0.11, 0.2, 1],
+          }}
       />
       
 

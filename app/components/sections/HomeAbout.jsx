@@ -6,7 +6,7 @@ import WhyChooseCard from '../WhyChooseCard'
 
 const who_we_are = [
   "We", "guarantee", "fast", "reliable", "and", "affordable", "logistics",
-  "solutions", "tailored", "to", "your,", "needs.",
+  "solutions", "tailored", "to", "your", "needs.",
   <br key="br1" />,
   "Our", "experience", "ensures", "a", "smooth", "and", "qaulity", "shipping", "experience", "from",
   "start", "to", "finish."

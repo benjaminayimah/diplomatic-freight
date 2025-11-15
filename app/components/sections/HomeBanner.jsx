@@ -1,10 +1,8 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { useUIStore } from "../../store"
 import { useScroll, useTransform, motion } from 'framer-motion'
 import Image from 'next/image'
-import { shallow } from 'zustand/shallow'
 
 const words = [
   { word: 'Moving', style: 'h-lg p-2 pl-0', spanStyle: '' },
@@ -99,9 +97,8 @@ function HomeBanner() {
           </h1>
         </div>
 
-        <div className="absolute bottom-6 md:bottom-10 overflow-hidden">
-          <motion.div
-            initial={{ y: 300 }}
+        <motion.div
+          initial={{ y: 300 }}
             animate={{ y: 0 }}
             transition={{
               duration: 1.3,
@@ -111,15 +108,18 @@ function HomeBanner() {
               stiffness: 200,
               damping: 50,
             }}
-            className="text-white text-[14px] max-w-90 inline-flex gap-1.5"
-          >
+          className="absolute bottom-6 md:bottom-10 overflow-hidden flex flex-col-reverse md:flex-row gap-6 justify-between lg:w-[50%]">
+          <div className="text-white text-[0.88rem] max-w-90 inline-flex gap-1.5">
             <span className="block bg-white h-2 w-2 mt-1.5 shrink-0" />
             <p>
               We provide logistics solutions tailor-made for individual clients
             </p>
-          </motion.div>
-          
-        </div>
+          </div>
+          <ul className='flex gap-2'>
+            <li><a href="" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 hover:bg-white hover:text-black transition-all duration-300'>[Logistics Services]</a></li>
+            <li><a href="" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 hover:bg-white hover:text-black transition-all duration-300'>[Air Charter]</a></li>
+          </ul>
+        </motion.div>
       </motion.div>
     </motion.section>
   )

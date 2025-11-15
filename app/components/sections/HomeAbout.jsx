@@ -36,7 +36,7 @@ function HomeAbout() {
             <TextReveal words={who_we_are} textOffset={'0.9'} />
           </div>
         </div>
-        <hr className='border-t-b border-gray-50 my-10 md:my-20'/>
+        <hr className='border-t-b border-gray-100 my-5 md:my-10'/>
         <div className='mb-20'>
           <h3 className='text-xl font-semibold mb-4 md:mb-8 text-gray-500'>Why choose us?</h3>
           <div className='md:max-w-[700px] text-[1.7rem] font-semibold'>
@@ -48,7 +48,7 @@ function HomeAbout() {
             <WhyChooseCard key={index} data={data} />
           ))}
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-10 mt-10 md:mt-20'>
+        {/* <div className='grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-10 mt-10 md:mt-20'>
           <div className='relative aspect-square w-full rounded-[5%] overflow-hidden'>
             <Image
               src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763150133/loaded-onto-transport_wqzptw.jpg'}
@@ -76,7 +76,7 @@ function HomeAbout() {
               fill
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )

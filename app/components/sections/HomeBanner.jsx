@@ -12,6 +12,19 @@ const words = [
   { word: 'BORDERS', style: 'h-xlg font-bold p-3 pl-0 pr-0', spanStyle: 'mt-[-1vw]' },
 ]
 
+const colors = [
+  "#2563EB", // blue,
+  "#4F46E5", // indigo
+  "#7C3AED", // violet
+  "#9333EA", // purple
+  "#DB2777", // pink
+  "#DC2626", // red
+  "#EA580C", // orange
+  "#16A34A", // green
+  "#0D9488", // teal
+
+];
+
 function HomeBanner() {
   const MotionImage = motion.create(Image)
   const targetRef = useRef(null)
@@ -29,14 +42,22 @@ function HomeBanner() {
       ref={targetRef}
       id="home"
       className="h-dvh relative overflow-hidden"
-      initial={{ background: 'linear-gradient(110deg, #000 0%, #000 100%)'}}
-      animate={{ background: 'linear-gradient(110deg, #000 7.63%, #2665E4 83.83%)'}}
+      initial={{ "--end": "#000000" }}                // ⬅️ start BLACK
+      animate={{ "--end": ["#000000", ...colors] }}   // fade black → blue → cycle
       transition={{
-        duration: 1,
-        ease: 'easeInOut',
+        duration: 16,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatType: "mirror",
         delay: 1,
       }}
+      style={{
+        background: "linear-gradient(110deg, #000 7.63%, var(--end) 83.83%)",
+      }}
     >
+      {/* initial={{ background: 'linear-gradient(110deg, #000 0%, #000 100%)'}}
+      animate={{ background: 'linear-gradient(110deg, #000 7.63%, #2665E4 83.83%)'}}
+      transition={{ duration: 1, ease: 'easeInOut', delay: 1, }} */}
       <MotionImage
         id="hero_image"
         style={{ translateY: translateY2, objectFit: "cover" }}
@@ -52,6 +73,7 @@ function HomeBanner() {
           ease: [0.7, 0.11, 0.2, 1],
         }}
       />
+      
 
       <motion.div
         style={{ translateY }}
@@ -126,3 +148,5 @@ function HomeBanner() {
 }
 
 export default HomeBanner
+
+

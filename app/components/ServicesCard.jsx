@@ -26,9 +26,11 @@ function ServicesCard({ service, index }) {
             0{index + 1}
           </div>
           <div className='overflow-hidden'>
-            <h4 className="text-white text-2xl font-semibold">{service.name}</h4>
-            <p className="text-white/80 mb-3 line-clamp-2">{service.description}</p>
-            <button className="text-[0.9rem] font-medium flex items-center h-9 px-4 bg-white rounded-3xl md:mb-[-40] group-hover:mb-0 transition-margin duration-300 ease-out ">
+            <div className='translate-y-12 group-hover:translate-y-0 transition-all duration-300 ease-in-out'>
+              <h4 className="text-white text-2xl font-semibold">{service.name}</h4>
+              <p className="text-white/80 mb-3 line-clamp-2">{service.description}</p>
+            </div>
+            <button className="text-[0.9rem] font-medium flex items-center h-9 px-4 bg-white rounded-3xl translate-y-50 group-hover:translate-y-0 transition-all duration-400 ease-in-out ">
               Contact us
             </button>
           </div>

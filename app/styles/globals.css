@@ -157,7 +157,7 @@ header {
     bottom: 0;
     top: 0;
     height: 100%;
-    background-color: #0A47C9;
+    background-color: #000000;
     padding-block: 8rem;
     overflow: hidden;
     transition: 1s all cubic-bezier(0.7, 0.11, 0.2, 1) 0s;
@@ -191,12 +191,12 @@ header {
 #footer_socials {
   li {
     path {
-      fill: #9B9DA2;
+      fill: #ffffff;
       transition: fill 0.3s ease;
     }
     &:hover {
       path {
-        fill: white;
+        fill: #9B9DA2;
       }
     }
   }

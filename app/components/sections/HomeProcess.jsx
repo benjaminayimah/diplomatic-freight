@@ -25,7 +25,7 @@ function HomeProcess() {
           <div>
             <h2 className='text-3xl md:text-4xl font-bold'>Our process</h2>
           </div>
-          <div className='lg:pl-36'>
+          <div className='lg:pl-36 text-xl'>
             <TextReveal words={what_we_deliver} textOffset={'0.9'} />
           </div>
         </div>

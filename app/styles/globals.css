@@ -198,7 +198,8 @@ header {
     bottom: 0;
     top: 0;
     height: 100%;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(16px);
     padding-block: 8rem;
     overflow: hidden;
     transition: 1s all cubic-bezier(0.7, 0.11, 0.2, 1) 0s;

@@ -19,7 +19,7 @@ const process = [
 
 function HomeProcess() {
   return (
-    <section id='our-process' className='bg-white relative pt-20 md:pt-30'>
+    <section id='our-process' className='bg-white pt-20 md:pt-30'>
       <div className='container w-[92vw] sm:w-[88vw]'>
         <div className='grid md:grid-cols-2 gap-6 md:mb-20 mb-10'>
           <div>

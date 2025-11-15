@@ -26,7 +26,7 @@ const why_choose_card = [
 
 function HomeAbout() {
   return (
-    <section id='about' className='bg-white relative py-20 md:py-30'>
+    <section id='about' className='bg-white py-20 md:py-30'>
       <div className='container w-[92vw] sm:w-[88vw]'>
         <div className='grid md:grid-cols-2 gap-6'>
           <div>
@@ -36,7 +36,7 @@ function HomeAbout() {
             <TextReveal words={who_we_are} textOffset={'0.9'} />
           </div>
         </div>
-        <hr className='border-t-b border-slate-200 my-10 md:my-20'/>
+        <hr className='border-t-b border-gray-50 my-10 md:my-20'/>
         <div className='mb-20'>
           <h3 className='text-xl font-semibold mb-4 md:mb-8 text-gray-500'>Why choose us?</h3>
           <div className='md:max-w-[700px] text-[1.7rem] font-semibold'>

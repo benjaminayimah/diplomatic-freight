@@ -118,6 +118,7 @@ function HomeBanner() {
               We provide logistics solutions tailor-made for individual clients
             </p>
           </motion.div>
+          
         </div>
       </motion.div>
     </motion.section>

@@ -20,7 +20,7 @@ function HomeServices() {
   ]
 
   return (
-    <section id='services' className='bg-gray-100 relative py-20 md:py-30'>
+    <section id='services' className='bg-gray-100 py-20 md:py-30'>
       <div className='container w-[92vw] sm:w-[88vw]'>
         <div className='grid md:grid-cols-2 gap-6 md:mb-20 mb-10'>
           <div>

@@ -26,23 +26,25 @@ function HomeGlobal() {
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ['start start', 'end end']
+    offset: ['start end', 'end start']
   })
 
   const scale = useTransform(scrollYProgress, [0, 1], [1.2, 1]);
+    const translateY = useTransform(scrollYProgress, [0, 1], ['-10vh', '10vh'])
+  
 
   return (
-    <section ref={targetRef} className='bg-[#0A47C9] relative py-20 md:py-30'>
+    <section ref={targetRef} className='bg-[#0A47C9] py-20 md:py-30 overflow-hidden'>
       <div className='container w-[92vw] sm:w-[88vw]'>
-        <div className={`mb-15 ${(device === 'desktop' || device === 'tablet') ? 'h-[200vh]' : ''}`}>
-          <div className='sticky top-30'>
+        <div className={`mb-15`}>
+          <div className=''>
             <div className='md:max-w-[500px] max-w-[70%] mb-15'>
               <span className='pill-tag mb-4 text-white border border-white/30'>Global presence</span>
               <h2 className='text-3xl md:text-4xl font-bold text-white'>We have a strong presence in over 20 countries</h2>
             </div>
             <div className='relative h-[20vh] md:h-[50vh] w-full'>
               <MotionImage
-                style={{scale: (device === 'desktop' || device === 'tablet') ? scale : 1}} 
+                style={{translateY}} 
                 src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763145907/world_gvphbb.png'}
                 alt='global coverage'
                 className='object-contain'

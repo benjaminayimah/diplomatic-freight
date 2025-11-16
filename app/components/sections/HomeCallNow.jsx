@@ -16,8 +16,6 @@ function HomeCallNow() {
   })
 
   const translateY = useTransform(scrollYProgress, [0, 1], ['-50px', '50px']);
-  const translateY2 = useTransform(scrollYProgress, [0, 1], ['200px', '0px']);
-
 
   return (
     <section id='contact' ref={targetRef} className='shadow-[0_30px_103px_10px_#000] z-1 py-20 md:py-30 bg-white relative flex justify-center'>

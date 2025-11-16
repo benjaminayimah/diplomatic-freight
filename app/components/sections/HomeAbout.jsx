@@ -9,11 +9,12 @@ import { useScroll, useTransform, motion } from 'framer-motion'
 
 
 const who_we_are = [
-  "We", "guarantee", "fast", "reliable", "and", "affordable", "logistics",
-  "solutions", "tailored", "to", "your", "needs.",
+  "At",<strong>Diplomatic</strong>, <strong>Freight</strong>, "we", "move", "more", "than", "cargo", "-", "we", "move", "trust.", "We", "guarantee", "fast", "reliable", "and", "affordable", "logistics",
+  "solutions.",
   <br key="br1" />,
-  "Our", "experience", "ensures", "a", "smooth", "and", "quality", "shipping", "experience", "from",
-  "start", "to", "finish."
+  "Our", "team", "combines", "speed,", "reliability,", "and", "precision", "to", "give", "you", "seamless", "logistics",
+  "tailored", "to", "your", "requirements.", "From", "origin", "to", "destination,", "we", "deliver", <strong>global</strong>, <strong>reach</strong>, <strong>with</strong>,
+  <strong>a</strong>, <strong>personal</strong>, <strong>touch.</strong>
 ];
 const why_choose_us = [
   "We", "deliver", "safe", "and", "smart", "-", "so",
@@ -50,7 +51,7 @@ function HomeAbout() {
           <div>
             <h2 className='text-3xl md:text-4xl font-bold'>Who we are</h2>
           </div>
-          <div className='lg:pl-36 text-[1.7rem]'>
+          <div className='lg:pl-36 text-xl'>
             <TextReveal words={who_we_are} textOffset={'0.9'} />
           </div>
         </div>
@@ -89,7 +90,7 @@ function HomeAbout() {
                 Why choose us
               </h2>
             </div>
-            <div className='lg:w-[45%] text-[1.7rem]'>
+            <div className='lg:w-[40%] text-xl'>
               <TextReveal words={why_choose_us} textOffset={'0.7'} />
             </div>
           </div>

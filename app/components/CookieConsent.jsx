@@ -10,12 +10,11 @@ function CookieConsent() {
       initial={{ y: 300 }}
       animate={{ y: 0 }}
       transition={{
-        duration: 1,
-        delay: 2,
+        delay: 3,
         ease: 'easeOut',
         type: 'spring',
-        stiffness: 200,
-        damping: 50,
+        stiffness: 300,
+        damping: 40,
       }}
       className='fixed bg-white p-5 w-full bottom-0 sm:w-100 sm:right-45 sm:bottom-10 shadow-[0px_100px_200px_0px_rgba(35,36,45,0.3)] z-10'>
       <div className='flex items-center gap-5'>

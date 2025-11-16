@@ -45,11 +45,12 @@ function HomeBanner() {
       initial={{ "--end": "#000000" }}                // ⬅️ start BLACK
       animate={{ "--end": ["#000000", ...colors] }}   // fade black → blue → cycle
       transition={{
-        duration: 16,
+        duration: 20,
         ease: "easeInOut",
         repeat: Infinity,
         repeatType: "mirror",
         delay: 1,
+        times: [0, 0.25, 1], // smoother easing
       }}
       style={{
         background: "linear-gradient(110deg, #000 7.63%, var(--end) 83.83%)",
@@ -58,6 +59,7 @@ function HomeBanner() {
       {/* initial={{ background: 'linear-gradient(110deg, #000 0%, #000 100%)'}}
       animate={{ background: 'linear-gradient(110deg, #000 7.63%, #2665E4 83.83%)'}}
       transition={{ duration: 1, ease: 'easeInOut', delay: 1, }} */}
+
       <MotionImage
          id="hero_image"
           className="bottom-[-100px]"

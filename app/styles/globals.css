@@ -31,6 +31,17 @@ body {
   color: var(--foreground);
   font-family: var(--font-plus-jakarta-sans), Helvetica, sans-serif;
 }
+
+::selection {
+  color: #fff;
+  background: #505052;
+}
+::-moz-selection {
+  color: #fff;
+  background: #505052;
+}
+
+
 .container {
   /* width: 88vw; */
   max-width: 1792px;

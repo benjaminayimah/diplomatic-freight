@@ -10,11 +10,10 @@ import { useScroll, useTransform, motion } from 'framer-motion'
 
 
 const stats = [
-  {label: 'Network Countries', value: '30+'},
-  {label: 'Tons Moved Annually', value: '1M+'},
-  {label: 'Global Clients', value: '100+'},
-  {label: 'Years of Experience', value: '10+'}
-
+  { label: "Network Countries", value: "30+", description: "Serving clients across major global trade regions." },
+  { label: "Tons Moved Annually", value: "1M+", description: "Reliable freight movement across air, sea and land." },
+  { label: "Global Clients", value: "100+", description: "Trusted by businesses worldwide for efficient logistics." },
+  { label: "Years of Experience", value: "10+", description: "A decade of proven logistics and shipping expertise." }
 ]
 
 function HomeGlobal() {
@@ -40,7 +39,7 @@ function HomeGlobal() {
           <div className=''>
             <div className='md:max-w-[500px] max-w-[70%] mb-15'>
               <span className='pill-tag mb-4 text-white border border-white/30'>Global presence</span>
-              <h2 className='text-3xl md:text-4xl font-bold text-white'>We have a strong presence in over 20 countries</h2>
+              <h2 className='text-3xl md:text-4xl font-bold text-white'>We have a strong presence in over 30 countries</h2>
             </div>
             <div className='relative h-[20vh] md:h-[50vh] w-full'>
               <MotionImage
@@ -55,7 +54,7 @@ function HomeGlobal() {
           </div>
         </div>
         
-        <div className='flex justify-center gap-3 md:gap-[10%]'>
+        <div className='grid grid-cols-2 gap-10 lg:grid-cols-4 lg:px-[5%]'>
           {
             stats.map((data, index) => (
               <StatItem key={index} stat={data} />

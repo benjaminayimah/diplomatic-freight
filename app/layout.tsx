@@ -17,8 +17,32 @@ const ibmPlexSansCondensed = IBM_Plex_Sans_Condensed({
 
 export const metadata: Metadata = {
   title: "Home - Diplomatic Freight & Logistic Services Ltd.",
-  description: "We guarantee fast, reliable and secure logistics solutions tailored to your needs."
+  description: "We guarantee fast, reliable and secure logistics solutions tailored to your needs.",
+  openGraph: {
+    title: "Diplomatic Freight & Logistic Services Ltd.",
+    description:
+      "Fast, reliable and secure logistics solutions tailored to your needs.",
+    url: "https://diplomatic-freight.vercel.app",
+    siteName: "Diplomatic Freight",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Diplomatic Freight & Logistics",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Diplomatic Freight & Logistic Services Ltd.",
+    description:
+      "Fast, reliable and secure logistics solutions tailored to your needs.",
+    images: ["/og-image.jpg"],
+  },
 };
+
 
 export default function RootLayout({
   children,

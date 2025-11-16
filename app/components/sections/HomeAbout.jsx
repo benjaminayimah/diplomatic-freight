@@ -58,7 +58,7 @@ function HomeAbout() {
         <div ref={targetRef} className='relative h-[200dvh]'>
           <div className='sticky top-[25dvh] md:top-10'>
             <motion.div style={{scale}} className='relative h-[50dvh] md:h-[calc(100dvh-80px)] w-full rounded-3xl overflow-hidden'>
-              <div className='absolute inset-0 flex items-center justify-center z-2 bg-linear-to-b from-black/70 via-black/10 to-black/70'>
+              <div className='absolute inset-0 flex items-center justify-center z-2 bg-linear-to-b from-black/60 via-black/10 to-black/60'>
                 <motion.div style={{opacity, translateY}} className='text-white'>
                   <h1 className='text-3xl lg:text-7xl text-center font-semibold'>Global Logistics, <br />Local Care</h1>
                 </motion.div>

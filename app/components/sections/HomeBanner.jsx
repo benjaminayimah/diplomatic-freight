@@ -5,11 +5,11 @@ import { useScroll, useTransform, motion } from 'framer-motion'
 import Image from 'next/image'
 
 const words = [
-  { word: 'Moving', style: 'h-lg p-2 pl-0', spanStyle: '' },
-  { word: 'Business', style: 'h-lg p-2 pr-0', spanStyle: '' },
-  { word: '', style: 'h-full', spanStyle: '', src: 'https://res.cloudinary.com/dl4wyqxbe/video/upload/v1762651643/truck-between-shipping-containers_qyaoyy.mp4', video: true },
-  { word: 'BEYOND', style: 'h-xlg font-bold p-3 pl-0', spanStyle: '' },
-  { word: 'BORDERS', style: 'h-xlg font-bold p-3 pl-0 pr-0', spanStyle: 'mt-[-1vw]' },
+  { line: '1', word: 'Moving', style: 'text-[clamp(2rem,4vw,4rem)] p-2 pl-0', spanStyle: '' },
+  { line: '1', word: 'Business', style: 'text-[clamp(2rem,4vw,4rem)] p-2 pr-0', spanStyle: '' },
+  { line: '2', word: '', style: 'h-full', spanStyle: '', src: 'https://res.cloudinary.com/dl4wyqxbe/video/upload/v1762651643/truck-between-shipping-containers_qyaoyy.mp4', video: true },
+  { line: '2', word: 'BEYOND', style: 'text-[calc(clamp(2rem,5vw,4rem)*1.5)] font-bold p-3 pl-0', spanStyle: '' },
+  { line: '3', word: 'BORDERS', style: 'text-[calc(clamp(2rem,5vw,4rem)*1.5)] font-bold p-3 pl-0 pr-0', spanStyle: '' },
 ]
 
 const colors = [
@@ -75,49 +75,34 @@ function HomeBanner() {
             ease: [0.7, 0.11, 0.2, 1],
           }}
       />
-      
 
       <motion.div
         style={{ translateY }}
         className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-[60px] lg:pl-[130px]"
       >
-        <div className="text-white h-full flex items-center shrink-0">
-          <h1 className="leading-none tracking-tighter max-w-[38%] min-w-[350px]">
-            {words.map((data, index) => (
-              <span
-                key={`${data.word}-${index}`}
-                className={`${data.spanStyle} align-middle overflow-hidden inline-block`}
-              >
-                <motion.div
-                  className={`${!data.video ? 'inline-block' : ''} ${data.style}`}
-                  initial={{ y: 300 }}
-                  animate={{ y: 0 }}
-                  transition={{
-                    duration: 1.3,
-                    delay: index * 0.1,
-                    ease: 'easeOut',
-                    type: 'spring',
-                    stiffness: 200,
-                    damping: 50,
-                  }}
-                >
-                  {!data.video ? (
-                    data.word
-                  ) : (
-                    <span className="heroVideoWrapper rounded-full p-4 pl-0 inline-block w-27 h-25 md:h-30 md:w-35">
-                      <video
-                        src={data.src}
-                        preload="auto"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                      />
-                    </span>
-                  )}
-                </motion.div>
-              </span>
-            ))}
+        <div className="text-white h-full flex items-center">
+          <h1 className="leading-none tracking-tighter">
+
+            {/* LINE 1 */}
+            <span className="block whitespace-nowrap">
+              {words.filter(w => w.line === '1').map((data, index) => (
+                <LineWord data={data} index={index} key={index} />
+              ))}
+            </span>
+
+            {/* LINE 2 */}
+            <span className="block whitespace-nowrap">
+              {words.filter(w => w.line === '2').map((data, index) => (
+                <LineWord data={data} index={index} key={index} />
+              ))}
+            </span>
+
+            {/* LINE 3 */}
+            <span className="block whitespace-nowrap">
+              {words.filter(w => w.line === '3').map((data, index) => (
+                <LineWord data={data} index={index} key={index} />
+              ))}
+            </span>
           </h1>
         </div>
 
@@ -126,7 +111,7 @@ function HomeBanner() {
           animate={{ y: 0 }}
           transition={{
             duration: 1.3,
-            delay: words.length * 0.1,
+            delay: (words.length-1) * 0.1,
             ease: 'easeOut',
             type: 'spring',
             stiffness: 200,
@@ -152,3 +137,30 @@ function HomeBanner() {
 export default HomeBanner
 
 
+function LineWord({ data, index }) {
+  return (
+    <span className={`${data.spanStyle} inline-block align-middle overflow-hidden`}>
+      <motion.div
+        className={`${!data.video ? "inline-block" : ""} ${data.style}`}
+        initial={{ y: 300 }}
+        animate={{ y: 0 }}
+        transition={{
+          duration: 1.3,
+          delay: index * 0.1,
+          ease: 'easeOut',
+          type: 'spring',
+          stiffness: 200,
+          damping: 50,
+        }}
+      >
+        {!data.video ? (
+          data.word
+        ) : (
+          <span className="heroVideoWrapper rounded-full p-2 md:p-4 pl-0 inline-block w-23 h-20 md:h-30 md:w-35">
+            <video src={data.src} preload="auto" autoPlay loop muted playsInline />
+          </span>
+        )}
+      </motion.div>
+    </span>
+  )
+}

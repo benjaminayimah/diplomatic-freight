@@ -24,7 +24,7 @@ function Header() {
   return (
     <motion.header
       id="header"
-      className={`fixed py-7 sm:py-11 top-0 z-10 flex w-full items-center`}
+      className={`fixed py-7 sm:py-11 top-0 z-20 flex w-full items-center`}
       initial={{ y: -100, }}
       animate={{ y: 0, }}
       transition={{ duration: 0.5, ease: ['easeInOut'] }}

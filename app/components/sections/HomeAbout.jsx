@@ -9,12 +9,12 @@ import { useScroll, useTransform, motion } from 'framer-motion'
 
 
 const who_we_are = [
-  "At",<strong>Diplomatic</strong>, <strong>Freight</strong>, "we", "move", "more", "than", "cargo", "-", "we", "move", "trust.", "We", "guarantee", "fast", "reliable", "and", "affordable", "logistics",
+  "At",<strong className='font-semibold'>Diplomatic</strong>, <strong className='font-semibold'>Freight</strong>, "we", "move", "more", "than", "cargo", "-", "we", "move", "trust.", "We", "guarantee", "fast", "reliable", "and", "affordable", "logistics",
   "solutions.",
   <br key="br1" />,
   "Our", "team", "combines", "speed,", "reliability,", "and", "precision", "to", "give", "you", "seamless", "logistics",
-  "tailored", "to", "your", "requirements.", "From", "origin", "to", "destination,", "we", "deliver", <strong>global</strong>, <strong>reach</strong>, <strong>with</strong>,
-  <strong>a</strong>, <strong>personal</strong>, <strong>touch.</strong>
+  "tailored", "to", "your", "requirements.", "From", "origin", "to", "destination,", "we", "deliver", <strong className='font-semibold'>global</strong>, <strong className='font-semibold'>reach</strong>, <strong className='font-semibold'>with</strong>,
+  <strong className='font-semibold'>a</strong>, <strong className='font-semibold'>personal</strong>, <strong className='font-semibold'>touch.</strong>
 ];
 const why_choose_us = [
   "We", "deliver", "safe", "and", "smart", "-", "so",

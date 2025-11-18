@@ -22,11 +22,11 @@ function PrivacyPolicy() {
             </span>
           </h1>
           <motion.div
-            initial={{ y: 300, opacity: 0 }}
+            initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
               duration: 1.3,
-              delay: (words.length-1) * 0.3,
+              delay: (words.length-1) * 0.6,
               ease: 'easeOut',
               type: 'spring',
               stiffness: 200,

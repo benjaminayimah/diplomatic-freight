@@ -2,7 +2,6 @@
 
 import React, { useRef } from 'react'
 import TextReveal from '../TextReveal'
-import Image from 'next/image';
 import WhyChooseCard from '../WhyChooseCard'
 import { useScroll, useTransform, motion } from 'framer-motion'
 
@@ -63,14 +62,9 @@ function HomeAbout() {
                   <h1 className='text-3xl lg:text-7xl text-center font-semibold'>Global Logistics, <br />Local Care</h1>
                 </motion.div>
               </div>
-              {/* <Image
-                src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763305284/essence-of-global-trade-throu_ekbfrs.jpg'}
-                // style={{translateY}}
-                alt="About us"
-                fill
-                className='object-cover'
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              /> */}
+              {/* 
+              bg-linear-to-b from-black/60 via-black/10 to-black/60
+              <*/}
               <video
                 src='https://res.cloudinary.com/dl4wyqxbe/video/upload/v1763465449/10429865-hd_1920_1080_30fps_h5npho.mp4'
                 className="object-cover w-full h-full"
@@ -104,6 +98,5 @@ function HomeAbout() {
     </section>
   )
 }
-
 
 export default HomeAbout

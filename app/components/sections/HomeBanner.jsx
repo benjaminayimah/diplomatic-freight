@@ -71,7 +71,7 @@ function HomeBanner() {
          id="hero_image"
           className="bottom-[-100px]"
           style={{ translateY: translateY2, objectFit: "cover" }}
-          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763460836/bg-cargo-plane3_wr4rm4.png"
+          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763470463/bg-cargo-plane_2_uw9au3.png"
           alt="Hero background"
           fill
           priority

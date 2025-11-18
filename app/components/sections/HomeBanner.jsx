@@ -69,17 +69,17 @@ function HomeBanner() {
 
       <MotionImage
          id="hero_image"
-          className="bottom-[-100px]"
+          className="mt-[40%] md:mt-0"
           style={{ translateY: translateY2, objectFit: "cover" }}
-          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763470463/bg-cargo-plane_2_uw9au3.png"
+          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763470951/bg-cargo-plane_2_-min_ush5mi.png"
           alt="Hero background"
           fill
           priority
-          initial={{ x: '10vw', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: '10vw'}}
+          animate={{ x: 0 }}
           transition={{
-            duration: 1.8,
-            ease: [0.7, 0.11, 0.2, 1],
+            duration: 20,
+            ease: [0.1, 0.5, 0.7, 1],
           }}
       />
 

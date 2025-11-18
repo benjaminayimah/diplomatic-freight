@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from 'react'
 
@@ -44,7 +43,7 @@ function CookieConsent() {
       <div className='flex items-center gap-5'>
         <div className='flex-1'>
           <p className='text-[0.88rem] w-full'>
-            We use third party <Link href="cookie-policy" className='underline text-gray-700'>cookies</Link> in order to personalise your site expierence.
+            We use third party <a href="cookie-policy" className='underline text-gray-700'>cookies</a> in order to personalise your site expierence.
           </p>
         </div>
         <div>

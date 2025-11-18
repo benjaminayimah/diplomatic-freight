@@ -30,9 +30,9 @@ function Header() {
       transition={{ duration: 0.5, ease: ['easeInOut'] }}
       >
       <div className='relative h-12 container w-[92vw] sm:w-[88vw] justify-between flex items-center'>
-        <Link href="/" id='logo' className="logo absolute left-0">
+        <a href="/" id='logo' className="logo absolute left-0">
             <Logo />
-        </Link>
+        </a>
         <CustomNav links={menus} />
         <div className='inline-flex items-center gap-4 absolute right-0'>
           <Button />

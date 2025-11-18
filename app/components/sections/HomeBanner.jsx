@@ -63,10 +63,6 @@ function HomeBanner() {
         background: "linear-gradient(110deg, #000 7.63%, var(--end) 83.83%)",
       }}
     >
-      {/* initial={{ background: 'linear-gradient(110deg, #000 0%, #000 100%)'}}
-      animate={{ background: 'linear-gradient(110deg, #000 7.63%, #2665E4 83.83%)'}}
-      transition={{ duration: 1, ease: 'easeInOut', delay: 1, }} */}
-
       <MotionImage
          id="hero_image"
           className="mt-[40%] md:mt-0"

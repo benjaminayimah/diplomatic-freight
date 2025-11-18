@@ -21,7 +21,7 @@ function StaggeredText({ data, index }) {
         {!data.video ? (
           data.word
         ) : (
-          <span className="heroVideoWrapper rounded-full p-2 md:p-4 pl-0 inline-block w-23 h-20 md:h-30 md:w-35">
+          <span className="heroVideoWrapper rounded-full p-2 md:p-4 pl-0! inline-block w-23 h-20 md:h-30 md:w-35">
             <video src={data.src} preload="auto" autoPlay loop muted playsInline />
           </span>
         )}

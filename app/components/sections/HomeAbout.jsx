@@ -67,7 +67,7 @@ function HomeAbout() {
               <*/}
               <video
                 src='https://res.cloudinary.com/dl4wyqxbe/video/upload/v1763465449/10429865-hd_1920_1080_30fps_h5npho.mp4'
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full bg-gray-100"
                 preload="metadata"
                 autoPlay
                 loop

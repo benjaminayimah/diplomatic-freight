@@ -81,12 +81,12 @@ function Footer() {
             <div>
               <h3 className='font-semibold text-lg text-white mb-5'>Quick Links</h3>
               <ul className='flex flex-col gap-2'>
-                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Home</a></li>
-                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>About Us</a></li>
-                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Services</a></li>
-                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Contact</a></li>
-                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Login</a></li>
-                <li><a href='#' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
+                <li><a href='/' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Home</a></li>
+                <li><a href='#about' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>About Us</a></li>
+                <li><a href='#services' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Services</a></li>
+                <li><a href='#contact' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Contact</a></li>
+                <li><a href='/login' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Login</a></li>
+                <li><a title='webmail' target='_blank' href='http://www.diplomaticfreight.com/webmail' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
               </ul>
             </div>
             <div className='md:w-80'>

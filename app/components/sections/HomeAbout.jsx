@@ -58,7 +58,7 @@ function HomeAbout() {
         <div ref={targetRef} className='relative h-[200dvh]'>
           <div className='sticky top-[25dvh] md:top-10'>
             <motion.div style={{scale}} className='relative h-[50dvh] md:h-[calc(100dvh-80px)] w-full rounded-3xl overflow-hidden'>
-              <div className='absolute inset-0 flex items-center justify-center z-2 '>
+              <div className='absolute inset-0 flex items-center justify-center z-2'>
                 <motion.div style={{opacity, translateY}} className='text-white'>
                   <h1 className='text-3xl lg:text-7xl text-center font-semibold'>Global Logistics, <br />Local Care</h1>
                 </motion.div>
@@ -72,7 +72,7 @@ function HomeAbout() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               /> */}
               <video
-                src='https://res.cloudinary.com/dl4wyqxbe/video/upload/v1763464781/10429867-hd_1280_720_30fps_aqqot5.mp4'
+                src='https://res.cloudinary.com/dl4wyqxbe/video/upload/v1763465449/10429865-hd_1920_1080_30fps_h5npho.mp4'
                 className="object-cover w-full h-full"
                 preload="metadata"
                 autoPlay
@@ -104,5 +104,6 @@ function HomeAbout() {
     </section>
   )
 }
+
 
 export default HomeAbout

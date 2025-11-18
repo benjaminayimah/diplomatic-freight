@@ -16,6 +16,7 @@ const words = [
 const colors = [
   "#2563EB", // blue,
   "#4663E5", // indigo
+  "#45BAF8", // sky
   "#0D9488", // 
   "#0D9488", // 
   "#516781", // 

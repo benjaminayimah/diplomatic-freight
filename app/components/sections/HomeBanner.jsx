@@ -8,7 +8,7 @@ import StaggeredText from '../StaggeredText'
 const words = [
   { line: '1', word: 'Moving', style: 'text-[clamp(2rem,4vw,4rem)] p-2 pl-0', spanStyle: '' },
   { line: '1', word: 'Business', style: 'text-[clamp(2rem,4vw,4rem)] p-2 pr-0', spanStyle: '' },
-  { line: '2', word: '', style: 'h-full', spanStyle: '', src: 'https://res.cloudinary.com/dl4wyqxbe/video/upload/f_auto,q_auto:good,vc_auto/v1763457307/cargo-plane_tfxee7.mp4', video: true },
+  { line: '2', word: '', style: 'h-full', spanStyle: '', src: 'https://res.cloudinary.com/dl4wyqxbe/video/upload/v1763463538/5928077-sd_360_640_30fps_lgqrjh.mp4', video: true },
   { line: '2', word: 'BEYOND', style: 'text-[calc(clamp(2rem,5vw,4rem)*1.5)] font-bold p-3 pl-0', spanStyle: '' },
   { line: '3', word: 'BORDERS', style: 'text-[calc(clamp(2rem,5vw,4rem)*1.5)] font-bold p-3 pl-0 pr-0', spanStyle: '' },
 ]

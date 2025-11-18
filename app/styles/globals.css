@@ -98,7 +98,8 @@ video {
 
 
 #hero_image {
-  display: none;
+  /* display: none; */
+  /* margin-top: 20%; */
 }
 
 
@@ -107,7 +108,7 @@ video {
 
 @media (min-width: 768px) {
   #hero_image {
-    display: block;
+    /* display: block; */
   }
 
   

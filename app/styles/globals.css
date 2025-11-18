@@ -50,6 +50,12 @@ body {
 button, a {
   cursor: pointer;
 }
+.hover-translate {
+  transition: all .25s ease-in-out;
+  &:hover {
+    translate: 0 -3px;
+  }
+}
 
 a {
   &:focus {

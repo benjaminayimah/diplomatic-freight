@@ -43,12 +43,14 @@ function CookieConsent() {
       <div className='flex items-center gap-5'>
         <div className='flex-1'>
           <p className='text-[0.88rem] w-full'>
-            We use third party <a href="cookie-policy" className='underline text-gray-700'>cookies</a> in order to personalise your site expierence.
+            <span>
+              We use third party <a href="/cookie-policy" className='hover-translate underline text-gray-700 hover:text-gray-500'>cookies</a> in order to personalise your site expierence.
+            </span>
           </p>
         </div>
         <div>
           <button
-            className='bg-black text-white px-4 py-3 text-[0.88rem] rounded-4xl font-medium'
+            className='hover-translate bg-black text-white px-4 py-3 text-[0.88rem] rounded-4xl font-medium'
             onClick={dismissCookie}
             >
               Okay!

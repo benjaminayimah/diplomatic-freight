@@ -43,7 +43,7 @@ function HomeCallNow() {
             <p className='text-[#B0B3B8] mb-8'>
               Our team is ready to help you with all your freight and logistics needs. Don't hesitate to reach out for expert advice and support.
             </p>
-            <a href="tel:+1234567890" className='inline-block bg-[#FF6A3D] text-white font-medium py-3 px-6 rounded-3xl hover:bg-[#e55a2c] transition duration-300'>Call Now: +233 (0) 30 290 8064</a>
+            <a href="tel:+1234567890" className='hover-translate inline-block bg-[#FF6A3D] text-white font-medium py-3 px-6 rounded-3xl hover:bg-[#e55a2c] transition duration-300'>Call Now: +233 (0) 30 290 8064</a>
           </div>
         </div>
       </div>

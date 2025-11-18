@@ -48,28 +48,28 @@ function Footer() {
             </p> */}
             <ul id='footer_socials' className='flex items-center gap-6 my-4'>
               <li>
-                <a href='#'>
-                  <svg width="31" height="22" viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.8388 21.9727C6.93498 21.8629 4.91854 21.7641 3.67911 21.5061C2.84055 21.3346 2.11185 20.954 1.57755 20.4018C1.1646 19.984 0.836191 19.3464 0.581403 18.4619C0.36285 17.725 0.277729 17.1119 0.156375 15.6142C-0.0293957 12.2341 -0.0736815 9.47069 0.156375 6.38295C0.346171 4.67781 0.438193 2.65361 1.6989 1.47268C2.29417 0.919987 2.98664 0.564313 3.76423 0.417278C4.97893 0.18423 10.154 0 15.5115 0C20.8568 0 26.0434 0.18423 27.2593 0.417278C28.2307 0.601507 29.1417 1.15361 29.6766 1.86554C30.8269 3.69389 30.847 5.96742 30.9638 7.74578C31.0121 8.59312 31.0121 13.4046 30.9638 14.2519C30.782 17.0625 30.6359 18.0568 30.223 19.0878C29.9676 19.7387 29.7496 20.0822 29.3724 20.4629C28.7806 21.0487 28.0263 21.4383 27.2098 21.5799C22.1009 21.9681 17.7626 22.0524 12.8388 21.9727ZM20.6624 10.6795C17.8201 9.14465 15.0985 7.72138 12.3166 6.24812V15.0621C15.244 13.454 18.3302 11.9807 20.6745 10.6673L20.6624 10.6795Z"/>
+                <a href='https://www.twitter.com/dip_freight' title='X' target='_blank' className='hover-translate inline-block'>
+                  <svg height="22" viewBox="0 0 300.1 271">
+                    <path d="M236,0h46L181,115,299,271H206.4l-72.5-94.8L50.9,271H4.9l107-123L-1.1,0H93.8l65.5,86.6ZM219.9,244h25.5L80.4,26H53Z" transform="translate(1.1)"/>
                   </svg>
                 </a>
               </li>
               <li>
-                <a href='#'>
+                <a href='https://www.instagram.com/diplomaticfreight' title='Instagram' target='_blank' className='hover-translate inline-block'>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.2328 0C15.3934 0.00394237 15.8504 0.0213114 16.9476 0.0713026C18.2249 0.129386 19.0971 0.332436 19.8606 0.629092C20.6497 0.935828 21.3189 1.34601 21.9861 2.01325C22.6534 2.68048 23.0638 3.34964 23.3703 4.1388C23.667 4.90228 23.8698 5.77448 23.9281 7.05183C23.9814 8.22211 23.9976 8.66409 24 11.2221V12.7773C23.9976 15.3353 23.9814 15.7773 23.9281 16.9476C23.8698 18.2249 23.667 19.0971 23.3703 19.8606C23.0638 20.6497 22.6534 21.3189 21.9861 21.9861C21.3189 22.6534 20.6497 23.0636 19.8606 23.3703C19.0971 23.667 18.2249 23.87 16.9476 23.9281C15.7773 23.9814 15.3353 23.9976 12.7773 24H11.2221C8.66409 23.9976 8.22211 23.9814 7.05183 23.9281C5.77448 23.87 4.90228 23.667 4.1388 23.3703C3.34964 23.0636 2.68048 22.6534 2.01325 21.9861C1.34601 21.3189 0.935588 20.6497 0.629092 19.8606C0.332436 19.0971 0.129626 18.2249 0.0713026 16.9476C0.0213114 15.8504 0.00394237 15.3934 0 13.2328V10.7666C0.00394237 8.606 0.0213114 8.14896 0.0713026 7.05183C0.129626 5.77448 0.332436 4.90228 0.629092 4.1388C0.935588 3.34964 1.34601 2.68048 2.01325 2.01325C2.68048 1.34601 3.34964 0.935828 4.1388 0.629092C4.90228 0.332436 5.77448 0.129386 7.05183 0.0713026C8.14896 0.0213114 8.606 0.00394237 10.7666 0H13.2328ZM12.7638 2.16162H11.2356C8.72372 2.16376 8.30736 2.17851 7.15048 2.23118C5.98041 2.2847 5.34486 2.48007 4.9222 2.64448C4.36201 2.86217 3.96215 3.12234 3.54237 3.54213C3.12234 3.96215 2.86217 4.36201 2.64448 4.92196C2.48031 5.34486 2.28446 5.98041 2.23142 7.15048C2.17853 8.30736 2.16377 8.72372 2.16162 11.2356V12.7638C2.16377 15.2757 2.17853 15.692 2.23142 16.8489C2.28446 18.019 2.48031 18.6545 2.64448 19.0774C2.86217 19.6374 3.12234 20.0372 3.54237 20.4573C3.96215 20.877 4.36201 21.1372 4.9222 21.3549C5.34486 21.5193 5.98041 21.7147 7.15048 21.7682C8.30715 21.8209 8.72349 21.8356 11.2356 21.8378H12.7638C15.2759 21.8356 15.6922 21.8209 16.8489 21.7682C18.019 21.7147 18.6545 21.5193 19.0772 21.3549C19.6374 21.1372 20.0372 20.877 20.457 20.4573C20.877 20.0372 21.1372 19.6374 21.3549 19.0774C21.5191 18.6545 21.7149 18.019 21.768 16.8489C21.8209 15.692 21.8356 15.2757 21.8378 12.7638V11.2356C21.8356 8.72372 21.8209 8.30736 21.768 7.15048C21.7149 5.98041 21.5191 5.34486 21.3549 4.92196C21.1372 4.36201 20.877 3.96215 20.457 3.54213C20.0372 3.12234 19.6374 2.86217 19.0772 2.64448C18.6545 2.48007 18.019 2.2847 16.8489 2.23118C15.692 2.17851 15.2757 2.16376 12.7638 2.16162ZM11.9997 5.83725C15.4033 5.83725 18.1623 8.59619 18.1623 11.9996C18.1623 15.4032 15.4033 18.1621 11.9997 18.1621C8.59607 18.1621 5.83713 15.4032 5.83713 11.9996C5.83713 8.59619 8.59607 5.83725 11.9997 5.83725ZM11.9997 7.99952C9.79038 7.99952 7.9994 9.7905 7.9994 11.9996C7.9994 14.2089 9.79038 15.9999 11.9997 15.9999C14.209 15.9999 16 14.2089 16 11.9996C16 9.7905 14.209 7.99952 11.9997 7.99952ZM18.4057 4.1537C19.2009 4.1537 19.8458 4.79838 19.8458 5.59378C19.8458 6.38894 19.2009 7.03385 18.4057 7.03385C17.6103 7.03385 16.9657 6.38894 16.9657 5.59378C16.9657 4.79838 17.6103 4.1537 18.4057 4.1537Z"/>
                   </svg>
                 </a>
               </li>
               <li>
-                <a href='#'>
+                <a href='https://www.facebook.com/diplomaticfreight' title='Facebook' target='_blank' className='hover-translate inline-block'>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 0C5.39999 0 0 5.40963 0 12.0723C0 18.0964 4.39199 23.0964 10.128 24V15.5663H7.07999V12.0723H10.128V9.40963C10.128 6.38554 11.916 4.72289 14.664 4.72289C15.972 4.72289 17.34 4.9518 17.34 4.9518V7.9277H15.828C14.34 7.9277 13.872 8.85541 13.872 9.80724V12.0723H17.208L16.668 15.5663H13.872V24C16.6997 23.5516 19.2746 22.103 21.1319 19.9157C22.9891 17.7284 24.0065 14.9465 24 12.0723C24 5.40963 18.6 0 12 0Z"/>
                   </svg>
                 </a>
               </li>
               <li>
-                <a href='#'>
+                <a href='https://www.linkedin.com/company/diplomaticfreight' title='LinkedIn' target='_blank'  className='hover-translate inline-block'>
                   <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.67535 24V7.80644H0.316781V23.9999L5.67535 24ZM2.99663 5.5963C4.86469 5.5963 6.02834 4.35178 6.02834 2.79785C5.99302 1.20939 4.86469 0 3.03166 0C1.19834 4.9136e-05 0 1.20943 0 2.7979C0 4.35183 1.16302 5.59635 2.96136 5.59635L2.99663 5.5963ZM8.64111 24C8.64111 24 8.71142 9.32582 8.64111 7.80649H14.0005V10.1549H13.9649C14.6696 9.04982 15.9392 7.42622 18.8299 7.42622C22.3566 7.42622 25 9.74068 25 14.7147V24H19.6415V15.3369C19.6415 13.1601 18.8661 11.6748 16.9264 11.6748C15.4462 11.6748 14.5641 12.6762 14.1767 13.6441C14.035 13.9887 14.0005 14.4726 14.0005 14.9566V24H8.64111Z"/>
                   </svg>
@@ -81,12 +81,12 @@ function Footer() {
             <div>
               <h3 className='font-semibold text-lg text-white mb-5'>Quick Links</h3>
               <ul className='flex flex-col gap-2'>
-                <li><a href='/' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Home</a></li>
-                <li><a href='#about' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>About Us</a></li>
-                <li><a href='#services' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Services</a></li>
-                <li><a href='#contact' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Contact</a></li>
-                <li><a href='/login' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Login</a></li>
-                <li><a title='webmail' target='_blank' href='http://www.diplomaticfreight.com/webmail' className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
+                <li><a href='/' className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Home</a></li>
+                <li><a href='#about' className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>About Us</a></li>
+                <li><a href='#services' className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Services</a></li>
+                <li><a href='#contact' className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Contact</a></li>
+                <li><a href='/login' className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Login</a></li>
+                <li><a title='webmail' target='_blank' href='http://www.diplomaticfreight.com/webmail' className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
               </ul>
             </div>
             <div className='md:w-80'>
@@ -109,13 +109,13 @@ function Footer() {
                   <svg className='shrink-0 mt-1' width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.0283 0C18.4412 0.000215242 19.5869 1.14565 19.5869 2.55859V13.4111C19.5866 14.8239 18.4411 15.9695 17.0283 15.9697H2.55859C1.14571 15.9697 0.000321137 14.824 0 13.4111V2.55859C5.29553e-05 1.14555 1.14555 5.29551e-05 2.55859 0H17.0283ZM1.5 13.4111C1.50032 13.9955 1.97414 14.4697 2.55859 14.4697H17.0283C17.6126 14.4695 18.0866 13.9954 18.0869 13.4111V4.8291L11.1084 9.27344C11.1 9.27879 11.0916 9.285 11.083 9.29004C10.6929 9.51665 10.249 9.63563 9.79785 9.63574C9.34663 9.63574 8.90292 9.51658 8.5127 9.29004C8.50397 9.28497 8.49485 9.27886 8.48633 9.27344L1.5 4.82715V13.4111ZM2.55859 1.5C1.97397 1.50005 1.50005 1.97397 1.5 2.55859V3.0498L9.26562 7.99219C9.42711 8.08596 9.61112 8.13574 9.79785 8.13574C9.98441 8.13563 10.1678 8.08589 10.3291 7.99219L18.0869 3.0498V2.55859C18.0869 1.97407 17.6128 1.50022 17.0283 1.5H2.55859Z" fill="#0A47C9"/>
                   </svg>
-                  <a className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="mailTo:info@diplomaticfreight.com">info@diplomaticfreight.com</a>
+                  <a className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="mailTo:info@diplomaticfreight.com">info@diplomaticfreight.com</a>
                 </li>
                 <li className='flex items-start gap-3'>
                   <svg className='shrink-0 mt-1' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.3988 13.8612C11.5847 13.9466 11.7941 13.9661 11.9925 13.9165C12.191 13.8669 12.3666 13.7512 12.4905 13.5885L12.81 13.17C12.9777 12.9464 13.1951 12.765 13.445 12.64C13.695 12.5151 13.9706 12.45 14.25 12.45H16.95C17.4274 12.45 17.8852 12.6396 18.2228 12.9772C18.5604 13.3148 18.75 13.7726 18.75 14.25V16.95C18.75 17.4274 18.5604 17.8852 18.2228 18.2228C17.8852 18.5604 17.4274 18.75 16.95 18.75C12.6535 18.75 8.53296 17.0432 5.49487 14.0051C2.45678 10.967 0.75 6.84651 0.75 2.55C0.75 2.07261 0.939642 1.61477 1.27721 1.27721C1.61477 0.939642 2.07261 0.75 2.55 0.75H5.25C5.72739 0.75 6.18523 0.939642 6.52279 1.27721C6.86036 1.61477 7.05 2.07261 7.05 2.55V5.25C7.05 5.52944 6.98494 5.80504 6.85997 6.05498C6.735 6.30492 6.55355 6.52234 6.33 6.69L5.9088 7.0059C5.74357 7.13206 5.62712 7.31153 5.57921 7.51382C5.53131 7.7161 5.5549 7.92874 5.646 8.1156C6.87601 10.6139 8.89898 12.6343 11.3988 13.8612Z" stroke="#0A47C9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <a className='hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="tel:+233(0) 30 290 8064/5">+233(0) 30 290 8064/5</a>
+                  <a className='hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out' href="tel:+233(0) 30 290 8064/5">+233(0) 30 290 8064/5</a>
                 </li>
               </ul>
             </div>
@@ -124,9 +124,9 @@ function Footer() {
         <div className='flex flex-col-reverse gap-5 lg:flex-row lg:justify-between'>
           <p className='text-[0.8rem] text-[#6D6D6D]'>Copyright © 2025 Diplomatic Freight & Logistics Service Ltd. All rights reserved</p>
           <ul className='flex gap-4'>
-            <li><a href="terms-of-service" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Terms of Service</a></li>
-            <li><a href="privacy-policy" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Privacy Policy</a></li>
-            <li><a href="cookie-policy" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Cookie Policy</a></li>
+            <li><a href="terms-of-service" className='text-[0.88rem] hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Terms of Service</a></li>
+            <li><a href="privacy-policy" className='text-[0.88rem] hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Privacy Policy</a></li>
+            <li><a href="cookie-policy" className='text-[0.88rem] hover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Cookie Policy</a></li>
           </ul>
         </div>
       </motion.div>

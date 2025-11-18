@@ -25,7 +25,6 @@ function Logo() {
 
   const fillColor = isDarkPage ? "#000" : "#fff"
 
-
   return (
     <div className={`flex gap-2 items-center logo-wrapper ${isScrolled ? "switch-logo" : ""}`}>
       <div className='icon-wrapper'>

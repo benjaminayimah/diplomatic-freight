@@ -13,7 +13,7 @@ const what_we_deliver = [
 function HomeServices() {
 
   const services = [
-    { id: 1, name: 'Cargo Handling', description: "We possess a first class expertise to manage your cargo no matter the type.", src: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1762964249/about-image-1_hzpxge.png' },
+    { id: 1, name: 'Cargo Handling', description: "We possess a first class expertise to manage your cargo no matter the type.", src: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763150133/loaded-onto-transport_wqzptw.jpg' },
     { id: 2, name: 'Sea & Air Freight Forwarding', description: "Our fleet of aircraft and vessels are at your service to transport your cargo to and from any part of the world by air and sea.", src: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1762964255/about-image-3_gyllra.png' },
     { id: 3, name: 'Warehousing', description: "We are equipped with more than adequate facilities to store your cargo.", src: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763149619/two-workers_dc4dpp.jpg' },
     { id: 4, name: 'Air Charter', description: "We provide private air charter services to customers on-demand.", src: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763150547/air-charter_nd7cpf.png' },

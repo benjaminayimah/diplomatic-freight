@@ -3,6 +3,7 @@
 import React, { useRef } from 'react'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import Image from 'next/image'
+import StaggeredText from '../StaggeredText'
 
 const words = [
   { line: '1', word: 'Moving', style: 'text-[clamp(2rem,4vw,4rem)] p-2 pl-0', spanStyle: '' },
@@ -82,25 +83,22 @@ function HomeBanner() {
       >
         <div className="text-white h-full flex items-center">
           <h1 className="leading-none tracking-tighter">
-
             {/* LINE 1 */}
             <span className="block whitespace-nowrap">
               {words.filter(w => w.line === '1').map((data, index) => (
-                <LineWord data={data} index={index} key={index} />
+                <StaggeredText data={data} index={index} key={index} />
               ))}
             </span>
-
             {/* LINE 2 */}
             <span className="block whitespace-nowrap">
               {words.filter(w => w.line === '2').map((data, index) => (
-                <LineWord data={data} index={index} key={index} />
+                <StaggeredText data={data} index={index} key={index} />
               ))}
             </span>
-
             {/* LINE 3 */}
             <span className="block whitespace-nowrap">
               {words.filter(w => w.line === '3').map((data, index) => (
-                <LineWord data={data} index={index} key={index} />
+                <StaggeredText data={data} index={index} key={index} />
               ))}
             </span>
           </h1>
@@ -135,32 +133,3 @@ function HomeBanner() {
 }
 
 export default HomeBanner
-
-
-function LineWord({ data, index }) {
-  return (
-    <span className={`${data.spanStyle} inline-block align-middle overflow-hidden`}>
-      <motion.div
-        className={`${!data.video ? "inline-block" : ""} ${data.style}`}
-        initial={{ y: 300 }}
-        animate={{ y: 0 }}
-        transition={{
-          duration: 1.3,
-          delay: index * 0.1,
-          ease: 'easeOut',
-          type: 'spring',
-          stiffness: 200,
-          damping: 50,
-        }}
-      >
-        {!data.video ? (
-          data.word
-        ) : (
-          <span className="heroVideoWrapper rounded-full p-2 md:p-4 pl-0 inline-block w-23 h-20 md:h-30 md:w-35">
-            <video src={data.src} preload="auto" autoPlay loop muted playsInline />
-          </span>
-        )}
-      </motion.div>
-    </span>
-  )
-}

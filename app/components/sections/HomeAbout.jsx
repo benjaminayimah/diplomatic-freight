@@ -18,7 +18,7 @@ const who_we_are = [
 ];
 const why_choose_us = [
   "We", "deliver", "safe", "and", "smart", "-", "so",
-  "your", "shipment", "always", "arrives,", "on", "time.", "and", "in", "great", "condition"
+  "your", "shipment", "always", "arrives,", "on", "time", "and", "in", "great", "condition"
 ];
 
 const why_choose_card = [

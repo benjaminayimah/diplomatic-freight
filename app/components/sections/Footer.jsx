@@ -3,6 +3,7 @@
 import React, { useRef } from 'react'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import { useUIStore } from "../../store"
+import Link from 'next/link'
 
 
 
@@ -122,10 +123,10 @@ function Footer() {
         </div>
         <div className='flex flex-col-reverse gap-5 lg:flex-row lg:justify-between'>
           <p className='text-[0.8rem] text-[#6D6D6D]'>Copyright © 2025 Diplomatic Freight & Logistics Service Ltd. All rights reserved</p>
-
           <ul className='flex gap-4'>
-            <li><a href="" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Terms of Service</a></li>
-            <li><a href="" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Privacy Policy</a></li>
+            <li><Link href="terms-of-service" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Terms of Service</Link></li>
+            <li><Link href="privacy-policy" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Privacy Policy</Link></li>
+            <li><Link href="cookie-policy" className='text-[0.88rem] hover:underline hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Cookie Policy</Link></li>
           </ul>
         </div>
       </motion.div>

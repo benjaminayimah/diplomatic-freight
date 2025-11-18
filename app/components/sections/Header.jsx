@@ -1,12 +1,12 @@
 'use client'
 import React from 'react'
-import NavList from '../NavList'
 import Logo from '../Logo'
 import Button from '../Button'
 import HamburgerMenu from '../HamburgerMenu'
 import { useUIStore } from "../../store"
 import CustomNav from '../CustomNav'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 
 function Header() {
@@ -30,9 +30,9 @@ function Header() {
       transition={{ duration: 0.5, ease: ['easeInOut'] }}
       >
       <div className='relative h-12 container w-[92vw] sm:w-[88vw] justify-between flex items-center'>
-        <a href="#home" id='logo' className="logo absolute left-0">
+        <Link href="/" id='logo' className="logo absolute left-0">
             <Logo />
-        </a>
+        </Link>
         <CustomNav links={menus} />
         <div className='inline-flex items-center gap-4 absolute right-0'>
           <Button />

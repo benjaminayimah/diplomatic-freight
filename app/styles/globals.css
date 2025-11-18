@@ -50,7 +50,7 @@ body {
 button, a {
   cursor: pointer;
 }
-.hover-translate {
+.myHover-translate {
   transition: all .25s ease-in-out;
   &:hover {
     translate: 0 -3px;

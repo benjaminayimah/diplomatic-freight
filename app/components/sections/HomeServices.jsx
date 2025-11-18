@@ -3,7 +3,7 @@ import TextReveal from '../TextReveal'
 import ServicesCard from '../ServicesCard'
 
 const what_we_deliver = [
-  "Whether", "you're", <span className='text-orange-600 font-semibold'>exporting</span>, "across", "continents", "or", <span className='text-blue-600 font-semibold'>importing</span>, "products",
+  "Whether", "you're", <span className='text-orange-600'>exporting</span>, "across", "continents", "or", <span className='text-blue-600'>importing</span>, "products",
   "into", "complex", "markets,", "our,", "tailored", "logistic", "solutions", "ensures", "speed,", "compliance",
   "and", "peace", "of", "mind.", "We", "manage", "every", "detail", "so", "you", "can", "focus", "on", "growing",
   "your", "business."

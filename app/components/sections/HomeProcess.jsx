@@ -4,10 +4,8 @@ import ProcessCard from '../ProcessCard'
 
 
 const what_we_deliver = [
-  "Whether", "you're", <span className='text-orange-600 font-semibold'>exporting</span>, "across", "continents", "or", <span className='text-blue-600 font-semibold'>importing</span>, "products",
-  "into", "complex", "markets,", "our,", "tailored", "logistic", "solutions", "ensures", "speed,", "compliance",
-  "and", "peace", "of", "mind.", "We", "manage", "every", "detail", "so", "you", "can", "focus", "on", "growing",
-  "your", "business."
+  "Every", "successful", "shipment", "begins", "with", "a",
+  "streamlined", "process", "-", "and", "here's", "how", "we", "do", "it.", 
 ];
 
 const process = [
@@ -25,7 +23,7 @@ function HomeProcess() {
           <div>
             <h2 className='text-3xl md:text-4xl font-bold'>Our process</h2>
           </div>
-          <div className='lg:pl-36 text-xl'>
+          <div className='lg:pl-[30%] text-xl'>
             <TextReveal words={what_we_deliver} textOffset={'0.9'} />
           </div>
         </div>

@@ -1,13 +1,12 @@
 import React from 'react'
-import TextReveal from '../TextReveal'
 import ServicesCard from '../ServicesCard'
 
-const what_we_deliver = [
-  "Whether", "you're", <span className='text-orange-600'>exporting</span>, "across", "continents", "or", <span className='text-blue-600'>importing</span>, "products",
-  "into", "complex", "markets,", "our,", "tailored", "logistic", "solutions", "ensures", "speed,", "compliance",
-  "and", "peace", "of", "mind.", "We", "manage", "every", "detail", "so", "you", "can", "focus", "on", "growing",
-  "your", "business."
-];
+// const what_we_deliver = [
+//   "Whether", "you're", <span className='text-orange-600'>exporting</span>, "across", "continents", "or", <span className='text-blue-600'>importing</span>, "products",
+//   "into", "complex", "markets,", "our,", "tailored", "logistic", "solutions", "ensures", "speed,", "compliance",
+//   "and", "peace", "of", "mind.", "We", "manage", "every", "detail", "so", "you", "can", "focus", "on", "growing",
+//   "your", "business."
+// ];
 
 
 function HomeServices() {
@@ -27,7 +26,7 @@ function HomeServices() {
             <h2 className='text-3xl md:text-4xl font-bold'>Our services</h2>
           </div>
           <div className='lg:pl-36 text-xl'>
-            <TextReveal words={what_we_deliver} textOffset={'0.9'} />
+            Whether you're exporting across continents or importing products into complex markets, our, tailored logistic solutions ensures speed, compliance and peace of mind. We manage every detail so you can focus on growing your business.
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>

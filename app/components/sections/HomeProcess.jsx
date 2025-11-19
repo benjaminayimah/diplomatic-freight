@@ -1,12 +1,6 @@
 import React from 'react'
-import TextReveal from '../TextReveal'
 import ProcessCard from '../ProcessCard'
 
-
-const what_we_deliver = [
-  "Every", "successful", "shipment", "begins", "with", "a",
-  "streamlined", "process", "-", "and", "here's", "how", "we", "do", "it.", 
-];
 
 const process = [
   {title: '01: Submit Your Request', description: 'Tell us your travel needs through our simple inquiry form. Our team is available 24/7 to assist you.' },
@@ -24,7 +18,7 @@ function HomeProcess() {
             <h2 className='text-3xl md:text-4xl font-bold'>Our process</h2>
           </div>
           <div className='lg:pl-[30%] text-xl'>
-            <TextReveal words={what_we_deliver} textOffset={'0.9'} />
+            Every successful shipment begins with a streamlined process - and here's how we do it.
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-30'>

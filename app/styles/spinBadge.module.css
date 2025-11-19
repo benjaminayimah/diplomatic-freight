@@ -21,7 +21,7 @@
     font-weight: 400;
     text-transform: uppercase;
     color: #ffffff;
-    animation: spin 10s linear infinite;
+    /* animation: spin 10s linear infinite; */
     background-color: rgba(0, 0, 0, .2);
     border-radius: 50%;
 }

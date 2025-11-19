@@ -15,10 +15,10 @@ const who_we_are = [
   "tailored", "to", "your", "requirements.", "From", "origin", "to", "destination,", "we", "deliver", <strong className='font-semibold'>global</strong>, <strong className='font-semibold'>reach</strong>, <strong className='font-semibold'>with</strong>,
   <strong className='font-semibold'>a</strong>, <strong className='font-semibold'>personal</strong>, <strong className='font-semibold'>touch.</strong>
 ];
-const why_choose_us = [
-  "We", "deliver", "safe", "and", "smart", "-", "so",
-  "your", "shipment", "always", "arrives,", "on", "time", "and", "in", "great", "condition"
-];
+// const why_choose_us = [
+//   "We", "deliver", "safe", "and", "smart", "-", "so",
+//   "your", "shipment", "always", "arrives,", "on", "time", "and", "in", "great", "condition"
+// ];
 
 const why_choose_card = [
   {title: 'Global Reach', description: 'Access to thousand of airports worldwide, getting your closer to your final destination.' },
@@ -85,7 +85,7 @@ function HomeAbout() {
               </h2>
             </div>
             <div className='lg:w-[40%] text-xl'>
-              <TextReveal words={why_choose_us} textOffset={'0.7'} />
+              We deliver safe and smart - so your shipment always arrives, on time and in great condition
             </div>
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>

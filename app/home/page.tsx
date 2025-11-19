@@ -16,12 +16,12 @@ function Home() {
                         </svg>
                     </Link>
                     <div className='flex justify-center gap-2'>
-                        <button className='h-10 md:h-11 px-4 md:px-5 text-[0.9rem] md:text-[0.94rem] rounded-4xl text-black border-1 border-gray-800 hover:border-black font-semibold transition-all whitespace-nowrap btn-outline'>Log in</button>
+                        <button className='h-10 md:h-11 px-4 md:px-5 text-[0.9rem] md:text-[0.94rem] rounded-4xl text-black border border-gray-800 hover:border-black font-semibold transition-all whitespace-nowrap btn-outline'>Log in</button>
                         <button className='h-10 md:h-11 px-4 md:px-5 text-[0.9rem] md:text-[0.94rem] bg-black hover:bg-gray-900 text-white rounded-4xl transition-all whitespace-nowrap btn-primary'>Create account</button>
                     </div>
                 </div>
             </header>
-            <section className='flex h-dvh justify-center items-center main-section'>
+            <section className='flex h-svh  sm:h-dvh justify-center items-center main-section'>
                 <div className='w-full max-w-[1397px] h-full flex justify-center items-center relative main-section-wrapper'>
                     <div className='absolute h-[50%] top-0 left-0 w-full bg-[linear-gradient(180deg,_rgba(57,_202,_243,_1)_0%,_rgba(105,_152,_240,_1)_28%,_rgba(98,_72,_247,_1)_68%,_rgba(219,_87,_255,_1)_100%)] hero-image'></div>
                     <div className='z-10 w-[422px] px-4'>

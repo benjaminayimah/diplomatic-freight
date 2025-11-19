@@ -48,7 +48,7 @@ function HomeBanner() {
     <motion.section
       ref={targetRef}
       id="home"
-      className="h-svh relative overflow-hidden"
+      className="h-svh sm:h-dvh relative overflow-hidden"
       initial={{ "--end": "#000000" }}                // ⬅️ start BLACK
       animate={{ "--end": ["#000000", ...colors] }}   // fade black → blue → cycle
       transition={{

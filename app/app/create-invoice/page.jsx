@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = "force-dynamic";
+
 import React, { useState, useEffect, useCallback } from 'react'
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import Input from '../../components/Input';

@@ -2,7 +2,7 @@
 
 import styles from '../styles/hamburger.module.css'
 
-import { useUIStore } from "../store"
+import { useUIStore } from "../../store"
 
 
 

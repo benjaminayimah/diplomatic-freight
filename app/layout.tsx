@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
-import WindowSizeListener from "./listeners/WindowSizeListener";
+import WindowSizeListener from "../listeners/WindowSizeListener";
 import "./styles/globals.css";
+import { SnackbarProvider } from "@/app/components/SnackbarContext"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -55,7 +56,9 @@ export default function RootLayout({
         className={`${plusJakartaSans.variable} ${ibmPlexSansCondensed.variable} antialiased`}
       >
         <WindowSizeListener />
+        <SnackbarProvider>
         {children}
+        </SnackbarProvider>
       </body>
     </html>
   );

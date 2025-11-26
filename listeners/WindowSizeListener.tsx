@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useUIStore } from '@/app/store'
+import { useUIStore } from '@/store'
 
 export default function WindowSizeListener() {
   const { computeWindow } = useUIStore()

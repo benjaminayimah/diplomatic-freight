@@ -11,7 +11,6 @@ import HomeGlobal from '../components/sections/HomeGlobal'
 import HomeProcess from '../components/sections/HomeProcess'
 
 
-
 export default function Home() {
 
   return (

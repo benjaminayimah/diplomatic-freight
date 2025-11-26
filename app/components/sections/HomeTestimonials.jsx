@@ -4,7 +4,7 @@
 import React, { useState } from 'react'
 import TestimonialCard from '../TestimonialCard'
 
-import { useScrollerAnimation } from '../../hooks/useScrollerAnimation';
+import { useScrollerAnimation } from '../../../hooks/useScrollerAnimation';
 
 
 const testimonialsArray = [

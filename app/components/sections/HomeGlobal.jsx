@@ -3,7 +3,7 @@
 import React, { useRef } from 'react'
 import StatItem from '../StatItem'
 import Image from 'next/image'
-import { useUIStore } from "../../store"
+import { useUIStore } from "../../../store"
 
 import { useScroll, useTransform, motion } from 'framer-motion'
 

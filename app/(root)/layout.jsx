@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     >
       <main id="app">
         <Header />
-        {children}
+          {children}
         <Footer />
         <CookieConsent />
       </main>

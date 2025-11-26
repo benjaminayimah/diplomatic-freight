@@ -30,6 +30,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "global.d.ts"
-, "app/(root)/page.jsx", "app/components/SpinBadge.jsx", "app/components/FaqList.jsx", "app/components/TestimonialCard.jsx"  ],
+, "app/(root)/page.jsx", "app/components/SpinBadge.jsx", "app/components/FaqList.jsx", "app/components/TestimonialCard.jsx", "app/app/invoice/[id]/page.jsx"  ],
   "exclude": ["node_modules"]
 }

@@ -3,10 +3,9 @@ import React from 'react'
 import Logo from '../Logo'
 import Button from '../Button'
 import HamburgerMenu from '../HamburgerMenu'
-import { useUIStore } from "../../store"
+import { useUIStore } from "../../../store"
 import CustomNav from '../CustomNav'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 
 
 function Header() {

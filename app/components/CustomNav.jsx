@@ -3,7 +3,7 @@
 import { useRef, useState } from "react"
 import { motion } from "framer-motion"
 import Link from 'next/link';
-import { useUIStore } from "../store"
+import { useUIStore } from "../../store"
 
 
 
@@ -20,6 +20,7 @@ function Nav({ links }) {
 
   return (
     <nav
+      datatype="website"
       id='menu'
         className={`flex items-center ${mobileMenu ? 'menu-open' : 'menu-close'}` }
         aria-label="Menu" 

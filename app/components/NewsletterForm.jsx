@@ -39,12 +39,12 @@ function NewsletterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} id='newsletter_form' name='newsletter' className='flex overflow-hidden gap-4 rounded-4xl relative w-full max-w-100 md:w-100'>
+    <form onSubmit={handleSubmit} id='newsletter_form' name='newsletter' className='flex overflow-hidden gap-1 rounded-4xl relative w-full max-w-100 md:w-100'>
         <input
           value={form.email ?? ''}
           onChange={(e) => setForm({ email: e.target.value })}
           name="email" type="email"
-          className='w-full bg-transparent text-[1rem]'
+          className='w-full bg-transparent text-[1rem] rounded-3xl'
           placeholder='Enter your email'
           autoComplete='on'
         />

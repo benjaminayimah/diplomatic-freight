@@ -26,6 +26,21 @@
   }
 } */
 
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+} */
+
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -106,10 +121,6 @@ video {
   /* display: none; */
   /* margin-top: 20%; */
 }
-
-
-
-
 
 @media (min-width: 768px) {
   #hero_image {
@@ -226,13 +237,16 @@ header {
           z-index: 10;
           color: black;
           font-weight: 500;
-
+          transition: 300ms color ease-out;
+          &:hover {
+            color: white;
+          }
         }
         span {
           z-index: 0;
           height: calc(var(--height) - var(--padding)*2);
           border-radius: inherit;
-          background-color: rgba(255, 255, 255, 0.6);
+          background-color: rgb(0, 0, 0);
         }
       }
     }

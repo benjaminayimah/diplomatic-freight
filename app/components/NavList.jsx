@@ -1,22 +1,22 @@
 
-import React from 'react'
-import Link from 'next/link';
+// import React from 'react'
+// import Link from 'next/link';
 
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 
 
-function NavList({ data }) {
-  const { name, href } = data;
+// function NavList({ data }) {
+//   const { name, href } = data;
 
-  const pathname = usePathname();
+//   const pathname = usePathname();
 
-  return (
-    <li className={` ${pathname == href ? 'active-nav' : ''}`}>
-      <Link href={href} className='inline-block whitespace-nowrap'>
-        {name}
-      </Link>
-    </li>
-  )
-}
+//   return (
+//     <li className={` ${pathname == href ? 'active-nav' : ''}`}>
+//       <Link href={href} className='inline-block whitespace-nowrap'>
+//         {name}
+//       </Link>
+//     </li>
+//   )
+// }
 
-export default NavList
+// export default NavList

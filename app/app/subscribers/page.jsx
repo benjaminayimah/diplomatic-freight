@@ -3,6 +3,7 @@
 import React from 'react'
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import useFetchData from "@/hooks/useFetchData";
+import Loader from '@/app/components/Loader';
 
 
 function Subscribers() {
@@ -10,9 +11,10 @@ function Subscribers() {
   const { data, loading, error, refetch } = useFetchData("/subscriber");
   const subscribers = data.subscribers || []
 
-  console.log("Newsletter Subscribers:", subscribers);
+ if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
+    <Loader size={60} />
+  </div>;
 
-  
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>

@@ -301,7 +301,7 @@ function CompanyInfo() {
                 </div>
               </div>
                 {
-                  banks?.length ? (
+                  banks?.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {
                       banks.map((bank) => (

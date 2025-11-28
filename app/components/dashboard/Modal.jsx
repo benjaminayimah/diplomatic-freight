@@ -59,7 +59,7 @@ const Modal = ({
         </div>
 
         {/* Modal Body */}
-        <div className="h-full overflow-y-scroll max-h-[70dvh]">{children}</div>
+        <div className="h-full overflow-y-scroll max-h-[76dvh]">{children}</div>
       </div>
     </div>
   );

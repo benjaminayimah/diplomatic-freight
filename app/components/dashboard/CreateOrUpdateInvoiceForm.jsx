@@ -10,19 +10,24 @@ import { useAuth } from "@/hooks/useAuth";
 import { useAuthStore } from "@/store/authStore";
 import ErrorCard from '@/app/components/ErrorCard';
 import { useSnackbar } from "@/app/components/SnackbarContext"; 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation"; // Added useRouter
+import Modal from './Modal';
+import InvoiceTemplate from './InvoiceTemplate';
 
 
 function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
 
-    
   const isEditing = mode === "edit" && id;
+  const router = useRouter(); 
 
   const VAT = process.env.NEXT_PUBLIC_VAT
   const [vatOld, setVatOld] = useState(null)
 
   const [appliedVat, setAppliedVat] = useState(true)
   const [newVat, setNewVat] = useState(false)
+  
+  // ✅ 1. New State to track if form is modified
+  const [isDirty, setIsDirty] = useState(false);
 
   const [form, setForm] = useState({
     name: '',
@@ -38,6 +43,21 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   })
 
   const invoices = useAuthStore((state) => state.invoices);
+  const banks = useAuthStore((state) => state.banks);
+  const profile = useAuthStore((state) => state.profile);
+
+  // ✅ 2. Warn user on Browser Refresh, Close Tab, or Back Button
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (isDirty) {
+        e.preventDefault();
+        e.returnValue = ''; // Required for Chrome/modern browsers
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [isDirty]);
 
 
   useEffect(() => {
@@ -45,7 +65,6 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     const invoice = invoices.find((item) => String(item.id) === String(id));
 
     if (invoice) {
-      
       setVatOld(invoice.vat)
       if(invoice.vat && VAT === invoice.vat) {
         setNewVat(true)
@@ -63,8 +82,9 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         vat: invoice.vat,
         id: id
       })
+      // Note: We do NOT set isDirty to true here, because this is the initial load
     }
-  }, [isEditing, id, invoices]);// react to either change
+  }, [isEditing, id, invoices, VAT]);
 
   const formatDateForInput = (date) => {
     if (!date) return '';
@@ -87,7 +107,12 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
       }));
     }, []);
   }
-  
+
+  // ✅ Helper to handle generic input changes and mark dirty
+  const handleInputChange = (field, value) => {
+    setForm(prev => ({ ...prev, [field]: value }));
+    setIsDirty(true);
+  };
 
   const addItem = () => {
     setForm((prev) => ({
@@ -97,15 +122,19 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         { id: Date.now(), description: '', quantity: 1, rate: '', extra_charges: '', amount: '' }
       ]
     }));
+    setIsDirty(true); // ✅ Mark dirty
   };
+
   const removeItem = (id) => {
     setForm((prev) => ({
       ...prev,
       items: prev.items.filter((item) => item.id !== id),
     }));
+    setIsDirty(true); // ✅ Mark dirty
   };
 
   const includeNewVat = (e, vat) => {
+    setIsDirty(true); // ✅ Mark dirty
     if(e) {
       setForm({...form, vat: vat })
       setNewVat(true)
@@ -116,6 +145,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     }
   }
    const includeAppliedVat = (e, vat) => {
+    setIsDirty(true); // ✅ Mark dirty
     if(e) {
       setForm({...form, vat: vat })
       setAppliedVat(true)
@@ -136,11 +166,11 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
       Number(updatedItems[index].extra_charges || 0);
 
     setForm((prev) => ({ ...prev, items: updatedItems }));
+    setIsDirty(true); // ✅ Mark dirty
   };
 
 
   const getTotalAmount = () => {
-
     const vatRate = Number(form.vat)/100 || 0
     const subtotal = form.items?.reduce((sum, item) => sum + (Number(item.amount) || 0), 0);
     const vat = subtotal * vatRate;
@@ -184,15 +214,18 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     const response = await createInvoiceOrUpdate(form);
     setLoading(false);
 
-    // console.log(response)
-
     if (response?.success) {
+      // ✅ Clear dirty flag so redirect doesn't trigger warning
+      setIsDirty(false); 
+
       setInvoiceData(response.data);
       showSnackbar(
-        `${ isEditing? 'Changes saved' : 'Invoice created'} successfully!`,
+        `${isEditing? 'Changes saved' : 'Invoice created'} successfully!`,
         "success"
       )
-      redirect('/app/all-invoice')
+      // Use router.push or redirect. 
+      // Note: redirect() from next/navigation throws an error in client components if not caught, usually router.push is safer in event handlers
+      router.push('/app/all-invoice'); 
     } else if (response?.errors) {
       setErrors(formatErrors(response.errors));
       showSnackbar(
@@ -208,11 +241,36 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   };
 
 
+  const [open, setOpen] = useState(false);
+
+  // Close modal
+  const handleCloseModal = useCallback(() => {
+    setOpen(false);
+    resetErrors()
+  }, []);
+
+  // ✅ Intercept Custom Back Button Click
+  const handleBackClick = (e) => {
+    // This assumes BackButton is a div or button you can wrap or pass onClick to.
+    // If BackButton has its own internal link, you might need to wrap it in a div and use onClickCapture
+    if (isDirty) {
+      const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
+      if (!confirmLeave) {
+        e.preventDefault(); // Stop navigation
+        return;
+      }
+    }
+    router.back();
+  };
+
+
   return (
     <section className='app-body-wrapper'>
       <div className="mb-5">
         <div className='flex items-center gap-3'>
-          <BackButton />
+          <div className="cursor-pointer">
+             <BackButton onClick={handleBackClick} />
+          </div>
           <div>
             <h1 className="text-xl"><span className="font-semibold">{isEditing ? 'Edit Invoice' : 'Create Invoice'}</span></h1>
             <span className="text-sm text-gray-500">{isEditing ? 'Update the details about this invoice' : 'Create new invoice for your client'}</span>
@@ -233,7 +291,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                   type="text"
                   placeholder="Enter client's name or organization"
                   value={form.name ?? ''}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  onChange={(e) => handleInputChange('name', e.target.value)}
                   errors={errors.name || []}
                   onFocus={() => clearFieldError('name')}
                 />
@@ -244,7 +302,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                     type="email"
                     placeholder="Enter email"
                     value={form.email ?? ''}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
                     errors={errors.email || []}
                     onFocus={() => clearFieldError('email')}
                   />
@@ -254,7 +312,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                     type="text"
                     placeholder="Enter phone number"
                     value={form.phone ?? ''}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
                     errors={errors.phone || []}
                     onFocus={() => clearFieldError('phone')}
                   />
@@ -263,7 +321,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                   label="Address"
                   id="address"
                   value={form.address ?? ''}
-                  onChange={(e) => setForm({ ...form, address: e.target.value })}
+                  onChange={(e) => handleInputChange('address', e.target.value)}
                   onFocus={() => clearFieldError('address')}
                   errors={errors.address || []}
                   rows={2}
@@ -279,7 +337,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                     id="date_issue"
                     type="date"
                     value={form.date_issue ?? ''}
-                    onChange={(e) => setForm({ ...form, date_issue: e.target.value })}
+                    onChange={(e) => handleInputChange('date_issue', e.target.value)}
                     errors={errors.date_issue || []}
                     onFocus={() => clearFieldError('date_issue')}
                   />
@@ -288,7 +346,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                     id="date_due"
                     type="date"
                     value={form.date_due ?? ''}
-                    onChange={(e) => setForm({ ...form, date_due: e.target.value })}
+                    onChange={(e) => handleInputChange('date_due', e.target.value)}
                     errors={errors.date_due || []}
                     onFocus={() => clearFieldError('date_due')}
                   />
@@ -297,7 +355,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                     id="date_of_departure"
                     type="date"
                     value={form.date_of_departure ?? ''}
-                    onChange={(e) => setForm({ ...form, date_of_departure: e.target.value })}
+                    onChange={(e) => handleInputChange('date_of_departure', e.target.value)}
                     errors={errors.date_of_departure || []}
                     onFocus={() => clearFieldError('date_of_departure')}
                   />
@@ -370,7 +428,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
             <div className='sticky bottom-0 w-full pb-4'>
               <div className='flex justify-center'>
                 <div className='p-1 flex gap-2 items-center bg-white border border-gray-100 h-12 rounded-3xl'>
-                  <button type='button' className='myHover-translate inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl'>Preview</button>
+                  <button onClick={() => setOpen(true)} type='button' className='inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl'>Preview</button>
                   <SubmitButton loading={loading} className={'bg-[#0077FF] text-white'}>
                     {isEditing ? 'Save changes' : 'Save invoice'}
                   </SubmitButton>
@@ -380,6 +438,22 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
           </form>
         </div>
       </div>
+      <Modal
+        isOpen={open}
+        onClose={handleCloseModal}
+        title={'Preview Invoice'}
+        subTitle={'Here is how your invoice will look like'}
+        maxWidth='1200px'
+        dismissibleOutsideClick={false}
+        >
+          <div className='max-w-[1100px] w-full'>
+            <InvoiceTemplate
+              invoice={form}
+              profile={profile}
+              banks={banks}
+            />
+          </div>
+        </Modal>
     </section>
   )
 }

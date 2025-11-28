@@ -9,6 +9,7 @@ import Modal from "@/app/components/dashboard/Modal";
 import SubmitButton from '../../components/SubmitButton';
 import { useSnackbar } from "@/app/components/SnackbarContext"; 
 import useFetchData from "@/hooks/useFetchData";
+import Loader from '@/app/components/Loader';
 
 
 
@@ -66,6 +67,10 @@ function AllInvoice() {
         "error"
       )
   }
+
+  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
+    <Loader size={60} />
+  </div>;
 
   return (
     <ProtectedRoute>

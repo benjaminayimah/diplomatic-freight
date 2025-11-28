@@ -114,13 +114,13 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className='flex flex-col-reverse gap-5 lg:flex-row lg:justify-between'>
-          <p className='text-[0.8rem] text-[#6D6D6D]'>Copyright © 2025 Diplomatic Freight & Logistics Service Ltd. All rights reserved</p>
+        <div className='flex flex-col gap-5 lg:flex-row lg:justify-between'>
           <ul className='flex gap-4'>
             <li><a href="terms-of-service" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Terms of Service</a></li>
             <li><a href="privacy-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Privacy Policy</a></li>
             <li><a href="cookie-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Cookie Policy</a></li>
           </ul>
+          <p className='text-[0.8rem] text-[#6D6D6D]'>{`Copyright © ${process.env.NEXT_PUBLIC_CURRENT_YEAR} Diplomatic Freight & Logistics Service Ltd. All rights reserved`}</p>
         </div>
       </motion.div>
     </footer>

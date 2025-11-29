@@ -6,9 +6,11 @@ import HamburgerMenu from '../HamburgerMenu'
 import { useUIStore } from "../../../store"
 import CustomNav from '../CustomNav'
 import { motion } from 'framer-motion'
+import { redirect } from 'next/navigation'
 
 
 function Header() {
+
   const { device, mobileMenu } = useUIStore()
 
   const menus = [
@@ -34,7 +36,7 @@ function Header() {
         </a>
         <CustomNav links={menus} />
         <div className='inline-flex items-center gap-4 absolute right-0'>
-          <Button />
+          <Button onClick={() => redirect('/get-a-quote')} />
           <HamburgerMenu />
         </div>
       </div>

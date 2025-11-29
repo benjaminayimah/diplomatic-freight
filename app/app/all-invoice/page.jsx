@@ -15,10 +15,10 @@ import Loader from '@/app/components/Loader';
 
 function AllInvoice() {
 
+  const invoices = useAuthStore((state) => state.invoices);
   const { setInvoices } = useAuthStore();
 
   const { data, loading, error, refetch } = useFetchData("/invoice");
-  const invoices = data.invoices || []
 
   useEffect(() => {
     if (data?.invoices) {
@@ -70,6 +70,12 @@ function AllInvoice() {
 
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
     <Loader size={60} />
+  </div>;
+  if(invoices.length === 0) return <div className="app-body-wrapper flex justify-center mt-20">
+    <p className="text-gray-500">No Invoices Found.</p>
+  </div>;
+  if (error) return <div className="app-body-wrapper flex justify-center mt-20">
+    <p className="text-red-500">Error: {error}</p>
   </div>;
 
   return (

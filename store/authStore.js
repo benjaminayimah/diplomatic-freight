@@ -6,11 +6,12 @@ export const useAuthStore = create((set) => ({
   banks: [],
   invoices: [],
   subscribers: [],
+  quotes: [],
   token: null,
   isAuth: false,
 
-  setAuth: (user, profile, invoices, banks, subscribers, token) =>
-    set({ user, profile, invoices, banks, subscribers, token, isAuth: true }),
+  setAuth: (user, profile, invoices, banks, subscribers, quotes, token) =>
+    set({ user, profile, invoices, banks, subscribers, quotes, token, isAuth: true }),
 
   setUserData: (newUser) =>
     set((state) => ({ user: { ...state.user, ...newUser } })),
@@ -36,6 +37,16 @@ export const useAuthStore = create((set) => ({
   setInvoices: (invoiceArr) =>
     set(() => ({
       invoices: Array.isArray(invoiceArr) ? invoiceArr : [],
+    })),
+
+  setQuotes: (quoteArr) =>
+    set(() => ({
+      quotes: Array.isArray(quoteArr) ? quoteArr : [],
+    })),
+    
+  setSubscribers: (subscriberArr) =>
+    set(() => ({
+      subscribers: Array.isArray(subscriberArr) ? subscriberArr : [],
     })),
 
   setInvoiceData: (newInvoiceObj) =>
@@ -64,7 +75,7 @@ export const useAuthStore = create((set) => ({
 // Automatically sync localStorage whenever the store changes
 if (typeof window !== "undefined") {
   useAuthStore.subscribe((state) => {
-    const { user, profile, banks, invoices, subscribers, token, isAuth } = state;
-    localStorage.setItem("auth", JSON.stringify({ user, profile, banks, invoices, subscribers, token, isAuth }));
+    const { user, profile, banks, invoices, subscribers, quotes, token, isAuth } = state;
+    localStorage.setItem("auth", JSON.stringify({ user, profile, banks, invoices, subscribers, quotes, token, isAuth }));
   });
 }

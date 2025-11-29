@@ -10,6 +10,7 @@ import {
 } from "@/services/authService";
 
 import { createOrUpdateInvoice, deleteInvoice } from "@/services/invoiceService";
+import { createQuote, deleteQuote } from "@/services/quoteService";
 
 export const useAuth = () => {
 
@@ -89,6 +90,26 @@ export const useAuth = () => {
   }
 
 
+  const quoteCreate = async (id) => {
+    try {
+      const response = await createQuote(id);
+      return response
+    } catch (error) {
+      return error.response?.data || { error: "Network error" };
+    }
+  }
+
+  const quoteDelete = async (id) => {
+    try {
+      const response = await deleteQuote(id);
+      return response
+    } catch (error) {
+      return error.response?.data || { error: "Network error" };
+    }
+  }
+
+
+
 
 
   // const register = async (credentials) => {
@@ -120,6 +141,8 @@ export const useAuth = () => {
     deleteBank,
     createInvoiceOrUpdate,
     invoiceDelete,
+    quoteDelete,
+    quoteCreate,
     logout
   };
 };

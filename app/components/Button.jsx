@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Button() {
+function Button({onClick}) {
   return (
-    <button className="myHover-translate h-11 md:h-12 px-3.5 md:px-5 py-3 bg-[#FF6A3D] rounded-[44px] shadow-[0px_2px_6px_2px_rgba(0,0,0,0.15)] inline-flex items-center">
+    <button onClick={onClick} className="myHover-translate h-11 md:h-12 px-3.5 md:px-5 py-3 bg-[#FF6A3D] rounded-[44px] shadow-[0px_2px_6px_2px_rgba(0,0,0,0.15)] inline-flex items-center">
       <span className="text-center justify-start text-white text-base font-medium">Get a quote</span>
     </button>
   )

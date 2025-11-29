@@ -45,7 +45,7 @@ function InvoiceTableList({ invoice, onDelete }) {
                     Edit
                   </Link>
                   <button
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                    className="block text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                     onClick={() => onDelete(invoice.id)} 
                   >
                     Delete

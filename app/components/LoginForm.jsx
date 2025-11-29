@@ -35,6 +35,7 @@ function LoginForm() {
         response.invoices,
         response.banks,
         response.subscribers,
+        response.quotes,
         response.token);
 
       router.push("/app");

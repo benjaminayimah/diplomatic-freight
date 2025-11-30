@@ -8,7 +8,7 @@ function VerifyFailed() {
 
   return (
     <section className="app-body-wrapper min-h-dvh flex verifiable">
-      <div className="flex items-center justify-center p-6 rounded-2xl w-full">
+      <div className="flex items-center justify-center rounded-2xl w-full">
         <div className='flex flex-col gap-6 justify-center items-center'>
           <div className="bg-white shadow-2xs rounded-2xl p-8 max-w-md w-full text-center border border-red-200">
             <div className="mx-auto mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-red-100">

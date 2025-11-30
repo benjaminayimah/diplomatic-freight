@@ -30,15 +30,6 @@ export default function DashboardPage() {
         </div>
         <div className="body-content">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">
-            <Link href={'app/company-info'} className="border border-gray-200 hover:border-gray-400 h-40 rounded-2xl">
-              <div className="p-4 flex flex-col justify-between h-full">
-                <div>
-                  <h2 className="text-sm text-gray-500">Total Banks</h2>
-                  <p className="text-2xl font-bold">{banks?.length ?? 0}</p>
-                </div>
-                <div className="text-blue-600 hover:text-blue-700 text-sm font-medium">View Banks &rarr;</div>
-              </div>
-            </Link>
             <Link href={'app/all-invoice'} className="border border-gray-200 hover:border-gray-400 h-40 rounded-2xl p-4 flex flex-col justify-between">
               <div>
                 <h2 className="text-sm text-gray-500">Total Invoices</h2>
@@ -59,6 +50,15 @@ export default function DashboardPage() {
                 <p className="text-2xl font-bold">{subscribers?.length ?? 0}</p>
               </div>
               <div  className="text-blue-600 hover:text-blue-700 text-sm font-medium">View Subscribers &rarr;</div>
+            </Link>
+            <Link href={'app/company-info'} className="border border-gray-200 hover:border-gray-400 h-40 rounded-2xl">
+              <div className="p-4 flex flex-col justify-between h-full">
+                <div>
+                  <h2 className="text-sm text-gray-500">Total Banks</h2>
+                  <p className="text-2xl font-bold">{banks?.length ?? 0}</p>
+                </div>
+                <div className="text-blue-600 hover:text-blue-700 text-sm font-medium">View Banks &rarr;</div>
+              </div>
             </Link>
           </div>
         </div>

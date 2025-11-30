@@ -47,9 +47,9 @@ function VerifySuccess({ invoice }) {
             <p className='text-gray-500 text-[12px]'>
               This invoice is duly verified as an authentic copy and can be safely used for record-keeping and payment purposes. If you have any questions or concerns, please contact our support team.
             </p>
-            <button onClick={handleClick}  className="myHover-translate mt-6 w-full py-2.5 bg-black text-white rounded-3xl hover:bg-gray-900 font-medium">
+            <a href='/' className="myHover-translate mt-6 w-full py-2.5 bg-black text-white rounded-3xl hover:bg-gray-900 font-medium inline-block">
               Contact support
-            </button>
+            </a>
           </div>
           <VerifyFooter />
         </div>

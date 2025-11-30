@@ -23,6 +23,7 @@ export default function Input({
           ${errors?.length > 0 ? "border-red-500!" : "border-gray-300"} 
           ${className}`}
         {...props}
+        required={required}
       />
       {errors?.length > 0 &&
         errors.map((error, index) => (

@@ -16,13 +16,17 @@ import Loader from '@/app/components/Loader';
 function AllInvoice() {
 
   const invoices = useAuthStore((state) => state.invoices);
+
   const { setInvoices } = useAuthStore();
 
   const { data, loading, error, refetch } = useFetchData("/invoice");
 
   useEffect(() => {
     if (data?.invoices) {
-      setInvoices(data.invoices);
+      const sortedInvoices = [...data.invoices].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt) // latest first
+      );
+      setInvoices(sortedInvoices);
     }
   }, [data?.invoices, setInvoices]);
 

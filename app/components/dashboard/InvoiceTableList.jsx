@@ -23,7 +23,10 @@ function InvoiceTableList({ invoice, onDelete }) {
         >
           <div className='flex justify-between'>
             <div>
-              <Link href={`/app/invoice/${invoice?.id}`} className='font-medium group-hover:underline'><span>{invoice?.reference_number}</span></Link>
+              <Link href={`/app/invoice/${invoice?.id}`} className='font-medium group-hover:underline'>
+                <span>{invoice?.name} </span>
+                <span>[{invoice?.reference_number}]</span>
+              </Link>
               <div className='text-sm text-gray-500'><span className='font-medium'>Date created: </span><span>{dateFormat(invoice?.createdAt)}</span></div>
             </div>
             <div>

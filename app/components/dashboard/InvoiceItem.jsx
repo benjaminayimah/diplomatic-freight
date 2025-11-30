@@ -24,11 +24,11 @@ function InvoiceItem({ data, index, onChange, onRemove}) {
         type="number"
         placeholder="1"
         value={data.quantity}
-        required
         onChange={(e) => onChange(index, 'quantity', e.target.value)}
         onWheel={(e) => e.target.blur()}
         onFocus={e => e.target.select()}
         errors={[]}
+        required
       />
       <Input
         label="Rate(USD)"
@@ -36,11 +36,11 @@ function InvoiceItem({ data, index, onChange, onRemove}) {
         type="number"
         placeholder="0.00"
         className='hide-counter'
-        required
         value={data.rate}
         onChange={(e) => onChange(index, 'rate', e.target.value)}
         onWheel={(e) => e.target.blur()}
         errors={[]}
+        required
       />
       <Input
         label="Extra charges(USD)"

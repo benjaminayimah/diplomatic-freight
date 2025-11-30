@@ -27,7 +27,7 @@ function AllInvoice() {
   }, [data?.invoices, setInvoices]);
 
 
-  const { setDeleteVoiceById } = useAuthStore()
+  const { setDeleteInvoiceById } = useAuthStore()
 
   const [open, setOpen] = useState(false);
 
@@ -55,7 +55,7 @@ function AllInvoice() {
     setDeleting(false);
 
     if (response?.success) {
-      setDeleteVoiceById(id);
+      setDeleteInvoiceById(id);
       handleCloseModal();
 
       showSnackbar (
@@ -111,7 +111,7 @@ function AllInvoice() {
           maxWidth="460px"
         >
           <p className="text-sm mb-4 text-gray-500">
-            Are you sure you want to delete bank: <strong>{invoiceToDelete?.reference_number}</strong>?
+            Are you sure you want to delete invoice: <strong>{invoiceToDelete?.reference_number}</strong>?
           </p>
           <p className="text-sm mb-4 text-gray-500">
             This action can't be undone

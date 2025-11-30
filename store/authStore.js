@@ -43,7 +43,7 @@ export const useAuthStore = create((set) => ({
     set(() => ({
       quotes: Array.isArray(quoteArr) ? quoteArr : [],
     })),
-    
+
   setSubscribers: (subscriberArr) =>
     set(() => ({
       subscribers: Array.isArray(subscriberArr) ? subscriberArr : [],
@@ -59,8 +59,14 @@ export const useAuthStore = create((set) => ({
         : [...state.invoices, newInvoiceObj];
       return { invoices: updatedInvoices };
     }),
-  setDeleteVoiceById: (id) => 
+  setDeleteInvoiceById: (id) => 
     set((state) => ({ invoices: state.invoices.filter((b) => b.id !== id) })),
+
+  setDeleteQuoteById: (id) => 
+    set((state) => ({ quotes: state.quotes.filter((q) => q.id !== id) })),
+
+  setDeleteSubscriberById: (id) => 
+    set((state) => ({ subscribers: state.subscribers.filter((q) => q.id !== id) })),
 
   setLogout: () => set({ user: null, profile: null, banks: [], invoices: [], subscribers: [], token: null, isAuth: false }),
 

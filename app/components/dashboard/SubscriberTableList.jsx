@@ -1,10 +1,9 @@
 import React from 'react'
-import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
 
 
-function InvoiceTableList({ invoice, onDelete }) {
+function SubscriberTableList({ subscriber, onDelete }) {
 
   const { dateFormat } = useFormatter()
 
@@ -19,30 +18,17 @@ function InvoiceTableList({ invoice, onDelete }) {
   return (
     <li className='group'>
       <div className='p-5 border border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full rounded-[10px]'
-        // href={`/app/invoice/${invoice?.id}`}
         >
           <div className='flex justify-between'>
             <div>
-              <Link href={`/app/invoice/${invoice?.id}`} className='font-medium group-hover:underline'><span>{invoice?.reference_number}</span></Link>
-              <div className='text-sm text-gray-500'><span className='font-medium'>Date created: </span><span>{dateFormat(invoice?.createdAt)}</span></div>
+              <div className='font-medium group-hover:underline'><span>{subscriber?.email}</span></div>
+              <div className='text-sm text-gray-500'><span className='font-medium'>Date created: </span><span>{dateFormat(subscriber?.createdAt)}</span></div>
             </div>
             <div>
               <DropdownMenu trigger={Menu}>
-                  <Link
-                    href={`/app/invoice/${invoice?.id}`}
-                    className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
-                  >
-                    View
-                  </Link>
-                  <Link
-                    href={`/app/create-invoice?mode=edit&id=${invoice?.id}`}
-                    className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
-                  >
-                    Edit
-                  </Link>
                   <button
                     className="block text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
-                    onClick={() => onDelete(invoice.id)} 
+                    onClick={() => onDelete(subscriber.id)} 
                   >
                     Delete
                   </button>
@@ -54,4 +40,4 @@ function InvoiceTableList({ invoice, onDelete }) {
   )
 }
 
-export default InvoiceTableList
+export default SubscriberTableList

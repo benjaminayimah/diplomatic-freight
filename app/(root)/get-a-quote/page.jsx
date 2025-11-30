@@ -76,15 +76,15 @@ function GetQuote() {
   })
 
   // Parallax effect for image
-  const translateY = useTransform(scrollYProgress, [0, 1], ['0px', '-50px']);
+  const translateY = useTransform(scrollYProgress, [0, 1], ['0px', '0px']);
 
   const handleNext = () => {
     // Simple validation before moving next
     if (step === 1) {
-       if (!form.name || !form.email || !form.phone) return alert("Please fill in all contact details");
+       if (!form.name || !form.email || !form.phone) return alert("Please fill in all Contact Details");
     }
     if (step === 2) {
-       if (!form.departure_city || !form.destination_city) return alert("Please fill in route details");
+       if (!form.departure_city || !form.destination_city || !form.shipping_date) return alert("Please fill in all Route Details");
     }
 
     setDirection(1)
@@ -149,7 +149,7 @@ function GetQuote() {
         <div className='relative h-64 md:h-auto overflow-hidden'>
           {/* Replaced next/image with motion.img for standard HTML behavior in canvas */}
           <motion.img
-            // style={{ y: translateY }} // Parallax effect
+            style={{ y: translateY }} // Parallax effect
             src={'https://images.pexels.com/photos/12366223/pexels-photo-12366223.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} // Using direct Pexels link as fallback/placeholder logic
             alt='Get a quote'
             className="absolute inset-0 w-full h-full object-cover"

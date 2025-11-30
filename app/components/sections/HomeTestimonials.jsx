@@ -8,9 +8,9 @@ import { useScrollerAnimation } from '../../../hooks/useScrollerAnimation';
 
 
 const testimonialsArray = [
-    {id: 1, name: 'John D.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1746969678/samples/man-portrait.jpg', testimony: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.'},
-    {id: 2, name: 'Stephanie T.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1746969673/samples/two-ladies.jpg', testimony: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.'},
-    {id: 3, name: 'Katherine H.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763022323/thought-catalog--v7EOw5SA4I-unsplash_nxqwzf.jpg', testimony: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.'},
+    {id: 1, name: 'John D.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1746969678/samples/man-portrait.jpg', testimony: 'Diplomatic Freight has transformed our supply chain, providing us with seamless freight solutions.'},
+    {id: 2, name: 'Stephanie T.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1746969673/samples/two-ladies.jpg', testimony: 'Their air charter service is exceptional. The team is professional, and the service is always reliable.'},
+    {id: 3, name: 'Katherine H.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763022323/thought-catalog--v7EOw5SA4I-unsplash_nxqwzf.jpg', testimony: 'We rely on Diplomatic Freights for our critical shipments. Their commitment to excellence is unmatched.'},
     {id: 4, name: 'Emmanuel O.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1746969669/samples/people/smiling-man.jpg', testimony: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.'},
     {id: 5, name: 'Daniel B.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1746969668/samples/people/kitchen-bar.jpg', testimony: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.'},
     {id: 6, name: 'Jane K.', image: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1746969679/cld-sample.jpg', testimony: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.'},

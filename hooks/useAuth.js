@@ -11,6 +11,7 @@ import {
 
 import { createOrUpdateInvoice, deleteInvoice } from "@/services/invoiceService";
 import { createQuote, deleteQuote } from "@/services/quoteService";
+import { deleteSubscriber } from "@/services/subscriberService";
 
 export const useAuth = () => {
 
@@ -108,6 +109,15 @@ export const useAuth = () => {
     }
   }
 
+  const subscriberDelete = async (id) => {
+    try {
+      const response = await deleteSubscriber(id);
+      return response
+    } catch (error) {
+      return error.response?.data || { error: "Network error" };
+    }
+  }
+
 
 
 
@@ -143,6 +153,7 @@ export const useAuth = () => {
     invoiceDelete,
     quoteDelete,
     quoteCreate,
+    subscriberDelete,
     logout
   };
 };

@@ -16,6 +16,7 @@ function InvoiceItem({ data, index, onChange, onRemove}) {
         value={data.description}
         onChange={(e) => onChange(index, 'description', e.target.value)}
         errors={[]}
+        required
       />
       <Input
         label="Quantity"

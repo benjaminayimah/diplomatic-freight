@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { redirect } from 'next/navigation';
 import VerifyFooter from './VerifyFooter';
 import { useFormatter } from '@/hooks/useFormatter'
 
@@ -17,11 +16,6 @@ function VerifySuccess({ invoice }) {
   };
 
   const { dateFormat } = useFormatter()
-
-  const handleClick = () => {
-    redirect("/");
-  }
-
 
   return (
     <section className="app-body-wrapper min-h-dvh flex verifiable">

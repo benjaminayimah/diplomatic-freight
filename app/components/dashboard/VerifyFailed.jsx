@@ -1,14 +1,9 @@
 'use client'
 
 import React from 'react'
-import { redirect } from 'next/navigation'
 import VerifyFooter from './VerifyFooter'
 
 function VerifyFailed() {
-
-  const handleClick = () => {
-    redirect("/");
-  }
 
 
   return (

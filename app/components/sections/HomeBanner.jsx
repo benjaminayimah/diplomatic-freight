@@ -15,20 +15,18 @@ const words = [
 
 const colors = [
   "#2563EB", // blue,
-  "#4663E5", // indigo
-  "#45BAF8", // sky
+  "#4663E5",
+  "#A379FF", // indigo
+  "#45CBF8", // sky
   "#0D9488", // 
   "#516781", // 
   "#B2D0E5", //
-  "#D6BFB5"
-  
-
-
+  "#FFAD89", // light orange
+  "#FF7979", // orange red
   // "#DB2777", // pink
   // "#DC2626", // red
   // "#EA580C", // orange
   // "#16A34A", // green
-
 ];
 
 function HomeBanner() {

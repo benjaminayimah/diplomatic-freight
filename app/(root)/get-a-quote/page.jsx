@@ -6,18 +6,8 @@ import Input from '../../components/Input'
 import { useAuth } from '@/hooks/useAuth';
 import { useSnackbar } from '@/app/components/SnackbarContext';
 import Textarea from '../../components/Textarea';
+import SubmitButton from '../../components/SubmitButton';
 
-
-
-const SubmitButton = ({ children, className, onClick, type = "submit" }) => (
-  <button
-    type={type}
-    onClick={onClick}
-    className={`flex items-center justify-center transition-all active:scale-95 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed ${className}`}
-  >
-    {children}
-  </button>
-)
 
 // --- Main Component ---
 
@@ -149,12 +139,12 @@ function GetQuote() {
         <div className='relative h-64 md:h-auto overflow-hidden'>
           {/* Replaced next/image with motion.img for standard HTML behavior in canvas */}
           <motion.img
-            style={{ y: translateY }} // Parallax effect
+            // style={{ y: translateY }} // Parallax effect
             src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} // Using direct Pexels link as fallback/placeholder logic
             alt='Get a quote'
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/20 md:hidden" /> {/* Overlay for mobile text readability if needed */}
+          {/* <div className="absolute inset-0 bg-black/20 md:hidden" /> */}
         </div>
 
         {/* Right Side - Form */}
@@ -180,18 +170,18 @@ function GetQuote() {
                     {step === 3 && "Cargo Details"}
                 </span>
               </div>
-              <div className='h-2 bg-gray-100 rounded-full overflow-hidden w-full'>
+              <div className='h-1.5 bg-gray-100 rounded-full overflow-hidden w-full'>
                 <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="bg-[#0077FF] h-full rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="bg-[#0077FF] h-full rounded-full"
                 />
               </div>
             </div>
 
             <form onSubmit={handleSubmit}>
-              <div className='min-h-[310px]'> {/* Fixed height to prevent layout jumps */}
+              <div className='min-h-[312px]'> {/* Fixed height to prevent layout jumps */}
                 <AnimatePresence mode='wait' custom={direction}>
                   
                   {/* STEP 1: Contact Information */}
@@ -382,7 +372,9 @@ function GetQuote() {
                     Next Step
                   </button>
                 ) : (
-                  <SubmitButton className={'bg-green-600 hover:bg-green-700 text-white h-12 px-6 text-base font-medium rounded-3xl shadow-lg shadow-green-500/30'}>
+                  <SubmitButton
+                    loading={loading}
+                    className={'bg-[#0077FF] text-white h-12 px-6 font-medium hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/30 rounded-3xl'}>
                     Submit Request
                   </SubmitButton>
                 )}

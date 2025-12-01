@@ -464,3 +464,41 @@ main:has(.verifiable) {
   opacity: 1;
   visibility: visible;
 } */
+
+
+
+
+.curve {
+  .svg, .page-background {
+    width: 100vw;
+    height: calc(100vh + 600px);
+    top: -300px;
+    left: 0;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+
+  }
+  
+  .page-background {
+    background-color: #101010;
+  }
+  .route {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    font-size: 2.4rem;
+    color: white;
+    z-index: 10;
+  }
+}
+
+.bottom-curve {
+  box-shadow: 0px 47px 103px 10px rgba(0,0,0,1);
+-webkit-box-shadow: 0px 47px 103px 10px rgba(0,0,0,1);
+-moz-box-shadow: 0px 47px 103px 10px rgba(0,0,0,1);
+}

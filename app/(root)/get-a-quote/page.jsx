@@ -150,7 +150,7 @@ function GetQuote() {
           {/* Replaced next/image with motion.img for standard HTML behavior in canvas */}
           <motion.img
             style={{ y: translateY }} // Parallax effect
-            src={'https://images.pexels.com/photos/12366223/pexels-photo-12366223.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} // Using direct Pexels link as fallback/placeholder logic
+            src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} // Using direct Pexels link as fallback/placeholder logic
             alt='Get a quote'
             className="absolute inset-0 w-full h-full object-cover"
           />

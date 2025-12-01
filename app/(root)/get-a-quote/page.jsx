@@ -420,7 +420,7 @@ function GetQuote() {
 
                 <div className='mt-8 text-center md:text-right'>
                   <div className='text-gray-500 text-xs uppercase tracking-wide mb-1'>Prefer to talk?</div>
-                  <a href="tel:+233302908064" className='text-blue-600 font-semibold hover:underline'>
+                  <a href="tel:+233302908064" className='text-blue-600 text-sm font-medium hover:underline'>
                     +233(0) 30 290 8064/5
                   </a>
                 </div>

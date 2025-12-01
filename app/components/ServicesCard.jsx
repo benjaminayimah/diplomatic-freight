@@ -3,6 +3,7 @@
 import React, { useRef } from 'react'
 import Image from 'next/image'
 import { useScroll, useTransform, motion } from 'framer-motion'
+import { redirect } from 'next/navigation'
 
 
 function ServicesCard({ service, index }) {
@@ -30,8 +31,8 @@ function ServicesCard({ service, index }) {
               <h4 className="text-white text-2xl font-semibold">{service.name}</h4>
               <p className="text-white/80 mb-3 line-clamp-2">{service.description}</p>
             </div>
-            <button className="text-[0.9rem] font-medium flex items-center h-9 px-4 bg-white rounded-3xl translate-y-50 group-hover:translate-y-0 transition-all duration-400 ease-in-out ">
-              Contact us
+            <button onClick={() => redirect('/get-a-quote') } className="text-[0.9rem] font-medium flex items-center h-9 px-4 bg-white rounded-3xl translate-y-50 group-hover:translate-y-0 transition-all duration-400 ease-in-out">
+              Get a Quote
             </button>
           </div>
         </div>

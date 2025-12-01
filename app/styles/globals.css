@@ -99,21 +99,10 @@ video {
 }
 
 
-#hero_image {
-  /* display: none; */
-  /* margin-top: 20%; */
-}
 
 @media (min-width: 768px) {
-  #hero_image {
-    /* display: block; */
-  }
-
   .invoice-item-row {
     div {
-      &:first-child {
-        
-      }
       &:nth-child(2) {
         width: 20%;
       }

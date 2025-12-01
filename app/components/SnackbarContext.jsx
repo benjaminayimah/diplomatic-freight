@@ -30,7 +30,7 @@ export const SnackbarProvider = ({ children }) => {
       {snackbar.isOpen && (
         <div
           className={`snackbar 
-            fixed z-60 bg-[#1A1B1D] min-w-[320px] bottom-5 left-1/2 transform -translate-x-1/2
+            fixed z-60 bg-[#1A1B1D] min-w-[340px] max-w-[600px]  bottom-5 left-1/2 transform -translate-x-1/2
             px-4 py-3 rounded-[10px] shadow-[0px_2px_16px_0px_rgba(0,0,0,0.28)]
             transition-all duration-300 ease-in-out
             ${animate ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}

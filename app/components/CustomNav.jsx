@@ -35,7 +35,7 @@ function Nav({ links }) {
         className="relative"
       >
         { links.map((link) => (
-          <li key={link.name} className={`h-full inline-flex items-center justify-center`}>
+          <li key={link.name} className={`h-full inline-flex items-center justify-center group`}>
             <Tab href={link.href} setPosition={setPosition}>
               {link.name}
             </Tab>
@@ -66,7 +66,7 @@ function Tab({ children, href, setPosition }) {
           left: ref.current.offsetLeft
         })
       }}
-      className="flex h-full items-center whitespace-nowrap"
+      className="flex h-full items-center whitespace-nowrap transition-colors duration-300 px-4 md:px-6 py-2 text-base font-medium"
     >
       {children}
     </Link>

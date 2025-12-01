@@ -219,7 +219,7 @@ header {
           z-index: 10;
           color: black;
           font-weight: 500;
-          transition: 300ms color ease-out;
+          transition: 400ms color ease-out;
           &:hover {
             color: white;
           }

@@ -14,15 +14,15 @@ const words = [
 ]
 
 const colors = [
-  "#2563EB", // blue,
-  "#4663E5",
-  "#A379FF", // indigo
-  "#45CBF8", // sky
-  "#0D9488", // 
-  "#516781", // 
-  "#B2D0E5", //
+  "#2563EB", // blue
+  "#4663E5",// blue
+  "#A379FF", // purple
+  "#45CBF8", // light blue  
+  "#0D9488", // teal
+  "#516781", // steel blue
+  "#B2D0E5", // pale blue
   "#FFAD89", // light orange
-  "#FF7979", // orange red
+  "#FF7979", // light red
   // "#DB2777", // pink
   // "#DC2626", // red
   // "#EA580C", // orange

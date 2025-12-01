@@ -126,12 +126,10 @@ function HomeBanner() {
           </div>
           <div>
             <ul className='flex gap-2'>
-            <li className='myHover-translate group'><a href="/" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Logistics Services]</a></li>
-            <li className='myHover-translate group'><a href="/" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Air Charter]</a></li>
+            <li className='myHover-translate group'><a href="#" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Logistics Services]</a></li>
+            <li className='myHover-translate group'><a href="#" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Air Charter]</a></li>
           </ul>
-
           </div>
-          
         </motion.div>
       </motion.div>
     </motion.section>

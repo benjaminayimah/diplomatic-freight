@@ -340,7 +340,7 @@ function GetQuote() {
                             label="Cargo Type"
                             id="cargo_type"
                             type="text"
-                            placeholder="Eg: Electronics, Textiles"
+                            placeholder="Eg: Gold, Textiles..."
                             value={form.cargo_type}
                             onChange={(e) => setForm({ ...form, cargo_type: e.target.value })}
                             required

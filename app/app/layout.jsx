@@ -5,8 +5,6 @@ import Nav from "../components/dashboard/Nav";
 
 export default function RootLayout({ children }) {
 
-  console.log("Rendering RootLayout");
-
   return (
     <main className="min-h-dvh">
       <div className="flex w-full min-h-dvh justify-center">

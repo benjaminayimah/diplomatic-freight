@@ -21,10 +21,10 @@ const who_we_are = [
 // ];
 
 const why_choose_card = [
-  {title: 'Global Reach', description: 'Access to thousand of airports worldwide, getting your closer to your final destination.' },
-  {title: '24/7 Concierge', description: 'Dedicated support for all your needs, from in-flight catering to ground transportation.' },
-  {title: 'Unmatched Privacy', description: 'Travel with complete discretion and security through private terminals and aircraft.' },
-  {title: 'Safety First', description: 'We adhere to the highest safety standards with rigorously maintained aircraft and experienced crews.' },
+  {id: 1, title: 'Global Reach', description: 'Access to thousand of airports worldwide, getting your closer to your final destination.' },
+  {id: 2, title: '24/7 Support', description: 'Dedicated support for all your needs, from in-flight catering to ground transportation.' },
+  {id: 3, title: 'Unmatched Privacy', description: 'Travel with complete discretion and security through private terminals and aircraft.' },
+  {id: 4, title: 'Safety First', description: 'We adhere to the highest safety standards with rigorously maintained aircraft and experienced crews.' },
 ]
 
 
@@ -89,8 +89,8 @@ function HomeAbout() {
             </div>
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-            { why_choose_card.map((data, index) => (
-              <WhyChooseCard key={index} data={data} />
+            { why_choose_card.map((data) => (
+              <WhyChooseCard key={data.id} data={data} />
             ))}
           </div>
         </div>

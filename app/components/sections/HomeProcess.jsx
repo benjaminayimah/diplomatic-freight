@@ -3,9 +3,9 @@ import ProcessCard from '../ProcessCard'
 
 
 const process = [
-  {title: '01: Submit Your Request', description: 'Tell us your travel needs through our simple inquiry form. Our team is available 24/7 to assist you.' },
-  {title: '02: Receive a Custom Quote', description: 'We provide a transparent, all-inclusive quote tailored to your specific itenerary and preferences.' },
-  {title: '03: Confirm & Fly', description: 'Once confirmed, your dedicated concierge handles every detail, ensuring a flawless journey from start to finish.' },
+  {id: 1, title: '01: Submit Your Request', description: 'Tell us your travel needs through our simple inquiry form. Our team is available 24/7 to assist you.' },
+  {id: 2, title: '02: Receive a Custom Quote', description: 'We provide a transparent, all-inclusive quote tailored to your specific itenerary and preferences.' },
+  {id: 3, title: '03: Confirm & Fly', description: 'Once confirmed, your dedicated concierge handles every detail, ensuring a flawless journey from start to finish.' },
 ]
 
 
@@ -23,8 +23,8 @@ function HomeProcess() {
         </div>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-30'>
           {
-            process.map((data, index) => (
-              <ProcessCard key={index} data={data} />
+            process.map((data) => (
+              <ProcessCard key={data.id} data={data} />
             ))
           }
         </div>

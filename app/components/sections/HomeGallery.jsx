@@ -5,17 +5,6 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import styles from '../../styles/gallery.module.css'
 import { useRef } from 'react'
-import Picture1 from '../../../public/images/alt-1.webp'
-import Picture2 from '../../../public/images/alt-2.jpg'
-import Picture3 from '../../../public/images/alt-3.jpg'
-import Picture4 from '../../../public/images/alt-4.jpg'
-import Picture5 from '../../../public/images/alt-5.jpg'
-import Picture6 from '../../../public/images/alt-6.jpg'
-import Picture7 from '../../../public/images/alt-7.jpg'
-import Picture8 from '../../../public/images/alt-8.jpg'
-import Picture9 from '../../../public/images/alt-9.jpg'
-import Picture10 from '../../../public/images/alt-10.jpg'
-
 
 function HomeGallery() {
   const targetRef = useRef(null);

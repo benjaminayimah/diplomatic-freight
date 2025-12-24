@@ -20,7 +20,10 @@ function HomeGlobal() {
 
   return (
     <section className='bg-[#0A47C9] h-svh overflow-hidden relative'>
-      <div className='container w-[92vw] sm:w-[88vw] flex flex-col h-full justify-between py-20'>
+      <div className='absolute inset-0 w-full h-full z-0 pointer-events-none'>
+        <StripeGlobe />
+      </div>
+      <div className='container relative z-10 w-[92vw] sm:w-[88vw] flex flex-col h-full justify-between py-20'>
         <motion.div
           initial={{ opacity: 0, y: '50px'}}
           whileInView={{ opacity: 1, y: '0px', transition: {duration: 1}}}
@@ -28,7 +31,7 @@ function HomeGlobal() {
             once: true,
             amount: 0.3
           }}
-          className='md:max-w-[500px] max-w-[70%] mb-15'>
+          className='sm:max-w-[500px] max-w-full mb-15'>
           <span className='pill-tag mb-4 text-white border border-white/30'>Global presence</span>
           <h2 className='text-3xl md:text-4xl font-bold text-white'>We have a strong presence in over 82 countries</h2>
         </motion.div>
@@ -46,9 +49,6 @@ function HomeGlobal() {
             ))
           }
         </motion.div>
-      </div>
-      <div className='absolute inset-0 w-full h-full'>
-        <StripeGlobe />
       </div>
     </section>
   )

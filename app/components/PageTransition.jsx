@@ -134,7 +134,7 @@ function PageTransition({ children }) {
           introText && (
             <motion.h1
               {...anim(textVariants)}
-              className="fixed z-50 text-white text-[3rem] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="fixed z-50 text-white text-[2rem] md:text-[3rem] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             >
               <div className='intro'>{introText}</div>
             </motion.h1>

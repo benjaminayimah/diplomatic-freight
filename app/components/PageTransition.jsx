@@ -21,17 +21,16 @@ const routes = {
 const greetings = [
  "Hello",        // English — USA / UK
   "Bonjour",      // French — France
-    // "مرحبا"         // Arabic — Middle East / North Africa
+  "مرحبا",         // Arabic — Middle East / North Africa
   "Hola",         // Spanish — Spain
   "Hallo",        // German — Germany
-// "Γειά σου",     // Greek — Greece
+  "Γειά σου",     // Greek — Greece
   "Ciao",         // Italian — Italy
   "Olá",          // Portuguese — Portugal
   "こんにちは",     // Japanese — Japan
   "你好",          // Chinese (Mandarin) — China
   "안녕하세요",      // Korean — South Korea
   "Akwaaba",      // Twi — Ghana
-
 ];
 
 function PageTransition({ children }) {
@@ -44,7 +43,7 @@ function PageTransition({ children }) {
 
   // 2. Freeze on first greeting
   const freezeTime = 500; // ms
-  const cycleInterval = 200; // ms per greeting
+  const cycleInterval = 300; // ms per greeting
   const remainingGreetings = greetings.length - 1; // because first is already shown
   const totalCycleTime = remainingGreetings * cycleInterval;
 

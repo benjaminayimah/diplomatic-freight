@@ -101,11 +101,11 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
                 <table className="w-full text-left text-sm">
                   <thead className="bg-blue-500 border text-white uppercase tracking-wider">
                     <tr>
-                      <th className="px-4 py-2 font-bold">Service Description</th>
-                      <th className="px-4 py-2 font-bold">Quantity</th>
-                      <th className="px-4 py-2 font-bold">Rate</th>
-                      <th className="px-4 py-2 font-bold">Extra Charges</th>
-                      <th className="px-4 py-2 font-bold text-right">Amount</th>
+                      <th className="px-4 py-2 font-bold text-xs">Service Description</th>
+                      <th className="px-4 py-2 font-bold text-xs">Quantity</th>
+                      <th className="px-4 py-2 font-bold text-xs">Rate</th>
+                      <th className="px-4 py-2 font-bold text-xs">Add-on</th>
+                      <th className="px-4 py-2 font-bold text-right text-xs">Amount</th>
                     </tr>
                   </thead>
                   <tbody className=" text-neutral-800">

@@ -27,35 +27,35 @@ const Modal = ({
 
     if (isOpen) {
       document.addEventListener("mousedown", handler);
-      document.documentElement.classList.add("no-smooth-scroll");
+      // document.documentElement.classList.add("no-smooth-scroll");
 
-      // --- Scroll Lock ---
-      const scrollY = window.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
-      document.body.style.overflow = "hidden";
+      // // --- Scroll Lock ---
+      // const scrollY = window.scrollY;
+      // document.body.style.position = "fixed";
+      // document.body.style.top = `-${scrollY}px`;
+      // document.body.style.left = "0";
+      // document.body.style.right = "0";
+      // document.body.style.overflow = "hidden";
     }
 
     return () => {
       document.removeEventListener("mousedown", handler);
 
-      // --- Scroll Unlock ---
-      const scrollY = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-      document.body.style.overflow = "";
+      // // --- Scroll Unlock ---
+      // const scrollY = document.body.style.top;
+      // document.body.style.position = "";
+      // document.body.style.top = "";
+      // document.body.style.left = "";
+      // document.body.style.right = "";
+      // document.body.style.overflow = "";
 
-      // Restore scroll instantly
-      window.scrollTo({
-        top: parseInt(scrollY || "0") * -1,
-        behavior: "auto",
-      });
+      // // Restore scroll instantly
+      // window.scrollTo({
+      //   top: parseInt(scrollY || "0") * -1,
+      //   behavior: "auto",
+      // });
 
-      document.documentElement.classList.remove("no-smooth-scroll");
+      // document.documentElement.classList.remove("no-smooth-scroll");
     };
   }, [isOpen, onClose]);
 

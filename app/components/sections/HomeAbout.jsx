@@ -163,7 +163,7 @@ function HomeAbout() {
             className='border border-gray-200 rounded-2x p-8 lg:p-12 rounded-2xl'>
             <div className='grid grid-cols-1 md:grid-cols-3'>
               <div className='flex items-center justify-center flex-col md:border-r border-gray-200 pb-8 md:pb-0'>
-                <h2 className='text-3xl'>Our Memberships</h2>
+                <h2 className='text-2xl lg:text-3xl'>Our Memberships</h2>
                 <span className='text-gray-500'>We're proudly affiliated with...</span>
               </div>
               <div className='flex justify-center md:border-r border-gray-200 pb-8 md:pb-0'>

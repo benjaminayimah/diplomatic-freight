@@ -84,7 +84,7 @@ const MoreModal = ({
               animate={{ y: 0,  scale: 1  }}
               exit={{ y: 150,  scale: 0.8 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="bg-white rounded-4xl shadow-lg  min-h-[100px]"
+              className="bg-white rounded-3xl md:rounded-4xl shadow-lg  min-h-[100px]"
             >
               <div className="sticky h-0 top-0 z-10 flex justify-end">
                 <button onClick={onClose} aria-label="Close" className='h-10 w-10 mt-4 mr-4 rounded-3xl grid place-items-center bg-black/70 hover:bg-black/90 transition-transform duration-400'>

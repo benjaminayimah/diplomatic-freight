@@ -122,7 +122,7 @@ function HomeServices() {
         onClose={handleCloseModal}
         maxWidth="1000px"
         >
-          <div className='h-100 bg-gray-100 relative overflow-hidden rounded-t-4xl'>
+          <div className='h-100 bg-gray-100 relative overflow-hidden rounded-t-3xl md:rounded-t-4xl'>
             <Image
               src={modalContent?.src}
               alt={modalContent?.name}

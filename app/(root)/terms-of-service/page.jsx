@@ -98,7 +98,22 @@ function Terms() {
           </div>
 
           <div className="mb-8">
-            <h2 className="text-xl font-bold mb-3">5. Liability</h2>
+            <h2 className="text-xl font-bold mb-3">5. Refund Policy</h2>
+            <p>
+              All aircraft fees are non-refundable and non-transferable once the aircraft has been reserved or contracted. This policy applies under all circumstances, including but not limited to:
+            </p>
+            <ul className="my-4 pl-4">
+              <li className="list-disc mb-2">Client cancellation</li>
+              <li className="list-disc mb-2">Governmental or regulatory actions</li>
+              <li className="list-disc mb-2">Weather conditions</li>
+              <li className="list-disc mb-2">Operational constraints</li>
+              <li className="list-disc mb-2">Force majeure</li>
+              <li className="list-disc">Third-party failures</li>
+            </ul>
+          </div>
+
+          <div className="mb-8">
+            <h2 className="text-xl font-bold mb-3">6. Liability</h2>
             <p>
               We take every measure to protect your shipment, but liability is limited to:
             </p>
@@ -120,7 +135,7 @@ function Terms() {
           </div>
 
           <div className="mb-8">
-            <h2 className="text-xl font-bold mb-3">6. Prohibited Items</h2>
+            <h2 className="text-xl font-bold mb-3">7. Prohibited Items</h2>
             <p>
               We do not handle:
             </p>
@@ -135,21 +150,21 @@ function Terms() {
           </div>
 
           <div className="mb-8">
-            <h2 className="text-xl font-bold mb-3">7. Intellectual Property</h2>
+            <h2 className="text-xl font-bold mb-3">8. Intellectual Property</h2>
             <p>
               All website content—including text, graphics, logos, images—is the property of [Your Company Name] and may not be reproduced without permission.
             </p>
           </div>
 
           <div className="mb-8">
-            <h2 className="text-xl font-bold mb-3">8. Amendments</h2>
+            <h2 className="text-xl font-bold mb-3">9. Amendments</h2>
             <p>
               We may update these Terms at any time. Continued use of our website or services indicates acceptance of revised terms.
             </p>
           </div>
 
           <div className="mb-8">
-            <h2 className="text-xl font-bold mb-3">9. Contact</h2>
+            <h2 className="text-xl font-bold mb-3">10. Contact</h2>
             <p className="mb-4 ">
               For any concerns or clarifications, please reach us through:
             </p>

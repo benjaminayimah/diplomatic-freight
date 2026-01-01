@@ -212,27 +212,33 @@ function InvoiceTemplate({ profile, invoice, printRef, banks, qrData }) {
               </div>
               }
               <div className='grid'>
-                <h3 className="font-bold  text-black mb-1">Payment Terms</h3>
-                <p className=" text-black text-sm">Aircraft rate is reserved only from the issue date until the invoice due date. If payment is not received within this window, pricing and availability cannot be guaranteed.</p>
+                <h3 className="font-bold text-black mb-2">Payment Terms</h3>
+                <p className="text-black text-sm mb-4">
+                  <strong className="font-bold">Reservation:</strong>{" "}
+                  Aircraft rate is reserved only from the issue date until the invoice due date. If payment is not received within this window, pricing and availability cannot be guaranteed.
+                </p>
+                <p className="text-black text-sm">
+                  <strong className="font-bold">Refund Policy:</strong>{" "}
+                  All aircraft fees are non-refundable and non-transferable once the aircraft has been reserved or contracted. This policy applies under all circumstances, including but not limited to client cancellation, governmental or regulatory actions, weather conditions, operational constraints, force majeure, or third-party failures.
+                </p>
               </div>
             </div>
           </main>
 
           {/* <!-- Footer --> */}
-          <footer className="grid grid-cols-1 text-center p-6 sm:p-10 mt-auto border-t border-gray-200 text-gray-500 text-xs">
+          <footer className="grid grid-cols-1 p-6 sm:p-10 mt-auto border-t border-gray-200 text-gray-500 text-xs">
             <div className='mb-8'>
-              <strong>Disclaimer:</strong>
+              <div className='mb-2'><strong>Disclaimer:</strong></div>
               <p className='mb-2'>
                 This invoice is issued exclusively to the intended recipient named herein. It contains confidential and proprietary information belonging to the issuing party and is provided solely for the purpose stated.
               </p>
               <p className='mb-2'>
                 Any duplication, reproduction, or distribution of this invoice, whether in full or in part, without prior written authorization from the issuer, is strictly prohibited. Unauthorized alteration, modification, or tampering with any details contained in this invoice is forbidden and shall render the document invalid.
               </p>
-              
-              <ul className='mb-2'>
-                <p>
-                  The issuer shall not be liable for any losses, damages, claims, or disputes arising from:
-                </p>
+              <p className='mb-2'>
+                The issuer shall not be liable for any losses, damages, claims, or disputes arising from:
+              </p>
+              <ul className='mb-2 pl-2'>
                 <li>
                   • Unauthorized copies or duplicates of this invoice;
                 </li>
@@ -254,21 +260,23 @@ function InvoiceTemplate({ profile, invoice, printRef, banks, qrData }) {
                 />
               <p className="text-sm text-gray-600">Scan to verify</p>
             </div>
-            <p className="font-bold text-blue-500 text-base mb-2">Thank you for your business!</p>
-            <p className='my-6 text-black'>For any enquiries regarding this invoice, please contact us using any of the details below.</p>
-            <p className='flex flex-wrap gap-2 items-center justify-center'>
-              { profile?.po_box }
-              <span className='inline-block h-3 w-px border-r border-gray-400' />
-              { profile?.phone }
-              <span className='inline-block h-3 w-px border-r border-gray-400' />
-              { profile?.mobile }
-              <span className='inline-block h-3 w-px border-r border-gray-400' />
-              { profile?.email }
-              <span className='inline-block h-3 w-px border-r border-gray-400' />
-              { profile?.website }
-              <span className='inline-block h-3 w-px border-r border-gray-400' />
-              { profile?.company_name + ' All rights reserved.' }
-            </p>
+            <div className='text-center'>
+              <p className="font-bold text-blue-500 text-base mb-2">Thank you for your business!</p>
+              <p className='my-6 text-black'>For any enquiries regarding this invoice, please contact us using any of the details below.</p>
+              <p className='flex flex-wrap gap-2 items-center justify-center'>
+                { profile?.po_box }
+                <span className='inline-block h-3 w-px border-r border-gray-400' />
+                { profile?.phone }
+                <span className='inline-block h-3 w-px border-r border-gray-400' />
+                { profile?.mobile }
+                <span className='inline-block h-3 w-px border-r border-gray-400' />
+                { profile?.email }
+                <span className='inline-block h-3 w-px border-r border-gray-400' />
+                { profile?.website }
+                <span className='inline-block h-3 w-px border-r border-gray-400' />
+                { profile?.company_name + ' All rights reserved.' }
+              </p>
+            </div>
           </footer>
         </article>
       </div>

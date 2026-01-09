@@ -16,7 +16,8 @@ function HamburgerMenu() {
         onClick={toggleMenu} 
         arial-controls="menu" 
         aria-label='Menu trigger' 
-        aria-expanded={mobileMenu}>
+        aria-expanded={mobileMenu}
+        >
         <div />
       </button>
     )

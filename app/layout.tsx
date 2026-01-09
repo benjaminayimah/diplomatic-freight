@@ -57,7 +57,7 @@ export default function RootLayout({
       >
         <WindowSizeListener />
         <SnackbarProvider>
-        {children}
+          {children}
         </SnackbarProvider>
       </body>
     </html>

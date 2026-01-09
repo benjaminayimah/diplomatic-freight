@@ -77,7 +77,7 @@ function HomeServices() {
       </motion.div>
       <div
         ref={scrollRef}
-        className='grid grid-cols-1 gap-6 md:flex px-[6vw] scroll-px-[6vw] md:overflow-x-auto scroll-snap hide-scrollbar'
+        className='grid grid-cols-1 gap-6 md:flex px-[4vw] sm:px-[6vw] scroll-px-[6vw] md:overflow-x-auto scroll-snap hide-scrollbar'
         >
         {services.map((data) => (
           <ServicesCard

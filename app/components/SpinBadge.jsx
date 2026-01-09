@@ -7,7 +7,7 @@ const text = `• WE'RE GHANA SHIPPERS AUTHORITY • CERTIFIED `
 
 export default function SpinBadge() {
   return (
-        <a href='#' className={`fixed bottom-5 right-5 sm:bottom-6 sm:right-7 z-10 ${styles.spinner}`}>
+        <a href='#' className="fixed bottom-5 right-5 sm:bottom-6 sm:right-7 z-10">
             <div className={`relative flex justify-center items-center ${styles.circleWrapper}`}>
                 <div className={`flex justify-center items-center ${styles.isoWrapper}`}>
                     <svg width="55" height="47" viewBox="0 0 55 47" fill="none" xmlns="http://www.w3.org/2000/svg">

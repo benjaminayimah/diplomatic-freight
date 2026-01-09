@@ -20,7 +20,7 @@ function Footer() {
   const translateY = useTransform(scrollYProgress, [0, 1], ['-300px', '0px']);
   return (
     <footer ref={targetRef} id='footer' className='w-full py-15 bg-black text-white flex items-center justify-center overflow-hidden'>
-      <motion.div style={ device === 'mobile' ? {} : { translateY } } className='container w-[92vw] sm:w-[88vw] flex flex-col gap-8'>
+      <motion.div style={ device === 'mobile' ? { translateY: 0 } : { translateY } } className='container w-[92vw] sm:w-[88vw] flex flex-col gap-8'>
         <div className='flex flex-col gap-6 lg:flex-row items-center border-b border-[#2A2A2B] lg:justify-between pt-2 pb-7.5'>
           <p className='font-medium text-[24px] sm:text-[28px] max-w-100 lg:max-w-[26%] text-center lg:text-left'>Subscribe to our newsletter to stay updated!</p>
           <NewsletterForm />

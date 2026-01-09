@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Diplomatic Freight & Logistic Services Ltd.",
     description:
       "Fast, reliable and secure logistics solutions tailored to your needs.",
-    url: "https://diplomatic-freight.vercel.app",
+    url: "https://www.diplomaticfreight.com",
     siteName: "Diplomatic Freight",
     images: [
       {

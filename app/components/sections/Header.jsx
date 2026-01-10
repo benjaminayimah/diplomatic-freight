@@ -29,7 +29,7 @@ function Header() {
         </a>
         <CustomNav links={menus} />
         <div className='inline-flex items-center gap-4 absolute right-0'>
-          <a href="/get-a-quote" className='myHover-translate h-11 md:h-12 px-3.5 md:px-5 py-3 bg-[#FF6A3D] rounded-[44px] shadow-[0px_2px_6px_2px_rgba(0,0,0,0.15)] inline-flex items-center text-white text-base font-medium'>Get a Quote</a>
+          <a href="/get-quote" className='myHover-translate h-11 md:h-12 px-3.5 md:px-5 py-3 bg-[#FF6A3D] rounded-[44px] shadow-[0px_2px_6px_2px_rgba(0,0,0,0.15)] inline-flex items-center text-white text-base font-medium'>Get a Quote</a>
           <HamburgerMenu />
         </div>
       </div>

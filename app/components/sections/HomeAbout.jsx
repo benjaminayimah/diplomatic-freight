@@ -241,7 +241,7 @@ function HomeAbout() {
               </div>
               {/* <div className='mt-5 text-center'>
                 <a
-                  href="/get-a-quote" className='text-base font-medium inline-block text-white border  py-3.5 px-6 rounded-4xl bg-black hover:text-white transition-colors duration-400'>
+                  href="/get-quote" className='text-base font-medium inline-block text-white border  py-3.5 px-6 rounded-4xl bg-black hover:text-white transition-colors duration-400'>
                   Get a Quote
                 </a>
               </div> */}

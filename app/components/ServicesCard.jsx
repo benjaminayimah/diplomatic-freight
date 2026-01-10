@@ -50,9 +50,6 @@ function ServicesCard({ service, onClick, isOpen, id }) {
           <span className='list-decimal'>{service.bullet4 ?? ''}</span>
           </p>
       </div>
-        {/* <button onClick={() => redirect('/get-a-quote') } className="text-[0.9rem] font-medium flex items-center h-9 px-4 bg-white rounded-3xl translate-y-50 group-hover:translate-y-0 transition-all duration-400 ease-in-out">
-          Get a Quote
-        </button> */}
     </div>
   )
 }

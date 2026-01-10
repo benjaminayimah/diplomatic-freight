@@ -24,7 +24,7 @@ function Logo() {
     '/privacy-policy',
     '/cookie-policy',
     '/login',
-    '/get-a-quote'
+    '/get-quote'
   ]
 
   const isDarkPage = darkRoutes.includes(pathname)

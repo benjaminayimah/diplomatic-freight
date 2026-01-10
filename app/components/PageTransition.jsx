@@ -13,7 +13,7 @@ const anim = (variants) => ({
 
 const routes = {
   "/": "Home",
-  "/get-a-quote": "Get a Quote",
+  "/get-quote": "Get a Quote",
   "/terms-of-service": "Terms of Service",
   "/privacy-policy": "Privacy Policy",
   "/cookie-policy": "Cookie Policy"

@@ -113,7 +113,7 @@ function HomeServices() {
         </button>
       </div>
       <div className='mt-5 text-center'>
-        <a href="/get-a-quote" className='text-xl font-medium inline-block text-black border border-black py-3.5 px-7 rounded-4xl hover:bg-black hover:text-white transition-colors duration-400'>
+        <a href="/get-quote" className='text-xl font-medium inline-block text-black border border-black py-3.5 px-7 rounded-4xl hover:bg-black hover:text-white transition-colors duration-400'>
           Get a Quote
         </a>
       </div>
@@ -150,7 +150,7 @@ function HomeServices() {
               </div>
               <div className='mt-8 pt-8 border-t border-gray-100'>
                 <a
-                  href="/get-a-quote" 
+                  href="/get-quote" 
                   className='text-base font-medium flex gap-2 justify-center items-center text-white border py-3.5 px-6 rounded-4xl bg-black hover:bg-neutral-900 transition-colors duration-300'
                   >
                   Get a Quote

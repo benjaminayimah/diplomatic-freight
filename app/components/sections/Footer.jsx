@@ -41,7 +41,7 @@ function Footer() {
             </p> */}
             <ul id='footer_socials' className='flex items-center gap-6 my-4'>
               <li>
-                <a href='https://www.twitter.com/dip_freight' title='X' target='_blank' className='myHover-translate inline-block'>
+                <a href='https://www.x.com/dip_freight' title='X' target='_blank' className='myHover-translate inline-block'>
                   <svg height="22" viewBox="0 0 300.1 271">
                     <path d="M236,0h46L181,115,299,271H206.4l-72.5-94.8L50.9,271H4.9l107-123L-1.1,0H93.8l65.5,86.6ZM219.9,244h25.5L80.4,26H53Z" transform="translate(1.1)"/>
                   </svg>

@@ -240,9 +240,10 @@ header {
     backdrop-filter: blur(16px);
     padding-block: 8rem;
     overflow: hidden;
-    transition: 1s all cubic-bezier(0.7, 0.11, 0.2, 1) 0s;
+    transition: .6s all cubic-bezier(0.8, 0.11, 0.2, .9);
     ul {
       width: 100%;
+      transition: .6s all ease-out .5s;
       li {
         height: 3.8rem;
         display: flex;
@@ -266,7 +267,12 @@ header {
   nav[datatype=website].menu-close {
     visibility: hidden;
     width: 0;
+
+    ul {
+      opacity: 0;
+    }
   }
+  
 }
 #footer_socials {
   li {

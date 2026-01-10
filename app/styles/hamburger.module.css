@@ -30,7 +30,7 @@
       background-color: #000;
       left: 50%;
       transform: translate(-50%, -50%);
-      transition: 1s all cubic-bezier(0.7, 0.11, 0.2, 1) 0s;
+      transition: .6s all cubic-bezier(0.8, 0.11, 0.2, .9);
     }
   }
 

@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
 import WindowSizeListener from "../listeners/WindowSizeListener";
 import "./styles/globals.css";
 import { SnackbarProvider } from "@/app/components/SnackbarContext"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -155,6 +156,7 @@ export default function RootLayout({
         <WindowSizeListener />
         <SnackbarProvider>
           {children}
+          <SpeedInsights/>
         </SnackbarProvider>
       </body>
     </html>

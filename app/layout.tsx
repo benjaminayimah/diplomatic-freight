@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Diplomatic Freight & Logistic Services Ltd.",
     description:
-      "Fast, reliable and secure logistics solutions tailored to your needs.",
+      "At Diplomatic Freight and Logistics, we specialize in delivering reliable, time-critical air cargo and freight solutions across the globe.",
     url: "/",
     siteName: "Diplomatic Freight",
     images: [
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   site: "@dip_freight",
   title: "Diplomatic Freight & Logistic Services Ltd.",
   description:
-      "Fast, reliable and secure logistics solutions tailored to your needs.",
+      "At Diplomatic Freight and Logistics, we specialize in delivering reliable, time-critical air cargo and freight solutions across the globe.",
     images: ["/og-image.jpg"],
   },
 };
@@ -112,7 +112,7 @@ export default function RootLayout({
               "@type": "LogisticsCompany",
               name: "Diplomatic Freight & Logistics Services Ltd.",
               description:
-                "Fast, reliable and secure logistics solutions tailored to your needs.",
+                "At Diplomatic Freight and Logistics, we specialize in delivering reliable, time-critical air cargo and freight solutions across the globe.",
               url: "https://www.diplomaticfreight.com",
               logo: "https://www.diplomaticfreight.com/logo.png",
               image: "https://www.diplomaticfreight.com/og-image.jpg",

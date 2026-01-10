@@ -73,7 +73,7 @@ function HomeBanner() {
     >
       <MotionImage
          id="hero_image"
-          className="mt-[40%] md:mt-0"
+          className="mt-[40%] md:mt-0 will-change-transform"
           style={{ translateY: translateY2, objectFit: "cover" }}
           src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763470951/bg-cargo-plane_2_-min_ush5mi.png"
           alt="Hero background"

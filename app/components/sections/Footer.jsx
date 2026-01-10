@@ -79,7 +79,7 @@ function Footer() {
                 <li><Link href='/#services' className='myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Services</Link></li>
                 <li><Link href='/#contact' className='myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Contact</Link></li>
                 <li><Link href='/auth' className='myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Login</Link></li>
-                <li><a title='Webmail' target='_blank' href='http://webmail.diplomaticfreight.com' className='myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
+                <li><a title='Webmail' target='_blank' href='https://sxb1plzcpnl505634.prod.sxb1.secureserver.net:2096/webmaillogout.cgi' className='myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Webmail</a></li>
               </ul>
             </div>
             <div className='md:w-80'>

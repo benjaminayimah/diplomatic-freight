@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Diplomatic Freight & Logistic Services Ltd.",
+    title: "Diplomatic Freight® - Diplomatic Freight and Logistic Services",
     description:
       "At Diplomatic Freight and Logistics, we specialize in delivering reliable, time-critical air cargo and freight solutions across the globe.",
     url: "/",

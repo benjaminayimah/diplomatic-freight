@@ -4,6 +4,7 @@ import WindowSizeListener from "../listeners/WindowSizeListener";
 import "./styles/globals.css";
 import { SnackbarProvider } from "@/app/components/SnackbarContext"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -156,8 +157,9 @@ export default function RootLayout({
         <WindowSizeListener />
         <SnackbarProvider>
           {children}
-          <SpeedInsights/>
         </SnackbarProvider>
+        <SpeedInsights/>
+        <Analytics/>
       </body>
     </html>
   );

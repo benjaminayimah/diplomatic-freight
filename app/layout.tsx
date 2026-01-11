@@ -129,7 +129,7 @@ export default function RootLayout({
               },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+233 30 290 8064",
+                telephone: "+233(0) 30 290 8064",
                 email: "info@diplomaticfreight.com",
                 contactType: "customer service",
               },

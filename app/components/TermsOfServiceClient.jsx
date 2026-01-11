@@ -176,7 +176,7 @@ function TermsOfServiceClient() {
               </div>
               <div className="flex gap-3">
                 <div className="font-semibold">Phone:</div>
-                <a href="tel:+233(0) 30 290 8064/5" className="font-medium hover:underline">+233(0) 30 290 8064/5</a>
+                <a href="tel:+233302908064" className="font-medium hover:underline">+233(0) 30 290 8064/5</a>
               </div>
             </div>
           </div>

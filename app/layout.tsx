@@ -152,7 +152,6 @@ export default function RootLayout({
               name: "Diplomatic Freight & Logistics Services Ltd.",
               provider: {
                 "@type": "Organization",
-                name: "Diplomatic Freight & Logistics Services Ltd."
               },
               serviceType: [
                 "Air Cargo Chartering",

@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "cargo shipping",
     "transport services",
     "customs clearance",
-    "GHANA logistics",
+    "Ghana logistics",
     "import export services",
   ],
   robots: {

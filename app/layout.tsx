@@ -5,7 +5,6 @@ import "./styles/globals.css";
 import { SnackbarProvider } from "@/app/components/SnackbarContext"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script";
 import ClientAnalyticsWrapper from "./components/ClientAnalyticsWrapper";
 
 
@@ -65,12 +64,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
 
   openGraph: {
-    title: "Diplomatic Freight® - Diplomatic Freight and Logistic Services",
+    title: "Home - Diplomatic Freight & Logistic Services Ltd.",
     description:
       "At Diplomatic Freight and Logistics, we specialize in delivering reliable, time-critical air cargo and freight solutions across the globe.",
     url: "/",
@@ -130,7 +129,8 @@ export default function RootLayout({
               },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "030 290 8064",
+                telephone: "+233 30 290 8064",
+                email: "info@diplomaticfreight.com",
                 contactType: "customer service",
               },
               sameAs: [
@@ -140,18 +140,42 @@ export default function RootLayout({
                 "https://www.linkedin.com/company/diplomaticfreight"
               ],
               areaServed: ["GH", "West Africa", "Worldwide"],
-              serviceType: [
-                "Air Freight",
-                "Freight Forwarding",
-                "Logistics",
-                "Cargo Handling",
-                "Sea Freight",
-                "Warehousing",
-                "Transportation Services",
-              ],
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              name: "Diplomatic Freight & Logistics Services Ltd.",
+              provider: {
+                "@type": "Organization",
+                name: "Diplomatic Freight & Logistics Services Ltd."
+              },
+              serviceType: [
+                "Air Cargo Chartering",
+                "High-Value & Sensitive Cargo Handling",
+                "Sea Freight",
+                "Freight Forwarding",
+                "Customs Clearance",
+                "Warehousing",
+                "Cargo Handling",
+                "Route & Aircraft Consultation"
+              ],
+              areaServed: ["GH", "West Africa", "Worldwide"],
+              availableChannel: {
+                "@type": "ServiceChannel",
+                serviceLocation: {
+                  "@type": "Place",
+                  name: "Kotoka International Airport, Accra"
+                }
+              }
+            }),
+          }}
+        />
+        
       </head>
       <body
         className={`${plusJakartaSans.variable} ${ibmPlexSansCondensed.variable} antialiased`}

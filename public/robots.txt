@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Prevent crawling of unnecessary system paths
+Disallow: /app/
+
+Sitemap: http://diplomaticfreight.com/sitemap.xml

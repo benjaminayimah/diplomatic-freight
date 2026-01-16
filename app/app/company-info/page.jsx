@@ -12,13 +12,15 @@ import SubmitButton from "../../components/SubmitButton";
 import { useSnackbar } from "@/app/components/SnackbarContext";
 import { useUIStore } from "@/store";
 import Select from '@/app/components/Select';
+import { RadioGroup } from "../../components/RadioGroup";
+import Radio from "../../components/Radio";
 
 
 function CompanyInfo() {
 
   const profile = useAuthStore((state) => state.profile);
-  const banks = useAuthStore((state) => state.banks);
-  const { setCompanyData, setBankData, setDeleteBankById } = useAuthStore()
+  const payments = useAuthStore((state) => state.payments);
+  const { setCompanyData, setPaymentData, setDeletePaymentById } = useAuthStore()
 
   const [open, setOpen] = useState(false);
 
@@ -32,7 +34,7 @@ function CompanyInfo() {
 
   
 
-  const { updateProfile, createBankOrUpdate, deleteBank } = useAuth();
+  const { updateProfile, createBankOrUpdate, deletePayment } = useAuth();
 
   const [profileForm, setProfileForm] = useState({
     company_name: '',
@@ -56,6 +58,9 @@ function CompanyInfo() {
     account_name: '',
     account_number: '',
     swift_code: '',
+    wallet_address: '',
+    network: '',
+    qr_code: '',
     id: null
   });
   
@@ -106,11 +111,14 @@ function CompanyInfo() {
             account_name: '',
             account_number: '',
             swift_code: '',
+            wallet_address: '',
+            network: '',
+            qr_code: '',
             id: null
           })
-          setModalTitle('Add New Bank')
-          setModalSubTitle('Add a new banking detail')
-          setModalSubmitBtnText('Add bank')
+          setModalTitle('Add Payment Account')
+          setModalSubTitle('Add a new payment account detail')
+          setModalSubmitBtnText('Add account')
         }
         setOpen(true);
       },
@@ -164,7 +172,7 @@ function CompanyInfo() {
 
   
 
-  const handleBankPrefetch = async (payload) => {
+  const handlePaymentPrefetch = async (payload) => {
     setModalType('bank');
     setBankForm({
       payment_method: payload.payment_method || paymentMethods[0].value,
@@ -173,10 +181,13 @@ function CompanyInfo() {
       account_name: payload.account_name || '',
       account_number: payload.account_number || '',
       swift_code: payload.swift_code || '',
+      wallet_address: payload.wallet_address || '',
+      network: payload.network || '',
+      qr_code: payload.qr_code || '',
       id: payload.id 
     });
-    setModalTitle('Edit bank detail')
-    setModalSubTitle('Edit this banking detail')
+    setModalTitle('Edit payment detail')
+    setModalSubTitle('Edit this payment account detail')
     setModalSubmitBtnText('Save changes')
     setIsEditingBank(true)
     setOpen(true);
@@ -191,7 +202,7 @@ function CompanyInfo() {
     setLoading(false);
 
     if (response?.success) {
-      setBankData(response.data);
+      setPaymentData(response.data);
       handleCloseModal();
       showSnackbar(
         `${ isEditingBank? 'Changes saved successfully!' : 'New Bank has been added'}`,
@@ -213,17 +224,16 @@ function CompanyInfo() {
   }
 
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [bankToDelete, setBankToDelete] = useState(null);
-
+  const [paymentToDelete, setPaymentToDelete] = useState(null);
   
-  const handleDeleteBank = async (id) => {
+  const handleDeletePayment = async (id) => {
     resetErrors()
     setLoading(true);
-    const response = await deleteBank(id)
+    const response = await deletePayment(id)
     setLoading(false);
 
     if (response?.success) {
-      setDeleteBankById(id);
+      setDeletePaymentById(id);
       handleCloseModal();
       showSnackbar (
         "Deleted successfully!",
@@ -304,21 +314,21 @@ function CompanyInfo() {
                     <svg height="14" viewBox="0 0 14 14">
                       <path d="M7,0a.875.875,0,0,1,.875.875v5.25h5.25a.875.875,0,0,1,0,1.75H7.875v5.25a.875.875,0,0,1-1.75,0V7.875H.875a.875.875,0,0,1,0-1.75h5.25V.875A.875.875,0,0,1,7,0Z" fill="#2563EB"/>
                     </svg>
-                    Add bank
+                    Add payment account
                   </button>
                 </div>
               </div>
                 {
-                  banks?.length > 0 ? (
+                  payments?.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {
-                      banks.map((bank) => (
+                      payments.map((payment) => (
                         <BankCard
-                          key={bank.id}
-                          data={bank}
-                          onEdit={handleBankPrefetch}
+                          key={payment.id}
+                          data={payment}
+                          onEdit={handlePaymentPrefetch}
                           onDelete={() => {
-                            setBankToDelete(bank);
+                            setPaymentToDelete(payment);
                             setDeleteModalOpen(true);
                           }}
                         />
@@ -328,14 +338,14 @@ function CompanyInfo() {
                   ) : (
                     <div className="p-10 border bg-white border-gray-200 rounded-2xl grid place-items-center">
                       <div className="mb-4">
-                        <h3 className="text-xl text-center">Your have no Bank detail saved!</h3>
-                        <div className="text-gray-500 text-sm text-center">To show your bank details on invoices, add a bank detail</div>
+                        <h3 className="text-xl text-center">Your have no Payment detail saved!</h3>
+                        <div className="text-gray-500 text-sm text-center">To show your payment details on invoices, add a payment account detail</div>
                       </div>
                       <button
                         onClick={() => handleOpenModal('bank')}
                         className="myHover-translate inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl"
                       >
-                        Add bank detail
+                        Add payment detail
                       </button>
                     </div>
                   )
@@ -357,7 +367,7 @@ function CompanyInfo() {
                   {modalType === "profile" && (
                     <div className="flex flex-col gap-4">
                       <Input
-                        label="Company name"
+                        label="Company Name"
                         id="company_name"
                         type="text"
                         placeholder="Enter company"
@@ -397,7 +407,7 @@ function CompanyInfo() {
                         onFocus={() => clearFieldError('mobile')}
                       />
                       <Input
-                        label="Address line 1"
+                        label="Address Line 1"
                         id="address_line_1"
                         type="text"
                         placeholder="Enter address line 1"
@@ -407,7 +417,7 @@ function CompanyInfo() {
                         onFocus={() => clearFieldError('address_line_1')}
                       />
                       <Input
-                        label="Address line 2"
+                        label="Address Line 2"
                         id="address_line_2"
                         type="text"
                         placeholder="Enter address line 2"
@@ -417,7 +427,7 @@ function CompanyInfo() {
                         onFocus={() => clearFieldError('address_line_2')}
                       />
                       <Input
-                        label="Address line 3"
+                        label="Address Line 3"
                         id="address_line_3"
                         type="text"
                         placeholder="Enter address line 3"
@@ -437,7 +447,7 @@ function CompanyInfo() {
                         onFocus={() => clearFieldError('po_box')}
                       />
                       <Input
-                        label="Website address"
+                        label="Website Address"
                         id="website"
                         type="text"
                         placeholder="Enter website"
@@ -458,71 +468,128 @@ function CompanyInfo() {
                       />
                     </div>
                   )}
-                  {modalType === "bank" && (
+                  { modalType === "bank" && (
                     <div className="flex flex-col gap-4">
-                      <Select
+                      <RadioGroup label="Select Payment Method">
+                        <div className="grid grid-cols-3">
+                          {paymentMethods.map((method) => (
+                            <Radio
+                              key={method.value}
+                              label={method.label}
+                              name="payment_method"
+                              value={method.value}
+                              checked={bankForm.payment_method === method.value}
+                              onChange={(e) => setBankForm({ ...bankForm, payment_method: e.target.value })}
+                              disabled={method.disabled}  
+                            />
+                          ))}
+                        </div>
+                      </RadioGroup>
+                      {/* <Select
                         label="Payment method"
                         id="payment_method"
                         required
                         placeholder="Select payment method"
-                        options={paymentMethods}
+                        options={paymentMethods.filter(method => !method.disabled)}
                         value={bankForm.payment_method}
                         onChange={(e) => setBankForm({ ...bankForm, payment_method: e.target.value })}
                         errors={errors.payment_method}
-                      />
-                      <Input
-                        label="Bank name"
-                        id="bank_name"
-                        type="text"
-                        placeholder="Enter bank name"
-                        value={bankForm.bank_name}
-                        onChange={(e) => setBankForm({ ...bankForm, bank_name: e.target.value })}
-                        errors={errors.bank_name || []}
-                        onFocus={() => clearFieldError('bank_name')}
-                        required
-                      />
-                      <Input
-                        label="Bank branch"
-                        id="bank_branch"
-                        type="text"
-                        placeholder="Enter bank branch"
-                        value={bankForm.bank_branch}
-                        onChange={(e) => setBankForm({ ...bankForm, bank_branch: e.target.value })}
-                        errors={errors.bank_branch || []}
-                        onFocus={() => clearFieldError('bank_branch')}
-                      />
-                      <Input
-                        label="Account name"
-                        id="account_name"
-                        type="text"
-                        placeholder="Enter account name"
-                        value={bankForm.account_name}
-                        onChange={(e) => setBankForm({ ...bankForm, account_name: e.target.value })}
-                        errors={errors.account_name || []}
-                        onFocus={() => clearFieldError('account_name')}
-                        required
-                      />
-                      <Input
-                        label="Account number"
-                        id="account_number"
-                        type="text"
-                        placeholder="Enter account number"
-                        value={bankForm.account_number}
-                        onChange={(e) => setBankForm({ ...bankForm, account_number: e.target.value })}
-                        errors={errors.account_number || []}
-                        onFocus={() => clearFieldError('account_number')}
-                        required
-                      />
-                      <Input
-                        label="SWIFT code"
-                        id="swift_code"
-                        type="text"
-                        placeholder="Enter SWIFT code"
-                        value={bankForm.swift_code}
-                        onChange={(e) => setBankForm({ ...bankForm, swift_code: e.target.value })}
-                        errors={errors.swift_code || []}
-                        onFocus={() => clearFieldError('swift_code')}
-                      />
+                      /> */}
+                      { bankForm.payment_method === "bank_transfer" && (
+                        <>
+                          <Input
+                            label="Bank Name"
+                            id="bank_name"
+                            type="text"
+                            placeholder="Enter bank name"
+                            value={bankForm.bank_name}
+                            onChange={(e) => setBankForm({ ...bankForm, bank_name: e.target.value })}
+                            errors={errors.bank_name || []}
+                            onFocus={() => clearFieldError('bank_name')}
+                            required
+                          />
+                          <Input
+                            label="Bank Branch"
+                            id="bank_branch"
+                            type="text"
+                            placeholder="Enter bank branch"
+                            value={bankForm.bank_branch}
+                            onChange={(e) => setBankForm({ ...bankForm, bank_branch: e.target.value })}
+                            errors={errors.bank_branch || []}
+                            onFocus={() => clearFieldError('bank_branch')}
+                          />
+                          <Input
+                            label="Account Name"
+                            id="account_name"
+                            type="text"
+                            placeholder="Enter account name"
+                            value={bankForm.account_name}
+                            onChange={(e) => setBankForm({ ...bankForm, account_name: e.target.value })}
+                            errors={errors.account_name || []}
+                            onFocus={() => clearFieldError('account_name')}
+                            required
+                          />
+                          <Input
+                            label="Account Number"
+                            id="account_number"
+                            type="text"
+                            placeholder="Enter account number"
+                            value={bankForm.account_number}
+                            onChange={(e) => setBankForm({ ...bankForm, account_number: e.target.value })}
+                            errors={errors.account_number || []}
+                            onFocus={() => clearFieldError('account_number')}
+                            required
+                          />
+                          <Input
+                            label="SWIFT Code"
+                            id="swift_code"
+                            type="text"
+                            placeholder="Enter SWIFT code"
+                            value={bankForm.swift_code}
+                            onChange={(e) => setBankForm({ ...bankForm, swift_code: e.target.value })}
+                            errors={errors.swift_code || []}
+                            onFocus={() => clearFieldError('swift_code')}
+                          />
+                        </>
+                        
+                      )}
+                      { bankForm.payment_method === "usdt_wallet" && (
+                        <>
+                          <Input
+                            label="Wallet Address"
+                            id="wallet_address"
+                            type="text"
+                            placeholder="Enter wallet address"
+                            value={bankForm.wallet_address}
+                            onChange={(e) => setBankForm({ ...bankForm, wallet_address: e.target.value })}
+                            errors={errors.wallet_address || []}
+                            onFocus={() => clearFieldError('wallet_address')}
+                            required
+                          />
+                          <Input
+                            label="Network"
+                            id="network"
+                            type="text"
+                            placeholder="Enter network"
+                            value={bankForm.network}
+                            onChange={(e) => setBankForm({ ...bankForm, network: e.target.value })}
+                            errors={errors.network || []}
+                            onFocus={() => clearFieldError('network')}
+                            required
+                          />
+                          <Input
+                            label="QR Code Link"
+                            id="qr_code"
+                            type="text"
+                            placeholder="Enter QR code url"
+                            value={bankForm.qr_code}
+                            onChange={(e) => setBankForm({ ...bankForm, qr_code: e.target.value })}
+                            errors={errors.qr_code || []}
+                            onFocus={() => clearFieldError('qr_code')}
+                            required
+                          />
+                        </>
+                      )}
                     </div>
                   )}
 
@@ -545,7 +612,7 @@ function CompanyInfo() {
             maxWidth="460px"
           >
             <p className="text-sm mb-4 text-gray-500">
-              Are you sure you want to delete bank: <strong>{bankToDelete?.bank_name}</strong>?
+              Are you sure you want to delete payment: <strong>{paymentToDelete?.payment_name}</strong>?
             </p>
             <div className="flex justify-end gap-2">
               <button
@@ -559,8 +626,8 @@ function CompanyInfo() {
                 className={'bg-red-600 text-white hover:bg-red-700'}
                 onClick={async () => {
                   setDeleteModalOpen(false);
-                  if (bankToDelete) await handleDeleteBank(bankToDelete.id);
-                  setBankToDelete(null);
+                  if (paymentToDelete) await handleDeletePayment(paymentToDelete.id);
+                  setPaymentToDelete(null);
                 }}
                 >
                 Delete

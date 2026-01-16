@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
   return (
     <main className="min-h-dvh">
       <div className="flex w-full min-h-dvh justify-center">
-        <div className="max-w-[1200px] w-full border-r border-l border-gray-100 body-container">
+        <div className="max-w-300 w-full border-r border-l border-gray-100 body-container">
           <AuthProvider>
             <div className="sticky top-0 z-40">
               <Header />

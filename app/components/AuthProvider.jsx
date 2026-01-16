@@ -33,7 +33,7 @@ export default function AuthProvider({ children }) {
       setAuthData(
         data.profile,
         data.invoices,
-        data.banks,
+        data.payments,
         data.subscribers,
         data.quotes,
         data.receipts

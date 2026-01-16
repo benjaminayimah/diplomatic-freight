@@ -32,14 +32,14 @@ export const createOrUpdateBank = async (payload) => {
   const { id } = payload;
 
   const { data } = id
-    ? await api.put(`/bank/${payload.id}`, payload)
-    : await api.post('/bank', payload);
+    ? await api.put(`/payment/${payload.id}`, payload)
+    : await api.post('/payment', payload);
   return data;
 };
 
 
 export const deleteBankAccount = async (id) => {
-  const { data } = await api.delete(`/bank/${id}`);
+  const { data } = await api.delete(`/payment/${id}`);
   return data;
 }
 

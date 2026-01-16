@@ -10,13 +10,13 @@ import { useScrollerAnimation } from '../../../hooks/useScrollerAnimation';
 const testimonialsArray = [
   {
     id: 1,
-    name: 'John D.',
+    name: 'Jonathan A.',
     bgColor: 'bg-orange-300',
     testimony: 'Diplomatic Freight has transformed our supply chain, providing us with seamless freight solutions.'
   },
   {
     id: 2,
-    name: 'Stephanie T.',
+    name: 'Peterson T.',
     bgColor: 'bg-pink-300',
     testimony: 'Their air charter service is exceptional. The team is professional, and the service is always reliable.'
   },
@@ -40,7 +40,7 @@ const testimonialsArray = [
   },
   {
     id: 6,
-    name: 'Jane K.',
+    name: 'Chris K.',
     bgColor: 'bg-green-300',
     testimony: 'Diplomatic Freight understands urgency. Their responsiveness and reliability set them apart.'
   },

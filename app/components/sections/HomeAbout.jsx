@@ -71,7 +71,7 @@ function HomeAbout() {
         <div className='min-h-svh mb-15 md:mb-0'>
           <div className='flex flex-col max-w-2xl relative mb-10'>
             <p className='text-[2rem] md:text-[2.5rem] font-semibold leading-normal'>
-              Your Cargo. Our Commitment. <br />
+              Your Cargo, Our Commitment. <br />
               When Time Matters, <span className='text-[#0A47C9]'>We Deliver.</span>
             </p>
           </div>

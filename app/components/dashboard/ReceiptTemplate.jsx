@@ -109,7 +109,7 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
                       <th className="px-4 py-2 font-bold text-xs">Service Description</th>
                       <th className="px-4 py-2 font-bold text-xs">Quantity</th>
                       <th className="px-4 py-2 font-bold text-xs">Rate</th>
-                      <th className="px-4 py-2 font-bold text-xs">Add-on</th>
+                      <th className="px-4 py-2 font-bold text-xs">Extra</th>
                       <th className="px-4 py-2 font-bold text-right text-xs">Amount</th>
                     </tr>
                   </thead>

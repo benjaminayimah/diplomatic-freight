@@ -33,7 +33,7 @@ export default function InvoicePage() {
 
   const invoice = data?.invoice;
   const profile = data?.profile;
-  const banks = data?.banks;
+  const payments = data?.payments;
   const qrData = data?.qrData;
   
 
@@ -99,7 +99,7 @@ export default function InvoicePage() {
             profile={profile}
             invoice={invoice}
             printRef={printRef}
-            banks={banks}
+            payments={payments}
             qrData={qrData} 
           />
         </div>

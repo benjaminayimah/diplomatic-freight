@@ -44,7 +44,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   })
 
   const invoices = useAuthStore((state) => state.invoices);
-  const banks = useAuthStore((state) => state.banks);
+  const payments = useAuthStore((state) => state.payments);
   const profile = useAuthStore((state) => state.profile);
 
 
@@ -504,11 +504,11 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         maxWidth='1200px'
         dismissibleOutsideClick={false}
         >
-          <div className='max-w-[1100px] w-full'>
+          <div className='max-w-275 w-full'>
             <InvoiceTemplate
               invoice={form}
               profile={profile}
-              banks={banks}
+              payments={payments}
             />
           </div>
         </Modal>

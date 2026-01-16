@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const useAuthStore = create((set) => ({
   user: null,
   profile: null,
-  banks: [],
+  payments: [],
   invoices: [],
   subscribers: [],
   quotes: [],
@@ -14,8 +14,8 @@ export const useAuthStore = create((set) => ({
   setAuth: (user, token) =>
     set({ user, token, isAuth: true }),
 
-  setAuthData: (profile, invoices, banks, subscribers, quotes, receipts) =>
-    set({ profile, invoices, banks, subscribers, quotes, receipts }),
+  setAuthData: (profile, invoices, payments, subscribers, quotes, receipts) =>
+    set({ profile, invoices, payments, subscribers, quotes, receipts }),
 
   setUserData: (user) =>
     set((state) => ({ user: { ...state.user, ...user } })),
@@ -23,19 +23,19 @@ export const useAuthStore = create((set) => ({
   setCompanyData: (payload) =>
     set((state) => ({ profile: { ...state.profile, ...payload } })),
 
-  setBankData: (newBankObj) =>
+  setPaymentData: (newPaymentObj) =>
     set((state) => {
-      const exists = state.banks.some((bank) => bank.id === newBankObj.id);
-      const updatedBanks = exists
-        ? state.banks.map((bank) =>
-            bank.id === newBankObj.id ? { ...bank, ...newBankObj } : bank
+      const exists = state.payments.some((payment) => payment.id === newPaymentObj.id);
+      const updatedPayments = exists
+        ? state.payments.map((payment) =>
+            payment.id === newPaymentObj.id ? { ...payment, ...newPaymentObj } : payment
           )
-        : [...state.banks, newBankObj];
-      return { banks: updatedBanks };
+        : [...state.payments, newPaymentObj];
+      return { payments: updatedPayments };
     }),
 
-  setDeleteBankById: (id) =>
-    set((state) => ({ banks: state.banks.filter((b) => b.id !== id) })),
+  setDeletePaymentById: (id) =>
+    set((state) => ({ payments: state.payments.filter((p) => p.id !== id) })),
 
   setReceipts: (receiptArr) =>
       set(() => ({
@@ -89,7 +89,7 @@ export const useAuthStore = create((set) => ({
   setDeleteReceiptById: (id) => 
     set((state) => ({ receipts: state.receipts.filter((b) => b.id !== id) })),
 
-  setLogout: () => set({ user: null, profile: null, banks: [], invoices: [], subscribers: [], token: null, isAuth: false }),
+  setLogout: () => set({ user: null, profile: null, payments: [], invoices: [], subscribers: [], token: null, isAuth: false }),
 
   loadAuth: () => {
     if (typeof window !== "undefined") {
@@ -102,7 +102,7 @@ export const useAuthStore = create((set) => ({
 // Automatically sync localStorage whenever the store changes
 if (typeof window !== "undefined") {
   useAuthStore.subscribe((state) => {
-    const { user, profile, banks, invoices, subscribers, quotes, receipts, token, isAuth } = state;
-    localStorage.setItem("auth", JSON.stringify({ user, profile, banks, invoices, subscribers, quotes, receipts, token, isAuth }));
+    const { user, profile, payments, invoices, subscribers, quotes, receipts, token, isAuth } = state;
+    localStorage.setItem("auth", JSON.stringify({ user, profile, payments, invoices, subscribers, quotes, receipts, token, isAuth }));
   });
 }

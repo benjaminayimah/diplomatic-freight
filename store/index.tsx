@@ -32,8 +32,8 @@ export const useUIStore = create<UIStore>((set) => ({
 
   paymentMethods: [
     { label: "Bank Transfer", value: "bank_transfer" },
-    // { label: "USDT Wallet", value: "usdt_wallet" },
-    // { label: "Cash", value: "cash" },
+    { label: "USDT Wallet", value: "usdt_wallet", disabled: true },
+    { label: "Cash", value: "cash", disabled: true },
   ],
 
   toggleMenu: () => set((state) => ({ mobileMenu: !state.mobileMenu })),

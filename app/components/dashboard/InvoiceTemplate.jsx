@@ -3,7 +3,7 @@ import { QRCodeCanvas } from "qrcode.react";
 import { useFormatter } from '@/hooks/useFormatter'
 
 
-function InvoiceTemplate({ profile, invoice, printRef, banks, qrData }) {
+function InvoiceTemplate({ profile, invoice, printRef, payments, qrData }) {
 
   const VAT = invoice?.vat || 0;
   const vat = Number(VAT) / 100 || 0;
@@ -125,7 +125,7 @@ function InvoiceTemplate({ profile, invoice, printRef, banks, qrData }) {
                       <th className="px-4 py-2 font-bold text-xs">Item Description</th>
                       <th className="px-4 py-2 font-bold text-xs">Quantity</th>
                       <th className="px-4 py-2 font-bold text-xs">Rate</th>
-                      <th className="px-4 py-2 font-bold text-xs">Add-on</th>
+                      <th className="px-4 py-2 font-bold text-xs">Extra</th>
                       <th className="px-4 py-2 font-bold text-right text-xs">Amount</th>
                     </tr>
                   </thead>
@@ -189,23 +189,39 @@ function InvoiceTemplate({ profile, invoice, printRef, banks, qrData }) {
             </div>
             {/* <!-- Payment Information --> */}
             <div className="mt-12 pt-8 border-t border-gray-200 grid grid-cols-1 gap-6">
-            { banks && banks.length > 0 &&
+            { payments && payments.length > 0 &&
               <div>
                 <div className="mb-4">
-                  <h3 className="font-bold text-black mb-1">Payment Account{banks.length > 1 && 's' }</h3>
-                  <p className="text-black text-sm">Kindly make your payment to {banks.length > 1 && 'any of' } the following account{banks.length > 1 && 's' }:</p>
+                  <h3 className="font-bold text-black mb-1">Payment Account{payments.length > 1 && 's' }</h3>
+                  <p className="text-black text-sm">Kindly make your payment to {payments.length > 1 && 'any of' } the following account{payments.length > 1 && 's' }:</p>
                 </div>
                 <div className='grid grid-cols-2 gap-3'>
                   {
-                    banks?.map((bank) => (
-                    <li key={bank.id} className={`text-gray-600 text-sm space-y-1 ${banks.length > 1 ? 'list-decimal' : 'list-none'}`} >
-                      <p><span className="font-medium"><strong>Payment Method:</strong></span> <span className='uppercase'>{bank?.payment_method.replace("_", " ") || 'N/A'}</span></p>
-                      <p><span className="font-medium"><strong>Bank:</strong></span> {bank?.bank_name || 'N/A'}</p>
-                      <p><span className="font-medium"><strong>Bank Branch:</strong></span> {bank?.bank_branch || 'N/A'}</p>
-                      <p><span className="font-medium"><strong>Account Name:</strong></span> {bank?.account_name || 'N/A'}</p>
-                      <p><span className="font-medium"><strong>Account Number:</strong></span> {bank?.account_number || 'N/A'}</p>
-                      <p><span className="font-medium"><strong>Swift/BIC:</strong></span> {bank?.swift_code || 'N/A'}</p>
-                    </li>
+                    payments?.map((payment) => (
+                      payment.payment_method === 'bank_transfer' ? (
+                        <li key={payment.id} className={`text-gray-600 text-sm space-y-1 ${payments.length > 1 ? 'list-decimal' : 'list-none'}`} >
+                          <p><span className="font-medium"><strong>Payment Method:</strong></span> <span className='uppercase'>{payment?.payment_method.replace("_", " ") || 'N/A'}</span></p>
+                          <p><span className="font-medium"><strong>Bank:</strong></span> {payment?.bank_name || 'N/A'}</p>
+                          <p><span className="font-medium"><strong>Bank Branch:</strong></span> {payment?.bank_branch || 'N/A'}</p>
+                          <p><span className="font-medium"><strong>Account Name:</strong></span> {payment?.account_name || 'N/A'}</p>
+                          <p><span className="font-medium"><strong>Account Number:</strong></span> {payment?.account_number || 'N/A'}</p>
+                          <p><span className="font-medium"><strong>Swift/BIC:</strong></span> {payment?.swift_code || 'N/A'}</p>
+                        </li>
+
+                      ) : (
+                        <li key={payment.id} className={`text-gray-600 text-sm space-y-1 ${payments.length > 1 ? 'list-decimal' : 'list-none'}`} >
+                          <p><span className="font-medium"><strong>Payment Method:</strong></span> <span className='uppercase'>{payment?.payment_method.replace("_", " ") || 'N/A'}</span></p>
+                          <p><span className="font-medium"><strong>Wallet Address:</strong></span> {payment?.wallet_address || 'N/A'}</p>
+                          <p><span className="font-medium"><strong>Network:</strong></span> {payment?.network || 'N/A'}</p>
+                          <p className='mt-4'>
+                            <QRCodeCanvas
+                              value={payment?.qr_code || 'https://www.diplomaticfreight.com'}
+                              size={70}
+                            />
+                          </p>
+                        </li>
+                      )
+                    
                     ))
                   }
                 </div>

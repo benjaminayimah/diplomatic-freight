@@ -49,6 +49,7 @@ export const metadata: Metadata = {
     "transport services",
     "customs clearance",
     "Ghana logistics",
+    "Ghana freight forwarding",
     "import export services",
   ],
   robots: {
@@ -62,11 +63,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // icons: {
-  //   icon: "/favicon.ico",
-  //   apple: "/apple-touch-icon.png",
-  //   shortcut: "/favicon.ico",
-  // },
   icons: {
     icon: [
       { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },

@@ -122,6 +122,7 @@ function Footer() {
           </ul>
           <p className='text-[0.8rem] text-[#6D6D6D]'>{`Copyright © ${process.env.NEXT_PUBLIC_CURRENT_YEAR} Diplomatic Freight & Logistics Service Ltd. All rights reserved`}</p>
         </div>
+        <div className='text-[0.8rem]'><span><span className='text-[#6D6D6D]'>Designed & Developed by </span> <a href="https://benjaminayimah.vercel.app" target='_blank' className='hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Benjamin Ayimah</a></span></div>
       </motion.div>
     </footer>
   )

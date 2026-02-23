@@ -21,8 +21,6 @@ function AllReceipt() {
 
   const { data, loading, error, refetch } = useFetchData("/receipt");
 
-
-
   
   useEffect(() => {
     if (!data?.receipts) return;

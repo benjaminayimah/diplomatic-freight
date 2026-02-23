@@ -86,7 +86,7 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
             </div> */}
             {/* <!-- Bill To Section border-t-2 border-[#0A47C9]--> */}
             <div className="mb-4">
-              <h2 className=" text-black text-base font-bold leading-tight tracking-[-0.015em] pb-3">Billed To</h2>
+              <h2 className=" text-black text-base font-bold leading-tight tracking-[-0.015em] pb-3">Billed To:</h2>
               <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <p className=" text-neutral-800 text-base font-normal leading-normal">
                   <span className="font-bold">{receipt?.name || 'Name: N/A'}</span>

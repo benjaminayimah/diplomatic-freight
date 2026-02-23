@@ -24,7 +24,7 @@ function InvoiceTemplate({ profile, invoice, printRef, payments, qrData }) {
 
   return (
     <div className='px-4 py-4 md:py-12 bg-gray-50 rounded-xl border border-gray-100 mb-40 flex justify-center'>
-      <div className='shadow-sm rounded-xl overflow-hidden max-w-[900px] w-full'>
+      <div className='shadow-sm rounded-xl overflow-hidden max-w-225 w-full'>
         <article ref={printRef} className='bg-white relative'>
           <div id='watermark' className='absolute z-0 top-120 left-[50%] -translate-x-1/2'>
             <svg xmlns="http://www.w3.org/2000/svg" width="263.043" height="220.635" viewBox="0 0 263.043 220.635">
@@ -94,9 +94,9 @@ function InvoiceTemplate({ profile, invoice, printRef, payments, qrData }) {
             </div> */}
             {/* <!-- Bill To Section border-t-2 border-[#0A47C9]--> */}
             <div className="mb-8">
-              <h2 className=" text-black text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Bill To</h2>
+              <h2 className=" text-black text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Bill To:</h2>
               <div className="p-4 bg-white border border-gray-200  rounded-lg flex justify-between items-center">
-                <p className=" text-neutral-800 text-base font-normal leading-normal">
+                <p className="text-neutral-800 text-base font-normal leading-normal">
                   <span className="font-bold">{invoice?.name || 'Name: N/A'}</span>
                   <br/>
                   {invoice?.address || 'Address: N/A'}

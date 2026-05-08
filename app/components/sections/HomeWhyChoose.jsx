@@ -13,7 +13,7 @@ const why_choose_card = [
 
 function HomeWhyChoose() {
   return (
-    <section id='why_choose_us' className='bg-[#ecf2ff] py-20 md:py-30'>
+    <section id='why_choose_us' className='bg-[#ecf2ff] pt-20 md:pt-30'>
       <motion.div
         initial={{ opacity: 0, y: '50px'}}
         whileInView={{ opacity: 1, y: '0px', transition: {duration: 1}}}

@@ -59,7 +59,7 @@ function HomeServices() {
   }
 
   return (
-    <section id='services' className='bg-[#ecf2ff] pb-20 md:pb-30 relative'>
+    <section id='services' className='bg-[#ecf2ff] pb-20 md:pb-30 pt-20 md:pt-30 relative'>
       <motion.div
         initial={{ opacity: 0, y: '50px'}}
         whileInView={{ opacity: 1, y: '0px', transition: {duration: 1}}}

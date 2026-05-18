@@ -6,6 +6,8 @@ import Input from '../Input';
 
 function InvoiceItem({ data, index, onChange, onRemove}) {
 
+  const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
+
   return (
     <div className='flex flex-col md:flex-row gap-3 pb-4 border-b border-gray-100 invoice-item-row'>
       <Input
@@ -31,7 +33,7 @@ function InvoiceItem({ data, index, onChange, onRemove}) {
         required
       />
       <Input
-        label="Rate(USD)"
+        label= {`Rate(${CURRENCY})`}
         id="rate"
         type="number"
         placeholder="0.00"
@@ -43,7 +45,7 @@ function InvoiceItem({ data, index, onChange, onRemove}) {
         required
       />
       <Input
-        label="Extra charges(USD)"
+        label= {`Extra charges(${CURRENCY})`}
         id="extra_charges"
         type="number"
         placeholder="0.00"
@@ -54,7 +56,7 @@ function InvoiceItem({ data, index, onChange, onRemove}) {
         errors={[]}
       />
       <Input
-        label="Amount(USD)"
+        label= {`Amount(${CURRENCY})`}
         id="amount"
         type="number"
         placeholder="0.00"

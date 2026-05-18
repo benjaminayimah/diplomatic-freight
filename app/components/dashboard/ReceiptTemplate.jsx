@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFormatter } from '@/hooks/useFormatter'
 
+const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
 
 function ReceiptTemplate({ profile, receipt, printRef }) {
 
@@ -13,9 +14,9 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
     const total = subtotal + vat;
 
     return {
-      subtotalFormatted: subtotal?.toLocaleString("en-US", { style: "currency", currency: "USD" }),
-      vatFormatted: vat.toLocaleString("en-US", { style: "currency", currency: "USD" }),
-      totalFormatted: total.toLocaleString("en-US", { style: "currency", currency: "USD" }),
+      subtotalFormatted: subtotal?.toLocaleString("en-US", { style: "currency", currency: CURRENCY }),
+      vatFormatted: vat.toLocaleString("en-US", { style: "currency", currency: CURRENCY }),
+      totalFormatted: total.toLocaleString("en-US", { style: "currency", currency: CURRENCY }),
     };
   };
 
@@ -121,10 +122,10 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
                         <tr key={i} className="border-b border-gray-200">
                           <td className="p-4">{item?.description || 'N/A'}</td>
                           <td className="p-4">{item?.quantity}</td>
-                          <td className="p-4">{Number(item?.rate || 0).toLocaleString("en-US", { style: "currency", currency: "USD" })}</td>
-                          <td className="p-4">{Number(item?.extra_charges || 0).toLocaleString("en-US",{ style: "currency", currency: "USD"})}</td>
+                          <td className="p-4">{Number(item?.rate || 0).toLocaleString("en-US", { style: "currency", currency: CURRENCY })}</td>
+                          <td className="p-4">{Number(item?.extra_charges || 0).toLocaleString("en-US",{ style: "currency", currency: CURRENCY})}</td>
                           <td className="p-4 text-right">
-                            {Number(item?.amount || 0).toLocaleString("en-US",{ style: "currency", currency: "USD"})}
+                            {Number(item?.amount || 0).toLocaleString("en-US",{ style: "currency", currency: CURRENCY})}
                           </td>
                         </tr>
                       ))

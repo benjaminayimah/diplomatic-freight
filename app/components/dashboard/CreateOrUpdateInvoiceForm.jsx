@@ -21,6 +21,8 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   const router = useRouter(); 
 
   const VAT = process.env.NEXT_PUBLIC_VAT
+  const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
+
   const [vatOld, setVatOld] = useState(null)
 
   const [appliedVat, setAppliedVat] = useState(true)
@@ -191,7 +193,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     const vat = subtotal * vatRate;
 
     const total = subtotal + vat;
-    return total?.toLocaleString("en-US",{ style: "currency", currency: "USD"});
+    return total?.toLocaleString("en-US",{ style: "currency", currency: CURRENCY});
   };
 
 

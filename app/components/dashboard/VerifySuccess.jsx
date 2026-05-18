@@ -6,13 +6,15 @@ import { useFormatter } from '@/hooks/useFormatter'
 
 function VerifySuccess({ invoice }) {
 
+  const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
+
   const getTotalAmount = () => {
     const vatRate = Number(invoice?.vat)/100 || 0
     const subtotal = invoice?.items?.reduce((sum, item) => sum + (Number(item.amount) || 0), 0);
     const vat = subtotal * vatRate;
 
     const total = subtotal + vat;
-    return total?.toLocaleString("en-US",{ style: "currency", currency: "USD"});
+    return total?.toLocaleString("en-US",{ style: "currency", currency: CURRENCY});
   };
 
   const { dateFormat } = useFormatter()

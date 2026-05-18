@@ -16,13 +16,13 @@ function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)
   useEffect(() => {
     const accepted = localStorage.getItem('cookieAccepted')
-    if (!accepted) {
+    if (accepted !== 'true') {
       setShowBanner(true)
     }
   }, [])
 
   const dismissCookie = () => {
-    localStorage.setItem('cookieAccepted', true)
+    localStorage.setItem('cookieAccepted', 'true')
     setShowBanner(false)
   }
 

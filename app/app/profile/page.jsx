@@ -121,7 +121,7 @@ function Profile() {
           <span className="text-sm text-gray-500">Manage your basic profile</span>
         </div>
 
-        <div className="body-content">
+        <div className="body-content mb-96">
           <div className="px-6 py-2 border border-gray-200 rounded-2xl mb-4">
             <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-4 border-b border-gray-100">
               <span className="font-semibold">Full name</span>

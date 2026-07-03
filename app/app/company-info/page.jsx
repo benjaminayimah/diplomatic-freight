@@ -252,7 +252,7 @@ function CompanyInfo() {
           <h1 className="text-xl"><span className="font-semibold">Company Information</span></h1>
           <span className="text-sm text-gray-500">View and manage your company's information</span>
         </div>
-        <div className="body-content">
+        <div className="body-content mb-96">
           <div className="flex flex-col gap-6">
             <article className="p-4 bg-gray-50 rounded-xl border border-gray-100">
               <h2 className="mb-3 text-xl">Basic Details</h2>

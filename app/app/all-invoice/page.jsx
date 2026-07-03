@@ -90,7 +90,7 @@ function AllInvoice() {
           <h1 className="text-xl"><span className="font-semibold">All Invoices</span></h1>
           <span className="text-sm text-gray-500">View and manage all invoices</span>
         </div>
-        <div className="body-content">
+        <div className="body-content mb-96">
           <div>
             <ul className='flex flex-col gap-2'>
               {

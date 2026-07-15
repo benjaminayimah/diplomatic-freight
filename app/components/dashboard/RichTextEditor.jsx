@@ -8,6 +8,7 @@ import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
   ListBulletIcon,
+  NumberedListIcon
 } from "@heroicons/react/24/outline";
 
 export default function RichTextEditor({

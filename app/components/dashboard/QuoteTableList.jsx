@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
+import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 
 
 function QuoteTableList({ quote, onDelete }) {
@@ -18,14 +19,12 @@ function QuoteTableList({ quote, onDelete }) {
 // href={`/app/quote/${quote?.id}`}
   return (
     <li className='group'>
-      <div className='p-5 border border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full rounded-[10px]'
+      <div className='border border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full rounded-xl'
         >
-          <div className='flex justify-between'>
-            <Link href={`/app/quote/${quote?.id}`} className='flex gap-3 cursor-pointer'>
-              <div className='h-11 w-11 rounded-3xl bg-amber-50 border border-amber-100 grid place-items-center'>
-                <svg height="20" viewBox="0 0 20 22">
-                  <path className='fill-amber-600' d="M-3673,130a1,1,0,0,1-1-1,1,1,0,0,1,1-1h14a1,1,0,0,0,.708-.292A.992.992,0,0,0-3658,127V116h-5a1,1,0,0,1-1-1v-5h-7a.99.99,0,0,0-.707.293A.991.991,0,0,0-3672,111v4a1,1,0,0,1-1,1,1,1,0,0,1-1-1v-4a2.976,2.976,0,0,1,.879-2.121A2.979,2.979,0,0,1-3671,108h8.5a1,1,0,0,1,.708.293l5.5,5.5a1,1,0,0,1,.292.708V127a2.983,2.983,0,0,1-.878,2.122A2.982,2.982,0,0,1-3659,130Zm11-16h3.086l-3.086-3.086Zm-6.707,11.707a1,1,0,0,1,0-1.414l1.294-1.293H-3675a1,1,0,0,1-1-1,1,1,0,0,1,1-1h7.586l-1.293-1.293a1,1,0,0,1,0-1.414,1,1,0,0,1,1.414,0l3,3c.022.022.043.045.063.069l0,0,.011.014,0,.006.01.012.006.008.008.011.007.01.006.009.009.013,0,.005.011.017v0A1,1,0,0,1-3664,122a1,1,0,0,1-.293.707h0l-3,3A1,1,0,0,1-3668,126,1,1,0,0,1-3668.707,125.707Z" transform="translate(3676 -108)"/>
-                </svg>
+          <div className='flex'>
+            <Link href={`/app/quote/${quote?.id}`} className='p-4 flex flex-1 gap-3 cursor-pointer'>
+              <div className='h-11 w-11 rounded-3xl bg-amber-50 border text-amber-600 border-amber-100 grid place-items-center'>
+                <DocumentDuplicateIcon strokeWidth={1.5} className="h-6" />
               </div>
               <div className='flex flex-col'>
                 <div className='group-hover:underline'>
@@ -34,7 +33,7 @@ function QuoteTableList({ quote, onDelete }) {
                 <div className='text-sm text-gray-500'><span className='font-medium'>Date requested: </span><span>{dateFormat(quote?.createdAt)}</span></div>
               </div>
             </Link>
-            <div>
+            <div className='grid place-items-center pr-3'>
               <DropdownMenu trigger={Menu}>
                   <Link
                     href={`/app/quote/${quote?.id}`}

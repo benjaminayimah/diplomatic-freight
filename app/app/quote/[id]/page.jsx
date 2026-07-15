@@ -38,7 +38,7 @@ function page() {
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>
-        <div className="mb-5">
+        <div className="mb-5 w-full">
           <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-5'>
             <div className='flex items-center gap-3'>
               <BackButton onClick={goBack} />
@@ -62,7 +62,7 @@ function page() {
             </div>
           </div>          
         </div>
-        <div className="body-content">
+        <div className="body-content w-full">
           <div className="flex flex-col gap-6">
             <article className="p-4 bg-gray-50 rounded-xl border border-gray-100">
               <h2 className="mb-3 text-xl">Quote Details</h2>

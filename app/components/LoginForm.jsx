@@ -32,7 +32,7 @@ function LoginForm() {
       setAuth(
         response.user,
         response.token);
-      router.push("/app");
+        router.push("/app");
     } else if (response?.errors) {
       const fieldErrors = {};
 
@@ -51,7 +51,7 @@ function LoginForm() {
 
   return (
     <section className='bg-gray-200 flex justify-center items-center min-h-screen'>
-      <div className="max-w-[550px] pb-20 w-full px-6">
+      <div className="max-w-137.5 pb-20 w-full px-6">
         <div className='bg-white min-h-100 w-full p-10 rounded-2xl my-[5vw]'>
           <div className='mb-10'>
             <h1 className="text-2xl font-bold mb-2">Log in</h1>

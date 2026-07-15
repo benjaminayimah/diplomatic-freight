@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 import Input from '../Input';
 
 
-function InvoiceItem({ data, index, onChange, onRemove}) {
+function InvoiceItem({ data, index, onChange, onRemove, currency }) {
 
-  const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
+  const CURRENCY = currency || 'USD';
 
   return (
     <div className='flex flex-col md:flex-row gap-3 pb-4 border-b border-gray-100 invoice-item-row'>

@@ -65,9 +65,9 @@ const Modal = ({
       {isOpen && (
         <motion.div
           key="overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          // initial={{ opacity: 0 }}
+          // animate={{ opacity: 1 }}
+          // exit={{ opacity: 0 }}
           className={`${overlayClasses} fixed inset-0 bg-black/50 flex items-center justify-center z-50`}
         >
           {/* Modal Panel */}
@@ -77,8 +77,8 @@ const Modal = ({
             style={{ maxWidth }}
             initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 80, opacity: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            exit={{ y: 200, opacity: 0 }}
+            transition={{ duration: 0.3}}
             className="bg-white rounded-2xl w-[90%] p-6 shadow-lg overflow-hidden"
           >
             {/* Header */}

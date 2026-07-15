@@ -23,7 +23,8 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
   const router = useRouter(); 
 
   const VAT = process.env.NEXT_PUBLIC_VAT
-  const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
+
+  const currencies = useUIStore((state) => state.currencies);
 
   const [vat, setVat] = useState(false)
   
@@ -39,6 +40,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
     address: '',
     payment_method: paymentMethods[0].value,
     paid_on: new Date().toISOString().split('T')[0],
+    currency: currencies[0]?.value || 'USD',
     items: [],
     vat: '',
     id: null
@@ -77,6 +79,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
         address: invoice.address,
         payment_method: paymentMethods[0].value,
         paid_on: new Date().toISOString().split('T')[0],
+        currency: invoice.currency || 'USD',
         items: invoice.items,
         vat: invoice.vat,
         id: id
@@ -146,7 +149,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
     const vat = subtotal * vatRate;
 
     const total = subtotal + vat;
-    return total?.toLocaleString("en-US",{ style: "currency", currency: CURRENCY});
+    return total?.toLocaleString("en-US",{ style: "currency", currency: form.currency || 'USD'});
   };
 
 
@@ -236,7 +239,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
 
   return (
     <section className='app-body-wrapper'>
-      <div className="mb-5">
+      <div className="mb-5 w-full">
         <div className='flex items-center gap-3'>
           <div className="cursor-pointer">
              <BackButton onClick={handleBackClick} />
@@ -247,13 +250,13 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
           </div>
         </div>
       </div>
-      <div className="body-content relative">
+      <div className="body-content relative w-full">
         { error && <ErrorCard error={error} /> }
 
         <div className='p-4 bg-gray-50 rounded-xl border border-gray-100 mb-40'>
           <form onSubmit={handleFormSubmit} className='flex flex-col gap-5'>
             <fieldset className="border border-gray-200 rounded-xl p-5 bg-white">
-              <legend className="px-2 text-sm font-semibold">Client information</legend>
+              <legend className="px-2 text-sm font-semibold">Client Information</legend>
               <div className="flex flex-col gap-4">
                 <Input
                   label="Name"
@@ -301,7 +304,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
               </div>
             </fieldset>
             <fieldset className="border border-gray-200 rounded-xl p-5 bg-white">
-              <legend className="px-2 text-sm font-semibold">Payment detail</legend>
+              <legend className="px-2 text-sm font-semibold">Payment Detail</legend>
               <div className="flex flex-col gap-4">
                 <div className='flex flex-col md:flex-row gap-4'>
                   <Select
@@ -324,6 +327,19 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                     onFocus={() => clearFieldError('paid_on')}
                   />
                 </div>
+                <div className='flex flex-col md:flex-row gap-4'>
+                  <Select
+                    label="Currency"
+                    id="currency"
+                    required
+                    placeholder="Select currency"
+                    options={currencies}
+                    value={form.currency}
+                    onChange={(e) => setForm({ ...form, currency: e.target.value })}
+                    errors={errors.currency}
+                    onFocus={() => clearFieldError('currency')}
+                  />
+                </div>
               </div>
             </fieldset>
             <fieldset className="border border-gray-200 rounded-xl p-5 bg-white">
@@ -335,6 +351,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                       key={item.id}
                       data={item}
                       index={index}
+                      currency={form.currency}
                       onChange={updateItem}
                       onRemove={() => removeItem(item.id)}
                     />

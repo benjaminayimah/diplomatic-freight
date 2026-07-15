@@ -35,6 +35,6 @@
     "app/components/FaqList.jsx",
     "app/components/TestimonialCard.jsx",
     "app/app/invoice/[id]/page.jsx",
-    "app/example/page.jsx"],
+    "app/example/page.jsx", "app/app/settings/layout.jsx"],
   "exclude": ["node_modules"]
 }

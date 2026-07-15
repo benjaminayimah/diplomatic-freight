@@ -1,9 +1,10 @@
 import React from 'react'
 import { useFormatter } from '@/hooks/useFormatter'
 
-const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
 
 function ReceiptTemplate({ profile, receipt, printRef }) {
+
+  const CURRENCY = receipt?.currency || 'USD';
 
   const VAT = receipt?.vat || 0;
   const vat = Number(VAT) / 100 || 0;
@@ -23,7 +24,7 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
   const { dateFormat } = useFormatter()
 
   return (
-    <div className='px-4 py-4 md:py-12 bg-gray-50 rounded-xl border border-gray-100 mb-40 flex justify-center'>
+    <div className='px-4 py-4 md:py-12 bg-gray-50 rounded-xl border border-gray-100 flex justify-center'>
       <div className='shadow-sm rounded-xl overflow-hidden max-w-[900px] w-full'>
         <article ref={printRef} className='bg-white relative'>
           <div id='watermark' className='absolute z-0 top-120 left-[50%] -translate-x-1/2'>
@@ -33,7 +34,7 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
           </div>
           <main className="p-6 sm:p-10 z-10 relative">
             {/* <!-- Receipt Header --> */}
-            <div className="flex flex-wrap justify-between gap-6 pb-5">
+            <div className="invoice-section flex flex-wrap justify-between gap-6 pb-5">
               <div className="flex flex-col">
                 <p className=" text-black text-4xl font-black leading-tight tracking-[-0.033em]">
                   <svg width="201.175" height="45" viewBox="0 0 201.175 45">
@@ -83,25 +84,21 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
                 </div>
               </div>
             </div>
-            {/* <div className='border border-gray-100 p-5 rounded-xl'>
-            </div> */}
+
             {/* <!-- Bill To Section border-t-2 border-[#0A47C9]--> */}
-            <div className="mb-4">
+            <div className="invoice-section">
               <h2 className=" text-black text-base font-bold leading-tight tracking-[-0.015em] pb-3">Billed To:</h2>
-              <div className="p-4 bg-white border border-gray-200 rounded-lg">
-                <p className=" text-neutral-800 text-base font-normal leading-normal">
-                  <span className="font-bold">{receipt?.name || 'Name: N/A'}</span>
-                  <br/>
-                  {receipt?.address || 'Address: N/A'}
-                  <br/>
-                  {receipt?.email || 'Email: N/A'}
-                  <br/>
-                  {receipt?.phone || 'Phone: N/A'}
-                </p>
+              <div className="p-4 bg-white border border-gray-200  rounded-lg flex justify-between items-center">
+                <div className="text-neutral-800 text-base font-normal leading-normal grid">
+                  <div className="inline-flex gap-1.5 text-black"><span className="font-bold">{receipt?.name || 'N/A'}</span></div>
+                  { receipt?.address && <div className="inline-flex gap-1.5"><span className="font-bold flex text-black">A: </span><span>{receipt.address}</span></div> }
+                  { receipt?.email && <div className="inline-flex gap-1.5"><span className="font-bold flex text-black">E: </span><span>{receipt.email}</span></div> }
+                  { receipt?.phone && <div className="inline-flex gap-1.5"><span className="font-bold flex text-black">P: </span><span>{receipt.phone}</span></div> }
+                </div>
               </div>
             </div>
             {/* <!-- Itemized Services Table --> */}
-            <div>
+            <div className="pt-8">
               <h2 className=" text-black text-base font-bold leading-tight tracking-[-0.015em] py-3">Service Breakdown</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
@@ -141,19 +138,22 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
               </div>
             </div>
             {/* <!-- Totals & Summary --> */}
-            <div className="flex md:justify-end mt-8">
-              <div className="w-full md:max-w-sm space-y-4 text-neutral-800">
+            <div className="invoice-section flex pt-10 justify-end">
+              <div className="w-full sm:max-w-sm space-y-4 text-neutral-800">
                 <div className="flex justify-between">
                   <span className='font-semibold'>Subtotal</span>
                   <span className='font-medium'>
                     {getReceiptTotals(receipt?.items)?.subtotalFormatted}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  {/* {process.env.NEXT_PUBLIC_API_URL} */}
-                  <span className='font-semibold'>VAT ({VAT}%)</span>
-                  <span className='font-medium'>{getReceiptTotals(receipt?.items).vatFormatted}</span>
-                </div>
+                {
+                  VAT > 0 && (
+                    <div className="flex justify-between">
+                      <span className='font-semibold'>VAT ({VAT}%)</span>
+                      <span className='font-medium'>{getReceiptTotals(receipt?.items).vatFormatted}</span>
+                    </div>
+                  )
+                }
                 <div className="flex justify-between border-t pt-4 border-gray-200  text-black text-base font-bold">
                   <span>Total Amount</span>
                   <span>
@@ -165,7 +165,7 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
             {/* <!-- Payment Information --> */}
           </main>
           {/* <!-- Footer --> */}
-          <footer className="grid grid-cols-1 text-center p-6 sm:p-10 mt-auto border-t border-gray-200 text-gray-500 text-xs">
+          <footer className="invoice-section grid grid-cols-1 text-center p-6 sm:p-10 mt-auto border-t border-gray-200 text-gray-500 text-xs">
             <p className="font-bold text-blue-500 text-base mb-2">Thank you for your business!</p>
             <p className='my-6 text-black'>For any questions, please contact us using any of the details below.</p>
             <p className='flex flex-wrap gap-2 items-center justify-center'>

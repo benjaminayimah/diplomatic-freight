@@ -19,7 +19,7 @@ export default function Textarea({
       <textarea
         id={id}
         rows={rows}
-        className={`w-full px-3 py-2 border hover:border-gray-400 rounded-md outline-none transition resize-none
+        className={`w-full px-3 py-2 border hover:border-gray-400 rounded-md outline-none transition resize-none focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!
           ${errors.length > 0 ? "border-red-500!" : "border-gray-300"} 
           ${className}`}
         {...props}
@@ -27,7 +27,7 @@ export default function Textarea({
 
       {errors.length > 0 &&
         errors.map((error, index) => (
-          <p key={index} className="text-xs text-red-500">
+          <p key={index} className="text-sm text-red-500">
             {error}
           </p>
         ))}

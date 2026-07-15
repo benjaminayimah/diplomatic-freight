@@ -6,7 +6,7 @@ import { useFormatter } from '@/hooks/useFormatter'
 
 function VerifySuccess({ invoice }) {
 
-  const CURRENCY = process.env.NEXT_PUBLIC_CURRENCY || 'USD';
+  const CURRENCY = invoice?.currency || 'USD';
 
   const getTotalAmount = () => {
     const vatRate = Number(invoice?.vat)/100 || 0

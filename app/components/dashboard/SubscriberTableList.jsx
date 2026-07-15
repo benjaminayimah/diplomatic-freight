@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
+import { UserIcon } from "@heroicons/react/24/outline";
 
 
 function SubscriberTableList({ subscriber, onDelete }) {
@@ -17,14 +18,12 @@ function SubscriberTableList({ subscriber, onDelete }) {
 
   return (
     <li className='group'>
-      <div className='p-5 border border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full rounded-[10px]'
+      <div className='p-4 border border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full rounded-xl'
         >
           <div className='flex justify-between'>
             <div className='flex gap-3'>
-              <div className='h-11 w-11 rounded-3xl bg-teal-50 border border-teal-100 grid place-items-center'>
-                <svg height="20" viewBox="0 0 16 20.001">
-                  <path className='fill-teal-600' d="M-3548,121v-2a2.984,2.984,0,0,0-.878-2.121A2.984,2.984,0,0,0-3551,116h-6a2.981,2.981,0,0,0-2.121.878A2.979,2.979,0,0,0-3560,119v2a1,1,0,0,1-1,1,1,1,0,0,1-1-1v-2a4.965,4.965,0,0,1,1.465-3.535A4.967,4.967,0,0,1-3557,114h6a4.967,4.967,0,0,1,3.535,1.464A4.967,4.967,0,0,1-3546,119v2a1,1,0,0,1-1,1A1,1,0,0,1-3548,121Zm-11-14a5.006,5.006,0,0,1,5-5,5.006,5.006,0,0,1,5,5,5.005,5.005,0,0,1-5,5A5.005,5.005,0,0,1-3559,107Zm2,0a3,3,0,0,0,3,3,3,3,0,0,0,3-3,3,3,0,0,0-3-3A3,3,0,0,0-3557,107Z" transform="translate(3562 -102)"/>
-                </svg>
+              <div className='h-11 w-11 text-teal-600 rounded-3xl bg-teal-50 border border-teal-100 grid place-items-center'>
+                <UserIcon strokeWidth={1.5} className="h-6" />
               </div>
               <div className='flex flex-col'>
                 <div className=''>

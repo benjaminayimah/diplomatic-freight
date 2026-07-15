@@ -25,7 +25,7 @@ export default function DropdownMenu({ trigger, children }) {
 
       {open && (
         <div
-          className="absolute right-0 mt-2 min-w-40 rounded-lg border border-gray-300 bg-white shadow-lg py-2
+          className="absolute right-0 mt-0 min-w-40 rounded-2xl border border-gray-200 bg-white shadow-lg py-2
           transition-all duration-200 z-50"
           onClick={() => setOpen(false)} 
         >

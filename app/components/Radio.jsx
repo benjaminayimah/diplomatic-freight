@@ -11,8 +11,8 @@ export default function Radio({
 }) {
   return (
     <label
-      className={`flex items-center gap-2 cursor-pointer select-none
-        ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+      className={`flex items-center gap-2 font-medium select-none
+        ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer "}
         ${className}`}
     >
       <input

@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import ProtectedRoute from "@/app/components/ProtectedRoute";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import useFetchData from "@/hooks/useFetchData";
 import SubmitButton from "@/app/components/SubmitButton"
 import InvoiceTemplate from '@/app/components/dashboard/InvoiceTemplate';
@@ -12,6 +12,8 @@ import BackButton from '@/app/components/dashboard/BackButton'
 import { useReactToPrint } from "react-to-print";
 import Loader from '@/app/components/Loader';
 import { useRouter } from 'next/navigation';
+import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
+import PersonalNote from "@/app/components/dashboard/PersonalNote"
 
 export default function InvoicePage() {
 
@@ -22,18 +24,18 @@ export default function InvoicePage() {
   const { id } = params;
   const printRef = useRef(null);
 
+  const [showNote, setShowNote ] = useState(false)
+
 
   const shouldFetch = Boolean(isAuth && id);
   const { data: dataObj, loading, error } = useFetchData(
     shouldFetch ? `/invoice/${id}` : null
   );
 
-
   const data = dataObj?.data;
 
   const invoice = data?.invoice;
   const profile = data?.profile;
-  const payments = data?.payments;
   const qrData = data?.qrData;
   
 
@@ -54,8 +56,8 @@ export default function InvoicePage() {
 
   return (
     <ProtectedRoute>
-      <section className='app-body-wrapper'>
-        <div className="mb-5">
+      <section className='app-body-wrapper pt-0!'>
+        <div className="w-full pt-2.5 pb-2.5 sticky top-29.75 z-100 bg-white/40 backdrop-blur-[6.5px]">
           <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-5'>
             <div className='flex items-center gap-3'>
               <BackButton onClick={goBack} />
@@ -82,10 +84,17 @@ export default function InvoicePage() {
               </div>
             </div>
             <div className='flex gap-2'>
-              <Link href={`/app/create-invoice?mode=edit&id=${invoice?.id}`} className='border border-gray-200 text-black h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-[86px] bg-gray-50 hover:bg-gray-100 transition-colors'>
+              <button
+                onClick={() => setShowNote(prev => !prev)}
+                className={`grid place-items-center w-10 h-10 p-1 rounded-3xl transition duration-300 ${showNote ? 'bg-black text-white hover:bg-gray-900' : 'border border-gray-200 hover:bg-gray-100 hover:text-black' }`}
+                >
+                  <ChatBubbleLeftIcon strokeWidth={2} className="h-4.5" />
+                </button>
+                
+              <Link href={`/app/create-invoice?mode=edit&id=${invoice?.id}`} className='border border-gray-200 text-black h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-21.5 bg-gray-50 hover:bg-gray-100 transition-colors'>
                 Edit invoice
               </Link>
-              <Link href={`/app/create-receipt?mode=generate&id=${invoice?.id}`} className='border border-gray-200 text-black h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-[86px] bg-gray-50 hover:bg-gray-100 transition-colors'>
+              <Link href={`/app/create-receipt?mode=generate&id=${invoice?.id}`} className='border border-gray-200 text-black h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-21.5 bg-gray-50 hover:bg-gray-100 transition-colors'>
                 Generate Receipt
               </Link>
               <SubmitButton onClick={() => handlePrint()} className={'border border-gray-200 text-black bg-gray-50 hover:bg-gray-100 transition-colors'}>
@@ -94,14 +103,22 @@ export default function InvoicePage() {
             </div>
           </div>          
         </div>
-        <div className="body-content relative">
+        <div className="body-content relative w-full flex flex-col-reverse md:flex-row gap-5 md:gap-2">
           <InvoiceTemplate
             profile={profile}
             invoice={invoice}
             printRef={printRef}
-            payments={payments}
             qrData={qrData} 
           />
+          {
+            showNote && (
+              <PersonalNote
+                note={invoice?.personal_note}
+                onClick={() => setShowNote(prev => !prev)}
+                isFloating={false}
+              />
+            )
+          }
         </div>
       </section>
     </ProtectedRoute>

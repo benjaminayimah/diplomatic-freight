@@ -1,4 +1,8 @@
+
 import { create } from "zustand";
+// import { jwtDecode } from "jwt-decode";
+import { startTokenExpiryTimer, clearTokenExpiryTimer } from "@/utils/tokenExpiry";
+import { useUIStore } from "@/store";
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -10,9 +14,20 @@ export const useAuthStore = create((set) => ({
   receipts: [],
   token: null,
   isAuth: false,
+  // expiresAt: null,
 
-  setAuth: (user, token) =>
-    set({ user, token, isAuth: true }),
+  setAuth: (user, token) => {
+    startTokenExpiryTimer(token, () => {
+      useUIStore.getState().setTokenExpired();
+    });
+
+    set({
+      user,
+      token,
+      isAuth: true,
+      // expiresAt: jwtDecode(token).exp * 1000
+    });
+  },
 
   setAuthData: (profile, invoices, payments, subscribers, quotes, receipts) =>
     set({ profile, invoices, payments, subscribers, quotes, receipts }),
@@ -89,12 +104,38 @@ export const useAuthStore = create((set) => ({
   setDeleteReceiptById: (id) => 
     set((state) => ({ receipts: state.receipts.filter((b) => b.id !== id) })),
 
-  setLogout: () => set({ user: null, profile: null, payments: [], invoices: [], subscribers: [], token: null, isAuth: false }),
+  setLogout: () => {
+    clearTokenExpiryTimer();
 
+    set({
+      user: null,
+      profile: null,
+      payments: [],
+      invoices: [],
+      subscribers: [],
+      quotes: [],
+      receipts: [],
+      token: null,
+      isAuth: false,
+    });
+  },
+
+  
   loadAuth: () => {
     if (typeof window !== "undefined") {
       const data = localStorage.getItem("auth");
-      if (data) set(JSON.parse(data));
+
+      if (data) {
+        const auth = JSON.parse(data);
+
+        set(auth);
+
+        if (auth.token) {
+          startTokenExpiryTimer(auth.token, () => {
+            useUIStore.getState().setTokenExpired();
+          });
+        }
+      }
     }
   },
 }));

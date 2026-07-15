@@ -51,8 +51,8 @@ export default function ReceiptPage() {
 
   return (
     <ProtectedRoute>
-      <section className='app-body-wrapper'>
-        <div className="mb-5">
+      <section className='app-body-wrapper pt-0!'>
+        <div className="w-full pt-2.5 pb-2.5 sticky top-29.75 z-100 bg-white/40 backdrop-blur-[6.5px]">
           <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-5'>
             <div className='flex items-center gap-3'>
               <BackButton onClick={goBack} />
@@ -91,7 +91,7 @@ export default function ReceiptPage() {
             </div>
           </div>          
         </div>
-        <div className="body-content relative">
+        <div className="body-content relative w-full">
           <ReceiptTemplate
             profile={profile}
             receipt={receipt}

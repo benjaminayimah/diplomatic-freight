@@ -14,6 +14,8 @@ import { useSnackbar } from "@/app/components/SnackbarContext";
 import useLocalSearch from "@/hooks/useLocalSearch";
 import SearchInput from '@/app/components/dashboard/SearchInput';
 import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
+import usePagination from "@/hooks/usePagination"
+import PaginationFooter from '@/app/components/dashboard/PaginationFooter';
 
 
 function Subscribers() {
@@ -72,13 +74,34 @@ function Subscribers() {
    // search
   const [search, setSearch] = useState("");
 
-  const filteredInvoices = useLocalSearch(
+  const filteredSubscribers = useLocalSearch(
     subscribers,
     search,
     [
       "email"
     ]
   );
+
+  // pagination
+  const [perPage, setPerPage] = useState(10);
+  const options = [
+    {label: 10, value: 10},
+    {label: 25, value: 25},
+    {label: 50, value: 50},
+    {label: 100, value: 100},
+  ]
+
+  const {
+  data: paginatedSubscribers,
+    currentPage,
+    totalPages,
+    nextPage,
+    previousPage,
+    goToPage,
+    hasNextPage,
+    hasPreviousPage,
+  } = usePagination(filteredSubscribers, perPage);
+
 
 
  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
@@ -111,8 +134,8 @@ function Subscribers() {
         <div className="body-content mb-96 w-full">
           <div>
             <ul className='flex flex-col gap-2'>
-              { filteredInvoices.length > 0 ? (
-                filteredInvoices.map((subscriber) => (
+              { paginatedSubscribers.length > 0 ? (
+                paginatedSubscribers.map((subscriber) => (
                   <SubscriberTableList 
                     key={subscriber.id}
                     subscriber={subscriber}
@@ -127,6 +150,23 @@ function Subscribers() {
               ) : null }
             </ul>
           </div>
+          {
+            paginatedSubscribers.length > 0 && (
+              <div className="flex justify-end py-4 mt-2">
+                <PaginationFooter
+                  value={perPage}
+                  onChange={setPerPage}
+                  options={options}
+                  onClickPrev={previousPage}
+                  disabledPrev={!hasPreviousPage}
+                  disabledNext={!hasNextPage}
+                  onClickNext={nextPage}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                />
+              </div>
+            )
+          }
         </div>
       </section>
       <Modal

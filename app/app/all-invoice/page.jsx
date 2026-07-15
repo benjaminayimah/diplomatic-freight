@@ -13,6 +13,8 @@ import Loader from '@/app/components/Loader';
 import useLocalSearch from "@/hooks/useLocalSearch";
 import SearchInput from '@/app/components/dashboard/SearchInput';
 import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
+import usePagination from "@/hooks/usePagination"
+import PaginationFooter from '@/app/components/dashboard/PaginationFooter';
 
 
 
@@ -90,6 +92,26 @@ function AllInvoice() {
     ]
   );
 
+  // pagination
+  const [perPage, setPerPage] = useState(10);
+  const options = [
+    {label: 10, value: 10},
+    {label: 25, value: 25},
+    {label: 50, value: 50},
+    {label: 100, value: 100},
+  ]
+
+  const {
+  data: paginatedInvoices,
+    currentPage,
+    totalPages,
+    nextPage,
+    previousPage,
+    goToPage,
+    hasNextPage,
+    hasPreviousPage,
+  } = usePagination(filteredInvoices, perPage);
+
   // empty state
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
     <Loader size={60} />
@@ -120,8 +142,8 @@ function AllInvoice() {
         <div className="body-content mb-96 w-full">
           <div>
             <ul className='flex flex-col gap-2'>
-              { filteredInvoices.length > 0 ? (
-                filteredInvoices.map((invoice) => (
+              { paginatedInvoices.length > 0 ? (
+                paginatedInvoices.map((invoice) => (
                   <InvoiceTableList 
                     key={invoice.id}
                     invoice={invoice}
@@ -136,6 +158,23 @@ function AllInvoice() {
               ) : null }
             </ul>
           </div>
+          {
+            paginatedInvoices.length > 0 && (
+              <div className="flex justify-end py-4 mt-2">
+                <PaginationFooter
+                  value={perPage}
+                  onChange={setPerPage}
+                  options={options}
+                  onClickPrev={previousPage}
+                  disabledPrev={!hasPreviousPage}
+                  disabledNext={!hasNextPage}
+                  onClickNext={nextPage}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                />
+              </div>
+            )
+          }
         </div>
       </section>
       <Modal

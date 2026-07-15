@@ -36,12 +36,12 @@ function PersonalNote({note, onClick, isFloating}) {
               />
             ) : (
               <div className="h-full grid place-items-center">
-                <div className="flex items-center gap-3 flex-col max-w-100">
-                  <div className="h-30 w-30 rounded-full grid place-items-center bg-gray-800">
-                    <ChatBubbleLeftIcon strokeWidth={2} className="h-15" />
+                <div className="flex items-center gap-3 flex-col max-w-80">
+                  <div className="h-25 w-25 rounded-full grid place-items-center bg-gray-800">
+                    <ChatBubbleLeftIcon strokeWidth={2} className="h-11" />
                   </div>
-                  <h1 className="font-semibold text-3xl text-gray-200">No Notes</h1>
-                  <div className="text-center text-gray-200">There are no notes attached to this invoice. You can add personal notes to invoice for reference. This will not be visible to clients.</div>
+                  <h1 className="font-semibold text-2xl text-gray-200">No Notes</h1>
+                  <div className="text-center text-sm text-gray-200">There are no notes attached to this invoice. You can add personal notes to invoice for reference. This will not be visible to clients.</div>
                 </div>
               </div>
             )

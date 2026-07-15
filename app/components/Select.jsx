@@ -7,6 +7,7 @@ export default function Select({
   options = [],
   errors,
   className = "",
+  chevronCSS = "right-2.5 h-4 w-4",
   required = false,
   ...props
 }) {
@@ -23,7 +24,7 @@ export default function Select({
       <div className="relative">
         <select
           id={id}
-          className={`appearance-none w-full px-3 py-2 border hover:border-gray-400 rounded-md outline-none transition focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!
+          className={`appearance-none w-full pl-3 pr-4.5 py-2 border hover:border-gray-400 rounded-md outline-none transition focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!
             ${errors?.length > 0 ? "border-red-500!" : "border-gray-300"} 
             bg-white
             ${className}`}
@@ -45,7 +46,7 @@ export default function Select({
         </select>
         <ChevronDownIcon
           strokeWidth={2}
-          className="absolute right-2.5 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none text-gray-600"
+          className={`${chevronCSS} absolute top-1/2 -translate-y-1/2 pointer-events-none text-gray-600`}
         />
       </div>
       {errors?.length > 0 &&

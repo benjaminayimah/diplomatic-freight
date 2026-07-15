@@ -11,6 +11,10 @@ import { useState, useCallback } from 'react';
 import Modal from "@/app/components/dashboard/Modal";
 import SubmitButton from '../../components/SubmitButton';
 import { useSnackbar } from "@/app/components/SnackbarContext";
+import useLocalSearch from "@/hooks/useLocalSearch";
+import SearchInput from '@/app/components/dashboard/SearchInput';
+import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
+
 
 function Quotes() {
 
@@ -67,6 +71,21 @@ function Quotes() {
       )
   }
 
+  // search
+  const [search, setSearch] = useState("");
+
+  const filteredInvoices = useLocalSearch(
+    quotes,
+    search,
+    [
+      "name",
+      "email",
+      "phone",
+      "departure_city",
+      "destination_city",
+      "cargo_type"
+    ]
+  );
 
 
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
@@ -82,16 +101,25 @@ function Quotes() {
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>
-        <div className="mb-5 w-full">
-          <h1 className="text-xl"><span className="font-semibold">Quotes</span></h1>
-          <span className="text-sm text-gray-500">View all submitted quotes</span>
+        <div className="mb-5 w-full flex justify-between items-center">
+          <div>
+            <h1 className="text-xl"><span className="font-semibold">Quotes</span></h1>
+            <span className="text-sm text-gray-500">View all submitted quotes</span>
+          </div>
+          <div>
+            <SearchInput
+              value={search}
+              onChange={setSearch}
+              placeholder="Search quotes..."
+            />
+          </div>
         </div>
         <div className="body-content mb-96 w-full">
           <div>
             <ul className='flex flex-col gap-2'>
-              {
-                quotes?.map((quote) => (
-                  <QuoteTableList
+              { filteredInvoices.length > 0 ? (
+                filteredInvoices.map((quote) => (
+                  <QuoteTableList 
                     key={quote.id}
                     quote={quote}
                     onDelete={() => {
@@ -100,7 +128,9 @@ function Quotes() {
                     }}
                   />
                 ))
-              }
+              ) : search ? (
+                <NoSearchResult input="quotes" onClick={setSearch} />
+              ) : null }
             </ul>
           </div>
         </div>

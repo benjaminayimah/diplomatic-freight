@@ -10,6 +10,10 @@ import SubmitButton from '../../components/SubmitButton';
 import { useSnackbar } from "@/app/components/SnackbarContext";
 import useFetchData from "@/hooks/useFetchData";
 import Loader from '@/app/components/Loader';
+import SearchInput from "@/app/components/dashboard/SearchInput"
+import useLocalSearch from "@/hooks/useLocalSearch";
+import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
+
 
 
 
@@ -70,6 +74,20 @@ function AllReceipt() {
       )
   }
 
+   // search
+  const [search, setSearch] = useState("");
+
+  const filteredInvoices = useLocalSearch(
+    receipts,
+    search,
+    [
+      "receipt_number",
+      "name",
+      "email",
+      "phone",
+    ]
+  );
+
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
     <Loader size={60} />
   </div>;
@@ -83,16 +101,25 @@ function AllReceipt() {
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>
-        <div className="mb-5 w-full">
-          <h1 className="text-xl"><span className="font-semibold">All Receipts</span></h1>
-          <span className="text-sm text-gray-500">View and manage all receipts</span>
+        <div className="mb-5 w-full flex justify-between items-center">
+          <div>
+            <h1 className="text-xl"><span className="font-semibold">All Receipts</span></h1>
+            <span className="text-sm text-gray-500">View and manage all receipts</span>
+          </div>
+          <div>
+            <SearchInput
+              value={search}
+              onChange={setSearch}
+              placeholder="Search receipts..."
+            />
+          </div>
         </div>
         <div className="body-content mb-96 w-full">
           <div>
             <ul className='flex flex-col gap-2'>
-              {
-                receipts?.map((receipt) => (
-                  <ReceiptTableList
+              { filteredInvoices.length > 0 ? (
+                filteredInvoices.map((receipt) => (
+                  <ReceiptTableList 
                     key={receipt.id}
                     receipt={receipt}
                     onDelete={() => {
@@ -101,7 +128,9 @@ function AllReceipt() {
                     }}
                   />
                 ))
-              }
+              ) : search ? (
+                <NoSearchResult input="receipts" onClick={setSearch} />
+              ) : null }
             </ul>
           </div>
         </div>

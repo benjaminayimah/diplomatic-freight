@@ -11,6 +11,9 @@ import { useState, useCallback } from 'react';
 import Modal from "@/app/components/dashboard/Modal";
 import SubmitButton from '../../components/SubmitButton';
 import { useSnackbar } from "@/app/components/SnackbarContext";
+import useLocalSearch from "@/hooks/useLocalSearch";
+import SearchInput from '@/app/components/dashboard/SearchInput';
+import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
 
 
 function Subscribers() {
@@ -66,6 +69,17 @@ function Subscribers() {
       )
   }
 
+   // search
+  const [search, setSearch] = useState("");
+
+  const filteredInvoices = useLocalSearch(
+    subscribers,
+    search,
+    [
+      "email"
+    ]
+  );
+
 
  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
     <Loader size={60} />
@@ -81,16 +95,25 @@ function Subscribers() {
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>
-        <div className="mb-5 w-full">
-          <h1 className="text-xl"><span className="font-semibold">Subscribers</span></h1>
-          <span className="text-sm text-gray-500">View all newsletter subscribers</span>
+        <div className="mb-5 w-full flex justify-between items-center">
+          <div>
+            <h1 className="text-xl"><span className="font-semibold">Subscribers</span></h1>
+            <span className="text-sm text-gray-500">View all newsletter subscribers</span>
+          </div>
+          <div>
+            <SearchInput
+              value={search}
+              onChange={setSearch}
+              placeholder="Search subscribers..."
+            />
+          </div>
         </div>
         <div className="body-content mb-96 w-full">
           <div>
             <ul className='flex flex-col gap-2'>
-              {
-                subscribers?.map((subscriber) => (
-                  <SubscriberTableList
+              { filteredInvoices.length > 0 ? (
+                filteredInvoices.map((subscriber) => (
+                  <SubscriberTableList 
                     key={subscriber.id}
                     subscriber={subscriber}
                     onDelete={() => {
@@ -99,7 +122,9 @@ function Subscribers() {
                     }}
                   />
                 ))
-              }
+              ) : search ? (
+                <NoSearchResult input="subscribers" onClick={setSearch} />
+              ) : null }
             </ul>
           </div>
         </div>
@@ -141,3 +166,6 @@ function Subscribers() {
 }
 
 export default Subscribers
+
+
+

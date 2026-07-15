@@ -10,6 +10,10 @@ import SubmitButton from '../../components/SubmitButton';
 import { useSnackbar } from "@/app/components/SnackbarContext"; 
 import useFetchData from "@/hooks/useFetchData";
 import Loader from '@/app/components/Loader';
+import useLocalSearch from "@/hooks/useLocalSearch";
+import SearchInput from '@/app/components/dashboard/SearchInput';
+import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
+
 
 
 
@@ -20,7 +24,6 @@ function AllInvoice() {
   const setDeleteInvoiceById = useAuthStore((state) => state.setDeleteInvoiceById);
 
   const { data, loading, error, refetch } = useFetchData("/invoice");
-
 
   useEffect(() => {
     if (!data?.invoices) return;
@@ -73,6 +76,21 @@ function AllInvoice() {
       )
   }
 
+  // search
+  const [search, setSearch] = useState("");
+
+  const filteredInvoices = useLocalSearch(
+    invoices,
+    search,
+    [
+      "reference_number",
+      "name",
+      "email",
+      "phone",
+    ]
+  );
+
+  // empty state
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
     <Loader size={60} />
   </div>;
@@ -86,16 +104,25 @@ function AllInvoice() {
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>
-        <div className="mb-5 w-full">
-          <h1 className="text-xl"><span className="font-semibold">All Invoices</span></h1>
-          <span className="text-sm text-gray-500">View and manage all invoices</span>
+        <div className="mb-5 w-full flex justify-between items-center">
+          <div>
+            <h1 className="text-xl"><span className="font-semibold">All Invoices</span></h1>
+            <span className="text-sm text-gray-500">View and manage all invoices</span>
+          </div>
+          <div>
+            <SearchInput
+              value={search}
+              onChange={setSearch}
+              placeholder="Search invoices..."
+            />
+          </div>
         </div>
         <div className="body-content mb-96 w-full">
           <div>
             <ul className='flex flex-col gap-2'>
-              {
-                invoices?.map((invoice) => (
-                  <InvoiceTableList
+              { filteredInvoices.length > 0 ? (
+                filteredInvoices.map((invoice) => (
+                  <InvoiceTableList 
                     key={invoice.id}
                     invoice={invoice}
                     onDelete={() => {
@@ -104,7 +131,9 @@ function AllInvoice() {
                     }}
                   />
                 ))
-              }
+              ) : search ? (
+                <NoSearchResult input="invoices" onClick={setSearch} />
+              ) : null }
             </ul>
           </div>
         </div>

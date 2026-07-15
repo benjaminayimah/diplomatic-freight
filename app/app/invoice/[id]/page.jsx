@@ -69,10 +69,10 @@ export default function InvoicePage() {
                       <span>
                         {
                           new Date(invoice?.createdAt).toLocaleDateString("en-US", {
-                              year: "numeric",
-                              month: "short",
-                              day: "numeric",
-                            })
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })
                         }
                       </span>
                   </div>
@@ -88,9 +88,8 @@ export default function InvoicePage() {
                 onClick={() => setShowNote(prev => !prev)}
                 className={`grid place-items-center w-10 h-10 p-1 rounded-3xl transition duration-300 ${showNote ? 'bg-black text-white hover:bg-gray-900' : 'border border-gray-200 hover:bg-gray-100 hover:text-black' }`}
                 >
-                  <ChatBubbleLeftIcon strokeWidth={2} className="h-4.5" />
+                  <ChatBubbleLeftIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />
                 </button>
-                
               <Link href={`/app/create-invoice?mode=edit&id=${invoice?.id}`} className='border border-gray-200 text-black h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-21.5 bg-gray-50 hover:bg-gray-100 transition-colors'>
                 Edit invoice
               </Link>

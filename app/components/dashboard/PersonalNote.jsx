@@ -40,7 +40,7 @@ function PersonalNote({note, onClick, isFloating}) {
                   <div className="h-25 w-25 rounded-full grid place-items-center bg-gray-800">
                     <ChatBubbleLeftIcon strokeWidth={2} className="h-11" />
                   </div>
-                  <h1 className="font-semibold text-2xl text-gray-200">No Notes</h1>
+                  <h1 className="font-semibold text-2xl text-gray-200">No Notes Added</h1>
                   <div className="text-center text-sm text-gray-200">There are no notes attached to this invoice. You can add personal notes to invoice for reference. This will not be visible to clients.</div>
                 </div>
               </div>

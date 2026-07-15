@@ -20,7 +20,7 @@ function SearchInput({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-gray-200 hover:border-gray-400 bg-white py-2.5 pl-10 pr-10 text-sm placeholder:text-gray-400 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+        className="w-full rounded-xl border border-gray-200 hover:border-gray-400 bg-white py-2.5 pl-10 pr-10 text-sm placeholder:text-gray-400 outline-none transition focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!"
       />
 
       {value && (

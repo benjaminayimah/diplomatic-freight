@@ -15,7 +15,7 @@ function NoSearchResult({input, onClick}) {
       </p>
       <button
         onClick={() => onClick("")}
-        className="mt-4 rounded-full border px-4 py-2 text-sm border-gray-300 hover:bg-gray-50"
+        className="mt-4 font-medium rounded-full border px-4 py-2 text-sm border-gray-200 hover:bg-gray-100"
       >
         Clear search
       </button>

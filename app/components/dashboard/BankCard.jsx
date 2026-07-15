@@ -102,23 +102,23 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
               data?.payment_method === 'bank_transfer' && (
                 <>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                    <span className="font-medium">Bank name</span>
+                    <span className="font-medium">Bank Name</span>
                     <div className="text-gray-600 md:text-right">{data?.bank_name || 'N/A'}</div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                    <span className="font-medium">Account name</span>
+                    <span className="font-medium">Account Name</span>
                     <div className="text-gray-600 md:text-right">{data?.account_name || 'N/A'}</div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                    <span className="font-medium">Account number</span>
+                    <span className="font-medium">Account Number</span>
                     <div className="text-gray-600 md:text-right"><code>{data?.account_number || 'N/A'}</code></div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                    <span className="font-medium">SWIFT code</span>
+                    <span className="font-medium">SWIFT Code</span>
                     <div className="text-gray-600 md:text-right"><code>{data?.swift_code || 'N/A'}</code></div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                    <span className="font-medium">Bank branch</span>
+                    <span className="font-medium">Bank Branch</span>
                     <div className="text-gray-600 md:text-right">{data?.bank_branch || 'N/A'}</div>
                   </div>
                 </>
@@ -127,7 +127,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
             { data?.payment_method === 'usdt_wallet' && (
               <>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                  <span className="font-medium">Wallet address</span>
+                  <span className="font-medium">Wallet Address</span>
                   <div className="text-gray-600 md:text-right"><code>{data?.wallet_address || 'N/A'}</code></div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
@@ -135,7 +135,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                   <div className="text-gray-600 uppercase md:text-right">{data?.network || 'N/A'}</div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                  <span className="font-medium">QR code</span>
+                  <span className="font-medium">QR Code</span>
                   <div className="text-gray-600 md:text-right">
                     <div className="relative w-fit">
                       <QRCodeCanvas

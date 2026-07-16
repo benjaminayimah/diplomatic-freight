@@ -181,10 +181,10 @@ function AllReceipt() {
           title="Confirm Delete"
           maxWidth="460px"
         >
-          <p className="text-sm mb-4 text-gray-800">
+          <p className="text-sm mb-4 text-gray-900">
             Are you sure you want to delete receipt: <strong>{receiptToDelete?.receipt_number}</strong>?
           </p>
-          <p className="text-sm mb-4 text-gray-800">
+          <p className="text-sm mb-4 text-gray-900">
             This action can't be undone
           </p>
           <div className="flex justify-end gap-2">

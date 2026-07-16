@@ -54,8 +54,8 @@ function LoginForm() {
       <div className="max-w-137.5 pb-20 w-full px-6">
         <div className='bg-white min-h-100 w-full p-10 rounded-2xl my-[5vw]'>
           <div className='mb-10'>
-            <h1 className="text-2xl font-bold mb-2">Log in</h1>
-            <span>Provide your credentials to log in.</span>
+            <h1 className="text-2xl font-bold mb-2">Welcome back!</h1>
+            <span>Enter your email and password to continue.</span>
           </div>
           { error && <ErrorCard error={error} /> }
           <form onSubmit={handleSubmit} className='flex flex-col gap-5'>

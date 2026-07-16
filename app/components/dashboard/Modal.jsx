@@ -65,9 +65,6 @@ const Modal = ({
       {isOpen && (
         <motion.div
           key="overlay"
-          // initial={{ opacity: 0 }}
-          // animate={{ opacity: 1 }}
-          // exit={{ opacity: 0 }}
           className={`${overlayClasses} fixed inset-0 bg-black/50 flex items-center justify-center z-50`}
         >
           {/* Modal Panel */}
@@ -79,7 +76,7 @@ const Modal = ({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 200, opacity: 0 }}
             transition={{ duration: 0.3}}
-            className="bg-white rounded-2xl w-[90%] p-6 shadow-lg overflow-hidden"
+            className="bg-white rounded-3xl w-[90%] p-6 shadow-lg overflow-hidden"
           >
             {/* Header */}
             <div className="flex justify-between pb-2">
@@ -106,7 +103,6 @@ const Modal = ({
                 </button>
               </div>
             </div>
-
             {/* Modal Body */}
             <div className="h-full overflow-y-auto max-h-[76svh]">
               {children}

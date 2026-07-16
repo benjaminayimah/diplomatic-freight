@@ -411,7 +411,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
         maxWidth='1200px'
         dismissibleOutsideClick={false}
         >
-          <div className='max-w-[1100px] w-full'>
+          <div className='max-w-275 w-full'>
             <ReceiptTemplate
               receipt={form}
               profile={profile}

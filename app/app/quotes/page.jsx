@@ -182,10 +182,10 @@ function Quotes() {
           title="Confirm Delete"
           maxWidth="460px"
         >
-          <p className="text-sm mb-4 text-gray-500">
+          <p className="text-sm mb-4 text-gray-800">
             Are you sure you want to delete quote from: <strong>{quoteToDelete?.name}</strong>?
           </p>
-          <p className="text-sm mb-4 text-gray-500">
+          <p className="text-sm mb-4 text-gray-800">
             This action can't be undone
           </p>
           <div className="flex justify-end gap-2">

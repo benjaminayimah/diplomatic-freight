@@ -20,7 +20,7 @@ function QuoteTableList({ quote, onDelete }) {
   return (
     <li className='group border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
         <div className='flex'>
-          <Link href={`/app/quote/${quote?.id}`} className='py-3 px-4 flex flex-1 gap-3 items-center'>
+          <Link href={`/app/quote/${quote?.id}`} className='py-3.4 p-4 flex flex-1 gap-3 items-center'>
             <div className='h-11 w-11 rounded-3xl bg-amber-50 border text-amber-600 border-amber-100 grid place-items-center'>
               <DocumentDuplicateIcon strokeWidth={1.5} className="h-6" />
             </div>

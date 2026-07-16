@@ -20,7 +20,7 @@ function ReceiptTableList({ receipt, onDelete }) {
   return (
     <li className='group border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
       <div className='flex'>
-        <Link href={`/app/receipt/${receipt?.id}`} className='py-3 px-4 flex flex-1 gap-3 items-center'>
+        <Link href={`/app/receipt/${receipt?.id}`} className='py-3.5 p-4 flex flex-1 gap-3 items-center'>
           <div className='h-11 w-11 shrink-0 text-purple-600 rounded-3xl bg-purple-50 border border-purple-100 grid place-items-center'>
             <ReceiptPercentIcon strokeWidth={1.5} className="h-6" />
           </div>

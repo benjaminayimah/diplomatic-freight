@@ -23,7 +23,7 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
   return (
     <li className='group border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
       <div className='flex'>
-        <Link href={`/app/invoice/${invoice?.id}`} className='py-3 px-4 flex gap-3 flex-1 items-center'>
+        <Link href={`/app/invoice/${invoice?.id}`} className='py-3.5 p-4 flex gap-3 flex-1 items-center'>
           <div className='h-11 w-11 shrink-0 text-blue-600 rounded-3xl bg-blue-50 border border-blue-100 grid place-items-center'>
             <DocumentTextIcon strokeWidth={1.5} className="h-6" />
           </div>

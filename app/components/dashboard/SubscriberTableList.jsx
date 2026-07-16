@@ -17,7 +17,7 @@ function SubscriberTableList({ subscriber, onDelete }) {
   )
 
   return (
-    <li className='py-3 px-4 border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
+    <li className='py-3.5 p-4 border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
       <div className='flex justify-between'>
         <div className='flex gap-3'>
           <div className='h-11 w-11 text-teal-600 rounded-3xl bg-teal-50 border border-teal-100 grid place-items-center'>

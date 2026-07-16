@@ -2,10 +2,13 @@ import React from 'react'
 import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
-import { DocumentTextIcon } from "@heroicons/react/24/outline";
+import {
+  DocumentTextIcon,
+  ChatBubbleBottomCenterTextIcon
+} from "@heroicons/react/24/outline";
 
 
-function InvoiceTableList({ invoice, onDelete }) {
+function InvoiceTableList({ invoice, onDelete, onClick }) {
 
   const { dateFormat } = useFormatter()
 
@@ -20,7 +23,7 @@ function InvoiceTableList({ invoice, onDelete }) {
   return (
     <li className='group border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
       <div className='flex'>
-        <Link href={`/app/invoice/${invoice?.id}`} className='p-4 flex gap-3 flex-1'>
+        <Link href={`/app/invoice/${invoice?.id}`} className='py-3 px-4 flex gap-3 flex-1 items-center'>
           <div className='h-11 w-11 shrink-0 text-blue-600 rounded-3xl bg-blue-50 border border-blue-100 grid place-items-center'>
             <DocumentTextIcon strokeWidth={1.5} className="h-6" />
           </div>
@@ -38,6 +41,20 @@ function InvoiceTableList({ invoice, onDelete }) {
               </div>
             </div>
           </div>
+          {
+            invoice?.personal_note && (
+            <span
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onClick(invoice.personal_note);
+              }}
+              className="flex items-center gap-1 relative px-2 h-7 text-xs rounded-3xl text-black border border-gray-200 bg-gray-100 hover:bg-gray-200">
+              <ChatBubbleBottomCenterTextIcon strokeWidth={1.5} className="h-4 text-blue-600" />
+              Note
+            </span>
+            )
+          }
         </Link>
         <div className='grid place-items-center pr-3'>
           <DropdownMenu trigger={Menu}>

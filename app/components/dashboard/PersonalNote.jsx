@@ -28,7 +28,7 @@ function PersonalNote({note, onClick, isFloating}) {
         <div className={`px-4 py-15 ${!isFloating ? 'md:h-full md:overflow-y-scroll md:overscroll-y-contain' : ''}`}>
           {
             note ? (
-               <div
+              <div
                 className="prose prose-sm max-w-none"
                 dangerouslySetInnerHTML={{
                   __html: note,

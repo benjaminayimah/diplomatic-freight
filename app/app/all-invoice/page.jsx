@@ -15,8 +15,6 @@ import SearchInput from '@/app/components/dashboard/SearchInput';
 import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
 import usePagination from "@/hooks/usePagination"
 import PaginationFooter from '@/app/components/dashboard/PaginationFooter';
-import { div } from 'framer-motion/client';
-
 
 
 
@@ -42,6 +40,9 @@ function AllInvoice() {
 
 
   const [open, setOpen] = useState(false);
+
+  const [showNote, setShowNote] = useState(false)
+  const [selectedNote, setSelectedNote] = useState('')
 
   const [deleting, setDeleting] = useState(false)
   
@@ -148,6 +149,10 @@ function AllInvoice() {
                   <InvoiceTableList 
                     key={invoice.id}
                     invoice={invoice}
+                    onClick={(note) => {
+                      setSelectedNote(note);
+                      setShowNote(true);
+                    }}
                     onDelete={() => {
                       setInvoiceToDelete(invoice);
                       setDeleteModalOpen(true);
@@ -208,6 +213,21 @@ function AllInvoice() {
               >
               Yes, Delete
             </SubmitButton>
+          </div>
+        </Modal>
+        <Modal
+          isOpen={showNote}
+          onClose={() => setShowNote(false)}
+          title="Personal note"
+          maxWidth="600px"
+        >
+          <div className="mt-4">
+            <div
+                className="prose prose-sm max-w-none"
+                dangerouslySetInnerHTML={{
+                  __html: selectedNote,
+                }}
+              />
           </div>
         </Modal>
     </ProtectedRoute>

@@ -12,9 +12,7 @@ import BackButton from '@/app/components/dashboard/BackButton'
 import { useReactToPrint } from "react-to-print";
 import Loader from '@/app/components/Loader';
 import { useRouter } from 'next/navigation';
-import { ChatBubbleLeftIcon, ChatBubbleBottomCenterTextIcon
-
- } from "@heroicons/react/24/outline";
+import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
 
 export default function InvoicePage() {
@@ -92,7 +90,7 @@ export default function InvoicePage() {
                 >
                   {
                     invoice?.personal_note && (
-                      <span className={`${showNote ? "border-black" : "border-white"} absolute bg-red-600 h-2 w-2 rounded-full border top-2 right-2`}></span>
+                      <span className={`${showNote ? "border-black" : "border-white"} absolute bg-blue-600 h-2 w-2 rounded-full border top-[24%] right-[22%]`}></span>
                     )
                   }
                   <ChatBubbleBottomCenterTextIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />

@@ -21,7 +21,7 @@ function AllReceipt() {
 
   const receipts = useAuthStore((state) => state.receipts);
   const setReceipts = useAuthStore((state) => state.setReceipts);
-  const setDeleteReceiptById = useAuthStore((state) => state.setDeleteInvoiceById);
+  const setDeleteReceiptById = useAuthStore((state) => state.setDeleteReceiptById);
 
   const { data, loading, error, refetch } = useFetchData("/receipt");
 

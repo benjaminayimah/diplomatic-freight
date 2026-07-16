@@ -38,6 +38,20 @@
 /* end */
 
 
+/* clamp */
+.clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.clamp-line-1 {
+  -webkit-line-clamp: 1; /* Number of lines */
+}
+.clamp-line-2 {
+  -webkit-line-clamp: 2; /* Number of lines */
+}
+
+
 ul.ul-table li:last-child {
   border-bottom: none;
   border-bottom-left-radius: 16px;

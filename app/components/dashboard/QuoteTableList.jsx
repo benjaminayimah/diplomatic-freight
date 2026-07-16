@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
 import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import FileProfileIcon from './FileProfileIcon'
 
 
 function QuoteTableList({ quote, onDelete }) {
@@ -21,14 +22,17 @@ function QuoteTableList({ quote, onDelete }) {
     <li className='group border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
         <div className='flex'>
           <Link href={`/app/quote/${quote?.id}`} className='py-3.4 p-4 flex flex-1 gap-3 items-center'>
-            <div className='h-11 w-11 rounded-3xl bg-amber-50 border text-amber-600 border-amber-100 grid place-items-center'>
-              <DocumentDuplicateIcon strokeWidth={1.5} className="h-6" />
-            </div>
+            <FileProfileIcon
+              icon={DocumentDuplicateIcon} 
+              color={quote.color}
+            />
             <div className='flex flex-col max-w-125'>
               <div>
-                <span className='whitespace-nowrap truncate'>{quote?.name}</span>
+                <span className='clamp clamp-line-1 font-medium'>{quote?.name}</span>
               </div>
-              <div className='text-sm text-gray-500'><span className='font-medium'>Date requested: </span><span>{dateFormat(quote?.createdAt)}</span></div>
+              <div className='text-sm text-gray-500 flex gap-1'>
+                <span className='font-medium hidden md:inline-block'>Date requested:</span><span>{dateFormat(quote?.createdAt)}</span>
+              </div>
             </div>
           </Link>
           <div className='grid place-items-center pr-3'>

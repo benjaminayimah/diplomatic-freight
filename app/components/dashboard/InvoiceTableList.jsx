@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
+import FileProfileIcon from './FileProfileIcon'
 import {
   DocumentTextIcon,
   ChatBubbleBottomCenterTextIcon
@@ -24,20 +25,21 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
     <li className='group border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
       <div className='flex'>
         <Link href={`/app/invoice/${invoice?.id}`} className='py-3.5 p-4 flex gap-3 flex-1 items-center'>
-          <div className='h-11 w-11 shrink-0 text-blue-600 rounded-3xl bg-blue-50 border border-blue-100 grid place-items-center'>
-            <DocumentTextIcon strokeWidth={1.5} className="h-6" />
-          </div>
+          <FileProfileIcon
+            icon={DocumentTextIcon} 
+            color={invoice.color}
+          />
           <div className='flex flex-col max-w-125'>
             <div className='flex gap-1 flex-wrap'>
-              <span className='whitespace-nowrap truncate'>{invoice?.name || invoice?.reference_number}</span>
+              <span className='clamp clamp-line-1 font-medium'>{invoice?.name || invoice?.reference_number}</span>
             </div>
             <div className='text-sm text-gray-500 flex items-center gap-1.5'>
               <div className="flex gap-1">
-                <span className='font-medium'>Date created: </span><span>{dateFormat(invoice?.createdAt)}</span>
+                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(invoice?.createdAt)}</span>
               </div>
               &middot;
               <div className="flex gap-1">
-                <span className='font-medium'>Ref no.: </span><span>{invoice?.reference_number}</span>
+                <span className='font-medium hidden md:block'>Ref no.:</span><span>{invoice?.reference_number}</span>
               </div>
             </div>
           </div>
@@ -50,7 +52,7 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
                 onClick(invoice.personal_note);
               }}
               className="flex items-center gap-1 relative px-2 h-7 text-xs rounded-3xl text-black border border-gray-200 bg-gray-100 hover:bg-gray-200">
-              <ChatBubbleBottomCenterTextIcon strokeWidth={1.5} className="h-4 text-blue-600" />
+              <ChatBubbleBottomCenterTextIcon strokeWidth={2} className="h-4 text-blue-600" />
               Note
             </span>
             )

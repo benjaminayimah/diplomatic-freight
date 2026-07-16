@@ -20,6 +20,7 @@ import Link from 'next/link';
 import PaymentListDisplayCard from './PaymentListDisplayCard';
 import RichTextEditor from './RichTextEditor';
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
+import { div } from 'framer-motion/client';
 
 
 
@@ -635,11 +636,15 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
             />
             {
               form.personal_note && (
-                <PersonalNote
-                  note={form.personal_note}
-                  onClick={() => {}}
-                  isFloating={true}
-                />
+                <div className='mt-4 md:py-12 bg-gray-50 rounded-xl border border-gray-100 flex justify-center flex-1'>
+                  <div className="shadow-sm rounded-xl overflow-hidden max-w-225 w-full">
+                    <PersonalNote
+                      note={form.personal_note}
+                      onClick={() => {}}
+                      isFloating={true}
+                    />
+                  </div>
+                </div>
               )
             }
           </div>

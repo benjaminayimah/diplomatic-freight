@@ -33,7 +33,7 @@ function Header() {
 
   const UserAvatar = (
     <button className="flex py-0.5 pl-0.5 pr-2.5 gap-2 items-center text-gray-700 hover:text-black rounded-3xl transition duration-300 border border-gray-100 hover:bg-gray-50">
-      <div className="h-9 w-9 grid place-items-center text-white font-bold rounded-full bg-purple-600">
+      <div style={{ backgroundColor: user?.color }} className="h-9 w-9 grid place-items-center text-white font-bold rounded-full">
         {user?.name?.charAt(0)?.toUpperCase()}
       </div>
       <div className="flex gap-1 items-center max-w-25">

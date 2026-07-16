@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
 import { ReceiptPercentIcon } from "@heroicons/react/24/outline";
+import FileProfileIcon from './FileProfileIcon'
+
 
 
 function ReceiptTableList({ receipt, onDelete }) {
@@ -21,20 +23,21 @@ function ReceiptTableList({ receipt, onDelete }) {
     <li className='group border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
       <div className='flex'>
         <Link href={`/app/receipt/${receipt?.id}`} className='py-3.5 p-4 flex flex-1 gap-3 items-center'>
-          <div className='h-11 w-11 shrink-0 text-purple-600 rounded-3xl bg-purple-50 border border-purple-100 grid place-items-center'>
-            <ReceiptPercentIcon strokeWidth={1.5} className="h-6" />
-          </div>
+          <FileProfileIcon
+            icon={ReceiptPercentIcon} 
+            color={receipt.color}
+          />
           <div className='flex flex-col max-w-125'>
             <div className='flex gap-1 flex-wrap'>
-              <span className='whitespace-nowrap truncate'>{receipt?.name || receipt?.receipt_number}</span>
+              <span className='clamp clamp-line-1 font-medium'>{receipt?.name || receipt?.receipt_number}</span>
             </div>
             <div className='text-sm text-gray-500 flex items-center gap-1.5'>
               <div className="flex gap-1">
-                <span className='font-medium'>Date created: </span><span>{dateFormat(receipt?.createdAt)}</span>
+                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(receipt?.createdAt)}</span>
               </div>
               &middot;
               <div className="flex gap-1">
-                <span className='font-medium'>Receipt no.: </span><span>{receipt?.receipt_number}</span>
+                <span className='font-medium hidden md:block'>Receipt no.:</span><span>{receipt?.receipt_number}</span>
               </div>
             </div>
             {/* <div className='text-sm text-gray-500'><span className='font-medium'>Date created: </span><span>{dateFormat(receipt?.createdAt)}</span></div> */}

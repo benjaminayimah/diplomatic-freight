@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
 import { UserIcon } from "@heroicons/react/24/outline";
+import FileProfileIcon from "./FileProfileIcon"
 
 
 function SubscriberTableList({ subscriber, onDelete }) {
@@ -20,14 +21,18 @@ function SubscriberTableList({ subscriber, onDelete }) {
     <li className='py-3.5 p-4 border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300 inline-block w-full'>
       <div className='flex justify-between'>
         <div className='flex gap-3'>
-          <div className='h-11 w-11 text-teal-600 rounded-3xl bg-teal-50 border border-teal-100 grid place-items-center'>
-            <UserIcon strokeWidth={1.5} className="h-6" />
-          </div>
+          <FileProfileIcon
+            icon={UserIcon} 
+            color={subscriber.color}
+            styles={'rounded-full'}
+          />
           <div className='flex flex-col'>
             <div>
-              <span>{subscriber?.email}</span>
+              <span className="font-medium">{subscriber?.email}</span>
             </div>
-            <div className='text-sm text-gray-500'><span className='font-medium'>Date subscribed: </span><span>{dateFormat(subscriber?.createdAt)}</span></div>
+            <div className='text-sm text-gray-500 flex gap-1'>
+              <span className='font-medium hidden md:block'>Date subscribed:</span><span>{dateFormat(subscriber?.createdAt)}</span>
+            </div>
           </div>
         </div>
         <div>

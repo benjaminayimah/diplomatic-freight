@@ -12,7 +12,9 @@ import BackButton from '@/app/components/dashboard/BackButton'
 import { useReactToPrint } from "react-to-print";
 import Loader from '@/app/components/Loader';
 import { useRouter } from 'next/navigation';
-import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleLeftIcon, ChatBubbleBottomCenterTextIcon
+
+ } from "@heroicons/react/24/outline";
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
 
 export default function InvoicePage() {
@@ -86,9 +88,14 @@ export default function InvoicePage() {
             <div className='flex gap-2'>
               <button
                 onClick={() => setShowNote(prev => !prev)}
-                className={`grid place-items-center w-10 h-10 p-1 rounded-3xl transition duration-300 ${showNote ? 'bg-black text-white hover:bg-gray-900' : 'border border-gray-200 hover:bg-gray-100 hover:text-black' }`}
+                className={`grid place-items-center relative w-10 h-10 p-1 rounded-3xl transition duration-300 ${showNote ? 'bg-black text-white hover:bg-gray-900' : 'border border-gray-200 hover:bg-gray-100 hover:text-black' }`}
                 >
-                  <ChatBubbleLeftIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />
+                  {
+                    invoice?.personal_note && (
+                      <span className={`${showNote ? "border-black" : "border-white"} absolute bg-red-600 h-2 w-2 rounded-full border top-2 right-2`}></span>
+                    )
+                  }
+                  <ChatBubbleBottomCenterTextIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />
                 </button>
               <Link href={`/app/create-invoice?mode=edit&id=${invoice?.id}`} className='border border-gray-200 text-black h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-21.5 bg-gray-50 hover:bg-gray-100 transition-colors'>
                 Edit invoice

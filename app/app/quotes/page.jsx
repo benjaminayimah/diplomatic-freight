@@ -140,7 +140,7 @@ function Quotes() {
         </div>
         <div className="body-content mb-96 w-full">
           <div>
-            <ul className='flex flex-col gap-2'>
+            <ul className='grid ul-table border border-gray-200 rounded-2xl'>
               { paginatedQuotes.length > 0 ? (
                 paginatedQuotes.map((quote) => (
                   <QuoteTableList 

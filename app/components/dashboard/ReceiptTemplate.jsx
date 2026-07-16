@@ -141,7 +141,7 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
             <div className="invoice-section flex pt-10 justify-end">
               <div className="w-full sm:max-w-sm space-y-4 text-neutral-800">
                 <div className="flex justify-between">
-                  <span className='font-semibold'>Subtotal</span>
+                  <span className='font-medium'>Subtotal</span>
                   <span className='font-medium'>
                     {getReceiptTotals(receipt?.items)?.subtotalFormatted}
                   </span>
@@ -149,7 +149,7 @@ function ReceiptTemplate({ profile, receipt, printRef }) {
                 {
                   VAT > 0 && (
                     <div className="flex justify-between">
-                      <span className='font-semibold'>VAT ({VAT}%)</span>
+                      <span className='font-medium'>VAT ({VAT}%)</span>
                       <span className='font-medium'>{getReceiptTotals(receipt?.items).vatFormatted}</span>
                     </div>
                   )

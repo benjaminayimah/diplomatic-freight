@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 
 
 function PersonalNote({note, onClick, isFloating}) {
@@ -7,7 +7,7 @@ function PersonalNote({note, onClick, isFloating}) {
     <div className={`overflow-hidden bg-gray-600 text-white rounded-xl flex-1 relative ${!isFloating ? 'md:max-h-[calc(100dvh-196px)] md:sticky md:top-[191px]' : ''}`}>
         <div className="flex pr-2 pl-4 py-2 h-11 rounded-tl-[inherit] rounded-tr-[inherit] absolute w-full text-white items-center justify-between bg-white/10 backdrop-blur-[5px] z-10">
             <div className="font-semibold text-sm flex items-center gap-1.5">
-              <ChatBubbleLeftIcon strokeWidth={2} className="h-4.5" />
+              <ChatBubbleBottomCenterTextIcon strokeWidth={2} className="h-4.5" />
               Personal Note
             </div>
             { !isFloating &&  (
@@ -38,7 +38,7 @@ function PersonalNote({note, onClick, isFloating}) {
               <div className="h-full grid place-items-center">
                 <div className="flex items-center gap-3 flex-col max-w-80">
                   <div className="h-25 w-25 rounded-full grid place-items-center bg-gray-800">
-                    <ChatBubbleLeftIcon strokeWidth={2} className="h-11" />
+                    <ChatBubbleBottomCenterTextIcon strokeWidth={1.5} className="h-11" />
                   </div>
                   <h1 className="font-semibold text-2xl text-gray-200">No Notes Added</h1>
                   <div className="text-center text-sm text-gray-200">There are no notes attached to this invoice. You can add personal notes to invoice for reference. This will not be visible to clients.</div>

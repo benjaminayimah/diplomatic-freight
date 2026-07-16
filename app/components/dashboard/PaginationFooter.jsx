@@ -17,7 +17,7 @@ function PaginationFooter({
   totalPages
 }) {
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-center gap-2">
 
       <div className="flex items-center gap-1">
         <span className="text-sm text-gray-500">
@@ -33,7 +33,7 @@ function PaginationFooter({
             onFocus={() => {}}
             chevronCSS="right-2 h-3.5"
             className="
-              py-1! pl-2.5! pr-5! border-0 bg-gray-100!
+              py-1! pl-2.5! h-8 pr-5! border-0 bg-gray-100!
               hover:bg-gray-200! text-gray-700 font-medium
               rounded-full! focus-within:ring-0!
             "
@@ -49,7 +49,7 @@ function PaginationFooter({
           className="
             h-8 w-8 grid place-items-center rounded-full
             bg-gray-100 transition
-            disabled:text-gray-400 disabled:cursor-not-allowed
+            disabled:text-gray-400 disabled:cursor-default
             enabled:hover:bg-gray-200
           "
           aria-label="Previous page"
@@ -69,7 +69,7 @@ function PaginationFooter({
           className="
             h-8 w-8 grid place-items-center rounded-full
             bg-gray-100 transition
-            disabled:text-gray-400 disabled:cursor-not-allowed
+            disabled:text-gray-400 disabled:cursor-default
             enabled:hover:bg-gray-200
           "
           aria-label="Next page"

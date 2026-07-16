@@ -153,7 +153,7 @@ function InvoiceTemplate({ profile, invoice, printRef, qrData }) {
             <div className="invoice-section flex pt-10 justify-end">
               <div className="w-full sm:max-w-sm space-y-4 text-neutral-800">
                 <div className="flex justify-between">
-                  <span className='font-semibold'>Subtotal</span>
+                  <span className='font-medium'>Subtotal</span>
                   <span className='font-medium'>
                     {getInvoiceTotals(invoice?.items)?.subtotalFormatted}
                   </span>
@@ -161,8 +161,8 @@ function InvoiceTemplate({ profile, invoice, printRef, qrData }) {
                 {
                   VAT > 0 && (
                   <div className="flex justify-between">
-                    <span className='font-semibold'>VAT ({VAT}%)</span>
-                    <span className='font-medium'>{getInvoiceTotals(invoice?.items).vatFormatted ?? 'Inclusive'}</span>
+                    <span className='font-medium'>VAT ({VAT}%)</span>
+                    <span className='font-medium'>{getInvoiceTotals(invoice?.items).vatFormatted}</span>
                   </div>
                   )
                 }

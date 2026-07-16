@@ -49,7 +49,7 @@ function Header() {
   return
 
   return (
-    <div className="bg-white h-15 px-5  border-b select-none border-gray-100 flex items-center header-wrapper">
+    <div className="bg-white h-15 px-5 border-b select-none border-gray-100 flex items-center header-wrapper">
       <div className="flex-1 flex justify-between items-center">
         <a href="/">
           <svg id="logo_icon" className="h-8.75" viewBox="0 0 53.65 45">

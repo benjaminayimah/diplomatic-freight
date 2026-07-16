@@ -7,8 +7,7 @@ import Placeholder from '@tiptap/extension-placeholder';
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
-  ListBulletIcon,
-  NumberedListIcon
+  ListBulletIcon
 } from "@heroicons/react/24/outline";
 
 export default function RichTextEditor({
@@ -73,7 +72,7 @@ export default function RichTextEditor({
   return (
     <div className="flex flex-col gap-1 w-full">
       {label && (
-        <label htmlFor={id} className="text-sm font-semibold text-gray-700 whitespace-nowrap">
+        <label className="text-sm font-semibold text-gray-700 whitespace-nowrap">
           {label}
         </label>
       )}

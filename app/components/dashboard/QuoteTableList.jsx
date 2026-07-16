@@ -24,9 +24,9 @@ function QuoteTableList({ quote, onDelete }) {
             <div className='h-11 w-11 rounded-3xl bg-amber-50 border text-amber-600 border-amber-100 grid place-items-center'>
               <DocumentDuplicateIcon strokeWidth={1.5} className="h-6" />
             </div>
-            <div className='flex flex-col'>
+            <div className='flex flex-col max-w-125'>
               <div>
-                <span className='font-medium'>{quote?.name}</span>
+                <span className='whitespace-nowrap truncate'>{quote?.name}</span>
               </div>
               <div className='text-sm text-gray-500'><span className='font-medium'>Date requested: </span><span>{dateFormat(quote?.createdAt)}</span></div>
             </div>

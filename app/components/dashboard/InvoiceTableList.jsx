@@ -27,9 +27,9 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
           <div className='h-11 w-11 shrink-0 text-blue-600 rounded-3xl bg-blue-50 border border-blue-100 grid place-items-center'>
             <DocumentTextIcon strokeWidth={1.5} className="h-6" />
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col max-w-125'>
             <div className='flex gap-1 flex-wrap'>
-              <span className='font-medium'>{invoice?.name || invoice?.reference_number}</span>
+              <span className='whitespace-nowrap truncate'>{invoice?.name || invoice?.reference_number}</span>
             </div>
             <div className='text-sm text-gray-500 flex items-center gap-1.5'>
               <div className="flex gap-1">

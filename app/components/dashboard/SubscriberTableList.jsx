@@ -24,8 +24,8 @@ function SubscriberTableList({ subscriber, onDelete }) {
             <UserIcon strokeWidth={1.5} className="h-6" />
           </div>
           <div className='flex flex-col'>
-            <div className=''>
-              <span className='font-medium'>{subscriber?.email}</span>
+            <div>
+              <span>{subscriber?.email}</span>
             </div>
             <div className='text-sm text-gray-500'><span className='font-medium'>Date subscribed: </span><span>{dateFormat(subscriber?.createdAt)}</span></div>
           </div>

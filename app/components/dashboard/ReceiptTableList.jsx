@@ -24,9 +24,9 @@ function ReceiptTableList({ receipt, onDelete }) {
           <div className='h-11 w-11 shrink-0 text-purple-600 rounded-3xl bg-purple-50 border border-purple-100 grid place-items-center'>
             <ReceiptPercentIcon strokeWidth={1.5} className="h-6" />
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col max-w-125'>
             <div className='flex gap-1 flex-wrap'>
-              <span className='font-medium'>{receipt?.name || receipt?.receipt_number}</span>
+              <span className='whitespace-nowrap truncate'>{receipt?.name || receipt?.receipt_number}</span>
             </div>
             <div className='text-sm text-gray-500 flex items-center gap-1.5'>
               <div className="flex gap-1">

@@ -67,7 +67,7 @@ const Modal = ({
                 <button
                   onClick={onClose}
                   aria-label="Close"
-                  className="group text-gray-500 hover:text-black text-xl"
+                  className="group text-gray-500 bg-gray-100 h-8 w-8 rounded-full grid place-items-center hover:text-black text-xl"
                 >
                   <svg height="12" viewBox="0 0 12 12">
                     <path

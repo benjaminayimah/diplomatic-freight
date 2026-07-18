@@ -2,8 +2,12 @@ import React from 'react'
 import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
-import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import FileProfileIcon from './FileProfileIcon'
+import {
+  DocumentDuplicateIcon,
+  EyeIcon,
+  TrashIcon
+} from "@heroicons/react/24/outline";
 
 
 function QuoteTableList({ quote, onDelete }) {
@@ -39,14 +43,16 @@ function QuoteTableList({ quote, onDelete }) {
             <DropdownMenu trigger={Menu} width="w-30">
                 <Link
                   href={`/app/quote/${quote?.id}`}
-                  className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                  className="flex gap-2 px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                 >
+                  <EyeIcon strokeWidth={2} className="h-5" />
                   View
                 </Link>
                 <button
-                  className="block text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                  className="flex gap-2 text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                   onClick={() => onDelete(quote.id)} 
                 >
+                  <TrashIcon strokeWidth={2} className="h-5" />
                   Delete
                 </button>
               </DropdownMenu>

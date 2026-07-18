@@ -2,8 +2,12 @@ import React from 'react'
 import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
-import { ReceiptPercentIcon } from "@heroicons/react/24/outline";
 import FileProfileIcon from './FileProfileIcon'
+import {
+  EyeIcon,
+  ReceiptPercentIcon,
+  TrashIcon
+} from "@heroicons/react/24/outline";
 
 
 
@@ -33,22 +37,22 @@ function ReceiptTableList({ receipt, onDelete }) {
             </div>
             <div className='text-sm text-gray-500 flex items-center gap-1.5'>
               <div className="flex gap-1">
-                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(receipt?.createdAt)}</span>
-              </div>
-              &middot;
-              <div className="flex gap-1">
                 <span className='font-medium hidden md:block'>Receipt no.:</span><span>{receipt?.receipt_number}</span>
               </div>
+              <span className="font-bold">&middot;</span>
+              <div className="flex gap-1">
+                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(receipt?.createdAt)}</span>
+              </div>
             </div>
-            {/* <div className='text-sm text-gray-500'><span className='font-medium'>Date created: </span><span>{dateFormat(receipt?.createdAt)}</span></div> */}
           </div>
         </Link>
         <div className='grid place-items-center pr-3'>
           <DropdownMenu trigger={Menu} width="w-30">
               <Link
                 href={`/app/receipt/${receipt?.id}`}
-                className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                className="flex gap-2 px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
               >
+                <EyeIcon strokeWidth={2} className="h-5" />
                 View
               </Link>
               {/* <Link
@@ -58,9 +62,10 @@ function ReceiptTableList({ receipt, onDelete }) {
                 Edit
               </Link> */}
               <button
-                className="block text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                className="flex gap-2 text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                 onClick={() => onDelete(receipt.id)} 
               >
+                <TrashIcon strokeWidth={2} className="h-5" />
                 Delete
               </button>
             </DropdownMenu>

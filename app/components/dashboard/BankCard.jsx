@@ -4,6 +4,12 @@ import { generateWalletQR } from "@/utils/crypto/walletQR";
 import DropdownMenu from './DropdownMenu';
 import { formatLabel } from "@/utils/wordFormatter.js"
 import Link from 'next/link';
+import {
+  PencilIcon,
+  TrashIcon,
+  ArrowTopRightOnSquareIcon
+} from "@heroicons/react/24/outline";
+
 
 import {
   BuildingLibraryIcon,
@@ -62,9 +68,10 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                             <Link
                               key={invoice.id}
                               href={`/app/invoice/${invoice.id}`}
-                              className="text-white block text-xs hover:underline py-1"
+                              className="text-white group/link flex gap-2 text-xs hover:underline py-1"
                             >
-                              {invoice.reference_number}
+                              <span className="whitespace-nowrap">{invoice.reference_number}</span>
+                              <ArrowTopRightOnSquareIcon className="h-4 group-hover/link:visible invisible"/>
                             </Link>
                           ))}
                         </div>
@@ -82,15 +89,17 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                 showMenu && (
                   <DropdownMenu trigger={Menu} width="w-30">
                     <button
-                      className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                      className="flex gap-2 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                       onClick={() => onEdit(data)}
                     >
+                      <PencilIcon strokeWidth={2} className="h-5" />
                       Edit
                     </button>
                     <button
-                      className="block text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                      className="flex gap-2 text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                       onClick={() => onDelete(data.id)}
                     >
+                      <TrashIcon strokeWidth={2} className="h-5" />
                       Delete
                     </button>
                   </DropdownMenu>

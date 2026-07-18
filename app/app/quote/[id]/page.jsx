@@ -114,7 +114,7 @@ function page() {
                   onClick={() => openDeleteModal(quote)}
 
                 >
-                  <TrashIcon className="h-4.5" />
+                  <TrashIcon strokeWidth={2} className="h-5" />
                   Delete
                 </button>
               </DropdownMenu>

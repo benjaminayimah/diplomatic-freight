@@ -105,7 +105,7 @@ export default function ReceiptPage() {
               <BackButton onClick={() => router.back()} />
               <div>
                 <h1 className="text-xl"><span className="font-bold">Receipt #{receipt?.receipt_number || 'SAMPLE-1234' }</span></h1>
-                <div className="text-sm text-gray-500 flex gap-2 items-center">
+                <div className="text-sm text-gray-500 flex gap-1.5 items-center">
                   <div className='flex gap-1'>
                     <span className='font-bold'>Created on:</span>
                       <span>
@@ -118,7 +118,7 @@ export default function ReceiptPage() {
                         }
                       </span>
                   </div>
-                  <span className='inline-block h-3 w-px border-r border-gray-200' />
+                  <span className="font-bold">&middot;</span>
                   <div className='flex gap-1'>
                     <span className='font-bold'>By:</span><span>{data?.issuedBy}</span>
                   </div>
@@ -135,7 +135,7 @@ export default function ReceiptPage() {
                   className="text-red-600 w-full flex gap-1 items-center text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                   onClick={() => openDeleteModal(receipt)}
                 >
-                  <TrashIcon className="h-4.5" />
+                  <TrashIcon strokeWidth={2} className="h-5" />
                   Delete
                 </button>
               </DropdownMenu>

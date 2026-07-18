@@ -5,7 +5,11 @@ import DropdownMenu from './DropdownMenu';
 import FileProfileIcon from './FileProfileIcon'
 import {
   DocumentTextIcon,
-  ChatBubbleBottomCenterTextIcon
+  ChatBubbleBottomCenterTextIcon,
+  EyeIcon,
+  PencilIcon,
+  ReceiptPercentIcon,
+  TrashIcon
 } from "@heroicons/react/24/outline";
 
 
@@ -35,11 +39,11 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
             </div>
             <div className='text-sm text-gray-500 flex items-center gap-1.5'>
               <div className="flex gap-1">
-                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(invoice?.createdAt)}</span>
+                <span className='font-medium hidden md:block'>Reference no.:</span><span>{invoice?.reference_number}</span>
               </div>
-              &middot;
+              <span className="font-bold">&middot;</span>
               <div className="flex gap-1">
-                <span className='font-medium hidden md:block'>Ref no.:</span><span>{invoice?.reference_number}</span>
+                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(invoice?.createdAt)}</span>
               </div>
             </div>
           </div>
@@ -59,29 +63,33 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
           }
         </Link>
         <div className='grid place-items-center pr-3'>
-          <DropdownMenu trigger={Menu} width="w-39">
+          <DropdownMenu trigger={Menu} width="w-40">
             <Link
               href={`/app/invoice/${invoice?.id}`}
-              className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+              className="flex gap-2 px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
             >
+              <EyeIcon strokeWidth={2} className="h-5" />
               View
             </Link>
             <Link
               href={`/app/create-invoice?mode=edit&id=${invoice?.id}`}
-              className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+              className="flex gap-2 px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
             >
+              <PencilIcon strokeWidth={2} className="h-5" />
               Edit
             </Link>
             <Link
               href={`/app/create-receipt?mode=generate&id=${invoice?.id}`}
-              className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+              className="flex gap-2 px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
             >
-              Generate receipt
+              <ReceiptPercentIcon strokeWidth={2} className="h-5" />
+              Issue Receipt
             </Link>
             <button
-              className="block text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+              className="flex gap-2 text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
               onClick={() => onDelete(invoice.id)} 
             >
+              <TrashIcon strokeWidth={2} className="h-5" />
               Delete
             </button>
           </DropdownMenu>

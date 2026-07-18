@@ -42,16 +42,17 @@ function Nav() {
   
   return (
     <nav datatype="auth" className='border-b h-14.75 border-gray-100 bg-white/40 backdrop-blur-[6.5px]'>
-      <div className="flex items-center gap-3 px-5 py-2">
+      <div className="flex items-center gap-3 pr-5 py-2 bg-white/40">
         <div className="flex-1 overflow-hidden relative">
-          <ul className='flex gap-2 overflow-x-auto whitespace-nowrap min-w-0 scroll-hidden'>
+          <ul className='flex gap-2 overflow-x-auto whitespace-nowrap min-w-0 scroll-hidden pl-5 pr-6'>
             {
               menus.map((item, index) => (
                 <NavItem key={index} item={item} />
               ))
             }
           </ul>
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-linear-to-l from-white to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-6 bg-linear-to-r from-white to-transparent" />
         </div>
         <div>
           <DropdownMenu trigger={CreateButton} width="w-34">

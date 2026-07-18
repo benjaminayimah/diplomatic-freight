@@ -37,6 +37,16 @@
 }
 /* end */
 
+.scroll-hidden {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
+  overflow: auto !important; /* Ensure scrolling works */
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Edge */
+}
+
 
 /* clamp */
 .clamp {

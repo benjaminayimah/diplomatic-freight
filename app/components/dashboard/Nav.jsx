@@ -44,7 +44,7 @@ function Nav() {
     <nav datatype="auth" className='border-b h-14.75 border-gray-100 bg-white/40 backdrop-blur-[6.5px]'>
       <div className="flex items-center gap-3 px-5 py-2">
         <div className="flex-1 overflow-hidden relative">
-          <ul className='flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide min-w-0'>
+          <ul className='flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide min-w-0 scroll-hidden'>
             {
               menus.map((item, index) => (
                 <NavItem key={index} item={item} />

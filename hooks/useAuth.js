@@ -62,7 +62,7 @@ export const useAuth = () => {
     }
   }
 
-  const deletePayment = async (id) => {
+  const paymentDelete = async (id) => {
     try {
       const response = await deleteBankAccount(id);
       return response
@@ -167,7 +167,7 @@ export const useAuth = () => {
     updatePass,
     updateProfile,
     createBankOrUpdate,
-    deletePayment,
+    paymentDelete,
     createInvoiceOrUpdate,
     invoiceDelete,
     quoteDelete,

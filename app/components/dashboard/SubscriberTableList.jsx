@@ -36,7 +36,7 @@ function SubscriberTableList({ subscriber, onDelete }) {
           </div>
         </div>
         <div>
-          <DropdownMenu trigger={Menu}>
+          <DropdownMenu trigger={Menu} width="w-30">
               <button
                 className="block text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                 onClick={() => onDelete(subscriber.id)} 

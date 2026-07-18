@@ -12,7 +12,7 @@ import { useAuthStore } from "@/store/authStore";
 import ErrorCard from '@/app/components/ErrorCard';
 import { useSnackbar } from "@/app/components/SnackbarContext"; 
 import { useRouter } from "next/navigation"; // Added useRouter
-import Modal from './Modal';
+import Modal from '../modals/Modal';
 import InvoiceTemplate from './InvoiceTemplate';
 import { useUIStore } from "@/store";
 import PaymentSelectCard from './PaymentSelectCard'
@@ -20,7 +20,8 @@ import Link from 'next/link';
 import PaymentListDisplayCard from './PaymentListDisplayCard';
 import RichTextEditor from './RichTextEditor';
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
-import { div } from 'framer-motion/client';
+import { CURRENCIES } from "@/app/constants/currencies";
+
 
 
 
@@ -30,8 +31,6 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   const router = useRouter(); 
 
   const VAT = process.env.NEXT_PUBLIC_VAT
-
-  const currencies = useUIStore((state) => state.currencies);
 
   const [vatOld, setVatOld] = useState(null)
 
@@ -50,7 +49,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     date_issue: '',
     date_due: '',
     date_of_departure: '',
-    currency: currencies[0]?.value || 'USD',
+    currency: CURRENCIES[0]?.value || 'USD',
     items: [],
     paymentIDs: [],
     vat: '',
@@ -132,7 +131,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         date_issue: '',
         date_due: '',
         date_of_departure: '',
-        currency: currencies[0]?.value || 'USD',
+        currency: CURRENCIES[0]?.value || 'USD',
         vat: '',
         id: null,
         has_refund_policy: true,
@@ -469,7 +468,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                       id="currency"
                       required
                       placeholder="Select currency"
-                      options={currencies}
+                      options={CURRENCIES}
                       value={form.currency}
                       onChange={(e) => setForm({ ...form, currency: e.target.value })}
                       errors={errors.currency}
@@ -624,7 +623,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         title={'Preview Invoice'}
         subTitle={'Here is how your invoice will look like'}
         maxWidth='1200px'
-        dismissibleOutsideClick={false}
+        dismissibleOutsideClick={true}
         >
           <div className='max-w-275 w-full'>
             <InvoiceTemplate

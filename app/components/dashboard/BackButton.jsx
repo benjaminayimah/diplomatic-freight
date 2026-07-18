@@ -1,15 +1,7 @@
 import React from 'react'
-import { useRouter } from 'next/navigation'
-
 
 
 function BackButton({ onClick }) {
-  const router = useRouter()
-
-  const goBack = () => {
-    router.back()
-  }
-
   return (
     <button onClick={ onClick } type='button' className='bg-gray-50 h-10 w-10 grid place-items-center rounded-3xl mb-3 border border-gray-200 hover:bg-gray-100 transition-all duration-300'>
       <svg width="14.677" height="13" viewBox="0 0 14.677 13">

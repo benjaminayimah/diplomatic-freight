@@ -3,7 +3,7 @@
 import React, { useState, useCallback } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { useAuth } from "@/hooks/useAuth";
-import Modal from "@/app/components/dashboard/Modal";
+import Modal from "@/app/components/modals/Modal";
 import Input from "@/app/components/Input";
 import ErrorCard from "../../components/ErrorCard";
 import SubmitButton from "../../components/SubmitButton";
@@ -13,7 +13,9 @@ import { useSnackbar } from "@/app/components/SnackbarContext";
 function Settings() {
 
   const profile = useAuthStore((state) => state.profile);
-  const { setCompanyData } = useAuthStore()
+  const setCompanyData = useAuthStore(
+    (state) => state.setCompanyData
+  );
 
   const [open, setOpen] = useState(false);
 

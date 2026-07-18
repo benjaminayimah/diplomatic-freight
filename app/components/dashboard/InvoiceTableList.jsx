@@ -59,7 +59,7 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
           }
         </Link>
         <div className='grid place-items-center pr-3'>
-          <DropdownMenu trigger={Menu}>
+          <DropdownMenu trigger={Menu} width="w-39">
             <Link
               href={`/app/invoice/${invoice?.id}`}
               className="block px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"

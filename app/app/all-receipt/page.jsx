@@ -1,13 +1,11 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthStore } from "@/store/authStore";
 import ReceiptTableList from '../../components/dashboard/ReceiptTableList';
-import Modal from "@/app/components/dashboard/Modal";
-import SubmitButton from '../../components/SubmitButton';
-import { useSnackbar } from "@/app/components/SnackbarContext";
+import DeleteModal from "@/app/components/modals/DeleteModal";
 import useFetchData from "@/hooks/useFetchData";
 import Loader from '@/app/components/Loader';
 import SearchInput from "@/app/components/dashboard/SearchInput"
@@ -15,17 +13,29 @@ import useLocalSearch from "@/hooks/useLocalSearch";
 import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
 import usePagination from "@/hooks/usePagination"
 import PaginationFooter from '@/app/components/dashboard/PaginationFooter';
+import useDeleteModal from "@/hooks/useDeleteModal";
+import useDelete from "@/hooks/useDelete"
+import { PAGE_OPTIONS } from "@/app/constants/pagination";
+import Link from 'next/link';
+import { PlusIcon } from "@heroicons/react/24/outline";
+import EmptyState from "@/app/components/dashboard/EmptyState"
+
 
 
 function AllReceipt() {
 
-  const receipts = useAuthStore((state) => state.receipts);
-  const setReceipts = useAuthStore((state) => state.setReceipts);
-  const setDeleteReceiptById = useAuthStore((state) => state.setDeleteReceiptById);
+  const receipts = useAuthStore(
+    (state) => state.receipts
+  );
+  const setReceipts = useAuthStore(
+    (state) => state.setReceipts
+  );
+  const setDeleteReceiptById = useAuthStore(
+    (state) => state.setDeleteReceiptById
+  );
 
-  const { data, loading, error, refetch } = useFetchData("/receipt");
+  const { data, loading, error } = useFetchData("/receipt");
 
-  
   useEffect(() => {
     if (!data?.receipts) return;
     const sortedReceipts = [...data.receipts].sort(
@@ -35,44 +45,24 @@ function AllReceipt() {
   }, [data, setReceipts]);  // use the full data object
 
 
-  const [open, setOpen] = useState(false);
-
-  const [deleting, setDeleting] = useState(false)
-  
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [receiptToDelete, setReceiptToDelete] = useState(null);
+  const {
+    deleteModalOpen,
+    itemToDelete,
+    openDeleteModal,
+    closeDeleteModal,
+  } = useDeleteModal();
 
   const { receiptDelete } = useAuth();
-  
 
-
-
-  const handleCloseModal = useCallback(() => {
-    setOpen(false);
-  }, []);
-
-
-  const { showSnackbar } = useSnackbar()
- 
-
-  const handleDeleteReceipt = async (id) => {
-    setDeleting(true);
-    const response = await receiptDelete(id)
-    setDeleting(false);
-
-    if (response?.success) {
-      setDeleteReceiptById(id);
-      handleCloseModal();
-
-      showSnackbar (
-        "Deleted successfully!",
-        "success"
-      )
-    } else showSnackbar (
-        "Error deleting. Try again",
-        "error"
-      )
-  }
+  const {
+    deleting,
+    handleDelete,
+  } = useDelete({
+    deleteRequest: receiptDelete,
+    removeFromStore: setDeleteReceiptById,
+    closeModal: closeDeleteModal,
+    successMessage: "Receipt deleted successfully!",
+  });
 
    // search
   const [search, setSearch] = useState("");
@@ -90,12 +80,6 @@ function AllReceipt() {
 
   // pagination
   const [perPage, setPerPage] = useState(10);
-  const options = [
-    {label: 10, value: 10},
-    {label: 25, value: 25},
-    {label: 50, value: 50},
-    {label: 100, value: 100},
-  ]
 
   const {
   data: paginatedReceipts,
@@ -103,23 +87,39 @@ function AllReceipt() {
     totalPages,
     nextPage,
     previousPage,
-    goToPage,
     hasNextPage,
     hasPreviousPage,
   } = usePagination(filteredReceipts, perPage);
 
+
+  const deleteModalInner = (
+    <div>
+      <p className="text-sm mb-4 text-gray-900">
+        Are you sure you want to delete receipt: <strong>{itemToDelete?.receipt_number}</strong>?
+      </p>
+      <p className="text-sm mb-4 text-gray-900">
+        <strong>Note:</strong> This action can <strong>not</strong> be reversed.
+      </p>
+    </div>
+  )
+  const Button = (
+    <div className="mt-5">
+      <Link href={'/app/create-receipt'} className="myHover-translate flex gap-1 text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl">
+        <PlusIcon strokeWidth={2} className="h-5 shrink-0" />
+        Create Receipt
+      </Link>
+    </div>
+  )
 
 
 
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
     <Loader size={60} />
   </div>;
-  if(receipts.length === 0) return <div className="app-body-wrapper flex justify-center mt-20">
-    <p className="text-gray-500">No Receipts Found.</p>
-  </div>;
   if (error) return <div className="app-body-wrapper flex justify-center mt-20">
     <p className="text-red-500">Error: {error}</p>
   </div>;
+  if(receipts.length === 0) return <EmptyState button={Button} title="No Receipts Found" subTitle="All your receipts will appear here." />;
 
   return (
     <ProtectedRoute>
@@ -145,10 +145,7 @@ function AllReceipt() {
                   <ReceiptTableList 
                     key={receipt.id}
                     receipt={receipt}
-                    onDelete={() => {
-                      setReceiptToDelete(receipt);
-                      setDeleteModalOpen(true);
-                    }}
+                    onDelete={() => openDeleteModal(receipt)}
                   />
                 ))
               ) : search ? (
@@ -162,7 +159,7 @@ function AllReceipt() {
                 <PaginationFooter
                   value={perPage}
                   onChange={setPerPage}
-                  options={options}
+                  options={PAGE_OPTIONS}
                   onClickPrev={previousPage}
                   disabledPrev={!hasPreviousPage}
                   disabledNext={!hasNextPage}
@@ -175,38 +172,17 @@ function AllReceipt() {
           }
         </div>
       </section>
-      <Modal
-          isOpen={deleteModalOpen}
-          onClose={() => setDeleteModalOpen(false)}
-          title="Confirm Delete"
-          maxWidth="460px"
-        >
-          <p className="text-sm mb-4 text-gray-900">
-            Are you sure you want to delete receipt: <strong>{receiptToDelete?.receipt_number}</strong>?
-          </p>
-          <p className="text-sm mb-4 text-gray-900">
-            This action can't be undone
-          </p>
-          <div className="flex justify-end gap-2">
-            <button
-              onClick={() => setDeleteModalOpen(false)}
-              className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200"
-            >
-              Cancel
-            </button>
-            <SubmitButton
-              loading={deleting}
-              className={'bg-red-600 text-white hover:bg-red-700'}
-              onClick={async () => {
-                setDeleteModalOpen(false);
-                if (receiptToDelete) await handleDeleteReceipt(receiptToDelete.id);
-                setReceiptToDelete(null);
-              }}
-              >
-              Yes, Delete
-            </SubmitButton>
-          </div>
-        </Modal>
+      <DeleteModal
+        deleteModalOpen={deleteModalOpen}
+        closeDeleteModal={closeDeleteModal}
+        deleting={deleting}
+        deleteModalInner={deleteModalInner}
+        onClick={async () => {
+          if (itemToDelete) {
+            await handleDelete(itemToDelete.id);
+          }
+        }}
+      />
     </ProtectedRoute>
   )
 }

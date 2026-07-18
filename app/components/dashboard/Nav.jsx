@@ -4,12 +4,15 @@ import React from 'react'
 import NavItem from './NavItem'
 import { useAuthStore } from "@/store/authStore";
 import Link from 'next/link';
+import DropdownMenu from './DropdownMenu';
 import {
   HomeIcon,
   DocumentTextIcon,
   ReceiptPercentIcon,
   DocumentDuplicateIcon,
   UsersIcon,
+  ChevronDownIcon,
+  PlusIcon
 } from "@heroicons/react/24/outline";
 
 
@@ -19,12 +22,18 @@ const menus = [
   { name: 'Receipts', href: '/app/all-receipt', icon: ReceiptPercentIcon},
   { name: 'Quotes', href: '/app/quotes', icon: DocumentDuplicateIcon},
   { name: 'Subscribers', href: '/app/subscribers', icon: UsersIcon},
-  // { name: "Wallets", href: "/app/settings/payment-acc", icon: WalletIcon },
-  // { name: 'Company Info', href: '/app/settings', icon: BuildingOffice2Icon}
 ]
 
 
 function Nav() {
+
+  const CreateButton = (
+    <button className="bg-blue-600 hover:bg-blue-700 transition duration-300 text-white px-3 md:px-4 py-2.5 text-[0.88rem] rounded-4xl font-semibold flex items-center gap-1 whitespace-nowrap justify-center shrink-0">
+      <PlusIcon strokeWidth={2} className="h-5 shrink-0" />
+      <span className="hidden md:inline">Create...</span>
+      <ChevronDownIcon strokeWidth={2} className="h-3.5 shrink-0 hidden md:block" />
+    </button>
+  );
 
   const isAuth = useAuthStore((state) => state.isAuth)
 
@@ -32,27 +41,36 @@ function Nav() {
   return
   
   return (
-    <nav datatype="auth" className='px-5 py-2 items-center flex flex-col sm:flex-row sm:justify-between border-b border-gray-100 bg-white/40 backdrop-blur-[6.5px] gap-4'>
-      <ul className='flex gap-2 flex-wrap items-start'>
-        {
-          menus.map((item, index) => (
-            <NavItem key={index} item={item} />
-          ))
-        }
-      </ul>
-      <div className='flex gap-2 h-10.5 w-full md:w-auto'>
-        <Link href={'/app/create-receipt'} className='myHover-translate bg-gray-200 text-black px-4 py-2.5 text-[0.88rem] rounded-4xl font-medium whitespace-nowrap w-full sm:w-auto text-center flex items-center justify-center gap-1'>
-          <svg height="18" viewBox="0 0 22 22">
-            <path d="M-3453.778-81.221A10.928,10.928,0,0,1-3457-89a10.924,10.924,0,0,1,3.222-7.778A10.926,10.926,0,0,1-3446-100a10.928,10.928,0,0,1,7.779,3.222A10.927,10.927,0,0,1-3435-89a10.931,10.931,0,0,1-3.221,7.779A10.931,10.931,0,0,1-3446-78,10.929,10.929,0,0,1-3453.778-81.221ZM-3455-89a9.01,9.01,0,0,0,9,9,9.01,9.01,0,0,0,9-9,9.01,9.01,0,0,0-9-9A9.01,9.01,0,0,0-3455-89Zm8,4v-3h-3a1,1,0,0,1-1-1,1,1,0,0,1,1-1h3v-3a1,1,0,0,1,1-1,1,1,0,0,1,1,1v3h3a1,1,0,0,1,1,1,1,1,0,0,1-1,1h-3v3a1,1,0,0,1-1,1A1,1,0,0,1-3447-85Z" transform="translate(3457 100)"/>
-          </svg>
-          New Receipt
-        </Link>
-        <Link href={'/app/create-invoice'} className='myHover-translate bg-black text-white px-4 py-2.5 text-[0.88rem] rounded-4xl font-medium flex items-center gap-1 whitespace-nowrap w-full sm:w-auto justify-center'>
-        <svg height="18" viewBox="0 0 22 22">
-          <path d="M-3453.778-81.221A10.928,10.928,0,0,1-3457-89a10.924,10.924,0,0,1,3.222-7.778A10.926,10.926,0,0,1-3446-100a10.928,10.928,0,0,1,7.779,3.222A10.927,10.927,0,0,1-3435-89a10.931,10.931,0,0,1-3.221,7.779A10.931,10.931,0,0,1-3446-78,10.929,10.929,0,0,1-3453.778-81.221ZM-3455-89a9.01,9.01,0,0,0,9,9,9.01,9.01,0,0,0,9-9,9.01,9.01,0,0,0-9-9A9.01,9.01,0,0,0-3455-89Zm8,4v-3h-3a1,1,0,0,1-1-1,1,1,0,0,1,1-1h3v-3a1,1,0,0,1,1-1,1,1,0,0,1,1,1v3h3a1,1,0,0,1,1,1,1,1,0,0,1-1,1h-3v3a1,1,0,0,1-1,1A1,1,0,0,1-3447-85Z" transform="translate(3457 100)" fill='white'/>
-        </svg>
-          New Invoice
-        </Link>
+    <nav datatype="auth" className='border-b h-14.75 border-gray-100 bg-white/40 backdrop-blur-[6.5px]'>
+      <div className="flex items-center gap-3 px-5 py-2">
+        <div className="flex-1 overflow-hidden relative">
+          <ul className='flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide min-w-0'>
+            {
+              menus.map((item, index) => (
+                <NavItem key={index} item={item} />
+              ))
+            }
+          </ul>
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent" />
+        </div>
+        <div>
+          <DropdownMenu trigger={CreateButton} width="w-34">
+            <Link
+              href={'/app/create-invoice'}
+              className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
+            >
+              <DocumentTextIcon strokeWidth={2} className="h-5"/>
+              Invoice
+            </Link>
+            <Link
+              href={'/app/create-receipt'}
+              className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
+            >
+              <ReceiptPercentIcon strokeWidth={2} className="h-5" />
+              Receipt
+            </Link>
+          </DropdownMenu>
+        </div>
       </div>
     </nav>
   )

@@ -80,7 +80,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
               </div>
               {
                 showMenu && (
-                  <DropdownMenu trigger={Menu}>
+                  <DropdownMenu trigger={Menu} width="w-30">
                     <button
                       className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                       onClick={() => onEdit(data)}

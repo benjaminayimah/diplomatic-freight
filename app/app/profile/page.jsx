@@ -3,7 +3,7 @@
 import React, { useState, useCallback } from "react";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import { useAuthStore } from "@/store/authStore";
-import Modal from "@/app/components/dashboard/Modal";
+import Modal from "@/app/components/modals/Modal";
 import Input from "@/app/components/Input";
 import { useAuth } from "@/hooks/useAuth";
 import ErrorCard from "../../components/ErrorCard";
@@ -14,8 +14,14 @@ import { useSnackbar } from "@/app/components/SnackbarContext";
 function Profile() {
   const [open, setOpen] = useState(false);
   const [modalType, setModalType] = useState(''); // "edit" | "password"
-  const user = useAuthStore((state) => state.user);
-  const { setUserData } = useAuthStore();
+
+  const user = useAuthStore(
+    (state) => state.user
+  );
+  
+  const setUserData = useAuthStore(
+    (state) => state.setUserData
+  );
 
   const [profileForm, setProfileForm] = useState({ name: "", email: "" });
   const [passwordForm, setPasswordForm] = useState({ current_password: "", new_password: "" });

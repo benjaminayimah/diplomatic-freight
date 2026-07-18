@@ -114,11 +114,11 @@ button:not(:disabled), a {
   }
 }
 
-a {
+/* a, button {
   &:focus {
     outline: thin dotted;
   }
-}
+} */
 
 
 .pill-tag {
@@ -542,4 +542,21 @@ main:has(.verifiable,.session-expired) {
   width: 12px;
   border-radius: 50%;
   background-color: #FF6A3D;
+}
+
+/* ripple effect button */
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: .45;
+  }
+
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple .5s ease-out forwards;
 }

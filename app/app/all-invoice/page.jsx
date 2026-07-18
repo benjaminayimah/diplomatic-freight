@@ -1,13 +1,12 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthStore } from "@/store/authStore";
 import InvoiceTableList from '../../components/dashboard/InvoiceTableList';
-import Modal from "@/app/components/dashboard/Modal";
-import SubmitButton from '../../components/SubmitButton';
-import { useSnackbar } from "@/app/components/SnackbarContext"; 
+import Modal from "@/app/components/modals/Modal";
+import DeleteModal from "@/app/components/modals/DeleteModal";
 import useFetchData from "@/hooks/useFetchData";
 import Loader from '@/app/components/Loader';
 import useLocalSearch from "@/hooks/useLocalSearch";
@@ -15,70 +14,76 @@ import SearchInput from '@/app/components/dashboard/SearchInput';
 import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
 import usePagination from "@/hooks/usePagination"
 import PaginationFooter from '@/app/components/dashboard/PaginationFooter';
+import useDeleteModal from "@/hooks/useDeleteModal";
+import useDelete from "@/hooks/useDelete"
+import { PAGE_OPTIONS } from "@/app/constants/pagination";
+import EmptyState from "@/app/components/dashboard/EmptyState"
+import Link from 'next/link';
+import { PlusIcon } from "@heroicons/react/24/outline";
+
+
 
 
 
 function AllInvoice() {
 
-  const invoices = useAuthStore((state) => state.invoices);
-  const setInvoices = useAuthStore((state) => state.setInvoices);
-  const setDeleteInvoiceById = useAuthStore((state) => state.setDeleteInvoiceById);
 
-  const { data, loading, error, refetch } = useFetchData("/invoice");
+  const invoices = useAuthStore(
+    (state) => state.invoices
+  );
+  const setInvoices = useAuthStore(
+    (state) => state.setInvoices
+  );
+  const setDeleteInvoiceById = useAuthStore(
+    (state) => state.setDeleteInvoiceById
+  );
+
+
+  const { data, loading, error } = useFetchData("/invoice");
+
+  // useEffect(() => {
+  //   if (!data?.invoices) return;
+
+  //   const sortedInvoices = [...data.invoices].sort(
+  //     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  //   );
+
+  //   setInvoices(sortedInvoices);
+
+  // }, [data, setInvoices]);  // use the full data object
 
   useEffect(() => {
     if (!data?.invoices) return;
 
-    const sortedInvoices = [...data.invoices].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    setInvoices(
+      [...data.invoices].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
     );
+  }, [data, setInvoices]);
 
-    setInvoices(sortedInvoices);
-
-  }, [data, setInvoices]);  // use the full data object
-
-
-
-  const [open, setOpen] = useState(false);
 
   const [showNote, setShowNote] = useState(false)
   const [selectedNote, setSelectedNote] = useState('')
 
-  const [deleting, setDeleting] = useState(false)
-  
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [invoiceToDelete, setInvoiceToDelete] = useState(null);
+  const {
+    deleteModalOpen,
+    itemToDelete,
+    openDeleteModal,
+    closeDeleteModal,
+  } = useDeleteModal();
 
   const { invoiceDelete } = useAuth();
-  
 
-
-  const handleCloseModal = useCallback(() => {
-    setOpen(false);
-  }, []);
-
-
-  const { showSnackbar } = useSnackbar()
- 
-
-  const handleDeleteInvoice = async (id) => {
-    setDeleting(true);
-    const response = await invoiceDelete(id)
-    setDeleting(false);
-
-    if (response?.success) {
-      setDeleteInvoiceById(id);
-      handleCloseModal();
-
-      showSnackbar (
-        "Deleted successfully!",
-        "success"
-      )
-    } else showSnackbar (
-        "Error deleting. Try again",
-        "error"
-      )
-  }
+  const {
+    deleting,
+    handleDelete,
+  } = useDelete({
+    deleteRequest: invoiceDelete,
+    removeFromStore: setDeleteInvoiceById,
+    closeModal: closeDeleteModal,
+    successMessage: "Invoice deleted successfully!",
+  });
 
   // search
   const [search, setSearch] = useState("");
@@ -96,12 +101,6 @@ function AllInvoice() {
 
   // pagination
   const [perPage, setPerPage] = useState(10);
-  const options = [
-    {label: 10, value: 10},
-    {label: 25, value: 25},
-    {label: 50, value: 50},
-    {label: 100, value: 100},
-  ]
 
   const {
   data: paginatedInvoices,
@@ -109,21 +108,40 @@ function AllInvoice() {
     totalPages,
     nextPage,
     previousPage,
-    goToPage,
+    // goToPage,
     hasNextPage,
     hasPreviousPage,
   } = usePagination(filteredInvoices, perPage);
+
+
+  const deleteModalInner = (
+    <div>
+      <p className="text-sm mb-4 text-gray-900">
+        Are you sure you want to delete invoice: <strong>{itemToDelete?.reference_number}</strong>?
+      </p>
+      <p className="text-sm mb-4 text-gray-900">
+        <strong>Note:</strong> This action can <strong>not</strong> be reversed.
+      </p>
+    </div>
+  )
+
+  const Button = (
+    <div className="mt-5">
+      <Link href={'/app/create-invoice'} className="myHover-translate flex gap-1 text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl">
+        <PlusIcon strokeWidth={2} className="h-5 shrink-0" />
+        Create Invoice
+      </Link>
+    </div>
+  )
 
   // empty state
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
     <Loader size={60} />
   </div>;
-  if(invoices.length === 0) return <div className="app-body-wrapper flex justify-center mt-20">
-    <p className="text-gray-500">No Invoices Found.</p>
-  </div>;
   if (error) return <div className="app-body-wrapper flex justify-center mt-20">
     <p className="text-red-500">Error: {error}</p>
   </div>;
+  if(invoices.length === 0) return <EmptyState button={Button} title="No Invoices Found" subTitle="All your invoices will appear here." />;
 
   return (
     <ProtectedRoute>
@@ -153,10 +171,7 @@ function AllInvoice() {
                       setSelectedNote(note);
                       setShowNote(true);
                     }}
-                    onDelete={() => {
-                      setInvoiceToDelete(invoice);
-                      setDeleteModalOpen(true);
-                    }}
+                    onDelete={() => openDeleteModal(invoice)}
                   />
                 ))
               ) : search ? (
@@ -170,7 +185,7 @@ function AllInvoice() {
                 <PaginationFooter
                   value={perPage}
                   onChange={setPerPage}
-                  options={options}
+                  options={PAGE_OPTIONS}
                   onClickPrev={previousPage}
                   disabledPrev={!hasPreviousPage}
                   disabledNext={!hasNextPage}
@@ -183,53 +198,36 @@ function AllInvoice() {
           }
         </div>
       </section>
+      
+      <DeleteModal
+        deleteModalOpen={deleteModalOpen}
+        closeDeleteModal={closeDeleteModal}
+        deleting={deleting}
+        deleteModalInner={deleteModalInner}
+        onClick={async () => {
+          if (itemToDelete) {
+            await handleDelete(itemToDelete.id);
+          }
+        }}
+      />
       <Modal
-          isOpen={deleteModalOpen}
-          onClose={() => setDeleteModalOpen(false)}
-          title="Confirm Delete"
-          maxWidth="460px"
-        >
-          <p className="text-sm mb-4 text-gray-900">
-            Are you sure you want to delete invoice: <strong>{invoiceToDelete?.reference_number}</strong>?
-          </p>
-          <p className="text-sm mb-4 text-gray-900">
-            This action can't be undone
-          </p>
-          <div className="flex justify-end gap-2">
-            <button
-              onClick={() => setDeleteModalOpen(false)}
-              className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200"
-            >
-              Cancel
-            </button>
-            <SubmitButton
-              loading={deleting}
-              className={'bg-red-600 text-white hover:bg-red-700'}
-              onClick={async () => {
-                setDeleteModalOpen(false);
-                if (invoiceToDelete) await handleDeleteInvoice(invoiceToDelete.id);
-                setInvoiceToDelete(null);
+        isOpen={showNote}
+        onClose={() => {
+          setShowNote(false);
+          setSelectedNote('');
+        }}
+        title="Personal note"
+        maxWidth="600px"
+      >
+        <div className="mt-3">
+          <div
+              className="prose prose-sm max-w-none"
+              dangerouslySetInnerHTML={{
+                __html: selectedNote,
               }}
-              >
-              Yes, Delete
-            </SubmitButton>
-          </div>
-        </Modal>
-        <Modal
-          isOpen={showNote}
-          onClose={() => setShowNote(false)}
-          title="Personal note"
-          maxWidth="600px"
-        >
-          <div className="mt-3">
-            <div
-                className="prose prose-sm max-w-none"
-                dangerouslySetInnerHTML={{
-                  __html: selectedNote,
-                }}
-              />
-          </div>
-        </Modal>
+            />
+        </div>
+      </Modal>
     </ProtectedRoute>
   )
 }

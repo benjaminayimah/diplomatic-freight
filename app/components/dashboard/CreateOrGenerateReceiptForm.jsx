@@ -12,9 +12,11 @@ import { useAuthStore } from "@/store/authStore";
 import ErrorCard from '@/app/components/ErrorCard';
 import { useSnackbar } from "@/app/components/SnackbarContext"; 
 import { useRouter } from "next/navigation"; // Added useRouter
-import Modal from './Modal';
+import Modal from '../modals/Modal';
 import ReceiptTemplate from './ReceiptTemplate';
-import { useUIStore } from "@/store";
+import { CURRENCIES } from "@/app/constants/currencies";
+import { PAYMENT_METHODS } from "@/app/constants/payment";
+
 
 
 function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
@@ -24,23 +26,19 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
 
   const VAT = process.env.NEXT_PUBLIC_VAT
 
-  const currencies = useUIStore((state) => state.currencies);
-
   const [vat, setVat] = useState(false)
   
   // ✅ 1. New State to track if form is modified
   const [isDirty, setIsDirty] = useState(false);
-
-  const paymentMethods = useUIStore((state) => state.paymentMethods);
 
   const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
     address: '',
-    payment_method: paymentMethods[0].value,
+    payment_method: PAYMENT_METHODS[0].value,
     paid_on: new Date().toISOString().split('T')[0],
-    currency: currencies[0]?.value || 'USD',
+    currency: CURRENCIES[0]?.value || 'USD',
     items: [],
     vat: '',
     id: null
@@ -77,7 +75,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
         email: invoice.email,
         phone: invoice.phone,
         address: invoice.address,
-        payment_method: paymentMethods[0].value,
+        payment_method: PAYMENT_METHODS[0].value,
         paid_on: new Date().toISOString().split('T')[0],
         currency: invoice.currency || 'USD',
         items: invoice.items,
@@ -312,7 +310,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                     id="payment_method"
                     required
                     placeholder="Select payment method"
-                    options={paymentMethods}
+                    options={PAYMENT_METHODS}
                     value={form.payment_method}
                     onChange={(e) => setForm({ ...form, payment_method: e.target.value })}
                     errors={errors.payment_method}
@@ -333,7 +331,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                     id="currency"
                     required
                     placeholder="Select currency"
-                    options={currencies}
+                    options={CURRENCIES}
                     value={form.currency}
                     onChange={(e) => setForm({ ...form, currency: e.target.value })}
                     errors={errors.currency}
@@ -409,7 +407,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
         title={'Preview Receipt'}
         subTitle={'Here is how your receipt will look like'}
         maxWidth='1200px'
-        dismissibleOutsideClick={false}
+        dismissibleOutsideClick={true}
         >
           <div className='max-w-275 w-full'>
             <ReceiptTemplate

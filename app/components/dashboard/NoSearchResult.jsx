@@ -6,7 +6,6 @@ function NoSearchResult({input, onClick}) {
   return (
     <div className="flex flex-col items-center justify-center py-12 text-center">
       <MagnifyingGlassIcon className="h-10 w-10 text-gray-300 mb-3" />
-
       <p className="text-xl font-medium text-gray-900">
         No results found
       </p>

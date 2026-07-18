@@ -13,7 +13,7 @@ function NavItem({item}) {
     <li >
       <Link
         href={item.href}
-        className={`flex gap-1 text-[0.88rem] whitespace-nowrap font-semibold py-2 px-3.5 rounded-3xl transition duration-300 ${isActive ? "bg-blue-600 text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-600"}`}
+        className={`flex gap-1 text-[0.88rem] whitespace-nowrap font-semibold py-2 px-3.5 rounded-3xl transition duration-300 ${isActive ? "bg-black text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-600"}`}
         >
           {Icon && <Icon className="text-base h-5" />}
           {item.name}

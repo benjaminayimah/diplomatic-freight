@@ -1,21 +1,26 @@
 'use client'
 
-import React from 'react'
+import React, {useState} from 'react'
 import { useParams } from 'next/navigation';
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import useFetchData from "@/hooks/useFetchData";
+import { useAuth } from "@/hooks/useAuth";
 import { useAuthStore } from '@/store/authStore';
 import { useRouter } from 'next/navigation';
 import BackButton from '@/app/components/dashboard/BackButton'
-import Link from 'next/link';
-// import InvoiceTemplate from '@/app/components/dashboard/InvoiceTemplate';
-// import Loader from '@/app/components/Loader';
+import DeleteModal from "@/app/components/modals/DeleteModal";
+import useDeleteModal from "@/hooks/useDeleteModal";
+import { TrashIcon } from "@heroicons/react/24/outline";
+import DropdownMenu from "@/app/components/dashboard/DropdownMenu"
+import useDelete from "@/hooks/useDelete"
+
 
 function page() {
 
   const router = useRouter();
 
   const isAuth = useAuthStore((state) => state.isAuth);
+  
   const params = useParams();
   const { id } = params;
   
@@ -25,9 +30,50 @@ function page() {
 
   const quote = data?.data;
 
-  const goBack = () => {
-    router.back()
-  }
+  // delete quote
+  const setDeleteQuoteById = useAuthStore(
+    (state) => state.setDeleteQuoteById
+  );
+
+  const {
+    deleteModalOpen,
+    itemToDelete,
+    openDeleteModal,
+    closeDeleteModal,
+  } = useDeleteModal();
+
+  
+  const { quoteDelete } = useAuth();
+ 
+  const {
+    deleting,
+    handleDelete,
+  } = useDelete({
+    deleteRequest: quoteDelete,
+    removeFromStore: setDeleteQuoteById,
+    closeModal: closeDeleteModal,
+    successMessage: "Quote deleted successfully!",
+    onSuccess: () => router.back(),
+  });
+
+
+  const deleteModalInner = (
+    <div>
+      <p className="text-sm mb-4 text-gray-900">
+        Are you sure you want to delete quote from: <strong>{itemToDelete?.name}</strong>?
+      </p>
+      <p className="text-sm mb-4 text-gray-900">
+        <strong>Note:</strong> This action can <strong>not</strong> be reversed.
+      </p>
+    </div>
+  )
+  const Menu = (
+    <button type='button' className='h-9 w-9 rounded-3xl grid place-items-center hover:bg-gray-100 transition-all duration-300'>
+      <svg height="3.3" viewBox="0 0 17 3.334">
+        <path d="M-1977.333,1.667A1.667,1.667,0,0,1-1975.667,0,1.667,1.667,0,0,1-1974,1.667a1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1977.333,1.667Zm-6.834,0A1.667,1.667,0,0,1-1982.5,0a1.667,1.667,0,0,1,1.667,1.667,1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1984.167,1.667Zm-6.833,0A1.667,1.667,0,0,1-1989.333,0a1.667,1.667,0,0,1,1.667,1.667,1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1991,1.667Z" transform="translate(1991)" fill="#5a5a5a"/>
+      </svg>
+    </button>
+  )
 
   if (!isAuth) return <ProtectedRoute />;
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
@@ -37,11 +83,11 @@ function page() {
 
   return (
     <ProtectedRoute>
-      <section className='app-body-wrapper'>
-        <div className="mb-5 w-full">
-          <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-5'>
-            <div className='flex items-center gap-3'>
-              <BackButton onClick={goBack} />
+      <section className='app-body-wrapper pt-0!'>
+        <div className="w-full pt-2.5 pb-2.5 sticky top-29.75 z-20 bg-white/40 backdrop-blur-[6.5px]">
+          <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-2'>
+            <div className='flex items-center gap-4'>
+              <BackButton onClick={() => router.back()} />
               <div>
                 <h1 className="text-xl"><span className="font-bold">Quote from: {quote?.name}</span></h1>
                 <div className="text-sm text-gray-500 flex gap-2 items-center">
@@ -57,8 +103,21 @@ function page() {
                         }
                       </span>
                   </div>
+
                 </div>
               </div>
+            </div>
+            <div>
+              <DropdownMenu trigger={Menu} width="w-30">
+                <button
+                  className="text-red-600 w-full flex gap-1 items-center text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                  onClick={() => openDeleteModal(quote)}
+
+                >
+                  <TrashIcon className="h-4.5" />
+                  Delete
+                </button>
+              </DropdownMenu>
             </div>
           </div>          
         </div>
@@ -120,16 +179,18 @@ function page() {
             
           </div>
         </div>
-        {/* <div className="body-content relative">
-          <InvoiceTemplate
-            profile={profile}
-            invoice={invoice}
-            printRef={printRef}
-            banks={banks}
-            qrData={qrData} 
-          />
-        </div> */}
       </section>
+      <DeleteModal
+        deleteModalOpen={deleteModalOpen}
+        closeDeleteModal={closeDeleteModal}
+        deleting={deleting}
+        deleteModalInner={deleteModalInner}
+        onClick={async () => {
+          if (itemToDelete) {
+            await handleDelete(itemToDelete.id);
+          }
+        }}
+      />
     </ProtectedRoute>
   )
 }

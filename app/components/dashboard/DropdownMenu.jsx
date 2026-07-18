@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function DropdownMenu({ trigger, children }) {
+export default function DropdownMenu({ trigger, children, width = "min-w-40" }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -25,8 +25,12 @@ export default function DropdownMenu({ trigger, children }) {
 
       {open && (
         <div
-          className="absolute right-0 mt-0 min-w-40 rounded-2xl border border-gray-200 bg-white shadow-lg py-2
-          transition-all duration-200 z-50"
+          className={`
+            ${width}
+            absolute right-0 mt-0 rounded-2xl 
+            border border-gray-200 bg-white shadow-lg
+            transition-all duration-200 z-50 py-2
+            `}
           onClick={() => setOpen(false)} 
         >
           {children}

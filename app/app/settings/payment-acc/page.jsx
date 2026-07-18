@@ -4,23 +4,33 @@ import React, { useState, useCallback } from "react";
 import { useAuthStore } from "@/store/authStore";
 import BankCard from "../../../components/dashboard/BankCard";
 import { useAuth } from "@/hooks/useAuth";
-import Modal from "@/app/components/dashboard/Modal";
+import Modal from "@/app/components/modals/Modal";
+import DeleteModal from "@/app/components/modals/DeleteModal";
 import Input from "@/app/components/Input";
 import ErrorCard from "../../../components/ErrorCard";
 import SubmitButton from "../../../components/SubmitButton";
 import { useSnackbar } from "@/app/components/SnackbarContext";
-import { useUIStore } from "@/store";
 import Select from '@/app/components/Select';
 import { RadioGroup } from "../../../components/RadioGroup";
 import Radio from "../../../components/Radio";
 import { validateWalletAddress } from "@/utils/crypto/validateWalletAddress";
+import useDeleteModal from "@/hooks/useDeleteModal";
+import useDelete from "@/hooks/useDelete"
+import { PAYMENT_METHODS, USDT_NETWORKS } from "@/app/constants/payment";
+
 
 
 function Settings() {
 
   const profile = useAuthStore((state) => state.profile);
   const payments = useAuthStore((state) => state.payments);
-  const { setPaymentData, setDeletePaymentById } = useAuthStore()
+
+  const setDeletePaymentById = useAuthStore(
+    (state) => state.setDeletePaymentById
+  );
+  const setPaymentData = useAuthStore(
+    (state) => state.setPaymentData
+  );
 
   const [open, setOpen] = useState(false);
 
@@ -29,16 +39,12 @@ function Settings() {
   const [modalSubmitBtnText, setModalSubmitBtnText] = useState('')
 
   const [isEditingBank, setIsEditingBank] = useState(false)
-
-  const usdtNetworks = useUIStore((state) => state.usdtNetworks);
   
 
-  const { createBankOrUpdate, deletePayment } = useAuth();
-
-  const paymentMethods = useUIStore((state) => state.paymentMethods);
+  const { createBankOrUpdate, paymentDelete } = useAuth();
   
   const [bankForm, setBankForm] = useState({
-    payment_method: paymentMethods[0].value,
+    payment_method: PAYMENT_METHODS[0].value,
     bank_name: '',
     bank_branch: '',
     account_name: '',
@@ -68,7 +74,7 @@ function Settings() {
   // Open modal
     const handleOpenModal = useCallback(() => {
           setBankForm({
-            payment_method: paymentMethods[0].value,
+            payment_method: PAYMENT_METHODS[0].value,
             bank_name: '',
             bank_branch: '',
             account_name: '',
@@ -104,7 +110,7 @@ function Settings() {
 
   const handlePaymentPrefetch = async (payload) => {
     setBankForm({
-      payment_method: payload.payment_method || paymentMethods[0].value,
+      payment_method: payload.payment_method || PAYMENT_METHODS[0].value,
       bank_name: payload.bank_name || '',
       bank_branch: payload.bank_branch || '',
       account_name: payload.account_name || '',
@@ -168,51 +174,23 @@ function Settings() {
     }
   }
 
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [paymentToDelete, setPaymentToDelete] = useState(null);
 
-  const handleDeletePayment = async (id) => {
-    resetErrors();
-    setLoading(true);
+  const {
+    deleteModalOpen,
+    itemToDelete,
+    openDeleteModal,
+    closeDeleteModal,
+  } = useDeleteModal();
 
-    const response = await deletePayment(id);
-
-    setLoading(false);
-
-    if (response?.success) {
-      setDeletePaymentById(id);
-      handleCloseModal();
-
-      showSnackbar(
-        "Deleted successfully!",
-        "success"
-      );
-    } else {
-      showSnackbar(
-        response?.error || "Error deleting payment. Try again.",
-        "error"
-      );
-    }
-  };
-  
-  // const handleDeletePayment = async (id) => {
-  //   resetErrors()
-  //   setLoading(true);
-  //   const response = await deletePayment(id)
-  //   setLoading(false);
-
-  //   if (response?.success) {
-  //     setDeletePaymentById(id);
-  //     handleCloseModal();
-  //     showSnackbar (
-  //       "Deleted successfully!",
-  //       "success"
-  //     )
-  //   } else showSnackbar (
-  //       "Error deleting. Try again",
-  //       "error"
-  //     )
-  // }
+  const {
+    deleting,
+    handleDelete,
+  } = useDelete({
+    deleteRequest: paymentDelete,
+    removeFromStore: setDeletePaymentById,
+    closeModal: closeDeleteModal,
+    successMessage: "Payment deleted successfully!",
+  });
 
   const placeholders = {
     erc20: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
@@ -223,6 +201,17 @@ function Settings() {
     solana: "9xQeWvG816bUx9EPjHmaT23r2K6q7hXnX8pY4rQd8sW",
     ton: "EQD8...",
   };
+
+  const deleteModalInner = (
+    <div>
+      <p className="text-sm mb-4 text-gray-900">
+        Are you sure you want to delete this account?
+      </p>
+      <p className="text-sm mb-4 text-gray-900">
+        <strong>Note:</strong> This action can <strong>not</strong> be reversed.
+      </p>
+    </div>
+  )
   
 
   return (
@@ -255,10 +244,7 @@ function Settings() {
                       data={payment}
                       onEdit={handlePaymentPrefetch}
                       showMenu={true}
-                      onDelete={() => {
-                        setPaymentToDelete(payment);
-                        setDeleteModalOpen(true);
-                      }}
+                      onDelete={() => openDeleteModal(payment)}
                     />
                   ))
                 }
@@ -295,7 +281,7 @@ function Settings() {
                     <div className="flex flex-col gap-4">
                       <RadioGroup label="Select Payment Method">
                         <div className="grid grid-cols-3">
-                          {paymentMethods.map((method) => (
+                          {PAYMENT_METHODS.map((method) => (
                             <Radio
                               key={method.value}
                               label={method.label}
@@ -373,7 +359,7 @@ function Settings() {
                             id="network"
                             required
                             placeholder="Select network"
-                            options={usdtNetworks}
+                            options={USDT_NETWORKS}
                             value={bankForm.network}
                             onChange={(e) => {
                               setBankForm({
@@ -415,35 +401,17 @@ function Settings() {
               </div>
           </Modal>
 
-          <Modal
-            isOpen={deleteModalOpen}
-            onClose={() => setDeleteModalOpen(false)}
-            title="Confirm Delete"
-            maxWidth="460px"
-          >
-            <p className="text-sm mb-4 text-gray-900">
-              Are you sure you want to delete this account?
-            </p>
-            <div className="flex justify-end gap-2">
-              <button
-                onClick={() => setDeleteModalOpen(false)}
-                className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200"
-              >
-                Cancel
-              </button>
-              <SubmitButton
-                loading={loading}
-                className={'bg-red-600 text-white hover:bg-red-700'}
-                onClick={async () => {
-                  setDeleteModalOpen(false);
-                  if (paymentToDelete) await handleDeletePayment(paymentToDelete.id);
-                  setPaymentToDelete(null);
-                }}
-                >
-                Delete
-              </SubmitButton>
-            </div>
-          </Modal>
+          <DeleteModal
+            deleteModalOpen={deleteModalOpen}
+            closeDeleteModal={closeDeleteModal}
+            deleting={deleting}
+            deleteModalInner={deleteModalInner}
+            onClick={async () => {
+              if (itemToDelete) {
+                await handleDelete(itemToDelete.id);
+              }
+            }}
+          />
       </>
   )
 }

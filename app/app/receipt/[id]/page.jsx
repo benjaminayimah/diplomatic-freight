@@ -11,7 +11,7 @@ import BackButton from '@/app/components/dashboard/BackButton'
 import { useReactToPrint } from "react-to-print";
 import Loader from '@/app/components/Loader';
 import { useRouter } from 'next/navigation';
-import { ArrowDownTrayIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { PrinterIcon, TrashIcon } from "@heroicons/react/24/outline";
 import useDeleteModal from "@/hooks/useDeleteModal";
 import DeleteModal from "@/app/components/modals/DeleteModal";
 import DropdownMenu from "@/app/components/dashboard/DropdownMenu"
@@ -127,8 +127,8 @@ export default function ReceiptPage() {
             </div>
             <div className='flex gap-2'>
               <button onClick={() => handlePrint()} className={'h-9 px-3 border flex items-center justify-center font-medium text-[0.88rem] rounded-4xl  border-gray-200 gap-1 text-black bg-gray-50 hover:bg-gray-100 transition-colors'}>
-                <ArrowDownTrayIcon strokeWidth={2} className="h-5"/>
-                Download PDF
+                <PrinterIcon strokeWidth={1.5} className="h-5"/>
+                Print Receipt
               </button>
               <DropdownMenu trigger={Menu} width="w-30">
                 <button

@@ -49,7 +49,10 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                     )
                   }
                 </div>
-                {formatLabel(data?.payment_method)}
+                <span className="whitespace-nowrap">
+                  {formatLabel(data?.payment_method)}
+                </span>
+                
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -57,7 +60,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                 {hasInvoice ? (
                   <div className="inline-flex items-center gap-1 text-sm font-base pl-2 pr-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-100">
                     <InformationCircleIcon strokeWidth={1.5} className="h-4 w-4" />
-                    <div className="inline-flex gap-1">
+                    <div className="inline-flex gap-1 whitespace-nowrap">
                       Used by{" "}
                       <div className="group relative">
                         <span className="underline decoration-dotted underline-offset-3 cursor-pointer text-blue-700">
@@ -79,7 +82,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                     </div>
                   </div>
                 ) : (
-                  <div className="inline-flex items-center gap-1 text-sm font-base pl-2 pr-3 py-1 rounded-full bg-gray-100 text-gray-900 border border-gray-200">
+                  <div className="inline-flex whitespace-nowrap items-center gap-1 text-sm font-base pl-2 pr-3 py-1 rounded-full bg-gray-100 text-gray-900 border border-gray-200">
                     <InformationCircleIcon strokeWidth={1.5} className="h-4 w-4" />
                     No invoices linked
                   </div>

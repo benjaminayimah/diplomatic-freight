@@ -21,7 +21,7 @@ import {
   ChatBubbleBottomCenterTextIcon,
   TrashIcon,
   ReceiptPercentIcon,
-  ArrowDownTrayIcon
+  PrinterIcon
 } from "@heroicons/react/24/outline";
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
 
@@ -158,8 +158,8 @@ export default function InvoicePage() {
                 Generate Receipt
               </Link>
               <button onClick={() => handlePrint()} className={'h-9 px-3 border flex items-center justify-center font-medium text-[0.88rem] rounded-4xl  border-gray-200 gap-1 text-black bg-gray-50 hover:bg-gray-100 transition-colors'}>
-                <ArrowDownTrayIcon strokeWidth={2} className="h-5"/>
-                Download PDF
+                <PrinterIcon strokeWidth={1.5} className="h-5"/>
+                Print Invoice
               </button>
               <DropdownMenu trigger={Menu} width="w-30">
                 <button

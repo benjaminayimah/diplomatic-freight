@@ -7,7 +7,8 @@ import Placeholder from '@tiptap/extension-placeholder';
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
-  ListBulletIcon
+  ListBulletIcon,
+  ArrowTurnDownRightIcon
 } from "@heroicons/react/24/outline";
 
 export default function RichTextEditor({
@@ -72,44 +73,38 @@ export default function RichTextEditor({
   return (
     <div className="flex flex-col gap-1 w-full">
       {label && (
-        <label className="text-sm font-semibold text-gray-700 whitespace-nowrap">
+        <div aria-labelledby={id} className="text-sm font-semibold text-gray-700 whitespace-nowrap">
           {label}
-        </label>
+        </div>
       )}
 
-      <div id={id} className="border border-gray-300 rounded-xl overflow-hidden hover:border-gray-400 focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!">
-
+      <div id={id} aria-label="special note" className="border border-gray-300 rounded-xl overflow-hidden hover:border-gray-400 focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!">
         {/* Toolbar */}
         <div className="flex flex-wrap gap-2 p-2 border-b border-gray-200 bg-gray-50">
-
           <Button
             active={editor.isActive('bold')}
             onClick={() => editor.chain().focus().toggleBold().run()}
           >
             <strong>B</strong>
           </Button>
-
           <Button
             active={editor.isActive('italic')}
             onClick={() => editor.chain().focus().toggleItalic().run()}
           >
             <em>I</em>
           </Button>
-
           <Button
             active={editor.isActive('underline')}
             onClick={() => editor.chain().focus().toggleUnderline().run()}
           >
             <u>U</u>
           </Button>
-
           <Button
             active={editor.isActive('bulletList')}
             onClick={() => editor.chain().focus().toggleBulletList().run()}
           >
             <ListBulletIcon strokeWidth={2} className="text-base h-4"/>
           </Button>
-
           <Button
             active={editor.isActive('orderedList')}
             onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -129,13 +124,16 @@ export default function RichTextEditor({
               />
             </svg>
           </Button>
-
+          <Button
+            onClick={() => editor.chain().focus().setHardBreak().run()}
+          >
+            <ArrowTurnDownRightIcon className="h-4" />
+          </Button>
           <Button
             onClick={() => editor.chain().focus().undo().run()}
           >
             <ArrowUturnLeftIcon strokeWidth={2} className="text-base h-4"/>
           </Button>
-
           <Button
             onClick={() => editor.chain().focus().redo().run()}
           >

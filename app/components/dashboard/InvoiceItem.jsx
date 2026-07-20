@@ -45,7 +45,7 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
         errors={[]}
         required
       />
-      <Input
+      {/* <Input
         label= {`Extra charges(${CURRENCY})`}
         id="extra_charges"
         type="number"
@@ -55,7 +55,7 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
         onChange={(e) => onChange(index, 'extra_charges', e.target.value)}
         onWheel={(e) => e.target.blur()}
         errors={[]}
-      />
+      /> */}
       <Input
         label= {`Amount(${CURRENCY})`}
         id="amount"
@@ -66,6 +66,7 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
         onChange={(e) => onChange(index, 'amount', e.target.value)}
         onWheel={(e) => e.target.blur()}
         errors={[]}
+        required
       />
       <div className='flex items-end justify-end py-1'>
         <button

@@ -138,8 +138,8 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         paymentIDs: [],
         personal_note: '',
         items: [
-          { id: Date.now(), description: '', quantity: 1, rate: '', extra_charges: '', amount: '' }
-        ],
+          { id: Date.now(), description: '', quantity: 1, rate: '', amount: '' }
+        ],                                                // extra_charges: '',
       }));
     }
   }, [isEditing]);
@@ -156,8 +156,8 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
       ...prev,
       items: [
         ...prev.items,
-        { id: Date.now(), description: '', quantity: 1, rate: '', extra_charges: '', amount: '' }
-      ]
+        { id: Date.now(), description: '', quantity: 1, rate: '', amount: '' }
+      ]                                                     //, extra_charges: ''
     }));
     setIsDirty(true); // ✅ Mark dirty
   };

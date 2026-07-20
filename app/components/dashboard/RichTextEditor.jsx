@@ -127,7 +127,7 @@ export default function RichTextEditor({
           <Button
             onClick={() => editor.chain().focus().setHardBreak().run()}
           >
-            <ArrowTurnDownRightIcon className="h-4" />
+            <ArrowTurnDownRightIcon strokeWidth={2} className="h-4" />
           </Button>
           <Button
             onClick={() => editor.chain().focus().undo().run()}

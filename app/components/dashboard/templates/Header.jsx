@@ -11,7 +11,7 @@ function Header({
 
   const InvoiceNumber = (
     <div className="flex flex-col gap-1">
-      <p className="text-gray-500">Reference Number</p>
+      <p className="text-gray-500">Invoice Number</p>
       <p className=" text-neutral-800 font-medium">{data?.reference_number || 'SAMPLE-1234'}</p>
     </div>
   )

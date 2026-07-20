@@ -22,7 +22,7 @@ function TemplateMain({
         <article ref={printRef} className='bg-white relative'>
           <WaterMark />
           <main className="p-6 sm:p-10 min-h-200 z-10 relative">
-            <Header name={'invoice'} profile={profile} data={data} />
+            <Header name={name} profile={profile} data={data} />
             <BillTo data={data} qrData={qrData} />
             <Table data={data} />
             {

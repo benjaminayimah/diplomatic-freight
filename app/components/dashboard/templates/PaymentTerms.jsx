@@ -5,7 +5,7 @@ function PaymentTerms({
 }) {
   return (
     <div className='grid invoice-section pt-12 pb-6'>
-      <h3 className="font-bold text-black">Payment Terms</h3>
+      <h3 className="font-bold text-black mb-2">Payment Terms</h3>
       <p className="text-black text-sm mb-4">
         <strong className="font-bold">Reservation:</strong>{" "}
         Aircraft rate is reserved only from the issue date until the invoice due date. If payment is not received within this window, pricing and availability cannot be guaranteed.

@@ -31,7 +31,7 @@ function Table({
               <tr>
                 <th className="w-[55%] px-4 py-3 font-bold text-xs text-left">Item Description</th>
                 <th className="w-[12%] px-4 py-3 font-bold text-xs text-center">Quantity</th>
-                <th className="w-[15%] px-4 py-3 font-bold text-xs text-right">Rate</th>
+                <th className="w-[15%] px-4 py-3 font-bold text-xs text-right">Price</th>
                 {/* <th className="px-4 py-3 font-bold text-xs">Extra</th> */}
                 <th className="w-[18%] px-4 py-3 font-bold text-xs text-right">Amount</th>
               </tr>

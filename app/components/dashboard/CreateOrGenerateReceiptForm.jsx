@@ -132,6 +132,12 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
   const updateItem = (index, field, value) => {
     const updatedItems = [...form.items];
     updatedItems[index][field] = value;
+
+    const quantity = parseFloat(updatedItems[index].quantity) || 0;
+    const price = parseFloat(updatedItems[index].rate) || 0;
+
+    updatedItems[index].amount = (quantity * price).toFixed(2);
+    
     setForm((prev) => ({ ...prev, items: updatedItems }));
     setIsDirty(true); // ✅ Mark dirty
   };

@@ -13,7 +13,7 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
     <div className='flex flex-col md:flex-row gap-3 pb-4 border-b border-gray-100 invoice-item-row'>
       <Input
         label="Description"
-        id="description"
+        id={`description_${index}`}
         type="text"
         placeholder="Description"
         value={data.description}
@@ -23,7 +23,7 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
       />
       <Input
         label="Quantity"
-        id="quantity"
+        id={`quantiy${index}`}
         type="number"
         placeholder="1"
         value={data.quantity}
@@ -34,8 +34,8 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
         required
       />
       <Input
-        label= {`Rate(${CURRENCY})`}
-        id="rate"
+        label= {`Price(${CURRENCY})`}
+        id={`rate${index}`}
         type="number"
         placeholder="0.00"
         className='hide-counter'
@@ -58,7 +58,7 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
       /> */}
       <Input
         label= {`Amount(${CURRENCY})`}
-        id="amount"
+        id={`amount${index}`}
         type="number"
         placeholder="0.00"
         className='hide-counter'
@@ -67,6 +67,8 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
         onWheel={(e) => e.target.blur()}
         errors={[]}
         required
+        readOnly
+        disabled
       />
       <div className='flex items-end justify-end py-1'>
         <button

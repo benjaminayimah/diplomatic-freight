@@ -25,7 +25,7 @@ function Table({
   return (
     <>
       <div>
-        <div className="overflow-x-auto pt-8">
+        <div className="overflow-x-auto pt-6">
           <table className="w-full text-left text-sm">
             <thead className="bg-blue-500 text-white uppercase tracking-wider">
               <tr>

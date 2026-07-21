@@ -16,7 +16,7 @@ function PaymentOptions({
           payments?.map((payment) => (
             payment.payment_method === 'bank_transfer' ? (
               <li key={payment.id} className={`text-black text-sm space-y-1 ${payments.length > 1 ? 'list-decimal' : 'list-none'}`} >
-                <p><span className="font-medium"><strong>Payment Method:</strong></span> <span className='uppercase'>{payment?.payment_method.replace("_", " ") || 'N/A'}</span></p>
+                <p><span className="font-medium"><strong>Payment Method:</strong></span> <span className='uppercase'>{payment?.payment_method.replace("_", " ")}</span></p>
                 <p><span className="font-medium"><strong>Bank:</strong></span> {payment?.bank_name || 'N/A'}</p>
                 <p><span className="font-medium"><strong>Account Name:</strong></span> {payment?.account_name || 'N/A'}</p>
                 <p><span className="font-medium"><strong>Account Number:</strong></span> <code>{payment?.account_number || 'N/A'}</code></p>
@@ -25,7 +25,7 @@ function PaymentOptions({
               </li>
             ) : (
               <li key={payment.id} className={`text-black text-sm space-y-1 ${payments.length > 1 ? 'list-decimal' : 'list-none'}`} >
-                <p><span className="font-medium"><strong>Payment Method:</strong></span> <span className='uppercase'>{payment?.payment_method.replace("_", " ") || 'N/A'}</span></p>
+                <p><span className="font-medium"><strong>Payment Method:</strong></span> <span className='uppercase'>{payment?.payment_method.replace("_", " ")} Deposit</span></p>
                 <p><span className="font-medium"><strong>Wallet Address:</strong></span> <code>{payment?.wallet_address || 'N/A'}</code></p>
                 <p><span className="font-medium"><strong>Network:</strong></span> <span className='uppercase'>{payment?.network || 'N/A'}</span></p>
                 <div className='mt-4'>

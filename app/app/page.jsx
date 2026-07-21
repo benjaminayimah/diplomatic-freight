@@ -104,7 +104,7 @@ const displayedPayments = showAllPayments
                   <button
                     type="button"
                     onClick={() => setShowAllPayments(prev => !prev)}
-                    className="flex w-full justify-center items-center gap-2 text-black text-base font-medium py-2 px-4 border border-gray-200 hover:bg-gray-100 transition rounded-3xl"
+                    className="flex text-sm w-full justify-center items-center gap-2 text-black font-medium py-2 px-4 border border-gray-200 hover:bg-gray-100 transition rounded-3xl"
                   >
                     {showAllPayments ? (
                       <>

@@ -218,7 +218,7 @@ function Settings() {
       <>
         <article className="p-4 flex-1 flex flex-col bg-gray-50 rounded-xl border border-gray-100 mb-10">
           <div className="flex justify-between items-center mb-2">
-            <h2 className="mb-3 text-xl">Payment Accounts</h2>
+            <h2 className="text-xl">Payment Accounts</h2>
             { payments?.length > 0 && (
               <div>
                 <button

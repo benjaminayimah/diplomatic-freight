@@ -124,7 +124,7 @@ function Settings() {
       <>
         <article className="p-4 bg-gray-50 rounded-xl border border-gray-100">
           <div className="flex justify-between items-cente mb-2">
-            <h2 className="mb-3 text-xl">Company Profile</h2>
+            <h2 className="text-xl">Company Profile</h2>
             <div>
               <button
                 onClick={() => handleOpenModal()}

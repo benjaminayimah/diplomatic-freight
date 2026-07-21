@@ -61,7 +61,7 @@ function Header() {
             <Cog6ToothIcon strokeWidth={2} className="text-base h-5" />
           </Link>
           <span className="text-gray-200">|</span>
-          <DropdownMenu trigger={UserAvatar}>
+          <DropdownMenu trigger={UserAvatar}> {/* onOpenChange={(isOpen) => {console.log(isOpen);}} */}
             <Link
               href="/app/profile"
               className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition"

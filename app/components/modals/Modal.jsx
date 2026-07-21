@@ -10,29 +10,41 @@ const Modal = ({
   subTitle,
   maxWidth = "600px",
   dismissibleOutsideClick = true,
+  dismissibleEsc = true,
   overlayClasses = '',
   children
 }) => {
   const modalRef = useRef(null);
 
   // Close when clicking outside
-  useEffect(() => {
-    if (!dismissibleOutsideClick) return;
 
-    const handler = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
+  useEffect(() => {
+  if (!isOpen) return;
+
+    const handleMouseDown = (e) => {
+      if (
+        dismissibleOutsideClick &&
+        modalRef.current &&
+        !modalRef.current.contains(e.target)
+      ) {
         onClose();
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handler);
-    }
+    const handleKeyDown = (e) => {
+      if (dismissibleEsc && e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, dismissibleOutsideClick]);
 
 
   return (

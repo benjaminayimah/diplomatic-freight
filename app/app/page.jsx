@@ -52,7 +52,7 @@ const displayedPayments = showAllPayments
           </div>
           <article className="p-4 flex-1 flex flex-col mt-8 bg-gray-50 rounded-xl border border-gray-100">
             <div className="flex justify-between items-center mb-2">
-              <h2 className="mb-3 text-xl">Payment Accounts</h2>
+              <h2 className="text-xl">Payment Accounts</h2>
               <div>
                 {
                   payments?.length > 0 && (

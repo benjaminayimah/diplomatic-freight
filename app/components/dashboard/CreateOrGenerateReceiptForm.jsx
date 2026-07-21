@@ -310,7 +310,6 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                   <Select
                     label="Payment method"
                     id="payment_method"
-                    required
                     placeholder="Select payment method"
                     options={PAYMENT_METHODS}
                     value={form.payment_method}
@@ -331,7 +330,6 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                   <Select
                     label="Currency"
                     id="currency"
-                    required
                     placeholder="Select currency"
                     options={CURRENCIES}
                     value={form.currency}

@@ -75,7 +75,7 @@ export default function AuthProvider({ children }) {
           </svg>
         </div>
         <h1 className="text-3xl mb-2 text-center">Session Expired!</h1>
-        <p className="mb-5 text-center">Your login session has expired. Please re-login.</p>
+        <p className="mb-5 text-center">Your session has expired. Please log in again to continue.</p>
         <button
           onClick={logOut}
           className="bg-black myHover-translate text-white h-10 px-6 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-[86px]"

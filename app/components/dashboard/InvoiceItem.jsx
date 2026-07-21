@@ -66,7 +66,6 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
         onChange={(e) => onChange(index, 'amount', e.target.value)}
         onWheel={(e) => e.target.blur()}
         errors={[]}
-        required
         readOnly
         disabled
       />

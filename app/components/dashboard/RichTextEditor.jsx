@@ -78,7 +78,7 @@ export default function RichTextEditor({
         </div>
       )}
 
-      <div id={id} aria-label="special note" className="border border-gray-300 rounded-xl overflow-hidden hover:border-gray-400 focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!">
+      <div id={id} aria-label="special note" className="border border-gray-300 rounded-xl transition duration-300 overflow-hidden hover:border-gray-400 focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!">
         {/* Toolbar */}
         <div className="flex flex-wrap gap-2 p-2 border-b border-gray-200 bg-gray-50">
           <Button

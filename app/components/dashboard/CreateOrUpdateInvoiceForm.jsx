@@ -486,7 +486,6 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                     <Select
                       label="Currency"
                       id="currency"
-                      required
                       placeholder="Select currency"
                       options={CURRENCIES}
                       value={form.currency}
@@ -626,8 +625,10 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
             <div className='sticky bottom-0 w-full pb-4'>
               <div className='flex justify-center'>
                 <div className='p-1 flex gap-2 items-center bg-white border border-gray-100 h-12 rounded-3xl'>
-                  <button onClick={() => setOpenPreview(true)} type='button' className='inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl'>Preview</button>
-                  <SubmitButton loading={loading} className={'bg-[#0077FF] text-white'}>
+                  <button onClick={() => setOpenPreview(true)} type='button' className='inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl'>
+                    Preview
+                  </button>
+                  <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
                     {isEditing ? 'Save Changes' : 'Save Invoice'}
                   </SubmitButton>
                 </div>
@@ -680,16 +681,21 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
               {
                 payments?.length > 0 ? (
                   <div className="flex flex-col gap-2">
-                  {
-                    payments.map((payment) => (
-                      <PaymentSelectCard
-                        key={payment.id}
-                        data={payment}
-                        selectedIDs={form.paymentIDs}
-                        onToggle={() => togglePayment(payment.id)}
-                      />
-                    ))
-                  }
+                    {
+                      payments.map((payment) => (
+                        <PaymentSelectCard
+                          key={payment.id}
+                          data={payment}
+                          selectedIDs={form.paymentIDs}
+                          onToggle={() => togglePayment(payment.id)}
+                        />
+                      ))
+                    }
+                    <div className="mt-2 flex justify-end">
+                      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-white text-[0.88rem] font-semibold py-2 px-4 bg-blue-600 transition duration-300 hover:bg-blue-700 rounded-3xl'>
+                        Close
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <div className="p-10 rounded-2xl grid place-items-center flex-1">

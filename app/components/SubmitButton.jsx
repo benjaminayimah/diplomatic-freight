@@ -15,7 +15,7 @@ function SubmitButton({loading, onClick, className, children}) {
     <button
       onClick={onClick}
       type='submit'
-      className={`h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-21.5 ${className}`}
+      className={`h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-21.5 transition duration-300 ${className}`}
     >
       {children}
     </button>

@@ -24,7 +24,7 @@ export default function Select({
       <div className="relative">
         <select
           id={id}
-          className={`appearance-none text-sm w-full pl-3 pr-4.5 py-2 border hover:border-gray-400 rounded-md outline-none transition focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!
+          className={`appearance-none text-sm w-full pl-3 pr-4.5 py-2 border hover:border-gray-400 rounded-md outline-none transition duration-300 focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!
             ${errors?.length > 0 ? "border-red-500!" : "border-gray-300"} 
             bg-white
             ${className}`}

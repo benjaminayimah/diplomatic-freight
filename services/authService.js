@@ -6,12 +6,6 @@ export const loginUser = async (payload) => {
   return data;
 };
 
-// export const registerUser = async (payload) => {
-//   const { data } = await api.post("/auth/register", payload);
-//   return data;
-// };
-
-
 export const updateUser = async (payload, id) => {
   const { data } = await api.put(`/auth/${id}`, payload);
   return data;

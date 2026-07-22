@@ -137,20 +137,6 @@ export const useAuth = () => {
     }
   }
 
-
-
-
-
-  // const register = async (credentials) => {
-    
-  //   try {
-  //     const response = await registerUser(credentials); // must return this
-  //     return response;
-  //   } catch (error) {
-  //     return error.response?.data || { error: "Network error" };
-  //   }
-  // };
-
   const logout = async () => {
     
     try {

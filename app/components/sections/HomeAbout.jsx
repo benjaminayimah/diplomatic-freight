@@ -50,21 +50,6 @@ function HomeAbout() {
 
   const videoRef = useRef(null);
 
-  // useEffect(() => {
-  //   const video = videoRef.current;
-
-  //   const handleScroll = () => {
-  //     const scrollMax = document.body.scrollHeight - window.innerHeight;
-  //     const scrollPos = window.scrollY;
-
-  //     const progress = scrollPos / scrollMax;
-  //     video.currentTime = progress * video.duration;
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
   return (
     <section id='about' className='bg-white py-20 md:py-30'>
       <div className='container w-[92vw] sm:w-[88vw]'>
@@ -97,15 +82,6 @@ function HomeAbout() {
                   />
                 </motion.svg>
               </div>
-              {/* <div className='relative h-[90vh] rounded-2xl overflow-hidden'>
-                  <Image
-                    src='https://res.cloudinary.com/dl4wyqxbe/image/upload/v1765111631/alt-1_sqaadi.webp'
-                    alt='About us'
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out scale-105 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-              </div> */}
             </div>
             <div className='text-2xl md:text-3xl max-w-3xl text-[#1f2124]'>
               <TextReveal words={who_we_are} textOffset={'0.5'} />
@@ -239,12 +215,6 @@ function HomeAbout() {
                   <strong>Your cargo. Your timeline. Our responsibility.</strong>
                 </p>
               </div>
-              {/* <div className='mt-5 text-center'>
-                <a
-                  href="/get-quote" className='text-base font-medium inline-block text-white border  py-3.5 px-6 rounded-4xl bg-black hover:text-white transition-colors duration-400'>
-                  Get a Quote
-                </a>
-              </div> */}
             </div>
           </div>
         </MoreModal>

@@ -283,7 +283,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                     label="Phone"
                     id="phone"
                     type="text"
-                    placeholder="Enter phone number"
+                    placeholder="e.g. +233 24 123 4567"
                     value={form.phone ?? ''}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                     errors={errors.phone || []}
@@ -299,6 +299,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                     onFocus={() => clearFieldError('address')}
                     errors={errors.address || []}
                     rows={2}
+                    placeholder="e.g. 123 Oxford Street, Osu, Accra"
                   />
                 </div>
               </div>

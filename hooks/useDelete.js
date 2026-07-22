@@ -25,15 +25,14 @@ export default function useDelete({
         onSuccess?.(id, response);
 
         showSnackbar(successMessage, "success");
-
         return true;
       }
 
-      showSnackbar(response?.error || errorMessage, "error");
+      showSnackbar(response?.error || errorMessage, "error", false);
       return false;
 
     } catch {
-      showSnackbar(errorMessage, "error");
+      showSnackbar(errorMessage, "error", false);
       return false;
 
     } finally {

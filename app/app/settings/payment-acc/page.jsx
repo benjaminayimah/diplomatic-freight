@@ -73,21 +73,21 @@ function Settings() {
 
   // Open modal
     const handleOpenModal = useCallback(() => {
-          setBankForm({
-            payment_method: PAYMENT_METHODS[0].value,
-            bank_name: '',
-            bank_branch: '',
-            account_name: '',
-            account_number: '',
-            swift_code: '',
-            wallet_address: '',
-            network: '',
-            id: null
-          })
-          setModalTitle('Add Payment Account')
-          setModalSubTitle('Add a new payment account detail')
-          setModalSubmitBtnText('Add account')
-          setOpen(true);
+        setBankForm({
+          payment_method: PAYMENT_METHODS[0].value,
+          bank_name: '',
+          bank_branch: '',
+          account_name: '',
+          account_number: '',
+          swift_code: '',
+          wallet_address: '',
+          network: '',
+          id: null
+        })
+        setModalTitle('Add Payment Account')
+        setModalSubTitle('Add a new payment account detail')
+        setModalSubmitBtnText('Add account')
+        setOpen(true);
       },
       [profile]
     );
@@ -142,7 +142,6 @@ function Settings() {
           ...prev,
           wallet_address: [walletError],
         }));
-
         return;
       }
     }

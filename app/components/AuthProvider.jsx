@@ -5,7 +5,6 @@
 import { useEffect } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { useUIStore } from "@/store";
-import Link from "next/link";
 import useFetchData from "@/hooks/useFetchData";
 import { useSnackbar } from "@/app/components/SnackbarContext";
 import Loader from '@/app/components/Loader';

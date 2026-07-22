@@ -18,41 +18,69 @@ export const SnackbarProvider = ({ children }) => {
     message: "",
     type: "info",
     isOpen: false,
+    autoDismiss: true,
   });
 
   const [animate, setAnimate] = useState(false);
 
   const timers = useRef([]);
 
-  const clearTimers = () => {
+  const clearTimers = useCallback(() => {
     timers.current.forEach(clearTimeout);
     timers.current = [];
-  };
+  }, []);
+
+  const hideSnackbar = useCallback(() => {
+    clearTimers();
+
+    setAnimate(false);
+
+    timers.current.push(
+      setTimeout(() => {
+        setSnackbar((prev) => ({
+          ...prev,
+          isOpen: false,
+        }));
+      }, 300)
+    );
+  }, [clearTimers]);
 
   const showSnackbar = useCallback(
-    (message, type = "info", duration = 3000) => {
+    (
+      message,
+      type = "info",
+      autoDismiss = true
+    ) => {
+      const duration = 3000
       clearTimers();
 
+      // Reset animation state
       setAnimate(false);
 
       setSnackbar({
         message,
         type,
         isOpen: true,
+        autoDismiss,
       });
 
+      // Animate in
       timers.current.push(
         setTimeout(() => {
           setAnimate(true);
         }, 10)
       );
 
+      if (!autoDismiss) return;
+
+      // Animate out
       timers.current.push(
         setTimeout(() => {
           setAnimate(false);
         }, duration)
       );
 
+      // Remove from DOM
       timers.current.push(
         setTimeout(() => {
           setSnackbar((prev) => ({
@@ -62,15 +90,20 @@ export const SnackbarProvider = ({ children }) => {
         }, duration + 300)
       );
     },
-    []
+    [clearTimers]
   );
 
   useEffect(() => {
     return () => clearTimers();
-  }, []);
+  }, [clearTimers]);
 
   return (
-    <SnackbarContext.Provider value={{ showSnackbar }}>
+    <SnackbarContext.Provider
+      value={{
+        showSnackbar,
+        hideSnackbar,
+      }}
+    >
       {children}
 
       {snackbar.isOpen && (
@@ -99,12 +132,22 @@ export const SnackbarProvider = ({ children }) => {
             }
           `}
         >
-          <div className="flex items-start gap-2">
+          <div className="flex items-start gap-3">
             <Icon type={snackbar.type} />
 
-            <span className="text-sm font-medium text-white wrap-break-word">
+            <span className="flex-1 text-sm font-medium text-white wrap-break-word">
               {snackbar.message}
             </span>
+
+            {!snackbar.autoDismiss && (
+              <button
+                onClick={hideSnackbar}
+                className="shrink-0 text-white/70 hover:text-white transition"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+            )}
           </div>
         </div>
       )}

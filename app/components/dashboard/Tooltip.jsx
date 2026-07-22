@@ -60,7 +60,7 @@ export default function Tooltip({
           role="tooltip"
           className={`
             absolute z-50 whitespace-nowrap
-            rounded-md bg-gray-900 px-3 py-1.5
+            rounded-md bg-gray-900 px-2 py-1.5
             text-xs text-white shadow-lg
             ${placements[placement]}
             ${className}

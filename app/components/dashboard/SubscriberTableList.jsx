@@ -36,7 +36,7 @@ function SubscriberTableList({ subscriber, onDelete }) {
               <span className="font-medium">{subscriber?.email}</span>
             </div>
             <div className='text-sm text-gray-500 flex gap-1'>
-              <span className='font-medium hidden md:block'>Date subscribed:</span><span>{dateFormat(subscriber?.createdAt)}</span>
+              <span className='font-medium hidden md:block'>Subscribed on:</span><span>{dateFormat(subscriber?.createdAt)}</span>
             </div>
           </div>
         </div>

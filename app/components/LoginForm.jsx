@@ -70,6 +70,7 @@ function LoginForm() {
                 errors={errors.email || []}
                 onFocus={() => setErrors(prev => ({ ...prev, email: [] }))}
                 className="focus:border-black"
+                autoComplete="on"
               />
               <Input
                 label="Password"

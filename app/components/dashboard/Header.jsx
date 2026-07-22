@@ -6,6 +6,7 @@ import Link from 'next/link';
 import DropdownMenu from './DropdownMenu';
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
+import Tooltip from "./Tooltip"
 
 import { 
   UserIcon,
@@ -57,9 +58,11 @@ function Header() {
           </svg>
         </a>
         <div className="flex gap-4 items-center">
-          <Link href="/app/settings" className="grid place-items-center h-10 w-10 py-2 px-2 rounded-3xl transition duration-300 border border-gray-200 hover:bg-gray-100 text-gray-600">
-            <Cog6ToothIcon strokeWidth={2} className="text-base h-5" />
-          </Link>
+          <Tooltip content={'Settings'} placement="bottom">
+            <Link href="/app/settings" className="grid place-items-center h-10 w-10 py-2 px-2 rounded-3xl transition duration-300 border border-gray-200 hover:bg-gray-100 text-gray-600">
+              <Cog6ToothIcon strokeWidth={2} className="text-base h-5" />
+            </Link>
+          </Tooltip>
           <span className="text-gray-200">|</span>
           <DropdownMenu trigger={UserAvatar}> {/* onOpenChange={(isOpen) => {console.log(isOpen);}} */}
             <Link

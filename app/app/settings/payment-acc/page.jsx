@@ -301,6 +301,7 @@ function Settings() {
                             id="bank_name"
                             type="text"
                             placeholder="Enter bank name"
+                            autoComplete="on"
                             value={bankForm.bank_name}
                             onChange={(e) => setBankForm({ ...bankForm, bank_name: e.target.value })}
                             errors={errors.bank_name || []}
@@ -312,6 +313,7 @@ function Settings() {
                             id="bank_branch"
                             type="text"
                             placeholder="Enter bank branch"
+                            autoComplete="on"
                             value={bankForm.bank_branch}
                             onChange={(e) => setBankForm({ ...bankForm, bank_branch: e.target.value })}
                             errors={errors.bank_branch || []}
@@ -321,6 +323,7 @@ function Settings() {
                             label="Account Name"
                             id="account_name"
                             type="text"
+                            autoComplete="on"
                             placeholder="Enter account name"
                             value={bankForm.account_name}
                             onChange={(e) => setBankForm({ ...bankForm, account_name: e.target.value })}
@@ -332,6 +335,7 @@ function Settings() {
                             label="Account Number"
                             id="account_number"
                             type="text"
+                            autoComplete="on"
                             placeholder="Enter account number"
                             value={bankForm.account_number}
                             onChange={(e) => setBankForm({ ...bankForm, account_number: e.target.value })}
@@ -343,6 +347,7 @@ function Settings() {
                             label="SWIFT Code"
                             id="swift_code"
                             type="text"
+                            autoComplete="on"
                             placeholder="Enter SWIFT code"
                             value={bankForm.swift_code}
                             onChange={(e) => setBankForm({ ...bankForm, swift_code: e.target.value })}
@@ -378,6 +383,7 @@ function Settings() {
                             label="Wallet Address"
                             id="wallet_address"
                             type="text"
+                            autoComplete="on"
                             placeholder={placeholders[bankForm.network] || "Enter wallet address"}
                             value={bankForm.wallet_address}
                             disabled={!bankForm.network}

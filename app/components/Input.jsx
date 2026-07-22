@@ -9,6 +9,7 @@ export default function Input({
   required = false,
   readOnly = false,
   disabled = false,
+  autoComplete = "off",
   ...props
 }) {
   return (
@@ -28,6 +29,7 @@ export default function Input({
         required={required}
         readOnly={readOnly}
         disabled={disabled}
+        autoComplete={autoComplete}
       />
       {errors?.length > 0 &&
         errors.map((error, index) => (

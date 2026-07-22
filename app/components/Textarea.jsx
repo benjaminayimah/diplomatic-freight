@@ -6,6 +6,7 @@ export default function Textarea({
   errors = [],
   className = "",
   rows = 4,
+  autoComplete = "on",
   ...props
   }) {
   return (
@@ -22,6 +23,7 @@ export default function Textarea({
         className={`w-full px-3 py-2 border hover:border-gray-400 rounded-md outline-none transition resize-none focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!
           ${errors.length > 0 ? "border-red-500!" : "border-gray-300"} 
           ${className}`}
+          autoComplete={autoComplete}
         {...props}
       />
 

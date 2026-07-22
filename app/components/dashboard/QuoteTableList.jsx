@@ -35,7 +35,7 @@ function QuoteTableList({ quote, onDelete }) {
                 <span className='clamp clamp-line-1 font-medium'>{quote?.name}</span>
               </div>
               <div className='text-sm text-gray-500 flex gap-1'>
-                <span className='font-medium hidden md:inline-block'>Date requested:</span><span>{dateFormat(quote?.createdAt)}</span>
+                <span className='font-medium hidden md:inline-block'>Requested on:</span><span>{dateFormat(quote?.createdAt)}</span>
               </div>
             </div>
           </Link>

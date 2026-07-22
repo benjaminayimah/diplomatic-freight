@@ -77,7 +77,7 @@ export const SnackbarProvider = ({ children }) => {
         <div
           className={`
             fixed
-            z-[9999]
+            z-9999
             left-1/2
             -translate-x-1/2
             bottom-[max(1.25rem,env(safe-area-inset-bottom))]
@@ -102,7 +102,7 @@ export const SnackbarProvider = ({ children }) => {
           <div className="flex items-start gap-2">
             <Icon type={snackbar.type} />
 
-            <span className="text-sm font-medium text-white break-words">
+            <span className="text-sm font-medium text-white wrap-break-word">
               {snackbar.message}
             </span>
           </div>

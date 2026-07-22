@@ -41,7 +41,7 @@ function ReceiptTableList({ receipt, onDelete }) {
               </div>
               <span className="font-bold">&middot;</span>
               <div className="flex gap-1">
-                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(receipt?.createdAt)}</span>
+                <span className='font-medium hidden md:block'>Created:</span><span>{dateFormat(receipt?.createdAt)}</span>
               </div>
             </div>
           </div>

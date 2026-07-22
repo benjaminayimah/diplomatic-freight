@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
+import Tooltip from "./Tooltip"
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
@@ -81,65 +82,80 @@ export default function RichTextEditor({
       <div id={id} aria-label="special note" className="border border-gray-300 rounded-xl transition duration-300 overflow-hidden hover:border-gray-400 focus-within:ring-1 focus-within:ring-blue-500 focus-within:border-blue-500!">
         {/* Toolbar */}
         <div className="flex flex-wrap gap-2 p-2 border-b border-gray-200 bg-gray-50">
-          <Button
-            active={editor.isActive('bold')}
-            onClick={() => editor.chain().focus().toggleBold().run()}
-          >
-            <strong>B</strong>
-          </Button>
-          <Button
-            active={editor.isActive('italic')}
-            onClick={() => editor.chain().focus().toggleItalic().run()}
-          >
-            <em>I</em>
-          </Button>
-          <Button
-            active={editor.isActive('underline')}
-            onClick={() => editor.chain().focus().toggleUnderline().run()}
-          >
-            <u>U</u>
-          </Button>
-          <Button
-            active={editor.isActive('bulletList')}
-            onClick={() => editor.chain().focus().toggleBulletList().run()}
-          >
-            <ListBulletIcon strokeWidth={2} className="text-base h-4"/>
-          </Button>
-          <Button
-            active={editor.isActive('orderedList')}
-            onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          >
-            <svg
-              viewBox="0 0 19 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-2.5"
+          <Tooltip content={'Bold'} placement="bottom">
+            <Button
+              active={editor.isActive('bold')}
+              onClick={() => editor.chain().focus().toggleBold().run()}
             >
-              <path
-                d="M7 1H18M7 7H18M7 13H18M1 1H2V5M1 5H3M3 13H1C1 12 3 11 3 10C3 9 2 8.5 1 9"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </Button>
-          <Button
-            onClick={() => editor.chain().focus().setHardBreak().run()}
-          >
-            <ArrowTurnDownRightIcon strokeWidth={2} className="h-4" />
-          </Button>
-          <Button
-            onClick={() => editor.chain().focus().undo().run()}
-          >
-            <ArrowUturnLeftIcon strokeWidth={2} className="text-base h-4"/>
-          </Button>
-          <Button
-            onClick={() => editor.chain().focus().redo().run()}
-          >
-            <ArrowUturnRightIcon strokeWidth={2} className="text-base h-4"/>
-          </Button>
-
+              <strong>B</strong>
+            </Button>
+          </Tooltip>
+          <Tooltip content={'Italic'} placement="bottom">
+            <Button
+              active={editor.isActive('italic')}
+              onClick={() => editor.chain().focus().toggleItalic().run()}
+            >
+              <em>I</em>
+            </Button>
+          </Tooltip>
+          <Tooltip content={'Underline'} placement="bottom">
+            <Button
+              active={editor.isActive('underline')}
+              onClick={() => editor.chain().focus().toggleUnderline().run()}
+            >
+              <u>U</u>
+            </Button>
+          </Tooltip>
+          <Tooltip content={'Bullet List'} placement="bottom">
+            <Button
+              active={editor.isActive('bulletList')}
+              onClick={() => editor.chain().focus().toggleBulletList().run()}
+            >
+              <ListBulletIcon strokeWidth={2} className="text-base h-4"/>
+            </Button>  
+          </Tooltip>
+          <Tooltip content={'Ordered List'} placement="bottom">
+            <Button
+              active={editor.isActive('orderedList')}
+              onClick={() => editor.chain().focus().toggleOrderedList().run()}
+            >
+              <svg
+                viewBox="0 0 19 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-2.5"
+              >
+                <path
+                  d="M7 1H18M7 7H18M7 13H18M1 1H2V5M1 5H3M3 13H1C1 12 3 11 3 10C3 9 2 8.5 1 9"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Button>
+          </Tooltip>
+          <Tooltip content={'New Line'} placement="bottom">
+            <Button
+              onClick={() => editor.chain().focus().setHardBreak().run()}
+            >
+              <ArrowTurnDownRightIcon strokeWidth={2} className="h-4" />
+            </Button>
+          </Tooltip>
+          <Tooltip content={'Undo'} placement="bottom">
+            <Button
+              onClick={() => editor.chain().focus().undo().run()}
+            >
+              <ArrowUturnLeftIcon strokeWidth={2} className="text-base h-4"/>
+            </Button>
+          </Tooltip>
+          <Tooltip content={'Redo'} placement="bottom">
+            <Button
+              onClick={() => editor.chain().focus().redo().run()}
+            >
+              <ArrowUturnRightIcon strokeWidth={2} className="text-base h-4"/>
+            </Button>
+          </Tooltip>
         </div>
 
         {/* Editor */}

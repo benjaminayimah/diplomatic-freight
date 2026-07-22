@@ -43,7 +43,7 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
               </div>
               <span className="font-bold">&middot;</span>
               <div className="flex gap-1">
-                <span className='font-medium hidden md:block'>Date created:</span><span>{dateFormat(invoice?.createdAt)}</span>
+                <span className='font-medium hidden md:block'>Created:</span><span>{dateFormat(invoice?.createdAt)}</span>
               </div>
             </div>
           </div>

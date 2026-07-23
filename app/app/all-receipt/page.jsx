@@ -7,7 +7,6 @@ import { useAuthStore } from "@/store/authStore";
 import ReceiptTableList from '../../components/dashboard/ReceiptTableList';
 import DeleteModal from "@/app/components/modals/DeleteModal";
 import useFetchData from "@/hooks/useFetchData";
-import Loader from '@/app/components/Loader';
 import SearchInput from "@/app/components/dashboard/SearchInput"
 import useLocalSearch from "@/hooks/useLocalSearch";
 import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
@@ -19,6 +18,8 @@ import { PAGE_OPTIONS } from "@/app/constants/pagination";
 import Link from 'next/link';
 import { PlusIcon } from "@heroicons/react/24/outline";
 import EmptyState from "@/app/components/dashboard/EmptyState"
+import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
+
 
 
 
@@ -113,9 +114,7 @@ function AllReceipt() {
 
 
 
-  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
-    <Loader size={60} />
-  </div>;
+  if (loading) return <SkeletonLoader />;
   if (error) return <div className="app-body-wrapper flex justify-center mt-20">
     <p className="text-red-500">Error: {error}</p>
   </div>;

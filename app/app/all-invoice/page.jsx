@@ -8,7 +8,6 @@ import InvoiceTableList from '../../components/dashboard/InvoiceTableList';
 import Modal from "@/app/components/modals/Modal";
 import DeleteModal from "@/app/components/modals/DeleteModal";
 import useFetchData from "@/hooks/useFetchData";
-import Loader from '@/app/components/Loader';
 import useLocalSearch from "@/hooks/useLocalSearch";
 import SearchInput from '@/app/components/dashboard/SearchInput';
 import NoSearchResult from "@/app/components/dashboard/NoSearchResult"
@@ -20,6 +19,7 @@ import { PAGE_OPTIONS } from "@/app/constants/pagination";
 import EmptyState from "@/app/components/dashboard/EmptyState"
 import Link from 'next/link';
 import { PlusIcon } from "@heroicons/react/24/outline";
+import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
 
 
 
@@ -40,17 +40,6 @@ function AllInvoice() {
 
 
   const { data, loading, error } = useFetchData("/invoice");
-
-  // useEffect(() => {
-  //   if (!data?.invoices) return;
-
-  //   const sortedInvoices = [...data.invoices].sort(
-  //     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  //   );
-
-  //   setInvoices(sortedInvoices);
-
-  // }, [data, setInvoices]);  // use the full data object
 
   useEffect(() => {
     if (!data?.invoices) return;
@@ -135,9 +124,7 @@ function AllInvoice() {
   )
 
   // empty state
-  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
-    <Loader size={60} />
-  </div>;
+  if (loading) return <SkeletonLoader />;
   if (error) return <div className="app-body-wrapper flex justify-center mt-20">
     <p className="text-red-500">Error: {error}</p>
   </div>;

@@ -18,6 +18,8 @@ import useDeleteModal from "@/hooks/useDeleteModal";
 import useDelete from "@/hooks/useDelete"
 import { PAGE_OPTIONS } from "@/app/constants/pagination";
 import EmptyState from "@/app/components/dashboard/EmptyState"
+import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
+
 
 
 function Quotes() {
@@ -101,9 +103,7 @@ function Quotes() {
 
 
 
-  if (loading) return <div className="app-body-wrapper flex justify-center">
-    <Loader size={60} />
-  </div>;
+  if (loading) return <SkeletonLoader />;
   if (error) return <div className="app-body-wrapper flex justify-center">
     <p className="text-red-500">Error: {error}</p>
   </div>;

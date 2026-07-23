@@ -1,6 +1,6 @@
 "use client";
 
-function SkeletonLoader({ rows = 8 }) {
+function SkeletonLoader({ rows = 10 }) {
   return (
     <>
       <div className="mb-1 flex p-5 justify-between items-center animate-pulse">

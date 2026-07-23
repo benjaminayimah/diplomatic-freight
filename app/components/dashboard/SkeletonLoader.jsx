@@ -37,7 +37,7 @@ function SkeletonLoader({ rows = 8 }) {
               </div>
 
               {/* Menu */}
-              <div className="ml-4 h-10 w-10 rounded-full bg-gray-200 shrink-0" />
+              <div className="ml-4 h-8 w-8 rounded-full bg-gray-200 shrink-0" />
             </li>
           ))}
         </ul>

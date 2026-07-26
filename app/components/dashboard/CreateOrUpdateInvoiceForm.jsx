@@ -406,6 +406,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                   onChange={(e) => handleInputChange('name', e.target.value)}
                   errors={errors.name || []}
                   onFocus={() => clearFieldError('name')}
+                  required
                 />
                 <div className='flex flex-col md:flex-row gap-4'>
                   <Input

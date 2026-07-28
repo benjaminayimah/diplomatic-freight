@@ -84,7 +84,7 @@ const Modal = ({
             style={{ maxWidth }}
             initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 200, opacity: 0 }}
+            exit={{ y: 80, opacity: 0 }}
             transition={{ duration: 0.3}}
             className="bg-white rounded-3xl w-[90%] p-6 shadow-lg overflow-hidden"
           >

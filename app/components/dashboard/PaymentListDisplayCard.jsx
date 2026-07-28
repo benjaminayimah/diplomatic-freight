@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatLabel } from "@/utils/wordFormatter.js"
 import {
   BuildingLibraryIcon,
   WalletIcon,
@@ -15,7 +16,11 @@ function PaymentListDisplayCard({data, onToggle}) {
               <BuildingLibraryIcon strokeWidth={1.5} className="text-base h-5 text-blue-600" />
             </div>
             <div>
-              <div>{data.bank_name}</div>
+              <div className="flex gap-1 items-center">
+                <span className="font-medium text-sm">{data.bank_name}</span>
+                &middot;
+                <span className="text-sm text-gray-500">{formatLabel(data.payment_method)}</span>
+              </div>
               <div className="text-sm text-gray-600"><code>{data.account_number}</code></div>
             </div>
           </>
@@ -26,12 +31,17 @@ function PaymentListDisplayCard({data, onToggle}) {
               <WalletIcon strokeWidth={1.5} className="text-base h-5 text-teal-600" />
             </div>
             <div>
-              <div className="uppercase">{data.network}</div>
+              <div className="flex gap-1 items-center">
+                <span className="font-medium text-sm uppercase">{data.network}</span>
+                &middot;
+                <span className="text-sm text-gray-500">{formatLabel(data.payment_method)}</span>
+              </div>
               <div className="text-sm text-gray-600"><code>{data.wallet_address}</code></div>
             </div>
           </>
         )}
       </div>
+      
       <button
         type="button"
         onClick={onToggle}

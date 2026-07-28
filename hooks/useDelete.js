@@ -20,8 +20,7 @@ export default function useDelete({
 
       if (response?.success) {
         removeFromStore(id);
-
-        closeModal?.();
+        // closeModal?.();
         onSuccess?.(id, response);
 
         showSnackbar(successMessage, "success");
@@ -36,6 +35,7 @@ export default function useDelete({
       return false;
 
     } finally {
+      closeModal?.();
       setDeleting(false);
     }
   };

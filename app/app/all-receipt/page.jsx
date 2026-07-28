@@ -154,19 +154,17 @@ function AllReceipt() {
           </div>
           {
             paginatedReceipts.length > 0 && (
-              <div className="flex justify-end py-4 mt-2">
-                <PaginationFooter
-                  value={perPage}
-                  onChange={setPerPage}
-                  options={PAGE_OPTIONS}
-                  onClickPrev={previousPage}
-                  disabledPrev={!hasPreviousPage}
-                  disabledNext={!hasNextPage}
-                  onClickNext={nextPage}
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                />
-              </div>
+              <PaginationFooter
+                value={perPage}
+                onChange={setPerPage}
+                options={PAGE_OPTIONS}
+                onClickPrev={previousPage}
+                disabledPrev={!hasPreviousPage}
+                disabledNext={!hasNextPage}
+                onClickNext={nextPage}
+                currentPage={currentPage}
+                totalPages={totalPages}
+              />
             )
           }
         </div>

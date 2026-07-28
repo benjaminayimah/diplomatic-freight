@@ -17,8 +17,7 @@ function PaginationFooter({
   totalPages
 }) {
   return (
-    <div className="flex flex-wrap items-center gap-2">
-
+    <div className="flex justify-between py-4 mt-1 gap-2">
       <div className="flex items-center gap-1">
         <span className="text-sm text-gray-500">
           Rows per page:
@@ -42,6 +41,9 @@ function PaginationFooter({
       </div>
 
       <div className="flex items-center gap-2">
+        <span className="text-sm text-gray-700 whitespace-nowrap">
+          {currentPage} of {totalPages}
+        </span>
         <button
           type="button"
           disabled={disabledPrev}
@@ -59,9 +61,6 @@ function PaginationFooter({
             className="h-4"
           />
         </button>
-        <span className="text-sm text-gray-700 whitespace-nowrap">
-          Page {currentPage} of {totalPages}
-        </span>
         <button
           type="button"
           disabled={disabledNext}

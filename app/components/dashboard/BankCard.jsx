@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { QRCodeCanvas } from "qrcode.react";
 import { generateWalletQR } from "@/utils/crypto/walletQR";
 import DropdownMenu from './DropdownMenu';
 import { formatLabel } from "@/utils/wordFormatter.js"
+import Menu from './HamburgerMenu'
 import Link from 'next/link';
 import {
   PencilIcon,
@@ -19,16 +20,10 @@ import {
 
 function BankCard({data, onEdit, onDelete, showMenu}) {
 
+  const [menuOpen, setMenuOpen] = useState(false)
+
   const hasInvoice = (data?.invoices?.length ?? 0) > 0;
   const invoiceCount = data?.invoices?.length ?? 0;
-
-  const Menu = (
-    <button type='button' className='h-9 w-9 rounded-3xl grid place-items-center hover:bg-gray-100 transition-all duration-300'>
-      <svg height="3.3" viewBox="0 0 17 3.334">
-        <path d="M-1977.333,1.667A1.667,1.667,0,0,1-1975.667,0,1.667,1.667,0,0,1-1974,1.667a1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1977.333,1.667Zm-6.834,0A1.667,1.667,0,0,1-1982.5,0a1.667,1.667,0,0,1,1.667,1.667,1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1984.167,1.667Zm-6.833,0A1.667,1.667,0,0,1-1989.333,0a1.667,1.667,0,0,1,1.667,1.667,1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1991,1.667Z" transform="translate(1991)" fill="#5a5a5a"/>
-      </svg>
-    </button>
-  )
 
   return (
       <div className="bank-col flex-1">
@@ -39,11 +34,11 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                 <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-100 bg-blue-50">
                   {
                     data?.payment_method === 'bank_transfer' ? (
-                      <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-100 bg-blue-50">
+                      <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-200 bg-blue-100">
                         <BuildingLibraryIcon strokeWidth={1.5} className="text-base h-6 text-blue-600" />
                       </div>
                     ) : (
-                        <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-teal-100 bg-teal-50">
+                        <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-teal-200 bg-teal-100">
                           <WalletIcon strokeWidth={1.5} className="text-base h-6 text-green-600" />
                         </div>
                     )
@@ -58,15 +53,15 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
             <div className="flex items-center gap-2">
               <div>
                 {hasInvoice ? (
-                  <div className="inline-flex items-center gap-1 text-sm font-base pl-2 pr-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-100">
+                  <div className="inline-flex items-center gap-1 text-sm font-base pl-2 pr-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100">
                     <InformationCircleIcon strokeWidth={1.5} className="h-4 w-4" />
                     <div className="inline-flex gap-1 whitespace-nowrap">
                       Used by{" "}
                       <div className="group relative">
-                        <span className="underline decoration-dotted underline-offset-3 cursor-pointer text-blue-700">
+                        <span className="underline decoration-dotted underline-offset-3 cursor-pointer font-semibold">
                           {invoiceCount} {invoiceCount === 1 ? "invoice" : "invoices"}
                         </span>
-                        <div className="absolute hidden -right-3 group-hover:block bg-black min-w-35 px-3 py-2 rounded-xl">
+                        <div className="absolute hidden -right-3 group-hover:block bg-black min-w-35 px-3 py-2 rounded-xl z-1 max-h-89 overflow-y-auto overscroll-y-contain">
                           {data.invoices.map(invoice => (
                             <Link
                               key={invoice.id}
@@ -90,7 +85,11 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
               </div>
               {
                 showMenu && (
-                  <DropdownMenu trigger={Menu} width="w-30">
+                  <DropdownMenu
+                    trigger={<Menu menuOpen={menuOpen}/>}
+                    onOpenChange={setMenuOpen}
+                    width="w-30"
+                    >
                     <button
                       className="flex gap-2 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                       onClick={() => onEdit(data)}

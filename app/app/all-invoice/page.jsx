@@ -27,10 +27,10 @@ import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
 
 function AllInvoice() {
 
-
   const invoices = useAuthStore(
     (state) => state.invoices
   );
+
   const setInvoices = useAuthStore(
     (state) => state.setInvoices
   );
@@ -146,7 +146,7 @@ function AllInvoice() {
             />
           </div>
         </div>
-        <div className="body-content mb-96 w-full">
+        <div className="body-content w-full">
           <div>
             <ul className='grid ul-table border border-gray-200 rounded-2xl'>
               { paginatedInvoices.length > 0 ? (

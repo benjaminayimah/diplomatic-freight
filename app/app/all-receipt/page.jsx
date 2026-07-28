@@ -136,7 +136,7 @@ function AllReceipt() {
             />
           </div>
         </div>
-        <div className="body-content mb-96 w-full">
+        <div className="body-content w-full">
           <div>
             <ul className='grid ul-table border border-gray-200 rounded-2xl'>
               { paginatedReceipts.length > 0 ? (

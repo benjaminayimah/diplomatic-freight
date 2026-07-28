@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react'
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import useFetchData from "@/hooks/useFetchData";
-import Loader from '@/app/components/Loader';
 import { useAuthStore } from '@/store/authStore';
 import QuoteTableList from '../../components/dashboard/QuoteTableList';
 import { useAuth } from "@/hooks/useAuth";
@@ -125,7 +124,7 @@ function Quotes() {
             />
           </div>
         </div>
-        <div className="body-content mb-96 w-full">
+        <div className="body-content w-full">
           <div>
             <ul className='grid ul-table border border-gray-200 rounded-2xl'>
               { paginatedQuotes.length > 0 ? (

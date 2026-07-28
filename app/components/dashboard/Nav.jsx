@@ -55,7 +55,7 @@ function Nav() {
           <div className="pointer-events-none absolute left-0 top-0 h-full w-6 bg-linear-to-r from-white to-transparent" />
         </div>
         <div>
-          <DropdownMenu trigger={CreateButton} width="w-34">
+          <DropdownMenu trigger={CreateButton} placement="bottom" width="w-34">
             <Link
               href={'/app/create-invoice'}
               className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"

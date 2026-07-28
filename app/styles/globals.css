@@ -83,7 +83,7 @@ ul.ul-table li:first-child {
 }
 
 
-html {
+html:has(#web) {
   scroll-behavior: smooth;
 }
 html.no-smooth-scroll {

@@ -6,7 +6,7 @@ import Nav from "../components/dashboard/Nav";
 export default function RootLayout({ children }) {
 
   return (
-    <main className="min-h-dvh">
+    <main id="app" className="min-h-dvh">
       <div className="flex w-full min-h-dvh justify-center">
         <div className="max-w-7xl w-full border-r border-l border-gray-100 body-container flex flex-col">
           <AuthProvider>

@@ -15,8 +15,8 @@ import { useRouter } from 'next/navigation';
 import DeleteModal from "@/app/components/modals/DeleteModal";
 import useDeleteModal from "@/hooks/useDeleteModal";
 import DropdownMenu from "@/app/components/dashboard/DropdownMenu"
+import Menu from "@/app/components/dashboard/HamburgerMenu"
 import useDelete from "@/hooks/useDelete"
-
 import { 
   ChatBubbleBottomCenterTextIcon,
   TrashIcon,
@@ -26,6 +26,8 @@ import {
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
 
 export default function InvoicePage() {
+
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const router = useRouter();
 
@@ -92,13 +94,6 @@ export default function InvoicePage() {
       </p>
     </div>
   )
-  const Menu = (
-    <button type='button' className='h-9 w-9 rounded-3xl grid place-items-center hover:bg-gray-100 transition-all duration-300'>
-      <svg height="3.3" viewBox="0 0 17 3.334">
-        <path d="M-1977.333,1.667A1.667,1.667,0,0,1-1975.667,0,1.667,1.667,0,0,1-1974,1.667a1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1977.333,1.667Zm-6.834,0A1.667,1.667,0,0,1-1982.5,0a1.667,1.667,0,0,1,1.667,1.667,1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1984.167,1.667Zm-6.833,0A1.667,1.667,0,0,1-1989.333,0a1.667,1.667,0,0,1,1.667,1.667,1.667,1.667,0,0,1-1.667,1.667A1.667,1.667,0,0,1-1991,1.667Z" transform="translate(1991)" fill="#5a5a5a"/>
-      </svg>
-    </button>
-  )
 
   if (!isAuth) return <ProtectedRoute />;
   if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
@@ -161,7 +156,11 @@ export default function InvoicePage() {
                 <PrinterIcon strokeWidth={1.5} className="h-5"/>
                 <span className="hidden md:inline-block">Print Invoice</span>
               </button>
-              <DropdownMenu trigger={Menu} width="w-30">
+              <DropdownMenu
+                trigger={<Menu menuOpen={menuOpen}/>}
+                onOpenChange={setMenuOpen}
+                width="w-30"
+                >
                 <button
                   className="text-red-600 w-full flex gap-1 items-center text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
                   onClick={() => openDeleteModal(invoice)}

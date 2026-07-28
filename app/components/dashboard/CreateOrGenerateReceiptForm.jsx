@@ -41,6 +41,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
     currency: CURRENCIES[0]?.value || 'USD',
     items: [],
     vat: '',
+    brandColor: null,
     id: null
   })
 
@@ -80,6 +81,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
         currency: invoice.currency || 'USD',
         items: invoice.items,
         vat: invoice.vat,
+        brandColor: invoice.color,
         id: id
       })
       // Note: We do NOT set isDirty to true here, because this is the initial load

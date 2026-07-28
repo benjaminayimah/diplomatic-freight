@@ -45,10 +45,10 @@ const displayedPayments = showAllPayments
         </div>
         <div className="body-content flex flex-col flex-1 w-full">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <DashboardCard title="Invoices" array={invoices} href={'app/all-invoice'} icon={DocumentTextIcon} color= {{ icon: "text-blue-600", wrapper: "border-blue-100 bg-blue-50" }} />
-            <DashboardCard title="Receipts" array={receipts} href={'app/all-receipt'} icon={ReceiptPercentIcon} color= {{ icon: "text-purple-600", wrapper: "border-purple-100 bg-purple-50" }} />
-            <DashboardCard title="Quotes" array={quotes} href={'app/quotes'} icon={DocumentDuplicateIcon} color= {{ icon: "text-amber-600", wrapper: "border-amber-100 bg-amber-50" }} />
-            <DashboardCard title="Subscribers" array={subscribers} href={'app/subscribers'} icon={UsersIcon} color= {{ icon: "text-teal-600", wrapper: "border-teal-100 bg-teal-50" }} />
+            <DashboardCard title="Invoices" array={invoices} href={'app/all-invoice'} icon={DocumentTextIcon} color= {{ icon: "text-blue-600", wrapper: "border-blue-200 bg-blue-100" }} />
+            <DashboardCard title="Receipts" array={receipts} href={'app/all-receipt'} icon={ReceiptPercentIcon} color= {{ icon: "text-purple-600", wrapper: "border-purple-200 bg-purple-100" }} />
+            <DashboardCard title="Quotes" array={quotes} href={'app/quotes'} icon={DocumentDuplicateIcon} color= {{ icon: "text-amber-600", wrapper: "border-amber-200 bg-amber-100" }} />
+            <DashboardCard title="Subscribers" array={subscribers} href={'app/subscribers'} icon={UsersIcon} color= {{ icon: "text-teal-600", wrapper: "border-teal-200 bg-teal-100" }} />
           </div>
           <article className="p-4 flex-1 flex flex-col mt-8 bg-gray-50 rounded-xl border border-gray-100">
             <div className="flex justify-between items-center mb-2">

@@ -1,6 +1,6 @@
 
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuthStore } from "@/store/authStore";
 import Link from 'next/link';
 import DropdownMenu from './DropdownMenu';
@@ -10,12 +10,15 @@ import Tooltip from "./Tooltip"
 
 import { 
   UserIcon,
-  ArrowLeftStartOnRectangleIcon,
+  ArrowRightStartOnRectangleIcon,
   Cog6ToothIcon,
   ChevronDownIcon
 } from "@heroicons/react/24/outline";
 
 function Header() {
+
+  const [menuOpen, setMenuOpen] = useState(false)
+
   const user = useAuthStore((state) => state.user);
   const isAuth = useAuthStore((state) => state.isAuth)
 
@@ -33,7 +36,7 @@ function Header() {
   }
 
   const UserAvatar = (
-    <button className="flex py-0.5 pl-0.5 pr-2.5 gap-2 items-center text-gray-700 hover:text-black rounded-3xl transition duration-300 border border-gray-100 hover:bg-gray-50">
+    <button className={`${menuOpen ? 'bg-gray-50 text-black' : 'text-gray-700'} flex py-0.5 pl-0.5 pr-2.5 gap-2 items-center hover:text-black rounded-3xl transition duration-300 border border-gray-100 hover:bg-gray-50`}>
       <div style={{ backgroundColor: user?.color }} className="h-9 w-9 grid place-items-center text-white font-bold rounded-full">
         {user?.name?.charAt(0)?.toUpperCase()}
       </div>
@@ -64,7 +67,11 @@ function Header() {
             </Link>
           </Tooltip>
           <span className="text-gray-200">|</span>
-          <DropdownMenu trigger={UserAvatar}> {/* onOpenChange={(isOpen) => {console.log(isOpen);}} */}
+          <DropdownMenu
+            trigger={UserAvatar}
+            onOpenChange={setMenuOpen}
+            placement="bottom"
+            >
             <Link
               href="/app/profile"
               className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition"
@@ -83,7 +90,7 @@ function Header() {
               className="flex items-center gap-1.5 w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 text-sm font-medium transition"
               onClick={handleLogout}
             >
-              <ArrowLeftStartOnRectangleIcon strokeWidth={2}  className="text-base h-4.5" />
+              <ArrowRightStartOnRectangleIcon strokeWidth={2}  className="text-base h-4.5" />
               Log out
             </button>
           </DropdownMenu>

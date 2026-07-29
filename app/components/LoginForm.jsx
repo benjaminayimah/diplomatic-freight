@@ -86,7 +86,7 @@ function LoginForm() {
                 onFocus={() => setErrors(prev => ({ ...prev, password: [] }))}
               />
             </div>
-            <SubmitButton loading={loading} className={'myHover-translate bg-black text-white'}>
+            <SubmitButton loading={loading} className={'myHover-translate bg-blue-600 hover:bg-blue-700 text-white'}>
               Log in
             </SubmitButton>
             <a href="/" className='h-10 grid place-items-center bg-gray-100 border border-gray-200 hover:bg-gray-200 text-black px-4 py-2 rounded-4xl text-[0.88rem] font-medium '>Back home</a>

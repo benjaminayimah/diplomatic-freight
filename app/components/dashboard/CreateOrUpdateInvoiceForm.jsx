@@ -14,7 +14,6 @@ import { useSnackbar } from "@/app/components/SnackbarContext";
 import { useRouter } from "next/navigation"; // Added useRouter
 import Modal from '../modals/Modal';
 import InvoiceTemplate from './InvoiceTemplate';
-import { useUIStore } from "@/store";
 import PaymentSelectCard from './PaymentSelectCard'
 import Link from 'next/link';
 import PaymentListDisplayCard from './PaymentListDisplayCard';
@@ -207,21 +206,6 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     setForm((prev) => ({ ...prev, items: updatedItems }));
     setIsDirty(true); // ✅ Mark dirty
   };
-
-
-
-//   const handleItemChange = (index, field, value) => {
-//   const updatedItems = [...items];
-
-//   updatedItems[index][field] = value;
-
-//   const quantity = parseFloat(updatedItems[index].quantity) || 0;
-//   const price = parseFloat(updatedItems[index].rate) || 0;
-
-//   updatedItems[index].amount = (quantity * price).toFixed(2);
-
-//   setItems(updatedItems);
-// };
 
 
   const getTotalAmount = () => {

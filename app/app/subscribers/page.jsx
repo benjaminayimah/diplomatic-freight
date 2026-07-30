@@ -115,6 +115,7 @@ function Subscribers() {
           </div>
           <div>
             <SearchInput
+              id="search"
               value={search}
               onChange={setSearch}
               placeholder="Search subscribers..."

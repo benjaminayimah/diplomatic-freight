@@ -140,6 +140,7 @@ function AllInvoice() {
           </div>
           <div>
             <SearchInput
+              id="search"
               value={search}
               onChange={setSearch}
               placeholder="Search invoices..."

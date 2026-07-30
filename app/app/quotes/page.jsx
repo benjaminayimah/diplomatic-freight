@@ -118,6 +118,7 @@ function Quotes() {
           </div>
           <div>
             <SearchInput
+              id="search"
               value={search}
               onChange={setSearch}
               placeholder="Search quotes..."

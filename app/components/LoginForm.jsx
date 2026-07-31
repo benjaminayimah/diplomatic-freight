@@ -7,6 +7,7 @@ import { useAuthStore } from "@/store/authStore";
 import { useRouter } from 'next/navigation';
 import ErrorCard from '@/app/components/ErrorCard';
 import SubmitButton from '@/app/components/SubmitButton';
+import RippleButton from './RippleButton';
 
 function LoginForm() {
 
@@ -89,8 +90,12 @@ function LoginForm() {
             <SubmitButton loading={loading} className={'myHover-translate bg-blue-600 hover:bg-blue-700 text-white'}>
               Log in
             </SubmitButton>
+            
             <a href="/" className='h-10 grid place-items-center bg-gray-100 border border-gray-200 hover:bg-gray-200 text-black px-4 py-2 rounded-4xl text-[0.88rem] font-medium '>Back home</a>
           </form>
+          {/* <RippleButton className={'bg-blue-600 hover:bg-blue-700 text-white h-10 px-4 py-2 flex items-center justify-center font-semibold text-[0.88rem] rounded-4xl min-w-21.5 transition duration-300'}>
+            Log in
+          </RippleButton> */}
         </div>
       </div>
     </section>

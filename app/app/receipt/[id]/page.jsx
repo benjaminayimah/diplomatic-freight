@@ -99,7 +99,7 @@ export default function ReceiptPage() {
             <div className='flex items-center gap-4'>
               <BackButton onClick={() => router.back()} />
               <div>
-                <h1 className="text-xl"><span className="font-bold">Receipt #{receipt?.receipt_number || 'SAMPLE-1234' }</span></h1>
+                <h1 className="text-xl"><span className="font-bold">Receipt #: {receipt?.receipt_number || 'SAMPLE-1234' }</span></h1>
                 <div className="text-sm text-gray-500 flex gap-1.5 items-center">
                   <div className='flex gap-1'>
                     <span className='font-bold'>Created on:</span>

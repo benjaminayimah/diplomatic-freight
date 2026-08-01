@@ -16,6 +16,8 @@ import Modal from '../modals/Modal';
 import ReceiptTemplate from './ReceiptTemplate';
 import { CURRENCIES } from "@/app/constants/currencies";
 import { PAYMENT_METHODS } from "@/app/constants/payment";
+import { formatPhoneNumber } from "@/utils/phoneFormatter";
+
 
 
 
@@ -285,10 +287,14 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                   <Input
                     label="Phone"
                     id="phone"
-                    type="text"
+                    type="tel"
+                    autoComplete="tel"
+                    inputMode="tel"
                     placeholder="e.g. +233 24 123 4567"
                     value={form.phone ?? ''}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("phone", formatPhoneNumber(e.target.value))
+                    }
                     errors={errors.phone || []}
                     onFocus={() => clearFieldError('phone')}
                   />

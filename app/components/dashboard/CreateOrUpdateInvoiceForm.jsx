@@ -20,7 +20,7 @@ import PaymentListDisplayCard from './PaymentListDisplayCard';
 import RichTextEditor from './RichTextEditor';
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
 import { CURRENCIES } from "@/app/constants/currencies";
-
+import { formatPhoneNumber } from "@/utils/phoneFormatter";
 
 
 
@@ -406,10 +406,14 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                   <Input
                     label="Phone"
                     id="phone"
-                    type="text"
+                    type="tel"
+                    autoComplete="tel"
+                    inputMode="tel"
                     placeholder="e.g. +233 24 123 4567"
                     value={form.phone ?? ''}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("phone", formatPhoneNumber(e.target.value))
+                    }
                     errors={errors.phone || []}
                     onFocus={() => clearFieldError('phone')}
                   />

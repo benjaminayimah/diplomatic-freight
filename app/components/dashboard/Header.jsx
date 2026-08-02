@@ -87,7 +87,7 @@ function Header() {
               Settings
             </Link>
             <button
-              className="flex items-center gap-1.5 w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 text-sm font-medium transition"
+              className="flex items-center gap-1.5 w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 text-sm font-medium transition"
               onClick={handleLogout}
             >
               <ArrowRightStartOnRectangleIcon strokeWidth={2}  className="text-base h-4.5" />

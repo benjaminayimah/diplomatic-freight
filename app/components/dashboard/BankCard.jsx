@@ -98,7 +98,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                       Edit
                     </button>
                     <button
-                      className="flex gap-2 text-red-600 w-full text-left px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                      className="flex gap-2 text-red-600 w-full text-left px-4 py-2 hover:bg-red-50 text-sm transition font-medium"
                       onClick={() => onDelete(data.id)}
                     >
                       <TrashIcon strokeWidth={2} className="h-5" />

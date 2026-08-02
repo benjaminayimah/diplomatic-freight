@@ -682,7 +682,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                       ))
                     }
                     <div className="mt-2 flex justify-end">
-                      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-white text-[0.88rem] font-semibold py-2 px-4 bg-blue-600 transition duration-300 hover:bg-blue-700 rounded-3xl'>
+                      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-black text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-200 transition duration-300 hover:bg-gray-100 rounded-3xl'>
                         Close
                       </button>
                     </div>

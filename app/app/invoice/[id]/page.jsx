@@ -144,7 +144,7 @@ export default function InvoicePage() {
                   <ChatBubbleBottomCenterTextIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />
                 </button>
               <Link href={`/app/create-invoice?mode=edit&id=${invoice?.id}`} className='border border-gray-200 gap-2 text-black h-9 px-3 flex items-center justify-center font-medium text-[0.88rem] rounded-4xl bg-gray-50 hover:bg-gray-100 transition-colors'>
-                <PencilIcon strokeWidth={2} className="h-5" />
+                <PencilIcon strokeWidth={1.5} className="h-5" />
                 <span className="hidden md:inline-block">Edit</span>
               </Link>
               <Link href={`/app/create-receipt?mode=generate&id=${invoice?.id}`} className='border border-gray-200 gap-1 text-black h-9 px-3 flex items-center justify-center font-medium text-[0.88rem] rounded-4xl bg-gray-50 hover:bg-gray-100 transition-colors'>

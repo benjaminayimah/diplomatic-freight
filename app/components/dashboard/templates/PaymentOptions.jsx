@@ -21,7 +21,7 @@ function PaymentOptions({
                 <p><span className="font-medium"><strong>Account Name:</strong></span> {payment?.account_name || 'N/A'}</p>
                 <p><span className="font-medium"><strong>Account Number:</strong></span> <code>{payment?.account_number || 'N/A'}</code></p>
                 <p><span className="font-medium"><strong>SWIFT/BIC:</strong></span> <code>{payment?.swift_code || 'N/A'}</code></p>
-                <p><span className="font-medium"><strong>Bank Branch:</strong></span> {payment?.bank_branch || 'N/A'}</p>
+                <p><span className="font-medium"><strong>Branch:</strong></span> {payment?.bank_branch || 'N/A'}</p>
               </li>
             ) : (
               <li key={payment.id} className={`text-black text-sm space-y-1 ${payments.length > 1 ? 'list-decimal' : 'list-disc'}`} >

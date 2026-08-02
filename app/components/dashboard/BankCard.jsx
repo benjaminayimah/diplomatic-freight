@@ -129,7 +129,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                     <div className="text-gray-600 md:text-right"><code>{data?.swift_code || 'N/A'}</code></div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
-                    <span className="font-medium">Bank Branch</span>
+                    <span className="font-medium">Branch</span>
                     <div className="text-gray-600 md:text-right">{data?.bank_branch || 'N/A'}</div>
                   </div>
                 </>

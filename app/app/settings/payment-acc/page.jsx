@@ -308,17 +308,6 @@ function Settings() {
                             required
                           />
                           <Input
-                            label="Bank Branch"
-                            id="bank_branch"
-                            type="text"
-                            placeholder="Enter bank branch"
-                            autoComplete="on"
-                            value={bankForm.bank_branch}
-                            onChange={(e) => setBankForm({ ...bankForm, bank_branch: e.target.value })}
-                            errors={errors.bank_branch || []}
-                            onFocus={() => clearFieldError('bank_branch')}
-                          />
-                          <Input
                             label="Account Name"
                             id="account_name"
                             type="text"
@@ -352,6 +341,17 @@ function Settings() {
                             onChange={(e) => setBankForm({ ...bankForm, swift_code: e.target.value })}
                             errors={errors.swift_code || []}
                             onFocus={() => clearFieldError('swift_code')}
+                          />
+                          <Input
+                            label="Branch"
+                            id="bank_branch"
+                            type="text"
+                            placeholder="Enter bank branch"
+                            autoComplete="on"
+                            value={bankForm.bank_branch}
+                            onChange={(e) => setBankForm({ ...bankForm, bank_branch: e.target.value })}
+                            errors={errors.bank_branch || []}
+                            onFocus={() => clearFieldError('bank_branch')}
                           />
                         </>
                         

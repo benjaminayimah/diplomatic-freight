@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const Modal = ({
   isOpen,
@@ -104,12 +105,7 @@ const Modal = ({
                   aria-label="Close"
                   className="group text-gray-500 bg-gray-100 h-8 w-8 rounded-full grid place-items-center hover:text-black text-xl"
                 >
-                  <svg height="12" viewBox="0 0 12 12">
-                    <path
-                      className="fill-gray-500 group-hover:fill-black"
-                      d="M10.5369 0.251055C10.8716 -0.0836849 11.4142 -0.0836849 11.749 0.251055C12.0837 0.5858 12.0837 1.12841 11.749 1.46312L7.21209 6.00002L11.749 10.5369C12.0837 10.8717 12.0837 11.4143 11.749 11.749C11.4143 12.0837 10.8717 12.0837 10.5369 11.749L6.00002 7.21209L1.46312 11.749C1.12841 12.0837 0.5858 12.0837 0.251055 11.749C-0.0836849 11.4142 -0.0836849 10.8716 0.251055 10.5369L4.78795 6.00002L0.251055 1.46312C-0.0836849 1.12839 -0.0836849 0.585794 0.251055 0.251055C0.585794 -0.0836849 1.12839 -0.0836849 1.46312 0.251055L6.00002 4.78795L10.5369 0.251055Z"
-                    />
-                  </svg>
+                  <XMarkIcon strokeWidth={2} className="h-5 w-5" />
                 </button>
               </div>
             </div>

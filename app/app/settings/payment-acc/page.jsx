@@ -17,6 +17,7 @@ import { validateWalletAddress } from "@/utils/crypto/validateWalletAddress";
 import useDeleteModal from "@/hooks/useDeleteModal";
 import useDelete from "@/hooks/useDelete"
 import { PAYMENT_METHODS, USDT_NETWORKS } from "@/app/constants/payment";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 
 
@@ -224,9 +225,7 @@ function Settings() {
                   onClick={() => handleOpenModal()}
                   className="flex gap-1 text-[#0077FF] items-center text-[0.88rem] font-semibold py-2 px-3 transition duration-300 hover:bg-gray-100 rounded-3xl"
                 >
-                  <svg height="14" viewBox="0 0 14 14">
-                    <path d="M7,0a.875.875,0,0,1,.875.875v5.25h5.25a.875.875,0,0,1,0,1.75H7.875v5.25a.875.875,0,0,1-1.75,0V7.875H.875a.875.875,0,0,1,0-1.75h5.25V.875A.875.875,0,0,1,7,0Z" fill="#2563EB"/>
-                  </svg>
+                  <PlusIcon strokeWidth={2} className="h-5" />
                   Add Account
                 </button>
               </div>

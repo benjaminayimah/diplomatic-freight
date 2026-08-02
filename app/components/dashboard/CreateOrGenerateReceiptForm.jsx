@@ -308,7 +308,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                     onFocus={() => clearFieldError('address')}
                     errors={errors.address || []}
                     rows={2}
-                    placeholder="e.g. 123 Oxford Street, Osu, Accra"
+                    placeholder="e.g. 123 Oxford Street, Osu, Accra - Ghana"
                   />
                 </div>
               </div>

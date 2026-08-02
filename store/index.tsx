@@ -32,7 +32,7 @@ export const useUIStore = create<UIStore>((set) => ({
     if (width < 768) device = 'mobile'
     else if (width > 1344) device = 'desktop'
 
-    document.getElementById('app')?.setAttribute('class', device)
+    document.getElementById('web')?.setAttribute('class', device)
 
     set({ device, width, height })
   },

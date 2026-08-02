@@ -43,7 +43,7 @@ function PageTransition({ children }) {
 
   // 2. Freeze on first greeting
   const freezeTime = 500; // ms
-  const cycleInterval = 300; // ms per greeting
+  const cycleInterval = 200; // ms per greeting
   const remainingGreetings = greetings.length - 1; // because first is already shown
   const totalCycleTime = remainingGreetings * cycleInterval;
 

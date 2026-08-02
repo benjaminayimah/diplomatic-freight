@@ -21,7 +21,7 @@ function Header() {
   return (
     <header
       id="header"
-      className={`fixed py-7 sm:py-11 top-0 z-20 flex w-full items-center`}
+      className={`fixed py-7 sm:py-11 top-0 z-30 flex w-full items-center`}
       >
       <div className='relative h-12 container w-[92vw] sm:w-[88vw] justify-between flex items-center'>
         <a href="/" id='logo' className="logo absolute left-0">

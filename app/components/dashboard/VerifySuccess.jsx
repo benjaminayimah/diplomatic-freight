@@ -20,7 +20,7 @@ function VerifySuccess({ invoice }) {
   const { dateFormat } = useFormatter()
 
   return (
-    <section className="app-body-wrapper min-h-dvh flex verifiable">
+    <section className="app-body-wrapper min-h-dvh flex verifiable justify-center">
       <div className="flex items-center justify-center rounded-2xl w-full">
         <div className='flex flex-col gap-6 justify-center items-center'>
           <div className="bg-white shadow-2xs rounded-2xl p-8 max-w-md w-full text-center border border-green-200">

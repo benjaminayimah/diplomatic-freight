@@ -498,8 +498,8 @@ main:has(.verifiable,.session-expired) {
   .body-container {
     border: unset;
   }
-  .header-wrapper, nav {
-    background-color: #F3F4F6;
+  .header-wrapper, .change-color {
+    background: #F3F4F6;
   }
 }
 /* 

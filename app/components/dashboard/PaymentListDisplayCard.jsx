@@ -12,7 +12,7 @@ function PaymentListDisplayCard({data, onToggle}) {
       <div className="flex items-center gap-2">
         { data?.payment_method === "bank_transfer" && (
           <>
-            <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-200 bg-blue-100">
+            <div className="flex items-center justify-center shrink-0 h-9 w-9 rounded-lg border border-blue-200 bg-blue-100">
               <BuildingLibraryIcon strokeWidth={1.5} className="text-base h-5 text-blue-600" />
             </div>
             <div>
@@ -27,7 +27,7 @@ function PaymentListDisplayCard({data, onToggle}) {
         )}
         { data?.payment_method === "usdt_wallet" && (
           <>
-            <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-teal-200 bg-teal-100">
+            <div className="flex items-center justify-center shrink-0 h-9 w-9 rounded-lg border border-teal-200 bg-teal-100">
               <WalletIcon strokeWidth={1.5} className="text-base h-5 text-teal-600" />
             </div>
             <div>
@@ -41,14 +41,12 @@ function PaymentListDisplayCard({data, onToggle}) {
           </>
         )}
       </div>
-      
       <button
         type="button"
         onClick={onToggle}
-        className="h-9 border border-red-100 text-red-500 hover:bg-red-50 gap-1 text-sm rounded-3xl flex justify-center items-center px-3 md:px-0 md:w-9"
+        className="h-9 w-9 shrink-0 border border-red-100 text-red-500 hover:bg-red-50 gap-1 text-sm rounded-3xl flex justify-center items-center"
       >
         <TrashIcon className="h-4.5" />
-        <span className='font-medium md:hidden'>Delete</span>
       </button>
     </li>
   )

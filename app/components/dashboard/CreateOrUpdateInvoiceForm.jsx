@@ -21,6 +21,8 @@ import RichTextEditor from './RichTextEditor';
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
 import { CURRENCIES } from "@/app/constants/currencies";
 import { formatPhoneNumber } from "@/utils/phoneFormatter";
+import useUnsavedChanges from "@/hooks/useUnsavedChanges";
+import { CheckIcon, EyeIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 
 
@@ -158,7 +160,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         { id: Date.now(), description: '', quantity: 1, rate: '', amount: '' }
       ]                                                     //, extra_charges: ''
     }));
-    setIsDirty(true); // ✅ Mark dirty
+    setIsDirty(true);
   };
 
   const removeItem = (id) => {
@@ -166,11 +168,11 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
       ...prev,
       items: prev.items.filter((item) => item.id !== id),
     }));
-    setIsDirty(true); // ✅ Mark dirty
+    setIsDirty(true);
   };
 
   const includeNewVat = (e, vat) => {
-    setIsDirty(true); // ✅ Mark dirty
+    setIsDirty(true);
     if(e) {
       setForm({...form, vat: vat })
       setNewVat(true)
@@ -181,7 +183,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     }
   }
    const includeAppliedVat = (e, vat) => {
-    setIsDirty(true); // ✅ Mark dirty
+    setIsDirty(true);
     if(e) {
       setForm({...form, vat: vat })
       setAppliedVat(true)
@@ -252,10 +254,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     const response = await createInvoiceOrUpdate(form);
     setLoading(false);
 
-    // console.log('Response from createInvoiceOrUpdate:', response);
-
     if (response?.success) {
-      // ✅ Clear dirty flag so redirect doesn't trigger warning
       setIsDirty(false); 
 
       setInvoiceData(response.data);
@@ -264,7 +263,6 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
         "success"
       )
       // Use router.push or redirect. 
-      // Note: redirect() from next/navigation throws an error in client components if not caught, usually router.push is safer in event handlers
       router.push('/app/all-invoice'); 
     } else if (response?.errors) {
       setErrors(formatErrors(response.errors));
@@ -290,52 +288,6 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   }, []);
 
 
-   // ✅ Intercept any Nav change
-  useEffect(() => {
-    if (!isDirty) return;
-
-    const confirmNav = (message) => {
-      return window.confirm(message || "You have unsaved changes. Leave this page?");
-    };
-
-    const handleBeforeUnload = (e) => {
-      if (!confirmNav()) {
-        e.preventDefault();
-        e.returnValue = "";
-      }
-    };
-
-    const handleDocumentClick = (e) => {
-      const anchor = e.target.closest("a");
-      if (!anchor) return;
-
-      if (!confirmNav()) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    document.addEventListener("click", handleDocumentClick, true);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      document.removeEventListener("click", handleDocumentClick, true);
-    };
-  }, [isDirty]);
-
- // ✅ Intercept Custom Back Button Click
-  const handleBackClick = (e) => {
-    if (isDirty) {
-      const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
-      if (!confirmLeave) {
-        e.preventDefault(); // Stop navigation
-        return;
-      }
-    }
-    router.back();
-  };
-
   const [openPayment, setOpenPayment] = useState(false);
 
    const handleClosePaymentModal = useCallback(() => {
@@ -358,6 +310,18 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   const selectedPaymentDetails = payments?.filter(payment =>
     form.paymentIDs.includes(payment.id)
   ) || [];
+
+
+
+   // ✅ Intercept unsaved changes
+  const confirmLeave = useUnsavedChanges({
+    isDirty,
+  });
+
+  const handleBackClick = () => {
+    if (!confirmLeave()) return;
+    router.back();
+  };
 
 
   return (
@@ -516,16 +480,13 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                   <button
                     type="button"
                     onClick={() => setOpenPayment(true)}
-                    className="flex gap-1 text-[#0077FF] items-center text-[0.88rem] font-semibold py-2 px-3 transition duration-300 hover:bg-gray-200 rounded-3xl"
+                    className="flex gap-1 text-[#0077FF] items-center text-sm font-semibold py-2 px-3 transition duration-300 hover:bg-gray-200 rounded-3xl"
                     >
-                      <svg height="14" viewBox="0 0 14 14">
-                        <path d="M7,0a.875.875,0,0,1,.875.875v5.25h5.25a.875.875,0,0,1,0,1.75H7.875v5.25a.875.875,0,0,1-1.75,0V7.875H.875a.875.875,0,0,1,0-1.75h5.25V.875A.875.875,0,0,1,7,0Z" fill="#2563EB"/>
-                      </svg>
+                      <PlusIcon strokeWidth={2} className="h-5 w-5" />
                       Add Account
                   </button>
                 </div>
               </fieldset>
-
             </div>
             <fieldset className="border border-gray-200 rounded-xl p-5 bg-white">
               <legend className="px-2 text-sm font-semibold">Items</legend>
@@ -547,12 +508,10 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                     <button
                       type="button"
                       onClick={addItem}
-                      className="flex gap-1 text-[#0077FF] items-center text-[0.88rem] font-semibold py-2 px-3 transition duration-300 hover:bg-gray-100 rounded-3xl"
+                      className="flex gap-1 text-[#0077FF] items-center text-sm font-semibold py-2 px-3 transition duration-300 hover:bg-gray-100 rounded-3xl"
                       >
-                        <svg height="14" viewBox="0 0 14 14">
-                          <path d="M7,0a.875.875,0,0,1,.875.875v5.25h5.25a.875.875,0,0,1,0,1.75H7.875v5.25a.875.875,0,0,1-1.75,0V7.875H.875a.875.875,0,0,1,0-1.75h5.25V.875A.875.875,0,0,1,7,0Z" fill="#2563EB"/>
-                        </svg>
-                      Insert New Item
+                        <PlusIcon strokeWidth={2} className="h-5 w-5" />
+                        Add New Item
                     </button>
                   </div>
                   <div className='flex flex-col md:flex-row gap-8 items-end md:items-center'>
@@ -614,11 +573,15 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
               />
             <div className='sticky bottom-0 w-full pb-4'>
               <div className='flex justify-center'>
-                <div className='p-1 flex gap-2 items-center bg-white border border-gray-100 h-12 rounded-3xl'>
-                  <button onClick={() => setOpenPreview(true)} type='button' className='inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl'>
+                <div className='p-1 flex gap-2 items-center bg-white border border-gray-100 rounded-full'>
+                  <button onClick={() => setOpenPreview(true)} type='button'
+                    className='flex items-center gap-1 h-11 text-sm font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-full'
+                    >
+                    <EyeIcon className="h-5 w-5" />
                     Preview
                   </button>
-                  <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
+                  <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white h-11 text-base px-4 gap-1'}>
+                    <CheckIcon className="h-5 w-5" />
                     {isEditing ? 'Save Changes' : 'Save Invoice'}
                   </SubmitButton>
                 </div>
@@ -682,7 +645,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                       ))
                     }
                     <div className="mt-2 flex justify-end">
-                      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-black text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-200 transition duration-300 hover:bg-gray-100 rounded-3xl'>
+                      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-black text-sm font-semibold py-2 px-4 border bg-gray-50 border-gray-200 transition duration-300 hover:bg-gray-100 rounded-3xl'>
                         Close
                       </button>
                     </div>
@@ -702,7 +665,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                         <h3 className="text-xl text-center font-semibold mb-2">No Saved Payment Account</h3>
                         <div className="text-gray-500 text-base text-center">In order to continue, add a payment account first.</div>
                       </div>
-                      <Link href="/app/settings/payment-acc" className="myHover-translate inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl">
+                      <Link href="/app/settings/payment-acc" className="myHover-translate inline-block text-sm font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl">
                         Take Me There &rarr;
                       </Link>
                     </div>

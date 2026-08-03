@@ -17,6 +17,8 @@ import ReceiptTemplate from './ReceiptTemplate';
 import { CURRENCIES } from "@/app/constants/currencies";
 import { PAYMENT_METHODS } from "@/app/constants/payment";
 import { formatPhoneNumber } from "@/utils/phoneFormatter";
+import useUnsavedChanges from "@/hooks/useUnsavedChanges";
+import { CheckIcon, EyeIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 
 
@@ -192,7 +194,6 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
     setLoading(false);
 
     if (response?.success) {
-      // ✅ Clear dirty flag so redirect doesn't trigger warning
       setIsDirty(false); 
 
       setReceiptData(response.data);
@@ -200,8 +201,6 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
         "Receipt created successfully!",
         "success"
       )
-      // Use router.push or redirect. 
-      // Note: redirect() from next/navigation throws an error in client components if not caught, usually router.push is safer in event handlers
       router.push('/app/all-receipt'); 
     } else if (response?.errors) {
       setErrors(formatErrors(response.errors));
@@ -226,17 +225,14 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
     resetErrors()
   }, []);
 
-  // ✅ Intercept Custom Back Button Click
-  const handleBackClick = (e) => {
-    // This assumes BackButton is a div or button you can wrap or pass onClick to.
-    // If BackButton has its own internal link, you might need to wrap it in a div and use onClickCapture
-    if (isDirty) {
-      const confirmLeave = window.confirm("You have unsaved changes. Are you sure you want to leave?");
-      if (!confirmLeave) {
-        e.preventDefault(); // Stop navigation
-        return;
-      }
-    }
+
+  // ✅ Intercept unsaved changes
+  const confirmLeave = useUnsavedChanges({
+    isDirty,
+  });
+
+  const handleBackClick = () => {
+    if (!confirmLeave()) return;
     router.back();
   };
 
@@ -372,10 +368,8 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                       onClick={addItem}
                       className="flex gap-1 text-[#0077FF] items-center text-[0.88rem] font-semibold py-2 px-3 transition duration-300 hover:bg-gray-100 rounded-3xl"
                       >
-                        <svg height="14" viewBox="0 0 14 14">
-                          <path d="M7,0a.875.875,0,0,1,.875.875v5.25h5.25a.875.875,0,0,1,0,1.75H7.875v5.25a.875.875,0,0,1-1.75,0V7.875H.875a.875.875,0,0,1,0-1.75h5.25V.875A.875.875,0,0,1,7,0Z" fill="#2563EB"/>
-                        </svg>
-                      Insert New Item
+                        <PlusIcon strokeWidth={2} className="h-5 w-5" />
+                        Add New Item
                     </button>
                   </div>
                   <div className='flex flex-col md:flex-row gap-8 items-end md:items-center'>
@@ -400,9 +394,15 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
             </fieldset>
             <div className='sticky bottom-0 w-full pb-4'>
               <div className='flex justify-center'>
-                <div className='p-1 flex gap-2 items-center bg-white border border-gray-100 h-12 rounded-3xl'>
-                  <button onClick={() => setOpen(true)} type='button' className='inline-block text-[0.88rem] font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-3xl'>Preview</button>
-                  <SubmitButton loading={loading} className={'bg-[#0077FF] text-white'}>
+                <div className='p-1 flex gap-2 items-center bg-white border border-gray-100 rounded-full'>
+                  <button onClick={() => setOpen(true)} type='button'
+                    className='flex items-center gap-1 h-11 text-sm font-semibold py-2 px-4 border bg-gray-50 border-gray-300 transition duration-300 hover:bg-gray-200 rounded-full'
+                    >
+                      <EyeIcon className="h-5 w-5" />
+                      Preview
+                    </button>
+                  <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white h-11 text-base px-4 gap-1'}>
+                    <CheckIcon className="h-5 w-5" />
                     Save Receipt
                   </SubmitButton>
                 </div>

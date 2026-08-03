@@ -292,7 +292,7 @@ function Settings() {
                     <button type="button" onClick={handleCloseModal} className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200">
                       Cancel
                     </button>
-                    <SubmitButton loading={loading} className={'bg-[#0077FF] text-white'}>
+                    <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
                       {modalSubmitBtnText}
                     </SubmitButton>
                   </div>

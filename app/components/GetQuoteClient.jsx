@@ -217,7 +217,7 @@ function GetQuoteClient() {
                 </div>
               </div>
               <form onSubmit={handleSubmit}>
-                <div className='min-h-[300px]'> {/* Fixed height to prevent layout jumps */}
+                <div className='min-h-75'> {/* Fixed height to prevent layout jumps */}
                   <AnimatePresence mode='wait' custom={direction}>
                     
                     {/* STEP 1: Contact Information */}

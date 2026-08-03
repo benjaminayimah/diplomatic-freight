@@ -108,6 +108,11 @@ body {
   background: #505052;
 }
 
+.dropdown > * {
+  border-radius: 9px
+}
+
+
 
 .container {
   /* width: 88vw; */

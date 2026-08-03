@@ -74,20 +74,20 @@ function Header() {
             >
             <Link
               href="/app/profile"
-              className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition"
+              className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition"
             >
               <UserIcon strokeWidth={2} className="text-base h-4.5" />
               Profile
             </Link>
             <Link
               href="/app/settings"
-              className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition"
+              className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition"
             >
               <Cog6ToothIcon strokeWidth={2} className="text-base h-4.5" />
               Settings
             </Link>
             <button
-              className="flex items-center gap-1.5 w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 text-sm font-medium transition"
+              className="flex items-center gap-1.5 w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 text-sm font-medium transition"
               onClick={handleLogout}
             >
               <ArrowRightStartOnRectangleIcon strokeWidth={2}  className="text-base h-4.5" />

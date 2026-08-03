@@ -58,14 +58,14 @@ function Nav() {
           <DropdownMenu trigger={CreateButton} placement="bottom" width="w-34">
             <Link
               href={'/app/create-invoice'}
-              className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
+              className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
             >
               <DocumentTextIcon strokeWidth={2} className="h-5"/>
               Invoice
             </Link>
             <Link
               href={'/app/create-receipt'}
-              className="flex items-center gap-1.5 px-4 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
+              className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
             >
               <ReceiptPercentIcon strokeWidth={2} className="h-5" />
               Receipt

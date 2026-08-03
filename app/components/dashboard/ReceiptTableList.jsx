@@ -49,13 +49,13 @@ function ReceiptTableList({ receipt, onDelete }) {
             >
               <Link
                 href={`/app/receipt/${receipt?.id}`}
-                className="flex gap-2 px-4 py-2 hover:bg-gray-100 text-sm transition font-medium"
+                className="flex gap-2 px-3 py-2 hover:bg-gray-100 text-sm transition font-medium"
               >
                 <EyeIcon strokeWidth={2} className="h-5" />
                 View
               </Link>
               <button
-                className="flex gap-2 text-red-600 w-full text-left px-4 py-2 hover:bg-red-50 text-sm transition font-medium"
+                className="flex gap-2 text-red-600 w-full text-left px-3 py-2 hover:bg-red-50 text-sm transition font-medium"
                 onClick={() => onDelete(receipt.id)} 
               >
                 <TrashIcon strokeWidth={2} className="h-5" />

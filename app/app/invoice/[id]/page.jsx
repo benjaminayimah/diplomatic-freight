@@ -161,7 +161,7 @@ export default function InvoicePage() {
                 width="w-30"
                 >
                 <button
-                  className="text-red-600 w-full flex gap-1 items-center text-left px-4 py-2 hover:bg-red-50 text-sm transition font-medium"
+                  className="text-red-600 w-full flex gap-1 items-center text-left px-3 py-2 hover:bg-red-50 text-sm transition font-medium"
                   onClick={() => openDeleteModal(invoice)}
                 >
                   <TrashIcon strokeWidth={2} className="h-5" />

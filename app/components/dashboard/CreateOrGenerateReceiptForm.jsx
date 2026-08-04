@@ -355,6 +355,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
                       key={item.id}
                       data={item}
                       index={index}
+                      itemCount={form.items.length}
                       currency={form.currency}
                       onChange={updateItem}
                       onRemove={() => removeItem(item.id)}

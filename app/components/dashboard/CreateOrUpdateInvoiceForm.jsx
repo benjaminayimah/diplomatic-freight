@@ -498,6 +498,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                       data={item}
                       currency={form.currency}
                       index={index}
+                      itemCount={form.items.length}
                       onChange={updateItem}
                       onRemove={() => removeItem(item.id)}
                     />

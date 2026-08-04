@@ -5,7 +5,7 @@ import Input from '../Input';
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 
-function InvoiceItem({ data, index, onChange, onRemove, currency }) {
+function InvoiceItem({ data, index, onChange, onRemove, currency, itemCount }) {
 
   const CURRENCY = currency || 'USD';
 
@@ -45,17 +45,6 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
         errors={[]}
         required
       />
-      {/* <Input
-        label= {`Extra charges(${CURRENCY})`}
-        id="extra_charges"
-        type="number"
-        placeholder="0.00"
-        className='hide-counter'
-        value={data.extra_charges}
-        onChange={(e) => onChange(index, 'extra_charges', e.target.value)}
-        onWheel={(e) => e.target.blur()}
-        errors={[]}
-      /> */}
       <Input
         label= {`Amount(${CURRENCY})`}
         id={`amount${index}`}
@@ -71,9 +60,22 @@ function InvoiceItem({ data, index, onChange, onRemove, currency }) {
       />
       <div className='flex items-end justify-end py-1'>
         <button
+          disabled={itemCount === 1}
           type="button"
           onClick={onRemove}
-          className="h-9 border text-red-500 border-red-100 hover:bg-red-50 gap-1 text-sm rounded-3xl flex justify-center items-center px-3 md:px-0 md:w-9"
+          className="
+          h-9 border
+        text-red-500
+        disabled:border-red-100
+        disabled:text-red-300
+        disabled:bg-white
+          disabled:cursor-not-allowed
+          border-red-100
+          hover:bg-red-50
+          gap-1 text-sm rounded-3xl flex
+          justify-center items-center
+          px-3 md:px-0 md:w-9
+          "
         >
           <TrashIcon className="h-4.5" />
           <span className='font-medium md:hidden'>Delete</span>

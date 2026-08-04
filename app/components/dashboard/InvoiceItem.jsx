@@ -64,17 +64,17 @@ function InvoiceItem({ data, index, onChange, onRemove, currency, itemCount }) {
           type="button"
           onClick={onRemove}
           className="
-          h-9 border
-        text-red-500
-        disabled:border-red-100
-        disabled:text-red-300
-        disabled:bg-white
-          disabled:cursor-not-allowed
+            h-9 border
+          text-red-500
+          disabled:border-red-100
+          disabled:text-red-300
+          disabled:bg-white
+            disabled:cursor-not-allowed
           border-red-100
           hover:bg-red-50
-          gap-1 text-sm rounded-3xl flex
-          justify-center items-center
-          px-3 md:px-0 md:w-9
+            gap-1 text-sm rounded-3xl flex
+            justify-center items-center
+            px-3 md:px-0 md:w-9
           "
         >
           <TrashIcon className="h-4.5" />

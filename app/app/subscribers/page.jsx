@@ -134,7 +134,11 @@ function Subscribers() {
                   />
                 ))
               ) : search ? (
-                <NoSearchResult input="subscribers" onClick={setSearch} />
+                <NoSearchResult
+                  type="subscribers"
+                  search={search}
+                  onClick={setSearch}
+                />
               ) : null }
             </ul>
           </div>

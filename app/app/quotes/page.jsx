@@ -137,7 +137,11 @@ function Quotes() {
                   />
                 ))
               ) : search ? (
-                <NoSearchResult input="quotes" onClick={setSearch} />
+                <NoSearchResult
+                  type="quotes"
+                  search={search}
+                  onClick={setSearch}
+                />
               ) : null }
             </ul>
           </div>

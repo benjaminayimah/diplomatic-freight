@@ -149,7 +149,11 @@ function AllReceipt() {
                   />
                 ))
               ) : search ? (
-                <NoSearchResult input="receipts" onClick={setSearch} />
+                <NoSearchResult
+                  type="receipts"
+                  search={search}
+                  onClick={setSearch}
+                />
               ) : null }
             </ul>
           </div>

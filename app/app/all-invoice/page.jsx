@@ -25,6 +25,7 @@ import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
 
 
 
+
 function AllInvoice() {
 
   const invoices = useAuthStore(
@@ -163,7 +164,11 @@ function AllInvoice() {
                   />
                 ))
               ) : search ? (
-                <NoSearchResult input="invoices" onClick={setSearch} />
+                <NoSearchResult
+                  type="invoices"
+                  search={search}
+                  onClick={setSearch}
+                />
               ) : null }
             </ul>
           </div>

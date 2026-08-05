@@ -31,23 +31,20 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
           <div className="flex items-center justify-between">
             <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-4">
               <div className="text-gray-600 font-medium uppercase flex items-center gap-2">
-                <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-100 bg-blue-50">
-                  {
-                    data?.payment_method === 'bank_transfer' ? (
-                      <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-200 bg-blue-100">
-                        <BuildingLibraryIcon strokeWidth={1.5} className="text-base h-6 text-blue-600" />
+                {
+                  data?.payment_method === 'bank_transfer' ? (
+                    <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-200 bg-blue-100">
+                      <BuildingLibraryIcon strokeWidth={1.5} className="text-base h-6 text-blue-600" />
+                    </div>
+                  ) : (
+                      <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-teal-200 bg-teal-100">
+                        <WalletIcon strokeWidth={1.5} className="text-base h-6 text-green-600" />
                       </div>
-                    ) : (
-                        <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-teal-200 bg-teal-100">
-                          <WalletIcon strokeWidth={1.5} className="text-base h-6 text-green-600" />
-                        </div>
-                    )
-                  }
-                </div>
+                  )
+                }
                 <span className="whitespace-nowrap">
                   {formatLabel(data?.payment_method)}
                 </span>
-                
               </div>
             </div>
             <div className="flex items-center gap-2">

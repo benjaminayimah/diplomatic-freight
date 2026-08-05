@@ -87,7 +87,7 @@ const Modal = ({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ duration: 0.3}}
-            className="bg-white rounded-3xl w-[90%] p-6 shadow-lg overflow-hidden"
+            className="bg-white rounded-3xl w-[90%] p-6 shadow-lg overflow-hidden relative"
           >
             {/* Header */}
             <div className="flex justify-between pb-2">
@@ -99,15 +99,18 @@ const Modal = ({
                   )}
                 </div>
               )}
-              <div>
-                <button
-                  onClick={onClose}
-                  aria-label="Close"
-                  className="group text-gray-500 bg-gray-100 h-8 w-8 rounded-full grid place-items-center hover:text-black text-xl"
-                >
-                  <XMarkIcon strokeWidth={2} className="h-5 w-5" />
-                </button>
-              </div>
+              <button
+                onClick={onClose}
+                aria-label="Close"
+                className="
+                  group absolute right-3.5 top-3.5
+                  text-gray-500 hover:bg-gray-100 hover:text-black
+                  h-8 w-8 rounded-full grid place-items-center
+                  transition duration-300 text-xl
+                "
+              >
+                <XMarkIcon strokeWidth={2} className="h-5 w-5" />
+              </button>
             </div>
             {/* Modal Body */}
             <div className="h-full overflow-y-auto max-h-[76svh]">

@@ -8,7 +8,7 @@ function DashboardCard({ title, array, href, icon, color }) {
   const Icon = icon;
 
   return (
-    <Link href={href} className={`border border-gray-200 hover:border-gray-300 hover:bg-gray-50 h-40 transition duration-300 rounded-2xl p-4 flex flex-col justify-between`}>
+    <Link href={href} className={`border border-gray-200 hover:bg-gray-100 h-40 transition duration-300 rounded-2xl p-4 flex flex-col justify-between`}>
         <h2 className="text-base text-black flex items-center gap-2">
           <div className={`flex items-center justify-center h-9 w-9 rounded-lg border ${color.wrapper}`}>
             {Icon && <Icon 

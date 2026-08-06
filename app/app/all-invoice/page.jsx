@@ -210,7 +210,7 @@ function AllInvoice() {
         title="Personal note"
         maxWidth="600px"
       >
-        <div className="mt-3">
+        <div className="mt-3 bg-gray-600 text-white rounded-xl p-5">
           <div
               className="prose prose-sm max-w-none"
               dangerouslySetInnerHTML={{

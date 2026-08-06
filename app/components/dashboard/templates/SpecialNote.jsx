@@ -5,7 +5,7 @@ function SpecialNote({
 }) {
   return (
     <div className="invoice-section pt-12 pb-6">
-        <div className="p-4 bg-white border border-amber-500 flex justify-between items-center">
+        <div className="p-4 bg-white border border-amber-600 flex justify-between items-center">
           <div className="text-sm text-black">
             <div
               className="prose prose-sm max-w-none"

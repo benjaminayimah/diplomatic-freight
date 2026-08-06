@@ -119,11 +119,11 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                     <span className="font-medium">Account Number</span>
-                    <div className="text-gray-600 md:text-right"><code>{data?.account_number || 'N/A'}</code></div>
+                    <div className="text-gray-600 md:text-right"> <code className="text-base">{data?.account_number || 'N/A'}</code></div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                     <span className="font-medium">SWIFT Code</span>
-                    <div className="text-gray-600 md:text-right"><code>{data?.swift_code || 'N/A'}</code></div>
+                    <div className="text-gray-600 md:text-right"><code className="text-base">{data?.swift_code || 'N/A'}</code></div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                     <span className="font-medium">Branch</span>
@@ -136,11 +136,11 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
               <>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">Wallet Address</span>
-                  <div className="text-gray-600 md:text-right"><code>{data?.wallet_address || 'N/A'}</code></div>
+                  <div className="text-gray-600 md:text-right"><code className="text-base">{data?.wallet_address || 'N/A'}</code></div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">Network</span>
-                  <div className="text-gray-600 uppercase md:text-right">{data?.network || 'N/A'}</div>
+                  <div className="text-gray-600 uppercase md:text-right"><code className="text-base">{data?.network || 'N/A'}</code></div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">QR Code</span>

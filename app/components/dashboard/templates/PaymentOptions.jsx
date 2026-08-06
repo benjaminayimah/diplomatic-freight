@@ -19,15 +19,15 @@ function PaymentOptions({
                 <p><span className="font-medium uppercase"><strong>{payment?.payment_method.replace("_", " ")}</strong></span></p>
                 <p><span className="font-medium"><strong>Bank:</strong></span> {payment?.bank_name || 'N/A'}</p>
                 <p><span className="font-medium"><strong>Account Name:</strong></span> {payment?.account_name || 'N/A'}</p>
-                <p><span className="font-medium"><strong>Account Number:</strong></span> <code>{payment?.account_number || 'N/A'}</code></p>
-                <p><span className="font-medium"><strong>SWIFT/BIC:</strong></span> <code>{payment?.swift_code || 'N/A'}</code></p>
+                <p><span className="font-medium"><strong>Account Number:</strong></span> <code className="text-base">{payment?.account_number || 'N/A'}</code></p>
+                <p><span className="font-medium"><strong>SWIFT/BIC:</strong></span> <code className="text-base">{payment?.swift_code || 'N/A'}</code></p>
                 <p><span className="font-medium"><strong>Branch:</strong></span> {payment?.bank_branch || 'N/A'}</p>
               </li>
             ) : (
               <li key={payment.id} className={`text-black text-sm space-y-1 ${payments.length > 1 ? 'list-decimal' : 'list-disc'}`} >
                 <p><span className="font-medium uppercase"><strong>{payment?.payment_method.replace("_", " ")} Deposit</strong></span></p>
-                <p><span className="font-medium"><strong>Wallet Address:</strong></span> <code>{payment?.wallet_address || 'N/A'}</code></p>
-                <p><span className="font-medium"><strong>Network:</strong></span> <span className='uppercase'>{payment?.network || 'N/A'}</span></p>
+                <p><span className="font-medium"><strong>Wallet Address:</strong></span> <code className="text-base">{payment?.wallet_address || 'N/A'}</code></p>
+                <p><span className="font-medium"><strong>Network:</strong></span> <span className='uppercase'><code className="text-base">{payment?.network || 'N/A'}</code></span></p>
                 <div className='mt-4'>
                   <div className="relative w-fit">
                     <QRCodeCanvas

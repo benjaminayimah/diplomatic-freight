@@ -80,7 +80,7 @@ ul.ul-table li:first-child {
 
 .font-mono, code, pre {
   font-family: var(--font-ibm-plex-sans-condensed), monospace;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 

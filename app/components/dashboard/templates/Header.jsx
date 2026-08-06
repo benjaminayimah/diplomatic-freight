@@ -72,7 +72,7 @@ function Header({
 
 
   return (
-    <div className="invoice-section flex justify-between gap-6 pb-5">
+    <div className="invoice-section flex justify-between gap-6">
       <div className="flex flex-col">
         <p className=" text-black text-4xl font-black leading-tight tracking-[-0.033em]">
           <svg xmlns="http://www.w3.org/2000/svg" height="45" viewBox="0 0 316.469 67">

@@ -226,6 +226,7 @@ function Settings() {
                       onChange={(e) => setProfileForm({ ...profileForm, company_name: e.target.value })}
                       errors={errors.company_name || []}
                       onFocus={() => clearFieldError('company_name')}
+                      required
                     />
                     <Input
                       label="Email"
@@ -236,6 +237,7 @@ function Settings() {
                       onChange={(e) => setProfileForm({ ...profileForm, email: e.target.value })}
                       errors={errors.email || []}
                       onFocus={() => clearFieldError('email')}
+                      required
                     />
                     <Input
                       label="Phone"
@@ -246,6 +248,7 @@ function Settings() {
                       onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
                       errors={errors.phone || []}
                       onFocus={() => clearFieldError('phone')}
+                      required
                     />
                     <Input
                       label="Mobile"
@@ -256,6 +259,7 @@ function Settings() {
                       onChange={(e) => setProfileForm({ ...profileForm, mobile: e.target.value })}
                       errors={errors.mobile || []}
                       onFocus={() => clearFieldError('mobile')}
+                      required
                     />
                     <Input
                       label="Address Line 1"
@@ -266,6 +270,7 @@ function Settings() {
                       onChange={(e) => setProfileForm({ ...profileForm, address_line_1: e.target.value })}
                       errors={errors.address_line_1 || []}
                       onFocus={() => clearFieldError('address_line_1')}
+                      required
                     />
                     <Input
                       label="Address Line 2"
@@ -296,6 +301,7 @@ function Settings() {
                       onChange={(e) => setProfileForm({ ...profileForm, po_box: e.target.value })}
                       errors={errors.po_box || []}
                       onFocus={() => clearFieldError('po_box')}
+                      required
                     />
                     <Input
                       label="Website Address"
@@ -306,6 +312,7 @@ function Settings() {
                       onChange={(e) => setProfileForm({ ...profileForm, website: e.target.value })}
                       errors={errors.website || []}
                       onFocus={() => clearFieldError('website')}
+                      required
                     />
                     <Input
                       label="Tagline"

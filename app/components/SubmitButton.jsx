@@ -2,18 +2,25 @@ import React from 'react'
 import Loader from './Loader'
 
 function SubmitButton({loading, onClick, className, children}) {
+
+  const classes = `
+    h-10 px-4 py-2 flex items-center
+    justify-center gap-2 font-semibold
+    text-[0.88rem] rounded-full min-w-21.5
+    transition duration-300
+  `
+
   if (loading) {
     return (
       <div
-       className='
-       bg-gray-100 px-4 py-3 font-semibold
-        rounded-4xl h-10 flex items-center
-        justify-center min-w-21.5 text-[0.88rem] 
-        text-gray-500 gap-2
-      '
+       className={`
+       ${classes}
+       bg-gray-100
+        text-gray-400
+      `}
       >
         <Loader size={20} />
-        {children}
+        {children}...
       </div>
     )
   }
@@ -21,12 +28,7 @@ function SubmitButton({loading, onClick, className, children}) {
     <button
       onClick={onClick}
       type='submit'
-      className={`
-        h-10 px-4 py-2 flex items-center
-        justify-center font-semibold
-        text-[0.88rem] rounded-4xl min-w-21.5
-        transition duration-300 ${className}
-      `}
+      className={`${className} ${classes}`}
     >
       {children}
     </button>

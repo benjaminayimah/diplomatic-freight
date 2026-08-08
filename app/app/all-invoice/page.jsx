@@ -20,8 +20,7 @@ import EmptyState from "@/app/components/dashboard/EmptyState"
 import Link from 'next/link';
 import { PlusIcon } from "@heroicons/react/24/outline";
 import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
-
-
+import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 
 
 
@@ -209,6 +208,7 @@ function AllInvoice() {
         }}
         title="Personal note"
         maxWidth="600px"
+        Icon={ChatBubbleBottomCenterTextIcon}
       >
         <div className="mt-3 bg-gray-600 text-white rounded-xl p-5">
           <div

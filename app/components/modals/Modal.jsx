@@ -14,6 +14,7 @@ const Modal = ({
   dismissibleEsc = true,
   overlayClasses = '',
   ModalFooter,
+  Icon = null,
   children
 }) => {
   const modalRef = useRef(null);
@@ -87,17 +88,23 @@ const Modal = ({
             initial={{ y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
-            transition={{ duration: 0.3}}
+            transition={{
+              duration: 0.3,
+              ease: [0.22, 1, 0.36, 1], 
+            }}
             className="bg-white rounded-3xl w-[90%] px-6 shadow-lg overflow-hidden relative border border-white"
           >
             {/* Header */}
             <div className="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-sm px-6 pt-6 pb-2 z-60">
               {title && (
-                <div>
-                  <h2 className="text-lg font-semibold">{title}</h2>
-                  {subTitle && (
-                    <span className="text-sm text-gray-500">{subTitle}</span>
-                  )}
+                <div className="flex items-center gap-2">
+                  { Icon && <Icon strokeWidth={2} className="h-5" /> }
+                  <div>
+                    <h2 className="text-lg font-semibold">{title}</h2>
+                    {subTitle && (
+                      <span className="text-sm text-gray-500">{subTitle}</span>
+                    )}
+                  </div>
                 </div>
               )}
               <button
@@ -114,7 +121,7 @@ const Modal = ({
               </button>
             </div>
             {/* Modal Body */}
-            <div className={`h-full overflow-y-auto max-h-[88svh] pt-15 ${ModalFooter ? 'pb-24' : 'pb-6'}`}>
+            <div className={`h-full overflow-y-auto max-h-[80svh] mt-15 ${ModalFooter ? 'pb-24' : 'pb-6'}`}>
               {children}
             </div>
             { ModalFooter && (

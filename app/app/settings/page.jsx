@@ -9,6 +9,7 @@ import ErrorCard from "../../components/ErrorCard";
 import SubmitButton from "../../components/SubmitButton";
 import { useSnackbar } from "@/app/components/SnackbarContext";
 import { PencilIcon } from "@heroicons/react/24/outline";
+import { validateRequiredFields } from "@/utils/validation";
 
 
 function Settings() {
@@ -95,6 +96,23 @@ function Settings() {
   const handleSubmitProfile = async (e) => {
     e.preventDefault();
     resetErrors()
+
+    const validationErrors = validateRequiredFields(profileForm, [
+      { name: "company_name", label: "Company name" },
+      { name: "email", label: "Email" },
+      { name: "phone", label: "Phone" },
+      { name: "mobile", label: "Mobile" },
+      { name: "address_line_1", label: "Address line 1" },
+      { name: "po_box", label: "P.O. Box" },
+      { name: "website", label: "Website" },
+    ]);
+
+    if (Object.keys(validationErrors).length) {
+      setErrors(validationErrors);
+      return;
+    }
+
+
     setLoading(true);
 
     const response = await updateProfile(profileForm, profile?.id);
@@ -120,6 +138,17 @@ function Settings() {
       )
     }
   }
+
+  const ModalFooter = (
+    <div className="flex justify-end gap-2">
+      <button type="button" onClick={handleCloseModal} className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200">
+        Cancel
+      </button>
+      <SubmitButton loading={loading} onClick={handleSubmitProfile} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
+        {modalSubmitBtnText}
+      </SubmitButton>
+    </div>
+  )
 
   return (
       <>
@@ -182,10 +211,11 @@ function Settings() {
             onClose={handleCloseModal}
             title={modalTitle}
             subTitle={modalSubTitle}
+            ModalFooter={ModalFooter}
           >
             { error && <ErrorCard error={error} /> }
-              <div className="mt-4">
-                <form onSubmit={ handleSubmitProfile } className="flex flex-col gap-5">
+              <div className="mt-10">
+                <form className="flex flex-col gap-5">
                   <div className="flex flex-col gap-4">
                     <Input
                       label="Company Name"
@@ -288,14 +318,7 @@ function Settings() {
                       onFocus={() => clearFieldError('tagline')}
                     />
                   </div>
-                  <div className="flex justify-end gap-2">
-                    <button type="button" onClick={handleCloseModal} className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200">
-                      Cancel
-                    </button>
-                    <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
-                      {modalSubmitBtnText}
-                    </SubmitButton>
-                  </div>
+                  
                 </form>
               </div>
           </Modal>

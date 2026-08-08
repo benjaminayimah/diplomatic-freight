@@ -18,6 +18,7 @@ import useDeleteModal from "@/hooks/useDeleteModal";
 import useDelete from "@/hooks/useDelete"
 import { PAYMENT_METHODS, USDT_NETWORKS } from "@/app/constants/payment";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { validateRequiredFields } from "@/utils/validation";
 
 
 
@@ -132,6 +133,19 @@ function Settings() {
     e.preventDefault();
     resetErrors()
 
+    if (bankForm.payment_method === "bank_transfer") {
+      const validationErrors = validateRequiredFields(bankForm, [
+        { name: "bank_name", label: "Bank name" },
+        { name: "account_name", label: "Account name" },
+        { name: "account_number", label: "Account number" },
+      ]);
+
+      if (Object.keys(validationErrors).length) {
+        setErrors(validationErrors);
+        return;
+      }
+    }
+
     if (bankForm.payment_method === "usdt_wallet") {
       const walletError = validateWalletAddress(
         bankForm.network,
@@ -141,11 +155,15 @@ function Settings() {
       if (walletError) {
         setErrors((prev) => ({
           ...prev,
-          wallet_address: [walletError],
+          ...(walletError === "Network is required."
+            ? { network: [walletError] }
+            : { wallet_address: [walletError] }),
         }));
+
         return;
       }
     }
+    
 
     setLoading(true);
 
@@ -207,9 +225,20 @@ function Settings() {
       <p className="text-sm mb-4 text-gray-900">
         Are you sure you want to delete this account?
       </p>
-      <p className="text-sm mb-4 text-gray-900">
+      <p className="text-sm text-gray-900">
         <strong>Note:</strong> This action can <strong>not</strong> be reversed.
       </p>
+    </div>
+  )
+
+  const ModalFooter = (
+    <div className="flex justify-end gap-2">
+      <button type="button" onClick={handleCloseModal} className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200">
+        Cancel
+      </button>
+      <SubmitButton loading={loading} onClick={handleSubmitBank}  className={'bg-blue-600 hover:bg-blue-700 text-white'}>
+        {modalSubmitBtnText}
+      </SubmitButton>
     </div>
   )
   
@@ -261,7 +290,6 @@ function Settings() {
                     Add payment detail
                   </button>
                   </div>
-                  
                 </div>
               )
             }
@@ -272,10 +300,11 @@ function Settings() {
             onClose={handleCloseModal}
             title={modalTitle}
             subTitle={modalSubTitle}
+            ModalFooter={ModalFooter}
           >
             { error && <ErrorCard error={error} /> }
-              <div className="mt-4">
-                <form onSubmit={ handleSubmitBank } className="flex flex-col gap-5">
+              <div className="mt-10">
+                <form className="flex flex-col gap-5">
                     <div className="flex flex-col gap-4">
                       <RadioGroup label="Select Payment Method">
                         <div className="grid grid-cols-3">
@@ -393,14 +422,6 @@ function Settings() {
                         </>
                       )}
                     </div>
-                  <div className="flex justify-end gap-2">
-                    <button type="button" onClick={handleCloseModal} className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200">
-                      Cancel
-                    </button>
-                    <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
-                      {modalSubmitBtnText}
-                    </SubmitButton>
-                  </div>
                 </form>
               </div>
           </Modal>

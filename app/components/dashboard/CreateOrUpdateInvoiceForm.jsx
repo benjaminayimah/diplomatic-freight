@@ -323,6 +323,14 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
     router.back();
   };
 
+  const ModalFooter = (
+    <div className="mt-2 flex justify-end">
+      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-black text-sm font-semibold py-2 px-4 border bg-gray-50 border-gray-200 transition duration-300 hover:bg-gray-100 rounded-3xl'>
+        Close
+      </button>
+    </div>
+  )
+
 
   return (
     <section className='app-body-wrapper'>
@@ -630,8 +638,9 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
           maxWidth='600px'
           title="Select Payment Account"
           subTitle="Select payment accounts for this invoice. You can select multiple accounts."
+          ModalFooter={ModalFooter}
         >
-            <div className="mt-4">
+            <div className="mt-10">
               {
                 payments?.length > 0 ? (
                   <div className="flex flex-col gap-2">
@@ -645,11 +654,6 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                         />
                       ))
                     }
-                    <div className="mt-2 flex justify-end">
-                      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-black text-sm font-semibold py-2 px-4 border bg-gray-50 border-gray-200 transition duration-300 hover:bg-gray-100 rounded-3xl'>
-                        Close
-                      </button>
-                    </div>
                   </div>
                 ) : (
                   <div className="p-10 rounded-2xl grid place-items-center flex-1">

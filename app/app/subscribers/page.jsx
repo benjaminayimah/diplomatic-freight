@@ -90,7 +90,7 @@ function Subscribers() {
       <p className="text-sm mb-4 text-gray-900">
         Are you sure you want to delete the email: <strong>{itemToDelete?.email}</strong>?
       </p>
-      <p className="text-sm mb-4 text-gray-900">
+      <p className="text-sm text-gray-900">
         <strong>Note:</strong> This action can <strong>not</strong> be reversed.
       </p>
     </div>

@@ -13,6 +13,7 @@ const Modal = ({
   dismissibleOutsideClick = true,
   dismissibleEsc = true,
   overlayClasses = '',
+  ModalFooter,
   children
 }) => {
   const modalRef = useRef(null);
@@ -87,10 +88,10 @@ const Modal = ({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ duration: 0.3}}
-            className="bg-white rounded-3xl w-[90%] p-6 shadow-lg overflow-hidden relative"
+            className="bg-white rounded-3xl w-[90%] px-6 shadow-lg overflow-hidden relative border border-white"
           >
             {/* Header */}
-            <div className="flex justify-between pb-2">
+            <div className="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-sm px-6 pt-6 pb-2 z-60">
               {title && (
                 <div>
                   <h2 className="text-lg font-semibold">{title}</h2>
@@ -113,9 +114,15 @@ const Modal = ({
               </button>
             </div>
             {/* Modal Body */}
-            <div className="h-full overflow-y-auto max-h-[76svh]">
+            <div className={`h-full overflow-y-auto max-h-[88svh] pt-15 ${ModalFooter ? 'pb-24' : 'pb-6'}`}>
               {children}
             </div>
+            { ModalFooter && (
+              <div className="absolute bottom-0 left-0 w-full px-6 pt-2 pb-6 bg-white/30 backdrop-blur-sm z-60">
+                {ModalFooter}
+              </div>
+            )}
+            <div className="absolute bottom-0 left-0 w-full h-6 bg-linear-to-t from-white/90 to-transparent z-50 pointer-events-none"></div>
           </motion.div>
         </motion.div>
       )}

@@ -117,6 +117,17 @@ function Profile() {
     [passwordForm, updatePass, handleCloseModal]
   );
 
+  const ModalFooter = (
+    <div className="flex justify-end gap-2">
+      <button type="button" onClick={handleCloseModal} className="text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200">
+        Cancel
+      </button>
+      <SubmitButton loading={loading} onClick={ modalType === 'edit' ? handleEditProfile : handleChangePassword} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
+        {modalType === "edit" ? "Save changes" : "Update password"}
+      </SubmitButton>
+    </div>
+  )
+
   return (
     <ProtectedRoute>
       <section className="app-body-wrapper">
@@ -165,10 +176,11 @@ function Profile() {
             maxWidth="560px"
             title={modalType === "edit" ? "Edit Profile" : "Change Password"}
             subTitle={modalType === "edit" ? "Update your profile details" : "Change your password"}
+            ModalFooter={ModalFooter}
           >
             { error && <ErrorCard error={error} /> }
-              <div className="mt-4">
-                <form onSubmit={ modalType === 'edit' ? handleEditProfile : handleChangePassword} className="flex flex-col gap-5">
+              <div className="mt-10">
+                <form className="flex flex-col gap-5">
                   {modalType === "edit" && (
                     <div className="flex flex-col gap-4">
                       <Input
@@ -199,31 +211,26 @@ function Profile() {
                         label="Current password"
                         id="current_password"
                         type="password"
+                        placeholder="Enter current password"
                         value={passwordForm.current_password}
                         onChange={(e) => setPasswordForm({ ...passwordForm, current_password: e.target.value })}
                         errors={errors.current_password || []}
                         onFocus={() => clearFieldError('current_password')}
+                        required
                       />
                       <Input
                         label="New password"
                         id="new_password"
                         type="password"
+                        placeholder="Enter new password"
                         value={passwordForm.new_password}
                         onChange={(e) => setPasswordForm({ ...passwordForm, new_password: e.target.value })}
                         errors={errors.new_password || []}
                         onFocus={() => clearFieldError('new_password')}
+                        required
                       />
                     </div>
                   )}
-
-                  <div className="flex justify-end gap-2">
-                    <button type="button" onClick={handleCloseModal} className="myHover-translate text-[0.88rem] font-medium px-4 py-2 rounded-3xl bg-gray-100 border border-gray-200 transition duration-300 hover:bg-gray-200">
-                      Cancel
-                    </button>
-                    <SubmitButton loading={loading} className={'bg-blue-600 hover:bg-blue-700 text-white'}>
-                      {modalType === "edit" ? "Save changes" : "Update password"}
-                    </SubmitButton>
-                  </div>
                 </form>
               </div>
           </Modal>

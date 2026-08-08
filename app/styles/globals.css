@@ -580,3 +580,7 @@ main:has(.verifiable,.session-expired) {
 .animate-pulse {
   animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite;
 }
+
+
+    /* background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, var(--main-background-primary) 80%);
+} */

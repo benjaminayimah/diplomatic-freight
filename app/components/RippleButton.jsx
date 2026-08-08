@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import Loader from './Loader'
 
 export default function RippleButton({
   children,
   className = '',
+  type = 'button',
   onClick,
+  loading,
   ...props
 }) {
   const [ripples, setRipples] = useState([]);
@@ -32,9 +35,26 @@ export default function RippleButton({
     onClick?.(e);
   };
 
+  if (loading) {
+    return (
+      <div
+       className='
+       bg-gray-100 px-4 py-3 font-semibold
+        rounded-4xl h-10 flex items-center
+        justify-center min-w-21.5 text-[0.88rem] 
+        text-gray-500 gap-2
+      '
+      >
+        <Loader size={20} />
+        {children}
+      </div>
+    )
+  }
+
   return (
     <button
       {...props}
+      type={type}
       onClick={createRipple}
       className={`relative overflow-hidden ${className}`}
     >

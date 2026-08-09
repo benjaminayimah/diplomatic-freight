@@ -115,7 +115,7 @@ function AllReceipt() {
 
 
   if (loading) return <SkeletonLoader />;
-  if (error) return <div className="app-body-wrapper flex justify-center mt-20">
+  if (error) return <div className="app-body-wrapper flex justify-center">
     <p className="text-red-500">Error: {error}</p>
   </div>;
   if(receipts.length === 0) return <EmptyState button={Button} title="No Receipts Found" subTitle="All your receipts will appear here." />;

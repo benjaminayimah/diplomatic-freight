@@ -86,10 +86,10 @@ export default function ReceiptPage() {
   )
 
   if (!isAuth) return <ProtectedRoute />;
-  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
+  if (loading) return <div className="app-body-wrapper flex justify-center">
     <Loader size={60} />
   </div>;
-  if (error) return <div className="app-body-wrapper">Error loading receipt</div>;
+  if (error) return <div className="app-body-wrapper flex justify-center">Error Fetching Receipt</div>;
 
   return (
     <ProtectedRoute>

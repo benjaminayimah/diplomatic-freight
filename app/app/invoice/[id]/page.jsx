@@ -97,10 +97,10 @@ export default function InvoicePage() {
   )
 
   if (!isAuth) return <ProtectedRoute />;
-  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
+  if (loading) return <div className="app-body-wrapper flex justify-center">
     <Loader size={60} />
   </div>;
-  if (error) return <div className="app-body-wrapper">Error loading invoice</div>;
+  if (error) return <div className="app-body-wrapper flex justify-center">Error Fetching Invoice</div>;
 
   return (
     <ProtectedRoute>

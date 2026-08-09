@@ -125,7 +125,7 @@ function AllInvoice() {
 
   // empty state
   if (loading) return <SkeletonLoader />;
-  if (error) return <div className="app-body-wrapper flex justify-center mt-20">
+  if (error) return <div className="app-body-wrapper flex justify-center">
     <p className="text-red-500">Error: {error}</p>
   </div>;
   if(invoices.length === 0) return <EmptyState button={Button} title="No Invoices Found" subTitle="All your invoices will appear here." />;

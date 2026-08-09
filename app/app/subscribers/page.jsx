@@ -99,7 +99,7 @@ function Subscribers() {
 
 
   if (loading) return <SkeletonLoader />;
-  if (error) return <div className="app-body-wrapper flex justify-center mt-20">
+  if (error) return <div className="app-body-wrapper flex justify-center">
     <p className="text-red-500">Error: {error}</p>
   </div>;
   if(subscribers.length === 0) return <EmptyState title="No Subscribers Found" subTitle="All newsletter subscribers will appear here." />;

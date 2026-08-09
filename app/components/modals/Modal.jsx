@@ -89,7 +89,7 @@ const Modal = ({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{
-              duration: 0.3,
+              duration: 0.28,
               ease: [0.22, 1, 0.36, 1], 
             }}
             className="bg-white rounded-3xl w-[90%] px-6 shadow-lg overflow-hidden relative border border-white"

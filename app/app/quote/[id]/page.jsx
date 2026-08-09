@@ -3,6 +3,7 @@
 import React, {useState} from 'react'
 import { useParams } from 'next/navigation';
 import ProtectedRoute from "@/app/components/ProtectedRoute";
+import Loader from '@/app/components/Loader';
 import useFetchData from "@/hooks/useFetchData";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthStore } from '@/store/authStore';
@@ -72,10 +73,10 @@ function page() {
   )
 
   if (!isAuth) return <ProtectedRoute />;
-  if (loading) return <div className="app-body-wrapper flex justify-center mt-20">
-    <p>Loading...</p>
+  if (loading) return <div className="app-body-wrapper flex justify-center">
+    <Loader size={60} />
   </div>;
-  if (error) return <div className="app-body-wrapper">Error loading quote</div>;
+  if (error) return <div className="app-body-wrapper flex justify-center">Error Fetching Quote</div>;
 
   return (
     <ProtectedRoute>

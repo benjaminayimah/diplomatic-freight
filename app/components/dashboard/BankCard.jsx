@@ -8,11 +8,7 @@ import Link from 'next/link';
 import {
   PencilIcon,
   TrashIcon,
-  ArrowTopRightOnSquareIcon
-} from "@heroicons/react/24/outline";
-
-
-import {
+  ArrowTopRightOnSquareIcon,
   BuildingLibraryIcon,
   WalletIcon,
   InformationCircleIcon

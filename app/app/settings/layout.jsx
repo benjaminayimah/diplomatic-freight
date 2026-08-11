@@ -2,13 +2,17 @@
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import NavItem from "@/app/components/dashboard/NavItem";
 import {
-  WalletIcon,
-  BuildingOffice2Icon,
+  WalletIcon as WalletOutlineIcon,
+  BuildingOffice2Icon as BuildingOffice2OutlineIcon,
 } from "@heroicons/react/24/outline";
+import {
+  WalletIcon as WalletSolidIcon,
+  BuildingOffice2Icon as BuildingOffice2SolidIcon,
+} from "@heroicons/react/24/solid";
 
 const menus = [
-    { name: 'Company Info', href: '/app/settings', icon: BuildingOffice2Icon },
-    { name: "Payment Accounts", href: "/app/settings/payment-acc", icon: WalletIcon },
+    { name: 'Company Info', href: '/app/settings', icon: BuildingOffice2OutlineIcon, activeIcon: BuildingOffice2SolidIcon },
+    { name: "Payment Accounts", href: "/app/settings/payment-acc", icon: WalletOutlineIcon, activeIcon: WalletSolidIcon },
   ]
 
 export default function RootLayout({ children }) {

@@ -7,7 +7,7 @@ function NavItem({item}) {
 
   const pathname = usePathname();
   const isActive = pathname === item.href;
-  const Icon = item.icon;
+  const Icon = isActive ? item.activeIcon : item.icon;
 
   return (
     <li >

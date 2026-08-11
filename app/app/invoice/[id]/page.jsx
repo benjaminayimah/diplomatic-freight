@@ -20,13 +20,15 @@ import useDelete from "@/hooks/useDelete"
 import { AnimatePresence, motion } from "framer-motion";
 import CopyButton from "@/app/components/dashboard/CopyButton";
 import { 
-  ChatBubbleBottomCenterTextIcon,
+  ChatBubbleBottomCenterTextIcon as ChatBubbleOutlineIcon,
   TrashIcon,
   PencilIcon,
   ReceiptPercentIcon,
   PrinterIcon
 } from "@heroicons/react/24/outline";
+import { ChatBubbleBottomCenterTextIcon as ChatBubbleSolideIcon } from "@heroicons/react/24/solid";
 import PersonalNote from "@/app/components/dashboard/PersonalNote"
+
 
 export default function InvoicePage() {
 
@@ -48,6 +50,7 @@ export default function InvoicePage() {
 
   const [showNote, setShowNote ] = useState(false)
 
+  const ChatBubbleIcon = showNote ? ChatBubbleSolideIcon : ChatBubbleOutlineIcon;
 
   const shouldFetch = Boolean(isAuth && id);
   const { data: dataObj, loading, error } = useFetchData(
@@ -150,7 +153,7 @@ export default function InvoicePage() {
                       <span className={`${showNote ? "border-black" : "border-white"} absolute bg-blue-600 h-2 w-2 rounded-full border top-[24%] right-[18%]`}></span>
                     )
                   }
-                  <ChatBubbleBottomCenterTextIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />
+                  <ChatBubbleIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />
                 </button>
               <Link href={`/app/create-invoice?mode=edit&id=${invoice?.id}`} className='border border-gray-200 gap-2 text-black h-9 px-3 flex items-center justify-center font-medium text-[0.88rem] rounded-4xl bg-gray-50 hover:bg-gray-100 transition-colors'>
                 <PencilIcon strokeWidth={1.5} className="h-5" />

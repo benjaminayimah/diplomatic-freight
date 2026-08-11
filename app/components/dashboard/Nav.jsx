@@ -6,22 +6,30 @@ import { useAuthStore } from "@/store/authStore";
 import Link from 'next/link';
 import DropdownMenu from './DropdownMenu';
 import {
-  HomeIcon,
-  DocumentTextIcon,
-  ReceiptPercentIcon,
-  DocumentDuplicateIcon,
-  UsersIcon,
+  HomeIcon as HomeOutlineIcon,
+  DocumentTextIcon as DocumentTextOutlineIcon,
+  ReceiptPercentIcon as ReceiptPercentOutlineIcon,
+  DocumentDuplicateIcon as DocumentDuplicateOutlineIcon,
+  UsersIcon as UsersOutlineIcon,
   ChevronDownIcon,
   PlusIcon
 } from "@heroicons/react/24/outline";
 
+import {
+  HomeIcon as HomeSolidIcon,
+  DocumentTextIcon as DocumentTextSolidIcon,
+  ReceiptPercentIcon as ReceiptPercentSolidIcon,
+  DocumentDuplicateIcon as DocumentDuplicateSolidIcon,
+  UsersIcon as UsersSolidIcon,
+} from "@heroicons/react/24/solid";
+
 
 const menus = [
-  { name: 'Home', href: '/app', icon: HomeIcon},
-  { name: 'Invoices', href: '/app/all-invoice', icon: DocumentTextIcon},
-  { name: 'Receipts', href: '/app/all-receipt', icon: ReceiptPercentIcon},
-  { name: 'Quotes', href: '/app/quotes', icon: DocumentDuplicateIcon},
-  { name: 'Subscribers', href: '/app/subscribers', icon: UsersIcon},
+  { name: 'Home', href: '/app', icon: HomeOutlineIcon, activeIcon: HomeSolidIcon},
+  { name: 'Invoices', href: '/app/all-invoice', icon: DocumentTextOutlineIcon, activeIcon: DocumentTextSolidIcon},
+  { name: 'Receipts', href: '/app/all-receipt', icon: ReceiptPercentOutlineIcon, activeIcon: ReceiptPercentSolidIcon},
+  { name: 'Quotes', href: '/app/quotes', icon: DocumentDuplicateOutlineIcon, activeIcon: DocumentDuplicateSolidIcon},
+  { name: 'Subscribers', href: '/app/subscribers', icon: UsersOutlineIcon, activeIcon: UsersSolidIcon},
 ]
 
 
@@ -60,14 +68,14 @@ function Nav() {
               href={'/app/create-invoice'}
               className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
             >
-              <DocumentTextIcon strokeWidth={2} className="h-5"/>
+              <DocumentTextOutlineIcon strokeWidth={2} className="h-5"/>
               Invoice
             </Link>
             <Link
               href={'/app/create-receipt'}
               className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"
             >
-              <ReceiptPercentIcon strokeWidth={2} className="h-5" />
+              <ReceiptPercentOutlineIcon strokeWidth={2} className="h-5" />
               Receipt
             </Link>
           </DropdownMenu>

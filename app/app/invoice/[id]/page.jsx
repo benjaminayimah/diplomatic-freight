@@ -147,7 +147,7 @@ export default function InvoicePage() {
                 >
                   {
                     invoice?.personal_note && (
-                      <span className={`${showNote ? "border-black" : "border-white"} absolute bg-blue-600 h-2 w-2 rounded-full border top-[24%] right-[22%]`}></span>
+                      <span className={`${showNote ? "border-black" : "border-white"} absolute bg-blue-600 h-2 w-2 rounded-full border top-[24%] right-[18%]`}></span>
                     )
                   }
                   <ChatBubbleBottomCenterTextIcon strokeWidth={2} fill={showNote ? "currentColor" : "none"} className="h-4.5" />

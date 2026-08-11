@@ -9,7 +9,7 @@ function CopyButton({
   value,
   className = "",
   iconClassName = "h-4 w-4",
-  duration = 2000,
+  duration = 2500,
   message = "Copied to clipboard!",
 }) {
   const [copied, setCopied] = useState(false);
@@ -22,7 +22,6 @@ function CopyButton({
 
     try {
       await navigator.clipboard.writeText(value);
-
       setCopied(true);
 
       showSnackbar(message, "success");
@@ -34,7 +33,6 @@ function CopyButton({
       }, duration);
     } catch (error) {
       console.error("Failed to copy:", error);
-
       showSnackbar("Failed to copy to clipboard.", "error");
     }
   };
@@ -46,7 +44,7 @@ function CopyButton({
   }, []);
 
   return (
-    <Tooltip content={copied ? "Copied" : "Copy Number"} placement="bottom">
+    <Tooltip content={copied ? "Copied" : "Copy number"} placement="bottom">
       <button
         type="button"
         onClick={handleCopy}

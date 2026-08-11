@@ -18,6 +18,7 @@ import useDelete from "@/hooks/useDelete"
 import { PAGE_OPTIONS } from "@/app/constants/pagination";
 import EmptyState from "@/app/components/dashboard/EmptyState"
 import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
+import { useSnackbar } from "@/app/components/SnackbarContext";
 
 
 
@@ -41,6 +42,18 @@ function Subscribers() {
   const setDeleteSubscriberById = useAuthStore(
     (state) => state.setDeleteSubscriberById
   );
+
+  const { showSnackbar, hideSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    if (error) {
+      showSnackbar(error, "error", false);
+      return;
+    }
+    if (data?.success) {
+      hideSnackbar();
+    }
+  }, [error, data, showSnackbar, hideSnackbar]);
   
 
   const {
@@ -99,11 +112,6 @@ function Subscribers() {
 
 
   if (loading) return <SkeletonLoader />;
-  if (error) return <div className="app-body-wrapper flex justify-center">
-    <p className="text-red-500">Error: {error}</p>
-  </div>;
-  if(subscribers.length === 0) return <EmptyState title="No Subscribers Found" subTitle="All newsletter subscribers will appear here." />;
-
 
   return (
     <ProtectedRoute>
@@ -122,42 +130,49 @@ function Subscribers() {
             />
           </div>
         </div>
-        <div className="body-content w-full">
-          <div>
-            <ul className='grid ul-table border border-gray-200 rounded-2xl'>
-              { paginatedSubscribers.length > 0 ? (
-                paginatedSubscribers.map((subscriber) => (
-                  <SubscriberTableList 
-                    key={subscriber.id}
-                    subscriber={subscriber}
-                    onDelete={() => openDeleteModal(subscriber)}
-                  />
-                ))
-              ) : search ? (
-                <NoSearchResult
-                  type="subscribers"
-                  search={search}
-                  onClick={setSearch}
-                />
-              ) : null }
-            </ul>
-          </div>
-          {
-            paginatedSubscribers.length > 0 && (
-              <PaginationFooter
-                value={perPage}
-                onChange={setPerPage}
-                options={PAGE_OPTIONS}
-                onClickPrev={previousPage}
-                disabledPrev={!hasPreviousPage}
-                disabledNext={!hasNextPage}
-                onClickNext={nextPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
+        {
+          subscribers.length === 0 ? (
+            <EmptyState
+              title="No Subscribers Found"
+              subTitle="All newsletter subscribers will appear here."
               />
-            )
-          }
-        </div>
+          ) : (
+            <div className="body-content w-full">
+              <div>
+                <ul className='grid ul-table border border-gray-200 rounded-2xl'>
+                  { paginatedSubscribers.length > 0 ? (
+                    paginatedSubscribers.map((subscriber) => (
+                      <SubscriberTableList 
+                        key={subscriber.id}
+                        subscriber={subscriber}
+                        onDelete={() => openDeleteModal(subscriber)}
+                      />
+                    ))
+                  ) : search ? (
+                    <NoSearchResult
+                      type="subscribers"
+                      search={search}
+                      onClick={setSearch}
+                    />
+                  ) : null }
+                </ul>
+              </div>
+              { paginatedSubscribers.length > 0 && (
+                <PaginationFooter
+                  value={perPage}
+                  onChange={setPerPage}
+                  options={PAGE_OPTIONS}
+                  onClickPrev={previousPage}
+                  disabledPrev={!hasPreviousPage}
+                  disabledNext={!hasNextPage}
+                  onClickNext={nextPage}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                />
+              )}
+            </div>
+          )
+        }
       </section>
       <DeleteModal
         deleteModalOpen={deleteModalOpen}

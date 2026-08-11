@@ -19,6 +19,8 @@ import Link from 'next/link';
 import { PlusIcon } from "@heroicons/react/24/outline";
 import EmptyState from "@/app/components/dashboard/EmptyState"
 import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
+import { useSnackbar } from "@/app/components/SnackbarContext";
+
 
 
 
@@ -45,6 +47,17 @@ function AllReceipt() {
     setReceipts(sortedReceipts);
   }, [data, setReceipts]);  // use the full data object
 
+  const { showSnackbar, hideSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    if (error) {
+      showSnackbar(error, "error", false);
+      return;
+    }
+    if (data?.success) {
+      hideSnackbar();
+    }
+  }, [error, data, showSnackbar, hideSnackbar]);
 
   const {
     deleteModalOpen,
@@ -115,10 +128,6 @@ function AllReceipt() {
 
 
   if (loading) return <SkeletonLoader />;
-  if (error) return <div className="app-body-wrapper flex justify-center">
-    <p className="text-red-500">Error: {error}</p>
-  </div>;
-  if(receipts.length === 0) return <EmptyState button={Button} title="No Receipts Found" subTitle="All your receipts will appear here." />;
 
   return (
     <ProtectedRoute>
@@ -137,42 +146,49 @@ function AllReceipt() {
             />
           </div>
         </div>
-        <div className="body-content w-full">
-          <div>
-            <ul className='grid ul-table border border-gray-200 rounded-2xl'>
-              { paginatedReceipts.length > 0 ? (
-                paginatedReceipts.map((receipt) => (
-                  <ReceiptTableList 
-                    key={receipt.id}
-                    receipt={receipt}
-                    onDelete={() => openDeleteModal(receipt)}
+        {
+          receipts.length === 0 ? (
+            <EmptyState
+              button={Button}
+              title="No Receipts Found"
+              subTitle="All your receipts will appear here."
+            />
+          ) : (
+            <div className="body-content w-full">
+              <ul className="grid ul-table border border-gray-200 rounded-2xl">
+                {paginatedReceipts.length > 0 ? (
+                  paginatedReceipts.map((receipt) => (
+                    <ReceiptTableList
+                      key={receipt.id}
+                      receipt={receipt}
+                      onDelete={() => openDeleteModal(receipt)}
+                    />
+                  ))
+                ) : search ? (
+                  <NoSearchResult
+                    type="receipts"
+                    search={search}
+                    onClick={setSearch}
                   />
-                ))
-              ) : search ? (
-                <NoSearchResult
-                  type="receipts"
-                  search={search}
-                  onClick={setSearch}
+                ) : null}
+              </ul>
+
+              { paginatedReceipts.length > 0 && (
+                <PaginationFooter
+                  value={perPage}
+                  onChange={setPerPage}
+                  options={PAGE_OPTIONS}
+                  onClickPrev={previousPage}
+                  disabledPrev={!hasPreviousPage}
+                  disabledNext={!hasNextPage}
+                  onClickNext={nextPage}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
                 />
-              ) : null }
-            </ul>
-          </div>
-          {
-            paginatedReceipts.length > 0 && (
-              <PaginationFooter
-                value={perPage}
-                onChange={setPerPage}
-                options={PAGE_OPTIONS}
-                onClickPrev={previousPage}
-                disabledPrev={!hasPreviousPage}
-                disabledNext={!hasNextPage}
-                onClickNext={nextPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
-              />
-            )
-          }
-        </div>
+              )}
+            </div>
+          )
+        }
       </section>
       <DeleteModal
         deleteModalOpen={deleteModalOpen}

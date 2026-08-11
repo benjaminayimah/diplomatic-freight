@@ -38,7 +38,7 @@ export default function AuthProvider({ children }) {
         data.receipts
       );
     } else if (error) {
-      showSnackbar(error, "error");
+      showSnackbar(error, "error", false);
     }
   }, [data, isAuth, error, setAuthData]);
 

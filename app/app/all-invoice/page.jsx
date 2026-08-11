@@ -21,6 +21,7 @@ import Link from 'next/link';
 import { PlusIcon } from "@heroicons/react/24/outline";
 import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
+import { useSnackbar } from "@/app/components/SnackbarContext";
 
 
 
@@ -51,6 +52,17 @@ function AllInvoice() {
     );
   }, [data, setInvoices]);
 
+  const { showSnackbar, hideSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    if (error) {
+      showSnackbar(error, "error", false);
+      return;
+    }
+    if (data?.success) {
+      hideSnackbar();
+    }
+  }, [error, data, showSnackbar, hideSnackbar]);
 
   const [showNote, setShowNote] = useState(false)
   const [selectedNote, setSelectedNote] = useState('')
@@ -125,10 +137,6 @@ function AllInvoice() {
 
   // empty state
   if (loading) return <SkeletonLoader />;
-  if (error) return <div className="app-body-wrapper flex justify-center">
-    <p className="text-red-500">Error: {error}</p>
-  </div>;
-  if(invoices.length === 0) return <EmptyState button={Button} title="No Invoices Found" subTitle="All your invoices will appear here." />;
 
   return (
     <ProtectedRoute>
@@ -147,46 +155,54 @@ function AllInvoice() {
             />
           </div>
         </div>
-        <div className="body-content w-full">
-          <div>
-            <ul className='grid ul-table border border-gray-200 rounded-2xl'>
-              { paginatedInvoices.length > 0 ? (
-                paginatedInvoices.map((invoice) => (
-                  <InvoiceTableList 
-                    key={invoice.id}
-                    invoice={invoice}
-                    onClick={(note) => {
-                      setSelectedNote(note);
-                      setShowNote(true);
-                    }}
-                    onDelete={() => openDeleteModal(invoice)}
-                  />
-                ))
-              ) : search ? (
-                <NoSearchResult
-                  type="invoices"
-                  search={search}
-                  onClick={setSearch}
+        {
+          invoices.length === 0 ? (
+            <EmptyState
+              button={Button}
+              title="No Invoices Found"
+              subTitle="All your invoices will appear here."
+            />
+          ) : (
+            <div className="body-content w-full">
+              <div>
+                <ul className='grid ul-table border border-gray-200 rounded-2xl'>
+                  { paginatedInvoices.length > 0 ? (
+                    paginatedInvoices.map((invoice) => (
+                      <InvoiceTableList 
+                        key={invoice.id}
+                        invoice={invoice}
+                        onClick={(note) => {
+                          setSelectedNote(note);
+                          setShowNote(true);
+                        }}
+                        onDelete={() => openDeleteModal(invoice)}
+                      />
+                    ))
+                  ) : search ? (
+                    <NoSearchResult
+                      type="invoices"
+                      search={search}
+                      onClick={setSearch}
+                    />
+                  ) : <EmptyState button={Button} title="No Invoices Found" subTitle="All your invoices will appear here." /> }
+                </ul>
+              </div>
+              { paginatedInvoices.length > 0 && (
+                <PaginationFooter
+                  value={perPage}
+                  onChange={setPerPage}
+                  options={PAGE_OPTIONS}
+                  onClickPrev={previousPage}
+                  disabledPrev={!hasPreviousPage}
+                  disabledNext={!hasNextPage}
+                  onClickNext={nextPage}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
                 />
-              ) : null }
-            </ul>
-          </div>
-          {
-            paginatedInvoices.length > 0 && (
-              <PaginationFooter
-                value={perPage}
-                onChange={setPerPage}
-                options={PAGE_OPTIONS}
-                onClickPrev={previousPage}
-                disabledPrev={!hasPreviousPage}
-                disabledNext={!hasNextPage}
-                onClickNext={nextPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
-              />
-            )
-          }
-        </div>
+              )}
+            </div>
+          )
+        }
       </section>
       
       <DeleteModal

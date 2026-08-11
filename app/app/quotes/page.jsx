@@ -18,7 +18,7 @@ import useDelete from "@/hooks/useDelete"
 import { PAGE_OPTIONS } from "@/app/constants/pagination";
 import EmptyState from "@/app/components/dashboard/EmptyState"
 import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
-
+import { useSnackbar } from "@/app/components/SnackbarContext";
 
 
 function Quotes() {
@@ -34,6 +34,18 @@ function Quotes() {
       setQuotes(data.quotes);
     }
   }, [data?.quotes, setQuotes]);
+
+  const { showSnackbar, hideSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    if (error) {
+      showSnackbar(error, "error", false);
+      return;
+    }
+    if (data?.success) {
+      hideSnackbar();
+    }
+  }, [error, data, showSnackbar, hideSnackbar]);
 
 
   const setDeleteQuoteById = useAuthStore(
@@ -103,10 +115,6 @@ function Quotes() {
 
 
   if (loading) return <SkeletonLoader />;
-  if (error) return <div className="app-body-wrapper flex justify-center">
-    <p className="text-red-500">Error: {error}</p>
-  </div>;
-  if(quotes.length === 0) return <EmptyState title="No Quotes Found" subTitle="All submitted quotes will appear here." />;
 
   return (
     <ProtectedRoute>
@@ -125,42 +133,49 @@ function Quotes() {
             />
           </div>
         </div>
-        <div className="body-content w-full">
-          <div>
-            <ul className='grid ul-table border border-gray-200 rounded-2xl'>
-              { paginatedQuotes.length > 0 ? (
-                paginatedQuotes.map((quote) => (
-                  <QuoteTableList 
-                    key={quote.id}
-                    quote={quote}
-                    onDelete={() => openDeleteModal(quote)}
-                  />
-                ))
-              ) : search ? (
-                <NoSearchResult
-                  type="quotes"
-                  search={search}
-                  onClick={setSearch}
+        {
+          quotes.length === 0 ? (
+            <EmptyState
+              title="No Quotes Found"
+              subTitle="All submitted quotes will appear here."
+            />
+          ) : (
+            <div className="body-content w-full">
+              <div>
+                <ul className='grid ul-table border border-gray-200 rounded-2xl'>
+                  { paginatedQuotes.length > 0 ? (
+                    paginatedQuotes.map((quote) => (
+                      <QuoteTableList 
+                        key={quote.id}
+                        quote={quote}
+                        onDelete={() => openDeleteModal(quote)}
+                      />
+                    ))
+                  ) : search ? (
+                    <NoSearchResult
+                      type="quotes"
+                      search={search}
+                      onClick={setSearch}
+                    />
+                  ) : null }
+                </ul>
+              </div>
+              { paginatedQuotes.length > 0 && (
+                <PaginationFooter
+                  value={perPage}
+                  onChange={setPerPage}
+                  options={PAGE_OPTIONS}
+                  onClickPrev={previousPage}
+                  disabledPrev={!hasPreviousPage}
+                  disabledNext={!hasNextPage}
+                  onClickNext={nextPage}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
                 />
-              ) : null }
-            </ul>
-          </div>
-          {
-            paginatedQuotes.length > 0 && (
-              <PaginationFooter
-                value={perPage}
-                onChange={setPerPage}
-                options={PAGE_OPTIONS}
-                onClickPrev={previousPage}
-                disabledPrev={!hasPreviousPage}
-                disabledNext={!hasNextPage}
-                onClickNext={nextPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
-              />
-            )
-          }
-        </div>
+              )}
+            </div>
+          )
+        }
       </section>
       <DeleteModal
         deleteModalOpen={deleteModalOpen}

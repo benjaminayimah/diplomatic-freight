@@ -18,6 +18,7 @@ import DropdownMenu from "@/app/components/dashboard/DropdownMenu"
 import Menu from "@/app/components/dashboard/HamburgerMenu"
 import useDelete from "@/hooks/useDelete"
 import { AnimatePresence, motion } from "framer-motion";
+import CopyButton from "@/app/components/dashboard/CopyButton";
 import { 
   ChatBubbleBottomCenterTextIcon,
   TrashIcon,
@@ -111,7 +112,14 @@ export default function InvoicePage() {
             <div className='flex items-center gap-3'>
               <BackButton onClick={() => router.back()} />
               <div>
-                <h1 className="text-xl"><span className="font-bold">Invoice #: {invoice?.reference_number || 'SAMPLE-1234' }</span></h1>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-xl"><span className="font-bold">Invoice #: {invoice?.reference_number || 'SAMPLE-1234' }</span></h1>
+                  <CopyButton
+                    value={invoice.reference_number}
+                    message="Invoice number copied!"
+                    className="h-7 w-7 hover:bg-gray-100 text-gray-500"
+                  />
+                </div>
                 <div className="text-sm text-gray-500 flex gap-1.5 items-center">
                   <div className='flex gap-1'>
                     <span className='font-bold'>Created on:</span>

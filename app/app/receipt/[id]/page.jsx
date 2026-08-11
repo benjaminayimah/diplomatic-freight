@@ -17,8 +17,7 @@ import DeleteModal from "@/app/components/modals/DeleteModal";
 import DropdownMenu from "@/app/components/dashboard/DropdownMenu"
 import Menu from "@/app/components/dashboard/HamburgerMenu"
 import useDelete from "@/hooks/useDelete"
-
-
+import CopyButton from "@/app/components/dashboard/CopyButton";
 
 
 export default function ReceiptPage() {
@@ -99,7 +98,14 @@ export default function ReceiptPage() {
             <div className='flex items-center gap-4'>
               <BackButton onClick={() => router.back()} />
               <div>
-                <h1 className="text-xl"><span className="font-bold">Receipt #: {receipt?.receipt_number || 'SAMPLE-1234' }</span></h1>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-xl"><span className="font-bold">Receipt #: {receipt?.receipt_number || 'SAMPLE-1234' }</span></h1>
+                  <CopyButton
+                    value={receipt.receipt_number}
+                    message="Receipt number copied!"
+                    className="h-7 w-7 hover:bg-gray-100 text-gray-500"
+                  />
+                </div>
                 <div className="text-sm text-gray-500 flex gap-1.5 items-center">
                   <div className='flex gap-1'>
                     <span className='font-bold'>Created on:</span>

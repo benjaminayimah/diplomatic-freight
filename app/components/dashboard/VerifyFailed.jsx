@@ -10,7 +10,7 @@ function VerifyFailed() {
     <section className="app-body-wrapper min-h-dvh flex verifiable justify-center">
       <div className="flex items-center justify-center rounded-2xl w-full">
         <div className='flex flex-col gap-6 justify-center items-center'>
-          <div className="bg-white shadow-2xs rounded-2xl p-8 max-w-md w-full text-center border border-red-200">
+          <div className="bg-white shadow-2xs rounded-3xl p-8 max-w-md w-full text-center border border-black">
             <div className="mx-auto mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-red-100">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

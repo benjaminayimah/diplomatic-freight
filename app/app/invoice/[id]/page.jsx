@@ -17,6 +17,7 @@ import useDeleteModal from "@/hooks/useDeleteModal";
 import DropdownMenu from "@/app/components/dashboard/DropdownMenu"
 import Menu from "@/app/components/dashboard/HamburgerMenu"
 import useDelete from "@/hooks/useDelete"
+import { AnimatePresence, motion } from "framer-motion";
 import { 
   ChatBubbleBottomCenterTextIcon,
   TrashIcon,
@@ -104,7 +105,7 @@ export default function InvoicePage() {
 
   return (
     <ProtectedRoute>
-      <section className='app-body-wrapper pt-0!'>
+      <section className='app-body-wrapper pt-0! pb-[7px]!'>
         <div className="w-full pt-2.5 pb-2.5 sticky top-29.75 z-20 bg-white/40 backdrop-blur-[6.5px]">
           <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-2'>
             <div className='flex items-center gap-3'>
@@ -178,15 +179,28 @@ export default function InvoicePage() {
             printRef={printRef}
             qrData={qrData} 
           />
-          {
-            showNote && (
-              <PersonalNote
-                note={invoice?.personal_note}
-                onClick={() => setShowNote(prev => !prev)}
-                isFloating={false}
-              />
-            )
-          }
+          <AnimatePresence>
+            {
+              showNote && (
+                <motion.div
+                  className="relative md:w-[550px] w-full "
+                  initial={{ x: 320, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 320, opacity: 0 }}
+                  transition={{
+                    duration: 0.28,
+                    ease: [0.22, 1, 0.36, 1], // nice smooth ease
+                  }}
+                >
+                  <PersonalNote
+                    note={invoice?.personal_note}
+                    onClick={() => setShowNote(prev => !prev)}
+                    isFloating={false}
+                  />
+                </motion.div>
+              )
+            }
+          </AnimatePresence>
         </div>
       </section>
       <DeleteModal

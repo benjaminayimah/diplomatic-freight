@@ -129,7 +129,7 @@ const Modal = ({
                 {ModalFooter}
               </div>
             )}
-            <div className="absolute bottom-0 left-0 w-full h-6 bg-linear-to-t from-white/90 to-transparent z-50 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-full h-6 bg-linear-to-t from-white/90 to-transparent z-50 pointer-events-none" />
           </motion.div>
         </motion.div>
       )}

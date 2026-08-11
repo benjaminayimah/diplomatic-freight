@@ -4,7 +4,7 @@ import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 
 function PersonalNote({note, onClick, isFloating}) {
   return (
-    <div className={`overflow-hidden bg-gray-600 text-white rounded-xl flex-1 relative ${!isFloating ? 'md:max-h-[calc(100dvh-196px)] md:sticky md:top-[191px]' : ''}`}>
+    <div className={`overflow-hidden bg-gray-600 text-white rounded-xl flex-1 relative ${!isFloating ? 'md:h-[calc(100dvh-198px)] md:sticky md:top-[191px]' : ''}`}>
         <div className="flex pr-2 pl-4 py-2 h-11 rounded-tl-[inherit] rounded-tr-[inherit] absolute w-full text-white items-center justify-between bg-white/10 backdrop-blur-[5px] z-10">
             <div className="font-semibold text-sm flex items-center gap-1.5">
               <ChatBubbleBottomCenterTextIcon strokeWidth={2} className="h-4.5" />
@@ -25,7 +25,7 @@ function PersonalNote({note, onClick, isFloating}) {
               </button>
             )}
           </div>
-        <div className={`px-4 py-15 ${!isFloating ? 'md:h-full md:overflow-y-scroll md:overscroll-y-contain' : ''}`}>
+        <div className={`px-4 py-15 ${!isFloating ? 'md:h-full md:overflow-y-auto md:overscroll-y-contain' : ''}`}>
           {
             note ? (
               <div
@@ -47,6 +47,7 @@ function PersonalNote({note, onClick, isFloating}) {
             )
           }
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-6 bg-linear-to-t from-gray-600/90 to-transparent z-50 pointer-events-none" />
       </div>
   )
 }

@@ -17,7 +17,7 @@ export default function AuthProvider({ children }) {
   const tokenExpired = useUIStore((state) => state.tokenExpired);
 
   const { data, loading, error } = useFetchData("/auth");
-  const { showSnackbar } = useSnackbar();
+  const { showSnackbar, hideSnackbar } = useSnackbar();
 
   // 1. Restore token + user from localStorage on first mount
   useEffect(() => {
@@ -37,6 +37,7 @@ export default function AuthProvider({ children }) {
         data.quotes,
         data.receipts
       );
+      hideSnackbar();
     } else if (error) {
       showSnackbar(error, "error", false);
     }

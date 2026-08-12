@@ -21,18 +21,18 @@ export default function RootLayout({ children }) {
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>
-        <div className="mb-4 w-full">
+        <div className="mb-5 w-full">
           <h1 className="text-xl"><span className="font-semibold">Settings</span></h1>
           <span className="text-sm text-gray-500">Manage your company's information & Payment accounts</span>
         </div>
-        <ul className='flex gap-2 flex-wrap items-start mb-5 w-full'>
+        <ul className='flex gap-2 flex-wrap items-start w-full'>
           {
             menus.map((item, index) => (
               <NavItem key={index} item={item} />
             ))
           }
         </ul>
-        <div className="body-content w-full flex flex-col flex-1">
+        <div className="body-content w-full flex flex-col flex-1 mt-5">
           <div className="flex flex-col gap-6 flex-1">
             {children} 
           </div>

@@ -39,11 +39,11 @@ const displayedPayments = showAllPayments
   return (
     <ProtectedRoute>
       <section className="app-body-wrapper">
-        <div className="mb-5 w-full">
+        <div className="w-full">
           <h1 className="text-xl">Welcome, <span className="font-semibold">{user?.name || user?.email}!</span></h1>
           <span className="text-sm text-gray-500">What are we doing today?</span>
         </div>
-        <div className="body-content flex flex-col flex-1 w-full">
+        <div className="body-content flex flex-col flex-1 w-full mt-5">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <DashboardCard title="Invoices" array={invoices} href={'app/all-invoice'} icon={DocumentTextIcon} color= {{ icon: "text-blue-600", wrapper: "border-blue-200 bg-blue-100" }} />
             <DashboardCard title="Receipts" array={receipts} href={'app/all-receipt'} icon={ReceiptPercentIcon} color= {{ icon: "text-purple-600", wrapper: "border-purple-200 bg-purple-100" }} />

@@ -334,7 +334,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
 
   return (
     <section className='app-body-wrapper'>
-      <div className="mb-5 w-full">
+      <div className="w-full">
         <div className='flex items-center gap-3'>
           <div className="cursor-pointer">
              <BackButton onClick={ handleBackClick } />
@@ -345,7 +345,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
           </div>
         </div>
       </div>
-      <div className="body-content relative w-full">
+      <div className="body-content relative w-full mt-5">
         { error && <ErrorCard error={error} /> }
 
         <div className='p-4 bg-gray-50 rounded-xl border border-gray-100 mb-40'>

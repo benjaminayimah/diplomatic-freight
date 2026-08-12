@@ -141,7 +141,7 @@ function AllInvoice() {
   return (
     <ProtectedRoute>
       <section className='app-body-wrapper'>
-        <div className="mb-5 w-full flex justify-between items-center">
+        <div className="w-full flex justify-between items-center">
           <div>
             <h1 className="text-xl"><span className="font-semibold">All Invoices</span></h1>
             <span className="text-sm text-gray-500">View and manage all invoices</span>
@@ -163,7 +163,7 @@ function AllInvoice() {
               subTitle="All your invoices will appear here."
             />
           ) : (
-            <div className="body-content w-full">
+            <div className="body-content w-full mt-5">
               <div>
                 <ul className='grid ul-table border border-gray-200 rounded-2xl'>
                   { paginatedInvoices.length > 0 ? (

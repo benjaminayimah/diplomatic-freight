@@ -4,8 +4,6 @@ import Logo from '../Logo'
 import HamburgerMenu from '../HamburgerMenu'
 import CustomNav from '../CustomNav'
 import Link from 'next/link'
-// import { motion } from 'framer-motion'
-
 
 function Header() {
   const authUser = localStorage.getItem("auth");
@@ -32,7 +30,6 @@ function Header() {
         <a href="/" id='logo' className="logo absolute left-0">
             <Logo />
         </a>
-        {/* { auth } */}
         <CustomNav links={menus} />
         <div className='inline-flex items-center gap-4 absolute right-0'>
           <a href="/get-quote" className='myHover-translate h-11 md:h-12 px-3.5 md:px-5 py-3 bg-[#FF6A3D] rounded-[44px] shadow-[0px_2px_6px_2px_rgba(0,0,0,0.15)] inline-flex items-center text-white text-base font-medium'>Get a Quote</a>
@@ -42,9 +39,5 @@ function Header() {
     </header>
   )
 }
-
-{/* <button onClick={onClick} className="myHover-translate h-11 md:h-12 px-3.5 md:px-5 py-3 bg-[#FF6A3D] rounded-[44px] shadow-[0px_2px_6px_2px_rgba(0,0,0,0.15)] inline-flex items-center">
-      <span className="text-center justify-start text-white text-base font-medium">Get a quote</span>
-    </button> */}
 
 export default Header

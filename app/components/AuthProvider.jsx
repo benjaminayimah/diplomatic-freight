@@ -43,8 +43,10 @@ export default function AuthProvider({ children }) {
     }
   }, [data, isAuth, error, setAuthData]);
 
+  const { setLogout } = useAuthStore();
+
   const logOut = () => {
-    localStorage.removeItem('auth')
+    setLogout()
     window.location.href = '/auth'
   }
 

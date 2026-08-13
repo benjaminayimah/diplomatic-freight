@@ -96,9 +96,21 @@ body {
   color: var(--foreground);
   font-family: var(--font-plus-jakarta-sans), Helvetica, sans-serif;
 }
+
+body:has(.verifiable,.session-expired) {
+  background-color: #F3F4F6;
+  .body-container {
+    border: unset;
+  }
+  .header-wrapper, .change-color {
+    background: #F3F4F6;
+  }
+}
+
 body:has(#loginForm) {
   background-color: #E5E7EB;
 }
+
 
 ::selection {
   color: #fff;
@@ -493,16 +505,6 @@ input.hide-counter {
 }
 
 
-
-body:has(.verifiable,.session-expired) {
-  background-color: #F3F4F6;
-  .body-container {
-    border: unset;
-  }
-  .header-wrapper, .change-color {
-    background: #F3F4F6;
-  }
-}
 /* 
 .overlay {
   background-color: rgba(0, 0, 0, .5);

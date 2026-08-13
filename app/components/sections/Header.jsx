@@ -17,7 +17,7 @@ function Header() {
     { name: 'Contact', href: '/#contact' },
     { name: 'FAQs', href: '/#faqs' },
       ...(authUser
-    ? [{ name: 'Login', href: '/auth' }]
+    ? [{ name: 'Login →', href: '/auth' }]
     : [])
   ]
 

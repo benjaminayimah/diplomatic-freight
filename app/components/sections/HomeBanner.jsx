@@ -68,7 +68,7 @@ function HomeBanner() {
       animate={isInView ? "animate" : "paused"}
       variants={gradientVariants}
       style={{
-        background: "linear-gradient(110deg, #000 7.63%, var(--end) 83.83%)",
+        background: "linear-gradient(110deg, #000 0%, var(--end) 83.83%)",
       }}
     >
       <MotionImage
@@ -126,13 +126,14 @@ function HomeBanner() {
             stiffness: 200,
             damping: 50,
           }}
-          className="absolute bottom-6 md:bottom-10 overflow-hidden gap-6 justify-between lg:w-[50%]">
+          className="absolute bottom-6 md:bottom-10 overflow-hidden lg:w-[50%]">
           <div className="text-white text-[0.88rem] max-w-120 inline-flex gap-1.5">
             <span className="block bg-[#FF6A3D] h-2 w-2 mt-1.5 shrink-0" />
             <p>
               Our mission is to provide efficient, secure, and customized air cargo solutions with uncompromising professionalism, trust, and reliability.
             </p>
           </div>
+          {/* flex flex-col-reverse md:flex-row gap-6 justify-between  */}
           {/* <div>
             <ul className='flex gap-2'>
               <li className='myHover-translate group'><a href="#services" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition duration-300'>[Aircraft Charter]</a></li>

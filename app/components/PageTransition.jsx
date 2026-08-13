@@ -136,7 +136,7 @@ function PageTransition({ children }) {
               {...anim(textVariants)}
               className="fixed z-50 text-white text-[2rem] md:text-[3rem] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             >
-              <div className='intro'>{introText}</div>
+              <div className='intro whitespace-nowrap'>{introText}</div>
             </motion.h1>
           )
         }

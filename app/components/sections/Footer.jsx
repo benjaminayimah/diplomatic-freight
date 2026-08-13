@@ -115,10 +115,10 @@ function Footer() {
           </div>
         </div>
         <div className='flex flex-col gap-5 lg:flex-row lg:justify-between'>
-          <ul className='flex gap-4'>
-            <li><Link href="terms-of-service" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Terms of Service</Link></li>
-            <li><Link href="privacy-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Privacy Policy</Link></li>
-            <li><Link href="cookie-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out'>Cookie Policy</Link></li>
+          <ul className='flex gap-2 sm:gap-4 flex-wrap'>
+            <li><Link href="terms-of-service" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out whitespace-nowrap'>Terms of Service</Link></li>
+            <li><Link href="privacy-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out whitespace-nowrap'>Privacy Policy</Link></li>
+            <li><Link href="cookie-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out whitespace-nowrap'>Cookie Policy</Link></li>
           </ul>
           <p className='text-[0.8rem] text-[#6D6D6D]'>{`Copyright © ${process.env.NEXT_PUBLIC_CURRENT_YEAR} Diplomatic Freight & Logistics Service Ltd. All rights reserved`}</p>
         </div>

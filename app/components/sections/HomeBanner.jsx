@@ -120,7 +120,7 @@ function HomeBanner() {
           animate={{ y: 0 }}
           transition={{
             duration: 1.3,
-            delay: (words.length-1) * 0.1,
+            delay: (words.length-1) * 0.02,
             ease: 'easeOut',
             type: 'spring',
             stiffness: 200,
@@ -135,8 +135,8 @@ function HomeBanner() {
           </div>
           <div>
             <ul className='flex gap-2'>
-            <li className='myHover-translate group'><a href="#" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Aircraft Charter]</a></li>
-            <li className='myHover-translate group'><a href="#" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Logistics Services]</a></li>
+            <li className='myHover-translate group'><a href="#services" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Aircraft Charter]</a></li>
+            <li className='myHover-translate group'><a href="#services" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition-colors duration-300'>[Logistics Services]</a></li>
           </ul>
           </div>
         </motion.div>

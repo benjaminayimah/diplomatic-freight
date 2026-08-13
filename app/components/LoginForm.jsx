@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import ErrorCard from '@/app/components/ErrorCard';
 import SubmitButton from '@/app/components/SubmitButton';
 import RippleButton from './RippleButton';
+import VerifyFooter from './dashboard/VerifyFooter';
 
 function LoginForm() {
 
@@ -51,9 +52,9 @@ function LoginForm() {
   };
 
   return (
-    <section className='bg-gray-200 flex justify-center items-center min-h-screen'>
-      <div className="max-w-137.5 pb-20 w-full px-6">
-        <div className='bg-white min-h-100 w-full p-10 rounded-2xl my-[5vw]'>
+    <section className='bg-gray-200 p-6 flex justify-center items-center min-h-screen'>
+      <div className="max-w-120 w-full">
+        <div className='bg-white shadow-2xs min-h-100 w-full px-8 sm:px-10 py-10 rounded-3xl mb-10'>
           <div className='mb-10'>
             <h1 className="text-2xl font-bold mb-2">Welcome back!</h1>
             <span>Enter your email and password to continue.</span>
@@ -96,6 +97,7 @@ function LoginForm() {
             Log in
           </RippleButton> */}
         </div>
+        <VerifyFooter />
       </div>
     </section>
   )

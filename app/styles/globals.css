@@ -96,9 +96,9 @@ body {
   color: var(--foreground);
   font-family: var(--font-plus-jakarta-sans), Helvetica, sans-serif;
 }
-/* body:has(.main-app) {
-  background-color: #F3F4F6;
-} */
+body:has(#loginForm) {
+  background-color: #E5E7EB;
+}
 
 ::selection {
   color: #fff;
@@ -494,7 +494,7 @@ input.hide-counter {
 
 
 
-main:has(.verifiable,.session-expired) {
+body:has(.verifiable,.session-expired) {
   background-color: #F3F4F6;
   .body-container {
     border: unset;

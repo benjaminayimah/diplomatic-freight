@@ -60,7 +60,7 @@ function LoginForm() {
             <span>Enter your email and password to continue.</span>
           </div>
           { error && <ErrorCard error={error} /> }
-          <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+          <form id="loginForm" onSubmit={handleSubmit} className='flex flex-col gap-5'>
             <div className='flex flex-col gap-4'>
               <Input
                 label="Email"

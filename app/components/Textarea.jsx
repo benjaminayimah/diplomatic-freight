@@ -10,7 +10,7 @@ export default function Textarea({
   ...props
   }) {
   return (
-    <div className="flex flex-col gap-1 w-full">
+    <div className="flex flex-col gap-1 w-full px-px">
       {label && (
         <label htmlFor={id} className="text-sm font-semibold text-gray-700">
           {label}

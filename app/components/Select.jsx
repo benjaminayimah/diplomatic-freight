@@ -12,7 +12,7 @@ export default function Select({
   ...props
 }) {
   return (
-    <div className="flex flex-col gap-1 w-full">
+    <div className="flex flex-col gap-1 w-full px-px">
       {label && (
         <label
           htmlFor={id}

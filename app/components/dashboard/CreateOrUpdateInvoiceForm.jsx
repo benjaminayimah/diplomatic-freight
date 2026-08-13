@@ -473,7 +473,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
               <fieldset className="border w-full border-gray-200 rounded-xl px-5 py-2 bg-gray-100">
                 <legend className="px-2 text-sm font-semibold">Payment Accounts</legend>
                 <div className="text-gray-700 mb-2">Select payment accounts for this invoice</div>
-                <div className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-2">
                     { selectedPaymentDetails.map((payment) => (
                       <PaymentListDisplayCard
                         key={payment.id}
@@ -481,7 +481,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                         onToggle={() => togglePayment(payment.id)}
                       />
                     ))}
-                </div>
+                </ul>
                 <div className="mt-2">
                   <button
                     type="button"
@@ -641,7 +641,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
             <div className="mt-10">
               {
                 payments?.length > 0 ? (
-                  <div className="flex flex-col gap-2">
+                  <ul className="flex flex-col gap-2">
                     {
                       payments.map((payment) => (
                         <PaymentSelectCard
@@ -652,7 +652,7 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
                         />
                       ))
                     }
-                  </div>
+                  </ul>
                 ) : (
                   <div className="p-10 rounded-2xl grid place-items-center flex-1">
                     <div className="flex flex-col items-center gap-5">

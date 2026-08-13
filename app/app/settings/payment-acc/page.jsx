@@ -307,7 +307,7 @@ function Settings() {
                 <form className="flex flex-col gap-5">
                     <div className="flex flex-col gap-4">
                       <RadioGroup label="Select Payment Method">
-                        <div className="grid grid-cols-3">
+                        <div className="grid sm:grid-cols-3 gap-2">
                           {PAYMENT_METHODS.map((method) => (
                             <Radio
                               key={method.value}

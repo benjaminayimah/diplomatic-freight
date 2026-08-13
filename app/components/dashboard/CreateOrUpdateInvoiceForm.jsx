@@ -324,11 +324,9 @@ function CreateOrUpdateInvoiceForm({ mode = null, id = null }) {
   };
 
   const ModalFooter = (
-    <div className="mt-2 flex justify-end">
-      <button onClick={handleClosePaymentModal} type='button' className='inline-block text-black text-sm font-semibold py-2 px-4 border bg-gray-50 border-gray-200 transition duration-300 hover:bg-gray-100 rounded-3xl'>
-        Close
-      </button>
-    </div>
+    <button onClick={handleClosePaymentModal} type='button' className='inline-block w-full text-black text-sm font-semibold py-2 px-4 border bg-gray-100 border-gray-200 transition duration-300 hover:bg-gray-200 rounded-full'>
+      Close
+    </button>
   )
 
 

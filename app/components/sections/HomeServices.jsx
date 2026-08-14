@@ -113,10 +113,11 @@ function HomeServices() {
         </button>
       </div>
       <div className='mt-5 text-center'>
-        <a href="/get-quote" className='text-xl font-medium inline-block text-black border border-black py-3.5 px-7 rounded-4xl hover:bg-black hover:text-white transition-colors duration-400'>
+        <a href="/get-quote" className='text-xl font-medium inline-block text-black border border-black py-3.5 px-7 rounded-full hover:bg-black hover:text-white transition duration-300'>
           Get a Quote
         </a>
       </div>
+      
       <MoreModal
         isOpen={open}
         onClose={handleCloseModal}

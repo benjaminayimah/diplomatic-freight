@@ -115,6 +115,7 @@ function HomeAbout() {
                   <h1 className='text-3xl lg:text-7xl text-center font-bold leading-tight'>Your cargo. Your timeline.<br />Our responsibility.</h1>
                 </motion.div>
               </div>
+              {/* so_2.5,f_auto,q_auto */}
               <video
                 ref={videoRef}
                 poster="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1766484314/alt-1_j5s4xr.webp"

@@ -95,7 +95,6 @@ function HomeGallery() {
             })
           }
         </div>
-
       </div>
     </section>
   )

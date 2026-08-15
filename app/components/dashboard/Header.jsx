@@ -9,12 +9,12 @@ import { useRouter } from "next/navigation";
 import Tooltip from "./Tooltip"
 
 import { 
-  UserIcon,
   ArrowRightStartOnRectangleIcon,
   Cog6ToothIcon,
   ChevronDownIcon,
   AtSymbolIcon,
-  ArrowTopRightOnSquareIcon
+  ArrowTopRightOnSquareIcon,
+  UserCircleIcon
 } from "@heroicons/react/24/outline";
 
 function Header() {
@@ -78,7 +78,7 @@ function Header() {
               href="/app/profile"
               className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition"
             >
-              <UserIcon strokeWidth={2} className="h-4.5" />
+              <UserCircleIcon strokeWidth={2} className="h-4.5" />
               Profile
             </Link>
             <Link

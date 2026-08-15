@@ -136,16 +136,9 @@ export default function DropdownMenu({
           ref={dropdownRef}
           className={`
             ${width}
-            dropdown
-            absolute right-0
-            rounded-2xl
-            border border-gray-200
-            bg-white
-            shadow-lg
-            py-1.5
-            px-1.5
-            z-50
-            overflow-hidden
+            dropdown absolute right-0 rounded-2xl
+            border border-gray-200 bg-white shadow-lg/5
+            py-1.5 px-1.5 z-50 overflow-hidden
             transition-all duration-200
             ${
               openUpwards

@@ -71,6 +71,7 @@ function Nav() {
               <DocumentTextOutlineIcon strokeWidth={2} className="h-5"/>
               Invoice
             </Link>
+            <div className="border-b border-b-gray-200/80 my-1.5 mx-2" />
             <Link
               href={'/app/create-receipt'}
               className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition shrink-0"

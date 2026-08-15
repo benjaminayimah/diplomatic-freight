@@ -154,14 +154,14 @@ function Settings() {
       <>
         <article className="p-4 bg-gray-50 rounded-xl border border-gray-100">
           <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xl">Company Profile</h2>
+            <h2 className="text-xl">Company Information</h2>
             <div>
               <button
                 onClick={() => handleOpenModal()}
                 className="flex gap-1 text-[#0077FF] items-center text-[0.88rem] font-semibold py-2 px-3 transition duration-300 hover:bg-gray-100 rounded-3xl"
               >
                 <PencilIcon strokeWidth={2} className="h-5" />
-                Edit Profile
+                Edit Info
               </button>
             </div>
           </div>

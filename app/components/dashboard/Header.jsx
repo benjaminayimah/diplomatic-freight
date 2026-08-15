@@ -12,7 +12,9 @@ import {
   UserIcon,
   ArrowRightStartOnRectangleIcon,
   Cog6ToothIcon,
-  ChevronDownIcon
+  ChevronDownIcon,
+  AtSymbolIcon,
+  ArrowTopRightOnSquareIcon
 } from "@heroicons/react/24/outline";
 
 function Header() {
@@ -76,21 +78,34 @@ function Header() {
               href="/app/profile"
               className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition"
             >
-              <UserIcon strokeWidth={2} className="text-base h-4.5" />
+              <UserIcon strokeWidth={2} className="h-4.5" />
               Profile
             </Link>
             <Link
               href="/app/settings"
               className="flex items-center gap-1.5 px-3 py-2 hover:bg-gray-100 text-sm font-medium transition"
             >
-              <Cog6ToothIcon strokeWidth={2} className="text-base h-4.5" />
+              <Cog6ToothIcon strokeWidth={2} className="h-4.5" />
               Settings
             </Link>
+            <div className="border-b border-b-gray-100 my-0.5 mx-2" />
+            <a
+              target='_blank'
+              href='https://sso.secureserver.net/login?app=email&realm=pass'
+              className='flex items-center justify-between px-3 py-2 hover:bg-gray-100 text-sm font-medium transition'
+            >
+              <span className="flex items-center gap-1.5">
+                <AtSymbolIcon strokeWidth={2} className="h-4.5" />
+                Webmail
+              </span>
+              <ArrowTopRightOnSquareIcon className="h-4" />
+            </a>
+            {/* <div className="border-b border-b-gray-100 my-0.5 mx-2" /> */}
             <button
               className="flex items-center gap-1.5 w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 text-sm font-medium transition"
               onClick={handleLogout}
             >
-              <ArrowRightStartOnRectangleIcon strokeWidth={2}  className="text-base h-4.5" />
+              <ArrowRightStartOnRectangleIcon strokeWidth={2}  className="h-4.5" />
               Log out
             </button>
           </DropdownMenu>

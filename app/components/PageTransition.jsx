@@ -102,9 +102,9 @@ function PageTransition({ children }) {
       opacity: 0,
       y: '-100vh',
       transition: {
-        duration: 0.8,
+        duration: 0.9,
         delay: curtonTimeOut / 1000, // convert ms to seconds
-        ease: [0.76, 0, 0.24, 1]
+        ease: [0.77, 0, 0.175, 1]
       }
     },
   };
@@ -116,8 +116,8 @@ function PageTransition({ children }) {
       y: '-100vh',
       transition: {
         duration: 0.9,
-        delay: curtonTimeOut / 1000 + 0.15, // slight offset for smoothness
-        ease: [0.76, 0, 0.24, 1]
+        delay: (curtonTimeOut / 1000) + 0.15, // slight offset for smoothness
+        ease: [0.77, 0, 0.175, 1]
       }
     },
   };

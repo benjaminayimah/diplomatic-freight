@@ -142,7 +142,7 @@ function GetQuoteClient() {
     } 
   }
 
-  const { ref, src, loaded } = useLazyImage(fullImage);
+  const { ref, src } = useLazyImage(fullImage);
 
   return (
     <section ref={targetRef} className="bg-gray-200 flex justify-center min-h-screen">

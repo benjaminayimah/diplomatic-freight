@@ -170,11 +170,12 @@ function GetQuoteClient() {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
-                initial={{ opacity: 0 }}
+                initial={{opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
+                  duration: 1.3,
+                  delay: 0.6,
+                  ease: 'easeOut'
                 }}
               />
             )}

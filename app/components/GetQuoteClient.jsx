@@ -21,8 +21,8 @@ const words = [
 
 const MotionImage = motion.create(Image);
 
-const blurSrc = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg"
-const actualSrc = "https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+const blurImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg"
+const fullImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
 function GetQuoteClient() {
   const stepCount = 3
@@ -142,61 +142,23 @@ function GetQuoteClient() {
     } 
   }
 
-  const { ref, src, loaded } = useLazyImage();
+  const { ref, src, loaded } = useLazyImage(fullImage);
 
   return (
     <section ref={targetRef} className="bg-gray-200 flex justify-center min-h-screen">
       <div className='h-full container w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 bg-white md:bg-transparent shadow-xl md:shadow-none my-0 overflow-hidden max-w-6xl'>
         {/* Left Side - Image */}
         <div className='relative h-64 md:h-screen overflow-hidden'>
-          {/* Replaced next/image with motion.img for standard HTML behavior in canvas */}
-          {/* <MotionImage
-            initial={{opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 1.3,
-              delay: 0.6,
-              ease: 'easeOut',
-            }}
-            src="https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg"
-            data-src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} // Using direct Pexels link as fallback/placeholder logic
-            alt='Get a quote'
-            className="absolute inset-0 w-full h-full object-cover"
-            priority
-            fill
-            sizes="100vw"
-          /> */}
-
-          {/* <MotionImage
-            ref={imageRef}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 1.3,
-              delay: 0.6,
-              ease: "easeOut",
-            }}
-            src={
-              imageSrc ||
-              "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg"
-            }
-            data-src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Get a quote"
-            className="absolute inset-0 h-full w-full object-cover"
-            fill
-            sizes="100vw"
-          /> */}
           <div
             ref={ref}
-            data-src={actualSrc}
             className="absolute inset-0"
           >
             {/* Blurred placeholder */}
             <MotionImage
-              src={blurSrc}
+              src={blurImage}
               alt=""
               fill
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
 
@@ -206,10 +168,10 @@ function GetQuoteClient() {
                 src={src}
                 alt="Get a quote"
                 fill
-                sizes="100vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: loaded ? 1 : 0 }}
+                animate={{ opacity: 1 }}
                 transition={{
                   duration: 0.8,
                   ease: "easeOut",

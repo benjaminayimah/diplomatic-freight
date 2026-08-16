@@ -1,21 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function useLazyImage() {
+export default function useLazyImage(fullSrc) {
   const ref = useRef(null);
-  const [src, setSrc] = useState(null);
-  const [loaded, setLoaded] = useState(false);
+  const [loadedSrc, setLoadedSrc] = useState(null);
 
   useEffect(() => {
     const element = ref.current;
 
-    if (!element) return;
-
-    const fullSrc = element.dataset.src;
-
-    if (!fullSrc) return;
+    if (!element || !fullSrc) return;
 
     const observer = new IntersectionObserver(
-      ([entry], observer) => {
+      ([entry]) => {
         if (!entry.isIntersecting) return;
 
         const image = new Image();
@@ -23,8 +18,7 @@ export default function useLazyImage() {
         image.src = fullSrc;
 
         image.onload = () => {
-          setSrc(fullSrc);
-          setLoaded(true);
+          setLoadedSrc(fullSrc);
         };
 
         observer.unobserve(element);
@@ -37,7 +31,11 @@ export default function useLazyImage() {
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, []);
+  }, [fullSrc]);
 
-  return { ref, src, loaded };
+  return {
+    ref,
+    src: loadedSrc,
+    loaded: !!loadedSrc,
+  };
 }

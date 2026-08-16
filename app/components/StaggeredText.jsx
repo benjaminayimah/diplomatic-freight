@@ -25,8 +25,11 @@ function StaggeredText({ data, index }) {
             <video
               src={data.src}
               poster={data.poster}
-              preload="auto"
-              autoPlay loop muted playsInline
+              preload="metadata"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
           </span>
         )}

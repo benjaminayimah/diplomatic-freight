@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useRef } from 'react'
-import { useScroll, useTransform, useInView, motion } from 'framer-motion'
+import { useRef } from 'react'
+import { useScroll, useTransform, useInView, motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import StaggeredText from '../StaggeredText'
 
@@ -12,6 +12,12 @@ const words = [
   { line: '2', word: 'BEYOND', style: 'text-[calc(clamp(2rem,5vw,4rem)*1.5)] font-bold p-3 pl-0', spanStyle: '' },
   { line: '3', word: 'BORDERS', style: 'text-[calc(clamp(2rem,5vw,4rem)*1.5)] font-bold p-3 pl-0 pr-0', spanStyle: '' },
 ]
+
+const wordsByLine = {
+  1: words.filter((word) => word.line === '1'),
+  2: words.filter((word) => word.line === '2'),
+  3: words.filter((word) => word.line === '3'),
+};
 
 const colors = [
   "#2563EB", // blue
@@ -25,39 +31,50 @@ const colors = [
   "#FF7979", // light red
 ];
 
+const gradientVariants = {
+  animate: {
+    "--end": ["#000000", ...colors],
+    transition: {
+      duration: 20,
+      ease: "easeInOut",
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  },
+  paused: {
+    // When paused, keep the current color (Framer Motion handles freezing)
+    transition: { duration: 0 },
+  },
+};
+
+const MotionImage = motion.create(Image)
+
 function HomeBanner() {
-  const MotionImage = motion.create(Image)
   const targetRef = useRef(null)
+  const shouldReduceMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start start', 'end start']
   })
 
-  const translateY = useTransform(scrollYProgress, [0, 1], ['0px', '20vh'])
-  const translateY2 = useTransform(scrollYProgress, [0, 1], ['0px', '40vh'])
-
   const isInView = useInView(targetRef, {
     amount: 0,      // 0% visible to count as "in view"
     margin: "0px",
   });
 
-  const gradientVariants = {
-    animate: {
-      "--end": ["#000000", ...colors],
-      transition: {
-        duration: 20,
-        ease: "easeInOut",
-        repeat: Infinity,
-        repeatType: "mirror",
-      },
-    },
-    paused: {
-      // When paused, keep the current color (Framer Motion handles freezing)
-      transition: { duration: 0 },
-    },
-  };
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    shouldReduceMotion ? [0, 0] : ['0px', '20vh']
 
+  );
+
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    shouldReduceMotion ? [0, 0] : ['0px', '40vh']
+  );
 
   return (
     <motion.section
@@ -74,14 +91,15 @@ function HomeBanner() {
       <MotionImage
          id="hero_image"
           className="mt-[40%] md:mt-0 will-change-transform"
-          style={{ translateY: translateY2, objectFit: "cover" }}
+          style={{ imageY, objectFit: "cover" }}
           src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763470951/bg-cargo-plane_2_-min_ush5mi.png"
           alt="Hero background"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="100vw"
+          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority
           initial={{ x: '10vw'}}
-          animate={{ x: 0 }}
+          animate={shouldReduceMotion ? { x: 0 } : { x: 0 }}
           transition={{
             duration: 20,
             ease: [0.1, 0.5, 0.7, 1],
@@ -89,27 +107,39 @@ function HomeBanner() {
       />
 
       <motion.div
-        style={{ translateY }}
+        style={{ y }}
         className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-[60px] lg:pl-[130px]"
       >
         <div className="text-white h-full flex items-center">
           <h1 className="leading-none tracking-tighter">
             {/* LINE 1 */}
             <span className="block whitespace-nowrap">
-              {words.filter(w => w.line === '1').map((data, index) => (
-                <StaggeredText data={data} index={index} key={index} />
+              {wordsByLine[1].map((data, index) => (
+                <StaggeredText
+                  data={data}
+                  index={index}
+                  key={`${data.line}-${data.word || 'video'}-${index}`}
+                />
               ))}
             </span>
             {/* LINE 2 */}
             <span className="block whitespace-nowrap">
-              {words.filter(w => w.line === '2').map((data, index) => (
-                <StaggeredText data={data} index={index} key={index} />
+              {wordsByLine[2].map((data, index) => (
+                <StaggeredText
+                  data={data}
+                  index={index}
+                  key={`${data.line}-${data.word || 'video'}-${index}`}
+                />
               ))}
             </span>
             {/* LINE 3 */}
             <span className="block whitespace-nowrap">
-              {words.filter(w => w.line === '3').map((data, index) => (
-                <StaggeredText data={data} index={index} key={index} />
+              {wordsByLine[3].map((data, index) => (
+                <StaggeredText
+                  data={data}
+                  index={index}
+                  key={`${data.line}-${data.word || 'video'}-${index}`}
+                />
               ))}
             </span>
           </h1>
@@ -133,13 +163,6 @@ function HomeBanner() {
               Our mission is to provide efficient, secure, and customized air cargo solutions with uncompromising professionalism, trust, and reliability.
             </p>
           </div>
-          {/* flex flex-col-reverse md:flex-row gap-6 justify-between  */}
-          {/* <div>
-            <ul className='flex gap-2'>
-              <li className='myHover-translate group'><a href="#services" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition duration-300'>[Aircraft Charter]</a></li>
-              <li className='myHover-translate group'><a href="#services" className='text-[0.88rem] text-white whitespace-nowrap bg-black/32 px-1 py-0.5 group-hover:bg-white group-hover:text-black transition duration-300'>[Logistics Services]</a></li>
-            </ul>
-          </div> */}
         </motion.div>
       </motion.div>
     </motion.section>

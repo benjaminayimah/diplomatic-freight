@@ -9,7 +9,7 @@ import Textarea from './Textarea';
 import SubmitButton from './SubmitButton';
 import StaggeredText from './StaggeredText';
 import Image from 'next/image'
-import { useLazyImage } from "@/hooks/useLazyImage.js"
+import useLazyImage from "@/hooks/useLazyImage.js"
 
 
 
@@ -20,6 +20,9 @@ const words = [
 ]
 
 const MotionImage = motion.create(Image);
+
+const blurSrc = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg"
+const actualSrc = "https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
 function GetQuoteClient() {
   const stepCount = 3
@@ -139,8 +142,7 @@ function GetQuoteClient() {
     } 
   }
 
-
-  const [imageRef, imageSrc] = useLazyImage();
+  const { ref, src, loaded } = useLazyImage();
 
   return (
     <section ref={targetRef} className="bg-gray-200 flex justify-center min-h-screen">
@@ -165,7 +167,7 @@ function GetQuoteClient() {
             sizes="100vw"
           /> */}
 
-          <MotionImage
+          {/* <MotionImage
             ref={imageRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -183,7 +185,38 @@ function GetQuoteClient() {
             className="absolute inset-0 h-full w-full object-cover"
             fill
             sizes="100vw"
-          />
+          /> */}
+          <div
+            ref={ref}
+            data-src={actualSrc}
+            className="absolute inset-0"
+          >
+            {/* Blurred placeholder */}
+            <MotionImage
+              src={blurSrc}
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+
+            {/* Full image */}
+            {src && (
+              <MotionImage
+                src={src}
+                alt="Get a quote"
+                fill
+                sizes="100vw"
+                className="object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: loaded ? 1 : 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                }}
+              />
+            )}
+          </div>
         </div>
 
         {/* Right Side - Form */}

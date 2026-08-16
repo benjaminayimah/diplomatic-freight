@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useLazyImage() {
+export default function useLazyImage() {
   const ref = useRef(null);
   const [src, setSrc] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -23,6 +24,7 @@ export function useLazyImage() {
 
         image.onload = () => {
           setSrc(fullSrc);
+          setLoaded(true);
         };
 
         observer.unobserve(element);
@@ -37,5 +39,5 @@ export function useLazyImage() {
     return () => observer.disconnect();
   }, []);
 
-  return [ref, src];
+  return { ref, src, loaded };
 }

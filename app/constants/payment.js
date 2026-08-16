@@ -7,6 +7,7 @@ export const PAYMENT_METHODS = [
 ];
 
 export const USDT_NETWORKS = [
+  { label: "Select network", value: ""},
   { label: "Tron (TRC-20)", value: "trc20" },
   { label: "Ethereum (ERC-20)", value: "erc20" },
   { label: "Binance Smart Chain (BEP-20)", value: "bep20" },

@@ -32,7 +32,7 @@ function InvoiceTableList({ invoice, onDelete, onClick }) {
             <div className='flex gap-1 flex-wrap'>
               <span className='clamp clamp-line-1 font-medium'>{invoice?.name || invoice?.reference_number}</span>
             </div>
-            <div className='text-sm text-gray-500 flex items-center gap-1.5'>
+            <div className='text-sm text-gray-500 flex items-center gap-1'>
               <div className="flex gap-1">
                 <span className='font-medium hidden md:block'>Invoice no.:</span><span>{invoice?.reference_number}</span>
               </div>

@@ -110,7 +110,7 @@ function HomeAbout() {
             <motion.div
               style={{scale}}
               className='relative h-[50svh] sm:h-[50dvh] md:h-[calc(100dvh-80px)] w-full rounded-3xl overflow-hidden'>
-              <div className='absolute inset-0 flex items-center justify-center z-2'>
+              <div className='absolute pointer-events-none inset-0 flex items-center justify-center z-2'>
                 <motion.div style={{opacity, translateY}} className='text-white'>
                   <h1 className='text-3xl lg:text-7xl text-center font-bold leading-tight'>Your cargo. Your timeline.<br />Our responsibility.</h1>
                 </motion.div>

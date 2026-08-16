@@ -253,7 +253,7 @@ function CreateOrGenerateReceiptForm({ mode = null, id = null }) {
       <div className="body-content relative w-full mt-5">
         { error && <ErrorCard error={error} /> }
 
-        <div className='p-4 bg-gray-50 rounded-xl border border-gray-100 mb-40'>
+        <div className='p-4 bg-gray-50 rounded-xl border border-gray-100'>
           <form onSubmit={handleFormSubmit} className='flex flex-col gap-5'>
             <fieldset className="border border-gray-200 rounded-xl p-5 bg-white">
               <legend className="px-2 text-sm font-semibold">Client Information</legend>

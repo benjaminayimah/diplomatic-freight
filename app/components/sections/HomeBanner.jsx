@@ -90,13 +90,12 @@ function HomeBanner() {
     >
       <MotionImage
          id="hero_image"
-          className="mt-[40%] md:mt-0 will-change-transform"
+          className="mt-[40%] md:mt-0"
           style={{ imageY, objectFit: "cover" }}
-          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763470951/bg-cargo-plane_2_-min_ush5mi.png"
+          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/f_auto,q_auto/v1763470951/bg-cargo-plane_2_-min_ush5mi.png"
           alt="Hero background"
           fill
           sizes="100vw"
-          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority
           initial={{ x: '10vw'}}
           animate={shouldReduceMotion ? { x: 0 } : { x: 0 }}
@@ -105,7 +104,6 @@ function HomeBanner() {
             ease: [0.1, 0.5, 0.7, 1],
           }}
       />
-
       <motion.div
         style={{ y }}
         className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-[60px] lg:pl-[130px]"

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import ServicesCard from '../ServicesCard'
 import MoreModal from '../../components/MoreModal'
 import Image from 'next/image'

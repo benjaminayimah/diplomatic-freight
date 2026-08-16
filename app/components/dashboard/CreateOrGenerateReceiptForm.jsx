@@ -1,7 +1,7 @@
 'use client';
 import BackButton from '@/app/components/dashboard/BackButton'; 
 
-import React, { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Input from '@/app/components/Input';
 import Select from '@/app/components/Select';
 import Textarea from '@/app/components/Textarea';

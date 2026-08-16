@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Input from '@/app/components/Input'
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthStore } from "@/store/authStore";

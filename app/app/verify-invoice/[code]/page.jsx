@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'next/navigation';
 import useFetchData from "@/hooks/useFetchData";
 import Loader from '../../../components/Loader';

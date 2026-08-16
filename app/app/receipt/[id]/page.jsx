@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import ProtectedRoute from "@/app/components/ProtectedRoute";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import useFetchData from "@/hooks/useFetchData";
 import ReceiptTemplate from '@/app/components/dashboard/ReceiptTemplate';
 import { useAuth } from "@/hooks/useAuth";

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link';
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';

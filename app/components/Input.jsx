@@ -2,7 +2,7 @@ import {
   EyeIcon,
   EyeSlashIcon
 } from "@heroicons/react/24/outline";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Input({
   label,

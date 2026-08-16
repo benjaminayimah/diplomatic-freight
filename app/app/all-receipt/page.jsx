@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import { useAuth } from "@/hooks/useAuth";
 import { useAuthStore } from "@/store/authStore";

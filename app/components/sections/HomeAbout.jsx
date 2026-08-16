@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState, useEffect, useCallback } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 import TextReveal from '../TextReveal'
 import { useScroll, useTransform, motion } from 'framer-motion'
 import MoreModal from '../../components/MoreModal'

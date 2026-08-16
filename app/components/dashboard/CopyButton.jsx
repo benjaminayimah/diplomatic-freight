@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Tooltip from "./Tooltip";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { useSnackbar } from "@/app/components/SnackbarContext";

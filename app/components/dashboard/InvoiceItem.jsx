@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Input from '../Input';
 import { TrashIcon } from "@heroicons/react/24/outline";
 

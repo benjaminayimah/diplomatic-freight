@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { createSubscriber } from '@/services/subscriberService';
 import { useSnackbar } from "@/app/components/SnackbarContext"; 
 

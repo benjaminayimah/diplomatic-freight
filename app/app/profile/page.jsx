@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import { useAuthStore } from "@/store/authStore";
 import Modal from "@/app/components/modals/Modal";

@@ -1,7 +1,7 @@
 'use client'
 
 import { useScroll, motion, useTransform } from 'framer-motion';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 function TextReveal({ words, textOffset = '0.8' }) {
   const targetRef = useRef(null);

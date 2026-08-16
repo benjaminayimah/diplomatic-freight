@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback } from 'react'
 import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion'
 import Input from './Input'
 import { useAuth } from '@/hooks/useAuth';
@@ -8,6 +8,8 @@ import { useSnackbar } from './SnackbarContext';
 import Textarea from './Textarea';
 import SubmitButton from './SubmitButton';
 import StaggeredText from './StaggeredText';
+import Image from 'next/image'
+
 
 
 const words = [
@@ -15,6 +17,8 @@ const words = [
   { line: '1', word: 'With', style: '', spanStyle: '' },
   { line: '2', word: 'Confidence', style: '', spanStyle: '' },
 ]
+
+const MotionImage = motion.create(Image);
 
 function GetQuoteClient() {
   const stepCount = 3
@@ -70,8 +74,6 @@ function GetQuoteClient() {
     offset: ['start end', 'end start']
   })
 
-  // Parallax effect for image
-  const translateY = useTransform(scrollYProgress, [0, 1], ['0px', '0px']);
 
   const handleNext = () => {
     // Simple validation before moving next
@@ -139,11 +141,10 @@ function GetQuoteClient() {
   return (
     <section ref={targetRef} className="bg-gray-200 flex justify-center min-h-screen">
       <div className='h-full container w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 bg-white md:bg-transparent shadow-xl md:shadow-none my-0 overflow-hidden max-w-6xl'>
-        
         {/* Left Side - Image */}
         <div className='relative h-64 md:h-screen overflow-hidden'>
           {/* Replaced next/image with motion.img for standard HTML behavior in canvas */}
-          <motion.img
+          <MotionImage
             initial={{opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -153,14 +154,14 @@ function GetQuoteClient() {
               stiffness: 100,
               damping: 50,
             }}
-            data-src="https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg"
+            // data-src="https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg"
             src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1764550175/pexels-kursat-kuzu-42706530-12560711_pywvln.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'} // Using direct Pexels link as fallback/placeholder logic
-            // src="https://res.cloudinary.com/demo/image/upload/w_20,e_blur:300/sample.jpg"
-            // data-src="https://res.cloudinary.com/demo/image/upload/w_1200/sample.jpg"
             alt='Get a quote'
             className="absolute inset-0 w-full h-full object-cover"
+            priority
+            fill
+            sizes="100vw"
           />
-          {/* <div className="absolute inset-0 bg-black/20 md:hidden" /> */}
         </div>
 
         {/* Right Side - Form */}

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useAuthStore } from "@/store/authStore";
 import BankCard from "../../../components/dashboard/BankCard";
 import { useAuth } from "@/hooks/useAuth";

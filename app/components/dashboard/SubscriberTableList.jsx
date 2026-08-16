@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useFormatter } from '@/hooks/useFormatter'
 import DropdownMenu from './DropdownMenu';
 import FileProfileIcon from "./FileProfileIcon"

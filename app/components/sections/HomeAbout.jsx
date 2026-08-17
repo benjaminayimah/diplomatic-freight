@@ -170,14 +170,7 @@ function HomeAbout() {
               </div>
             </div>
           </motion.div>
-          {/* <div className='flex justify-end'>
-            <div className='max-w-lg'>
-              Our mission is to provide efficient, secure, and customized air cargo solutions with uncompromising professionalism, trust, and reliability.
-            </div>
-          </div> */}
         </div>
-
-        
       </div>
 
       <MoreModal
@@ -185,7 +178,7 @@ function HomeAbout() {
         onClose={handleCloseModal}
         maxWidth="1000px"
         >
-          <div className='h-120 bg-gray-100 relative overflow-hidden rounded-t-3xl md:rounded-t-4xl'>
+          <div className='h-70 md:h-120 bg-gray-100 relative overflow-hidden rounded-t-3xl md:rounded-t-4xl'>
             <Image
               src='https://res.cloudinary.com/dl4wyqxbe/image/upload/v1765111631/alt-1_sqaadi.webp'
               alt='About us'

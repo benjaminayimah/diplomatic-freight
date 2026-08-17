@@ -63,7 +63,7 @@ function Table({
         </div>
       </div>
       {/* <!-- Totals & Summary --> */}
-      <div className="invoice-section flex pt-10 justify-end">
+      <div className="invoice-section flex pt-5 justify-end">
         <div className="w-full sm:max-w-md space-y-4 text-neutral-800 grid">
           <div className="justify-between grid grid-cols-2">
             <span className='font-medium'>Subtotal</span>

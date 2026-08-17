@@ -144,9 +144,7 @@ function Settings() {
         setErrors(validationErrors);
         return;
       }
-    }
-
-    if (bankForm.payment_method === "usdt_wallet") {
+    } else if (bankForm.payment_method === "usdt_wallet") {
       const walletError = validateWalletAddress(
         bankForm.network,
         bankForm.wallet_address

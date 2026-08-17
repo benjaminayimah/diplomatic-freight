@@ -99,8 +99,6 @@ function HomeBanner() {
         ref={ref}
         className="absolute inset-0"
       >
-        {/* Blurred placeholder */}
-        
 
         {/* Full image */}
         {src ? (
@@ -109,7 +107,7 @@ function HomeBanner() {
             id="hero_image"
             className="mt-[40%] md:mt-0"
             style={{ imageY, objectFit: "cover" }}
-            alt="Hero background"
+            alt="Hero Image"
             fill
             sizes="100vw"
             priority
@@ -124,10 +122,11 @@ function HomeBanner() {
         ) : (
           <Image
             src={blurImage}
-            alt="Get Quote"
+            alt="Hero Image"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="100vw"
             className="object-cover"
+            priority
           />
         )
       }

@@ -19,7 +19,7 @@ function HomeWhyChoose() {
         whileInView={{ opacity: 1, y: '0px', transition: {duration: 1}}}
         viewport={{
           once: true,
-          amount: 0.3
+          amount: 0.1
         }}
         className='container w-[92vw] sm:w-[88vw]'>
         <div className='grid gap-6 mb-10 md:mb-20'>

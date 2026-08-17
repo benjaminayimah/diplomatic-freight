@@ -65,59 +65,60 @@ function HomeServices() {
         whileInView={{ opacity: 1, y: '0px', transition: {duration: 1}}}
         viewport={{
           once: true,
-          amount: 0.3
+          amount: 0.1
         }}
-        className='container w-[92vw] sm:w-[88vw]'>
-        <div className='grid md:grid-cols-2 gap-6 md:mb-20 mb-10'>
-          <h2 className='text-4xl md:text-5xl font-semibold'>Our services</h2>
-          <div className='lg:pl-36 text-xl'>
-            Whether you're exporting across continents or importing products into complex markets, our tailored logistic solutions ensures speed, compliance and peace of mind.
+        >
+          <div className='container w-[92vw] sm:w-[88vw]'>
+          <div className='grid md:grid-cols-2 gap-6 md:mb-20 mb-10'>
+            <h2 className='text-4xl md:text-5xl font-semibold'>Our services</h2>
+            <div className='lg:pl-36 text-xl'>
+              Whether you're exporting across continents or importing products into complex markets, our tailored logistic solutions ensures speed, compliance and peace of mind.
+            </div>
           </div>
         </div>
+        <div
+          ref={scrollRef}
+          className='grid grid-cols-1 gap-6 md:flex px-[4vw] sm:px-[6vw] scroll-px-[6vw] md:overflow-x-auto scroll-snap hide-scrollbar'
+          >
+          {services.map((data) => (
+            <ServicesCard
+              key={data.id}
+              service={data}
+              id={modalContent?.id}
+              onClick={() => {
+                setModalContent(data)
+                setOpen(true)
+              }}
+              isOpen={open}
+            />
+          ))}
+        </div>
+        <div className='md:flex justify-end gap-4 px-[6%] hidden'>
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            className={`${canScrollLeft ? 'hover:bg-gray-100' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-white shadow transition disabled:opacity-40 disabled:cursor-not-allowed!`}
+            >
+            <svg height="15" viewBox="0 0 5.714 10">
+              <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(6.533 10.001) rotate(180)" fill="#000"/>
+            </svg>
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+            className={`${canScrollRight ? 'hover:bg-gray-100' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-white shadow transition disabled:opacity-40 disabled:cursor-not-allowed!`}
+            >
+            <svg height="15" viewBox="0 0 5.714 10">
+              <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(-0.819 -0.001)" fill="#000"/>
+            </svg>
+          </button>
+        </div>
+        <div className='mt-5 text-center'>
+          <a href="/get-quote" className='text-xl font-medium inline-block text-black border border-black py-3.5 px-7 rounded-full hover:bg-black hover:text-white transition duration-300'>
+            Get a Quote
+          </a>
+        </div>
       </motion.div>
-      <div
-        ref={scrollRef}
-        className='grid grid-cols-1 gap-6 md:flex px-[4vw] sm:px-[6vw] scroll-px-[6vw] md:overflow-x-auto scroll-snap hide-scrollbar'
-        >
-        {services.map((data) => (
-          <ServicesCard
-            key={data.id}
-            service={data}
-            id={modalContent?.id}
-            onClick={() => {
-              setModalContent(data)
-              setOpen(true)
-            }}
-            isOpen={open}
-          />
-        ))}
-      </div>
-      <div className='md:flex justify-end gap-4 px-[6%] hidden'>
-        <button
-          onClick={() => scroll('left')}
-          disabled={!canScrollLeft}
-          className={`${canScrollLeft ? 'hover:bg-gray-100' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-white shadow transition disabled:opacity-40 disabled:cursor-not-allowed!`}
-          >
-          <svg height="15" viewBox="0 0 5.714 10">
-            <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(6.533 10.001) rotate(180)" fill="#000"/>
-          </svg>
-        </button>
-        <button
-          onClick={() => scroll('right')}
-          disabled={!canScrollRight}
-          className={`${canScrollRight ? 'hover:bg-gray-100' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-white shadow transition disabled:opacity-40 disabled:cursor-not-allowed!`}
-          >
-          <svg height="15" viewBox="0 0 5.714 10">
-            <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(-0.819 -0.001)" fill="#000"/>
-          </svg>
-        </button>
-      </div>
-      <div className='mt-5 text-center'>
-        <a href="/get-quote" className='text-xl font-medium inline-block text-black border border-black py-3.5 px-7 rounded-full hover:bg-black hover:text-white transition duration-300'>
-          Get a Quote
-        </a>
-      </div>
-      
       <MoreModal
         isOpen={open}
         onClose={handleCloseModal}

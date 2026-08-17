@@ -87,9 +87,9 @@ ul.ul-table li:first-child {
 html:has(#web) {
   scroll-behavior: smooth;
 }
-html.no-smooth-scroll, html:has(#more_modal) {
+/* html.no-smooth-scroll, html:has(#more_modal) {
   scroll-behavior: auto !important;
-}
+} */
 
 body {
   background: var(--background);

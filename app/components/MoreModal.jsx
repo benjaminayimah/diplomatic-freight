@@ -22,21 +22,11 @@ const MoreModal = ({
 
     scrollPosition.current = window.scrollY;
 
-    const { body, documentElement } = document;
-
-    body.style.position = "fixed";
-    body.style.top = `-${scrollPosition.current}px`;
-    body.style.left = "0";
-    body.style.right = "0";
+    const { body } = document;
     body.style.overflow = "hidden";
 
     return () => {
-      body.style.position = "";
-      body.style.top = "";
-      body.style.left = "";
-      body.style.right = "";
       body.style.overflow = "";
-
       window.scrollTo({
         top: scrollPosition.current,
         behavior: "auto",

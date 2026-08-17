@@ -4,6 +4,8 @@ import { useRef } from 'react'
 import { useScroll, useTransform, useInView, motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import StaggeredText from '../StaggeredText'
+import useLazyImage from "@/hooks/useLazyImage.js"
+
 
 const words = [
   { line: '1', word: 'Moving', style: 'text-[clamp(2rem,4vw,4rem)] p-2 pl-0', spanStyle: '' },
@@ -49,6 +51,9 @@ const gradientVariants = {
 
 const MotionImage = motion.create(Image)
 
+const blurImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/bg-hero-image_btzkox.png"
+const fullImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/f_auto,q_auto/v1763470951/bg-hero-image_btzkox.png"
+
 function HomeBanner() {
   const targetRef = useRef(null)
   const shouldReduceMotion = useReducedMotion();
@@ -76,6 +81,8 @@ function HomeBanner() {
     shouldReduceMotion ? [0, 0] : ['0px', '40vh']
   );
 
+  const { ref, src } = useLazyImage(fullImage);
+
   return (
     <motion.section
       ref={targetRef}
@@ -88,7 +95,44 @@ function HomeBanner() {
         background: "linear-gradient(110deg, #000 0%, var(--end) 83.83%)",
       }}
     >
-      <MotionImage
+      <div
+        ref={ref}
+        className="absolute inset-0"
+      >
+        {/* Blurred placeholder */}
+        
+
+        {/* Full image */}
+        {src ? (
+          <MotionImage
+            src={src}
+            id="hero_image"
+            className="mt-[40%] md:mt-0"
+            style={{ imageY, objectFit: "cover" }}
+            alt="Hero background"
+            fill
+            sizes="100vw"
+            priority
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 1.6,
+              ease: "easeOut",
+              delay: 0.6,
+            }}
+          />
+        ) : (
+          <Image
+            src={blurImage}
+            alt="Get Quote"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        )
+      }
+      </div>
+      {/* <MotionImage
         id="hero_image"
         className="mt-[40%] md:mt-0"
         style={{ imageY, objectFit: "cover" }}
@@ -104,7 +148,7 @@ function HomeBanner() {
           ease: "easeOut",
           delay: 0.6,
         }}
-      />
+      /> */}
       <motion.div
         style={{ y }}
         className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-[60px] lg:pl-[130px]"

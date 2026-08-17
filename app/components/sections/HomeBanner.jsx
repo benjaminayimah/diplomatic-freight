@@ -89,20 +89,21 @@ function HomeBanner() {
       }}
     >
       <MotionImage
-         id="hero_image"
-          className="mt-[40%] md:mt-0"
-          style={{ imageY, objectFit: "cover" }}
-          src="https://res.cloudinary.com/dl4wyqxbe/image/upload/f_auto,q_auto/v1763470951/bg-cargo-plane_2_-min_ush5mi.png"
-          alt="Hero background"
-          fill
-          sizes="100vw"
-          priority
-          initial={{ x: '10vw'}}
-          animate={shouldReduceMotion ? { x: 0 } : { x: 0 }}
-          transition={{
-            duration: 20,
-            ease: [0.1, 0.5, 0.7, 1],
-          }}
+        id="hero_image"
+        className="mt-[40%] md:mt-0"
+        style={{ imageY, objectFit: "cover" }}
+        src="https://res.cloudinary.com/dl4wyqxbe/image/upload/f_auto,q_auto/v1763470951/bg-hero-image_btzkox.png"
+        alt="Hero background"
+        fill
+        sizes="100vw"
+        priority
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1.6,
+          ease: "easeOut",
+          delay: 0.6,
+        }}
       />
       <motion.div
         style={{ y }}

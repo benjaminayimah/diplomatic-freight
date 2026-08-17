@@ -71,18 +71,18 @@ function HomeTestimonials() {
             <div className='scroller' data-direction="left">
                 <div className='scroller-inner'>
                     {
-                        testimonials.map((testimonial) => (
-                            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-                        ))
+                      testimonials.map((testimonial) => (
+                          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+                      ))
                     }
                 </div>
             </div>
             <div className='scroller' data-direction="right">
                 <div className='scroller-inner'>
                     {
-                        testimonials.map((testimonial) => (
-                            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-                        ))
+                      testimonials.map((testimonial) => (
+                          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+                      ))
                     }
                 </div>
             </div>

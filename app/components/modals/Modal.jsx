@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { createPortal } from "react-dom";
 
 const Modal = ({
   isOpen,
@@ -73,12 +74,16 @@ const Modal = ({
     };
   }, [isOpen]);
 
-  return (
+  return createPortal (
     <AnimatePresence>
       {isOpen && (
         <motion.div
           key="overlay"
           className={`${overlayClasses} fixed inset-0 bg-black/50 flex items-center justify-center z-50`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
         >
           {/* Modal Panel */}
           <motion.div
@@ -93,6 +98,9 @@ const Modal = ({
               ease: [0.22, 1, 0.36, 1], 
             }}
             className="bg-white rounded-3xl w-[90%] shadow-lg overflow-hidden relative border border-white"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={title ? "modal-title" : undefined}
           >
             {/* Header */}
             <div className="absolute top-0 left-0 w-full bg-white/50 backdrop-blur-sm px-6 pt-6 pb-2 z-60">
@@ -133,7 +141,8 @@ const Modal = ({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

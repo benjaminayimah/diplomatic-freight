@@ -1,7 +1,7 @@
 'use client'
 
-import { useRef, useState, useCallback } from 'react'
-import { useScroll, useTransform, motion, AnimatePresence } from 'framer-motion'
+import { useState, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Input from './Input'
 import { useAuth } from '@/hooks/useAuth';
 import { useSnackbar } from './SnackbarContext';
@@ -71,12 +71,12 @@ function GetQuoteClient() {
   // Track direction for animation (+1 for next, -1 for back)
   const [direction, setDirection] = useState(0)
 
-  const targetRef = useRef(null)
+  // const targetRef = useRef(null)
 
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ['start end', 'end start']
-  })
+  // const { scrollYProgress } = useScroll({
+  //   target: targetRef,
+  //   offset: ['start end', 'end start']
+  // })
 
 
   const handleNext = () => {
@@ -145,7 +145,7 @@ function GetQuoteClient() {
   const { ref, src } = useLazyImage(fullImage);
 
   return (
-    <section ref={targetRef} className="bg-gray-200 flex justify-center min-h-screen">
+    <section className="bg-gray-200 flex justify-center min-h-screen">
       <div className='h-full container w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 bg-white md:bg-transparent shadow-xl md:shadow-none my-0 overflow-hidden max-w-6xl'>
         {/* Left Side - Image */}
         <div className='relative h-64 md:h-screen overflow-hidden'>
@@ -154,9 +154,9 @@ function GetQuoteClient() {
             className="absolute inset-0"
           >
             {/* Blurred placeholder */}
-            <MotionImage
+            <Image
               src={blurImage}
-              alt=""
+              alt="Get Quote"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"

@@ -2,21 +2,18 @@
 
 import { useRef } from 'react'
 import Image from 'next/image'
-// import { useScroll, useTransform, motion } from 'framer-motion'
+import useLazyImage from "@/hooks/useLazyImage.js"
 
 
 function ServicesCard({ service, onClick, isOpen, id }) {
 
-  // const MotionImage = motion.create(Image)
-  
-  // const targetRef = useRef(null)
+  const blurImage = service.src.replace(
+    "/image/upload/",
+    "/image/upload/w_20,e_blur:300,q_auto/"
+  );
 
-  // const { scrollYProgress } = useScroll({
-  //   target: targetRef,
-  //   offset: ['start end', 'end start']
-  // })
+  const { ref, src } = useLazyImage(service.src);
 
-  // const translateY = useTransform(scrollYProgress, [0, 1], ['-40px', '50px']);
 
   return (
     <div className='w-full md:w-[382px] shrink-0'>
@@ -37,14 +34,31 @@ function ServicesCard({ service, onClick, isOpen, id }) {
             </button>
           </div>
         </div>
-        <Image
-          // style={{translateY}}
-          src={service.src}
-          alt={service.name}
-          fill
-          className="object-cover transition-transform duration-700 ease-out scale-105 group-hover:scale-120"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+        <div
+          ref={ref}
+          className="absolute inset-0"
+        >
+          {/* Blurred placeholder */}
+          <Image
+            src={blurImage}
+            alt={service.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+          />
+
+          {/* Full image */}
+          {src && (
+            <Image
+              src={src}
+              alt={service.name}
+              fill
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 ease-out scale-105 group-hover:scale-120"
+            />
+          )}
+        </div>
       </div>
       <div className='py-5'>
         <h4 className="text-black text-2xl font-semibold">{service.name}</h4>

@@ -3,11 +3,15 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 import { useScroll, useTransform, motion } from 'framer-motion'
+import useLazyImage from "@/hooks/useLazyImage.js"
+
+const blurImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/call-now-image_z2vsyd.jpg"
+const fullImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763146057/call-now-image_z2vsyd.jpg"
+
+const MotionImage = motion.create(Image);
 
 function HomeCallNow() {
 
-  const MotionImage = motion.create(Image)
-  
   const targetRef = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -17,18 +21,38 @@ function HomeCallNow() {
 
   const translateY = useTransform(scrollYProgress, [0, 1], ['-50px', '50px']);
 
+  const { ref, src } = useLazyImage(fullImage);
+
   return (
     <section id='contact' ref={targetRef} className='shadow-[0_30px_103px_10px_#000] z-1 py-20 md:py-30 bg-white relative flex justify-center'>
       <div className='container w-[92vw] sm:w-[88vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
         <div className='md:col-span-1 lg:col-span-2 relative min-h-80 lg:min-h-130 w-full rounded-3xl overflow-hidden'>
-          <MotionImage
-            src={'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1763146057/call-now-image_z2vsyd.jpg'}
-            style={{translateY}}
-            alt="Call Now"
-            fill
-            className='object-cover'
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+          <div
+            ref={ref}
+            className="absolute inset-0"
+          >
+            {/* Blurred placeholder */}
+            <Image
+              src={blurImage}
+              alt="Call Now"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover"
+            />
+
+            {/* Full image */}
+            {src && (
+              <MotionImage
+                style={{translateY}}
+                src={src}
+                alt="Call Now"
+                fill
+                loading="lazy"
+                className='object-cover'
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            )}
+          </div>
         </div>
         <div className='bg-[#232730] flex items-center p-10 rounded-3xl min-h-80 lg:min-h-130 overflow-hidden'>
           <div>

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { createPortal } from "react-dom";
 
+
 const MoreModal = ({
   isOpen,
   onClose,
@@ -113,6 +114,9 @@ const MoreModal = ({
         },
       };
 
+
+  
+
   return createPortal(
     <AnimatePresence>
       {isOpen && (
@@ -186,7 +190,6 @@ const MoreModal = ({
                   />
                 </svg>
               </button>
-
               {children}
             </motion.div>
           </div>

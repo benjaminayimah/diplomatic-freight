@@ -1,10 +1,8 @@
 'use client'
 
-import React from 'react'
-import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import styles from '../../styles/gallery.module.css'
 import { useRef } from 'react'
+import GalleryImages from "../GalleryImages"
 
 function HomeGallery() {
   const targetRef = useRef(null);
@@ -14,7 +12,6 @@ function HomeGallery() {
     })
 
     const scale4 = useTransform(scrollYProgress, [0, 1], [1, 4]);
-    const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
     const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
     const scale8 = useTransform(scrollYProgress, [0, 1], [1, 8]);
     const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
@@ -68,29 +65,18 @@ function HomeGallery() {
   return (
     <section className='bg-black h-[300vh] pt-20 rounded-bl-[55px] rounded-br-[55px]'>
       <div ref={targetRef}  className='relative h-full'>
-        <div className={styles.sticky}>
+        <div className="sticky top-0 h-svh overflow-hidden">
           {
             pictures.map( ({src, scale}, index) => {
-                return <motion.div key={index} style={{scale}} className={styles.el}>
-                  <div className={styles.imageContainer}>
-                      <Image
-                        src={src}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        alt="image"
-                    />
-                    {
-                      index === 0 && 
-                      <motion.div
-                        style={{opacity}}
-                        className='inset-0 p-2 md:p-5 text-white bg-black/80 pointer-events-none absolute flex flex-col gap-2 items-center justify-center text-center'
-                        >
-                          <h1 className='text-base md:text-3xl font-medium'>Moving What Matters</h1>
-                          <p className='text-xs md:text-base'>From oversized cargo to sensitive logistics, see how we keep the world moving.</p>
-                      </motion.div>
-                    }
-                  </div>
+              return (
+                <motion.div key={index} style={{scale}} className="el">
+                  <GalleryImages
+                    index={index}
+                    fullSrc={src}
+                    opacity={opacity}
+                  />
                 </motion.div>
+              )
             })
           }
         </div>

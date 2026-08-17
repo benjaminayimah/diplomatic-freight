@@ -19,12 +19,6 @@ const who_we_are = [
   "Our", "team", "brings", "years", "of", "experience", "in", "aviation", "logistics,", "customs", "coordination,", "and",
   "international", "freight", "movement.", "We", "work", "closely", "with", "airlines,", "operators,", "ground", "handlers", "and", "government", "agencies", "to", "ensure", "every", "shipment", "moves", "seamlessly,", "safely,", "and", "on", "schedule."
 ];
-// const why_choose_us = [
-//   "We", "deliver", "safe", "and", "smart", "-", "so",
-//   "your", "shipment", "always", "arrives,", "on", "time", "and", "in", "great", "condition"
-// ];
-
-
 
 
 function HomeAbout() {
@@ -196,7 +190,7 @@ function HomeAbout() {
               src='https://res.cloudinary.com/dl4wyqxbe/image/upload/v1765111631/alt-1_sqaadi.webp'
               alt='About us'
               fill
-              className="object-cover transition-transform duration-700 ease-out scale-105 group-hover:scale-110"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>

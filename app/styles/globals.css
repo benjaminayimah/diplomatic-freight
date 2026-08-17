@@ -456,6 +456,7 @@ header {
   --_animation-duration: 120s
 }
 
+
 @keyframes scroll {
   to {
     transform: translate(calc(-50% - (var(--_scroll-inner-gap)/2)));

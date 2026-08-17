@@ -7,11 +7,6 @@ import MoreModal from '../../components/MoreModal'
 import Image from 'next/image'
 
 
-const intro = [
-  "Your", "Cargo.", "Our", "Commitment",
-  <br key="br1" />,
-  "When", "Time", "Matters,", "We", "Deliver"
-];
 const who_we_are = [
   "At",<strong className='font-medium'>Diplomatic</strong>, <strong className='font-medium'>Freight</strong>, "and", <strong className='font-medium'>Logistics,</strong>, "we", "specialize", "in", "delivering", "reliable,", "time-critical", "air", "cargo", "and", "freight", "solutions", "across", "the", "globe.",
   "From", "chartering", "full", "cargo", "aircraft", "to", "coordinating", "highly", "sensitive", "and", "high-value", "shipments,", "we", "protect", "with", "precision", "discretion,", "and", "world-class", "prefessionalism.",

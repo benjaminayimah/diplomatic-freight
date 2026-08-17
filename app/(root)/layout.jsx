@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { useUIStore } from '@/store';
 import { ReactLenis } from 'lenis/react'
 import Header from '../components/sections/Header';
@@ -24,10 +23,10 @@ export default function RootLayout({ children }) {
     >
       <main id="web">
         <PageTransition>
-        <Header />
-          {children}
-        <Footer />
-        <CookieConsent />
+          <Header />
+            {children}
+          <Footer />
+          <CookieConsent />
         </PageTransition>
       </main>
     </ReactLenis>

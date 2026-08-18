@@ -210,7 +210,7 @@ video {
 }
 
 /* nav menu */
-header {
+#web > header {
   visibility: hidden;
 }
 
@@ -257,7 +257,7 @@ header {
 
 /* custom nav */
 
-.desktop {
+#web.desktop {
   header {
     --padding: 0.25rem;
     --height: 48px;
@@ -302,7 +302,7 @@ header {
   }
 }
 
-.tablet, .mobile {
+#web.tablet, #web.mobile {
   header {
     visibility: visible;
   }

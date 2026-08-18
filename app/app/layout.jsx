@@ -10,10 +10,10 @@ export default function RootLayout({ children }) {
       <div className="flex w-full min-h-dvh justify-center">
         <div className="max-w-7xl w-full border-r border-l border-gray-100 body-container flex flex-col">
           <AuthProvider>
-            <div className="sticky top-0 z-40">
+            <header className="sticky top-0 z-40">
               <Header />
               <Nav />
-            </div>
+            </header>
             {children}
           </AuthProvider>
         </div>

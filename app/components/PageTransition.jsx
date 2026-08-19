@@ -1,37 +1,41 @@
-'use client'
-import { motion } from 'framer-motion';
-import { useEffect, useState, useRef} from 'react';
-import { usePathname } from 'next/navigation';
-import { AnimatePresence } from 'framer-motion';
+'use client';
 
-const anim = (variants) => ({
-  initial: "initial",
-  animate: "enter",
-  exit: "exit",
-  variants
-});
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const routes = {
-  "/": "Home",
-  "/get-quote": "Get a Quote",
-  "/terms-of-service": "Terms of Service",
-  "/privacy-policy": "Privacy Policy",
-  "/cookie-policy": "Cookie Policy"
+  '/': 'Home',
+  '/get-quote': 'Get a Quote',
+  '/terms-of-service': 'Terms of Service',
+  '/privacy-policy': 'Privacy Policy',
+  '/cookie-policy': 'Cookie Policy',
 };
+
 const greetings = [
- "Hello",        // English — USA / UK
-  "Bonjour",      // French — France
-  "مرحبا",         // Arabic — Middle East / North Africa
-  "Hola",         // Spanish — Spain
-  "Hallo",        // German — Germany
-  "Γειά σου",     // Greek — Greece
-  "Ciao",         // Italian — Italy
-  "Olá",          // Portuguese — Portugal
-  "こんにちは",     // Japanese — Japan
-  "你好",          // Chinese (Mandarin) — China
-  "안녕하세요",      // Korean — South Korea
-  "Akwaaba",      // Twi — Ghana
+  'Hello',
+  'Bonjour',
+  'مرحبا',
+  'Hola',
+  'Hallo',
+  'Γειά σου',
+  'Ciao',
+  'Olá',
+  'こんにちは',
+  '你好',
+  '안녕하세요',
+  'Akwaaba',
 ];
+
+const FREEZE_TIME = 400;
+const CYCLE_INTERVAL = 120;
+
+const getAnimationProps = (variants) => ({
+  initial: 'initial',
+  animate: 'enter',
+  exit: 'exit',
+  variants,
+});
 
 function PageTransition({ children }) {
   const pathname = usePathname();
@@ -39,108 +43,145 @@ function PageTransition({ children }) {
   const [showContent, setShowContent] = useState(false);
   const [introText, setIntroText] = useState(null);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-  const greetingIndex = useRef(0);
 
-  // 2. Freeze on first greeting
-  const freezeTime = 500; // ms
-  const cycleInterval = 200; // ms per greeting
-  const remainingGreetings = greetings.length - 1; // because first is already shown
-  const totalCycleTime = remainingGreetings * cycleInterval;
+  const isHome = pathname === '/';
 
-  const curtonTimeOut = isFirstLoad && pathname === '/' ? totalCycleTime + (freezeTime * 2) : cycleInterval
+  const remainingGreetings = greetings.length - 1;
+  const totalCycleTime = remainingGreetings * CYCLE_INTERVAL;
 
+  const curtainTimeout =
+    isFirstLoad && isHome
+      ? totalCycleTime + FREEZE_TIME * 2
+      : CYCLE_INTERVAL;
+
+  /**
+   * Handle greeting / route text
+   */
   useEffect(() => {
-    if (isFirstLoad && pathname !== "/") {
+    let freezeTimeout;
+    let interval;
+    let stopTimeout;
+
+    if (isHome) {
+      // Show first greeting immediately
+      setIntroText(greetings[0]);
+
+      let greetingIndex = 1;
+
+      // Freeze on "Hello" before cycling
+      freezeTimeout = setTimeout(() => {
+        interval = setInterval(() => {
+          setIntroText(greetings[greetingIndex]);
+
+          greetingIndex =
+            (greetingIndex + 1) % greetings.length;
+        }, CYCLE_INTERVAL);
+
+        // Stop cycling after all greetings
+        stopTimeout = setTimeout(() => {
+          clearInterval(interval);
+
+          // Freeze on final greeting
+          setIntroText(greetings[greetings.length - 1]);
+        }, totalCycleTime);
+      }, FREEZE_TIME);
+    } else {
+      // Normal page navigation
+      setIntroText(routes[pathname]);
+      // Once we've navigated away from the homepage,
+      // subsequent transitions use the shorter duration.
       setIsFirstLoad(false);
     }
 
-    if (isFirstLoad && pathname === "/") {
-      // 1. Show "Hello" immediately
-      setIntroText(greetings[0]);
-      greetingIndex.current = 1; // start cycling from the second greeting
+    return () => {
+      clearTimeout(freezeTimeout);
+      clearTimeout(stopTimeout);
+      clearInterval(interval);
+    };
+  }, [pathname, isHome, totalCycleTime]);
 
-      const freezeTimeout = setTimeout(() => {
-        // 3. Start cycling through the rest
-        const interval = setInterval(() => {
-          setIntroText(greetings[greetingIndex.current]);
-          greetingIndex.current = (greetingIndex.current + 1) % greetings.length;
-        }, cycleInterval);
-
-        // Stop cycling after all remaining greetings have been shown
-        const stopTimeout = setTimeout(() => {
-          clearInterval(interval);
-          // Freeze on the final greeting
-          setIntroText(greetings[greetingIndex.current]);
-        }, totalCycleTime);
-
-        // Cleanup inner timers
-        return () => {
-          clearInterval(interval);
-          clearTimeout(stopTimeout);
-        };
-      }, freezeTime);
-
-      return () => clearTimeout(freezeTimeout);
-    }
-
-    // Normal navigation
-    setIntroText(routes[pathname]);
-  }, [pathname]);
-
-
+  /**
+   * Reveal page content after curtain timing
+   */
   useEffect(() => {
-    const timeout = setTimeout(() => setShowContent(true), curtonTimeOut); // after curtain slides up
+    setShowContent(false);
+
+    const timeout = setTimeout(() => {
+      setShowContent(true);
+    }, curtainTimeout);
+
     return () => {
       clearTimeout(timeout);
-      setShowContent(false);
     };
-  }, [pathname]);
+  }, [pathname, curtainTimeout]);
 
   const textVariants = {
-    initial: { opacity: 1, y: 0 },
+    initial: {
+      opacity: 1,
+      y: 0,
+    },
+
     enter: {
       opacity: 0,
       y: '-100vh',
       transition: {
         duration: 0.9,
-        delay: curtonTimeOut / 1000, // convert ms to seconds
-        ease: [0.77, 0, 0.175, 1]
-      }
+        delay: curtainTimeout / 1000,
+        ease: [0.77, 0, 0.175, 1],
+      },
     },
   };
 
-  // Curtain animation: slides up to reveal content
   const curtainVariants = {
-    initial: { y: 0 },
+    initial: {
+      y: 0,
+    },
+
     enter: {
       y: '-100vh',
       transition: {
         duration: 0.9,
-        delay: (curtonTimeOut / 1000) + 0.15, // slight offset for smoothness
-        ease: [0.77, 0, 0.175, 1]
-      }
+        delay: curtainTimeout / 1000 + 0.15,
+        ease: [0.77, 0, 0.175, 1],
+      },
     },
   };
 
-
   return (
     <AnimatePresence mode="wait">
-      <div key={pathname} className="relative w-full">
+      <div
+        key={pathname}
+        className="relative w-full"
+      >
+        {/* Curtain */}
         <motion.div
-          {...anim(curtainVariants)}
-          className="fixed inset-0 w-full h-full bg-[#0A47C9] z-40"
+          {...getAnimationProps(curtainVariants)}
+          className="
+            fixed inset-0 z-40
+            h-full w-full
+            bg-[#0A47C9]
+          "
         />
-        {
-          introText && (
-            <motion.h1
-              {...anim(textVariants)}
-              className="fixed z-50 text-white text-[2rem] md:text-[3rem] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-            >
-              <div className='intro whitespace-nowrap'>{introText}</div>
-            </motion.h1>
-          )
-        }
-        { showContent && children }
+
+        {/* Intro / Route title */}
+        {introText && (
+          <motion.h1
+            {...getAnimationProps(textVariants)}
+            className="
+              fixed left-1/2 top-1/2 z-50
+              -translate-x-1/2 -translate-y-1/2
+              text-[2rem] text-white
+              md:text-[3rem]
+            "
+          >
+            <span className="intro whitespace-nowrap">
+              {introText}
+            </span>
+          </motion.h1>
+        )}
+
+        {/* Page content */}
+        {showContent && children}
       </div>
     </AnimatePresence>
   );

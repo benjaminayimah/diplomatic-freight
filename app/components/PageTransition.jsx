@@ -62,7 +62,7 @@ function PageTransition({ children }) {
     let interval;
     let stopTimeout;
 
-    if (isHome) {
+    if (isFirstLoad && isHome) {
       // Show first greeting immediately
       setIntroText(greetings[0]);
 

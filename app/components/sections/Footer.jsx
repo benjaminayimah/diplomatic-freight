@@ -119,7 +119,7 @@ function Footer() {
           </div>
         </div>
         <div className='flex flex-col gap-2'>
-          <ul className='flex gap-2 sm:gap-4 flex-wrap'>
+          <ul className='flex gap-x-4 gap-y-1.5  flex-wrap'>
             <li><Link href="terms-of-service" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out whitespace-nowrap'>Terms of Service</Link></li>
             <li><Link href="privacy-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out whitespace-nowrap'>Privacy Policy</Link></li>
             <li><Link href="cookie-policy" className='text-[0.88rem] myHover-translate inline-block hover:text-[#9B9DA2] transition-colors duration-300 ease-in-out whitespace-nowrap'>Cookie Policy</Link></li>

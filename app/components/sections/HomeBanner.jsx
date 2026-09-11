@@ -166,7 +166,7 @@ function HomeBanner() {
 
       <motion.div
         style={{ y }}
-        className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-[60px] lg:pl-[130px]"
+        className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-15 lg:pl-32.5"
       >
         <div className="text-white h-full flex items-center">
           <h1 className="leading-none tracking-tighter">
@@ -214,7 +214,7 @@ function HomeBanner() {
             stiffness: 200,
             damping: 50,
           }}
-          className="absolute bottom-6 md:bottom-10 overflow-hidden lg:w-[50%] w-full pr-11 left-8 md:left-[60px] lg:left-[130px]">
+          className="absolute bottom-6 md:bottom-10 overflow-hidden lg:w-[50%] w-full pr-15 left-8 md:left-15 lg:left-32.5">
           <div className="text-white text-[0.88rem] max-w-120 inline-flex gap-1.5">
             <span className="block bg-[#FF6A3D] h-2 w-2 mt-1.5 shrink-0" />
             <p>

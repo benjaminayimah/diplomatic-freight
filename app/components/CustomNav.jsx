@@ -6,10 +6,8 @@ import Link from 'next/link';
 import { useUIStore } from "../../store"
 
 
-
-
 function Nav({ links }) {
-  const { device, mobileMenu } = useUIStore()
+  const { device, toggleMenu, mobileMenu } = useUIStore()
   
   const [position, setPosition] = useState({
     left: 0,
@@ -20,7 +18,7 @@ function Nav({ links }) {
 
   return (
     <nav
-      datatype="website"
+      data-type="website"
       id='menu'
         className={`flex items-center ${mobileMenu ? 'menu-open' : 'menu-close'}` }
         aria-label="Menu" 
@@ -35,7 +33,7 @@ function Nav({ links }) {
         className="relative"
       >
         { links.map((link) => (
-          <li key={link.name} className={`h-full inline-flex items-center justify-center group`}>
+          <li key={link.name} onClick={device === "mobile" ? toggleMenu : undefined} className={`h-full inline-flex items-center justify-center group`}>
             <Tab href={link.href} setPosition={setPosition}>
               {link.name}
             </Tab>

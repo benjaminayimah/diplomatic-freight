@@ -25,9 +25,9 @@
     &::before, &::after {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 1.5px;
-      background-color: #000;
+      width: 80%;
+      height: 2px;
+      background-color: #fff;
       left: 50%;
       transform: translate(-50%, -50%);
       transition: .6s all cubic-bezier(0.8, 0.11, 0.2, .9);

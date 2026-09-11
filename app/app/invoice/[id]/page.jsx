@@ -120,6 +120,7 @@ export default function InvoicePage() {
                   <CopyButton
                     value={invoice.reference_number}
                     message="Invoice number copied!"
+                    toolTip="Copy invoice number"
                     className="h-7 w-7 hover:bg-gray-100 text-gray-500"
                   />
                 </div>

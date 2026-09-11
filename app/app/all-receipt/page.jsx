@@ -23,7 +23,7 @@ import { useSnackbar } from "@/app/components/SnackbarContext";
 
 
 
-
+const pageName = "receipts"
 
 function AllReceipt() {
 
@@ -166,7 +166,7 @@ function AllReceipt() {
                   ))
                 ) : search ? (
                   <NoSearchResult
-                    type="receipts"
+                    type={pageName}
                     search={search}
                     onClick={setSearch}
                   />
@@ -175,6 +175,7 @@ function AllReceipt() {
 
               { paginatedReceipts.length > 0 && (
                 <PaginationFooter
+                  itemName={pageName}
                   value={perPage}
                   onChange={setPerPage}
                   options={PAGE_OPTIONS}
@@ -184,6 +185,8 @@ function AllReceipt() {
                   onClickNext={nextPage}
                   currentPage={currentPage}
                   totalPages={totalPages}
+                  perPage={perPage}
+                  totalItems={filteredReceipts.length}
                 />
               )}
             </div>

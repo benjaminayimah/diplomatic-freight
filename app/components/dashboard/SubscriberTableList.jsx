@@ -33,7 +33,7 @@ function SubscriberTableList({ subscriber, onDelete }) {
             </div>
           </div>
         </div>
-        <div>
+        <div className="grid place-items-center">
           <DropdownMenu
             trigger={<Menu menuOpen={menuOpen}/>}
             onOpenChange={setMenuOpen}

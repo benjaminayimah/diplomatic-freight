@@ -21,38 +21,41 @@ const wordsByLine = {
   3: words.filter((word) => word.line === '3'),
 };
 
-const colors = [
-  "#2563EB", // blue
-  "#4663E5",// blue
-  "#A379FF", // purple
-  "#45CBF8", // light blue  
-  "#0D9488", // teal
-  "#516781", // steel blue
-  "#B2D0E5", // pale blue
-  "#FFAD89", // light orange
-  "#FF7979", // light red
-];
+// const colors = [
+//   "#2563EB", // blue
+//   "#4663E5",// blue-ple
+//   "#A379FF", // purple
+//   "#45CBF8", // light blue  
+//   "#0D9488", // teal
+//   "#516781", // steel blue
+//   "#B2D0E5", // pale blue
+//   "#FFAD89", // light orange
+//   "#FF7979", // light red
+// ];
 
-const gradientVariants = {
-  animate: {
-    "--end": ["#000000", ...colors],
-    transition: {
-      duration: 20,
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatType: "mirror",
-    },
-  },
-  paused: {
-    // When paused, keep the current color (Framer Motion handles freezing)
-    transition: { duration: 0 },
-  },
-};
+// const gradientVariants = {
+//   animate: {
+//     "--end": ["#000000", ...colors],
+//     transition: {
+//       duration: 20,
+//       ease: "easeInOut",
+//       repeat: Infinity,
+//       repeatType: "mirror",
+//     },
+//   },
+//   paused: {
+//     // When paused, keep the current color (Framer Motion handles freezing)
+//     transition: { duration: 0 },
+//   },
+// };
 
 const MotionImage = motion.create(Image)
 
-const blurImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/bg-hero-image_btzkox.png"
-const fullImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/f_auto,q_auto/v1763470951/bg-hero-image_btzkox.png"
+const heroBlurImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/bg-hero-image_btzkox.png"
+const heroFullImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/f_auto,q_auto/v1763470951/bg-hero-image_btzkox.png"
+
+const bgBlurImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/w_20,e_blur:300,q_auto/bg_oumicq.jpg"
+const bgFullImage = "https://res.cloudinary.com/dl4wyqxbe/image/upload/v1787930027/bg_oumicq.jpg"
 
 function HomeBanner() {
   const targetRef = useRef(null)
@@ -63,10 +66,10 @@ function HomeBanner() {
     offset: ['start start', 'end start']
   })
 
-  const isInView = useInView(targetRef, {
-    amount: 0,      // 0% visible to count as "in view"
-    margin: "0px",
-  });
+  // const isInView = useInView(targetRef, {
+  //   amount: 0,      // 0% visible to count as "in view"
+  //   margin: "0px",
+  // });
 
   const y = useTransform(
     scrollYProgress,
@@ -81,29 +84,58 @@ function HomeBanner() {
     shouldReduceMotion ? [0, 0] : ['0px', '40vh']
   );
 
-  const { ref, src } = useLazyImage(fullImage);
+  // const { ref, src } = useLazyImage(heroFullImage);
+
+  const hero = useLazyImage(heroFullImage);
+  const bg = useLazyImage(bgFullImage);
+
 
   return (
-    <motion.section
+    <section
       ref={targetRef}
       id="home"
       className="h-svh sm:h-dvh relative overflow-hidden"
-      initial={{ "--end": "#000000" }}
-      animate={isInView ? "animate" : "paused"}
-      variants={gradientVariants}
+      // initial={{ "--end": "#000000" }}
+      // animate={isInView ? "animate" : "paused"}
+      // variants={gradientVariants}
       style={{
-        background: "linear-gradient(110deg, #000 0%, var(--end) 83.83%)",
+        background: "linear-gradient(110deg, #000 0%, #2563EB 83.83%)",
       }}
     >
+        {/* <div
+          ref={bg.ref}
+          className="absolute inset-0"
+        >
+          {
+            bg.src ? (
+              <Image
+                src={bg.src}
+                alt="Bg Image"
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority
+              />
+
+            ) : (
+              <Image
+                src={bgBlurImage}
+                alt="Bg Image"
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority
+              />
+            )
+          }
+        </div> */}
       <div
-        ref={ref}
+        ref={hero.ref}
         className="absolute inset-0"
       >
-
-        {/* Full image */}
-        {src ? (
+        {hero.src ? (
           <MotionImage
-            src={src}
+            src={hero.src}
             id="hero_image"
             className="mt-[40%] md:mt-0"
             style={{ imageY, objectFit: "cover" }}
@@ -121,7 +153,7 @@ function HomeBanner() {
           />
         ) : (
           <Image
-            src={blurImage}
+            src={heroBlurImage}
             alt="Hero Image"
             fill
             sizes="100vw"
@@ -131,23 +163,7 @@ function HomeBanner() {
         )
       }
       </div>
-      {/* <MotionImage
-        id="hero_image"
-        className="mt-[40%] md:mt-0"
-        style={{ imageY, objectFit: "cover" }}
-        src="https://res.cloudinary.com/dl4wyqxbe/image/upload/f_auto,q_auto/v1763470951/bg-hero-image_btzkox.png"
-        alt="Hero background"
-        fill
-        sizes="100vw"
-        priority
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 1.6,
-          ease: "easeOut",
-          delay: 0.6,
-        }}
-      /> */}
+
       <motion.div
         style={{ y }}
         className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-[60px] lg:pl-[130px]"
@@ -198,7 +214,7 @@ function HomeBanner() {
             stiffness: 200,
             damping: 50,
           }}
-          className="absolute bottom-6 md:bottom-10 overflow-hidden lg:w-[50%]">
+          className="absolute bottom-6 md:bottom-10 overflow-hidden lg:w-[50%] w-full pr-11 left-8 md:left-[60px] lg:left-[130px]">
           <div className="text-white text-[0.88rem] max-w-120 inline-flex gap-1.5">
             <span className="block bg-[#FF6A3D] h-2 w-2 mt-1.5 shrink-0" />
             <p>
@@ -207,7 +223,7 @@ function HomeBanner() {
           </div>
         </motion.div>
       </motion.div>
-    </motion.section>
+    </section>
   )
 }
 

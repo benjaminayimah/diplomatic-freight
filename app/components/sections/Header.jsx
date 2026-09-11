@@ -1,13 +1,10 @@
 'use client'
-import React from 'react'
 import Logo from '../Logo'
 import HamburgerMenu from '../HamburgerMenu'
 import CustomNav from '../CustomNav'
-import Link from 'next/link'
 
 function Header() {
   const authUser = localStorage.getItem("auth");
-  const auth = JSON.parse(authUser);
 
   const menus = [
     { name: 'Home', href: '/' },

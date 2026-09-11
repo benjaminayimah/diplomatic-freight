@@ -76,6 +76,26 @@ function HomeServices() {
             </div>
           </div>
         </div>
+        <div className='md:flex justify-end gap-4 px-[6%] hidden mb-5'>
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            className={`${canScrollLeft ? 'hover:bg-black' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-gray-700 shadow transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed!`}
+            >
+            <svg height="13" viewBox="0 0 5.714 10">
+              <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(6.533 10.001) rotate(180)" fill="#fff"/>
+            </svg>
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+            className={`${canScrollRight ? 'hover:bg-black' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-gray-700 shadow transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed!`}
+            >
+            <svg height="13" viewBox="0 0 5.714 10">
+              <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(-0.819 -0.001)" fill="#fff"/>
+            </svg>
+          </button>
+        </div>
         <div
           ref={scrollRef}
           className='grid grid-cols-1 gap-6 md:flex px-[4vw] sm:px-[6vw] scroll-px-[6vw] md:overflow-x-auto scroll-snap hide-scrollbar'
@@ -93,26 +113,7 @@ function HomeServices() {
             />
           ))}
         </div>
-        <div className='md:flex justify-end gap-4 px-[6%] hidden'>
-          <button
-            onClick={() => scroll('left')}
-            disabled={!canScrollLeft}
-            className={`${canScrollLeft ? 'hover:bg-gray-100' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-white shadow transition disabled:opacity-40 disabled:cursor-not-allowed!`}
-            >
-            <svg height="15" viewBox="0 0 5.714 10">
-              <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(6.533 10.001) rotate(180)" fill="#000"/>
-            </svg>
-          </button>
-          <button
-            onClick={() => scroll('right')}
-            disabled={!canScrollRight}
-            className={`${canScrollRight ? 'hover:bg-gray-100' : ''} h-10 w-10 p-2 grid place-items-center rounded-full bg-white shadow transition disabled:opacity-40 disabled:cursor-not-allowed!`}
-            >
-            <svg height="15" viewBox="0 0 5.714 10">
-              <path d="M1.533,10a.714.714,0,0,1-.505-1.219L4.809,5,1.028,1.22A.714.714,0,0,1,2.038.21L6.324,4.5a.714.714,0,0,1,0,1.01L2.038,9.791A.712.712,0,0,1,1.533,10Z" transform="translate(-0.819 -0.001)" fill="#000"/>
-            </svg>
-          </button>
-        </div>
+        
         <div className='mt-5 text-center'>
           <a href="/get-quote" className='text-xl font-medium inline-block text-black border border-black py-3.5 px-7 rounded-full hover:bg-black hover:text-white transition duration-300'>
             Get a Quote

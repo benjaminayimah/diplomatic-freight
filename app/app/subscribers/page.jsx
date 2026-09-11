@@ -22,7 +22,7 @@ import { useSnackbar } from "@/app/components/SnackbarContext";
 
 
 
-
+const pageName = "subscribers"
 
 function Subscribers() {
 
@@ -150,7 +150,7 @@ function Subscribers() {
                     ))
                   ) : search ? (
                     <NoSearchResult
-                      type="subscribers"
+                      type={pageName}
                       search={search}
                       onClick={setSearch}
                     />
@@ -159,6 +159,7 @@ function Subscribers() {
               </div>
               { paginatedSubscribers.length > 0 && (
                 <PaginationFooter
+                  itemName={pageName}
                   value={perPage}
                   onChange={setPerPage}
                   options={PAGE_OPTIONS}
@@ -168,6 +169,8 @@ function Subscribers() {
                   onClickNext={nextPage}
                   currentPage={currentPage}
                   totalPages={totalPages}
+                  perPage={perPage}
+                  totalItems={filteredSubscribers.length}
                 />
               )}
             </div>

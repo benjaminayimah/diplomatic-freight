@@ -103,6 +103,7 @@ export default function ReceiptPage() {
                   <CopyButton
                     value={receipt.receipt_number}
                     message="Receipt number copied!"
+                    toolTip="Copy receipt number"
                     className="h-7 w-7 hover:bg-gray-100 text-gray-500"
                   />
                 </div>

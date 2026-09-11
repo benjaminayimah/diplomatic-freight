@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         lerp: 0.08,
       }}
     >
-      <main id="web">
+      <main id="web" className={device}>
         <PageTransition>
           <Header />
             {children}

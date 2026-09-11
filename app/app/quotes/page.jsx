@@ -21,6 +21,9 @@ import SkeletonLoader from "@/app/components/dashboard/SkeletonLoader"
 import { useSnackbar } from "@/app/components/SnackbarContext";
 
 
+
+const pageName = "quotes"
+
 function Quotes() {
 
   const quotes = useAuthStore((state) => state.quotes);
@@ -153,7 +156,7 @@ function Quotes() {
                     ))
                   ) : search ? (
                     <NoSearchResult
-                      type="quotes"
+                      type={pageName}
                       search={search}
                       onClick={setSearch}
                     />
@@ -162,6 +165,7 @@ function Quotes() {
               </div>
               { paginatedQuotes.length > 0 && (
                 <PaginationFooter
+                  itemName={pageName}
                   value={perPage}
                   onChange={setPerPage}
                   options={PAGE_OPTIONS}
@@ -171,6 +175,8 @@ function Quotes() {
                   onClickNext={nextPage}
                   currentPage={currentPage}
                   totalPages={totalPages}
+                  perPage={perPage}
+                  totalItems={filteredQuotes.length}
                 />
               )}
             </div>

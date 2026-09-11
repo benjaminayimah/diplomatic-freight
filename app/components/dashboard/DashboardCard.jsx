@@ -6,6 +6,7 @@ import Link from "next/link";
 function DashboardCard({ title, array, href, icon, color }) {
 
   const Icon = icon;
+  const totalItems = array?.length
 
   return (
     <Link href={href} className={`border border-gray-200 hover:bg-gray-100 h-40 transition duration-300 rounded-2xl p-4 flex flex-col justify-between`}>
@@ -19,7 +20,7 @@ function DashboardCard({ title, array, href, icon, color }) {
           </div>
           Total {title}
         </h2>
-        <p className="text-3xl font-bold">{array?.length ?? 0}</p>
+        <p className="text-3xl font-bold">{totalItems.toLocaleString('en-US') ?? 0}</p>
       <div className="text-gray-500 text-sm font-medium">View {title} &rarr;</div>
     </Link>
   )

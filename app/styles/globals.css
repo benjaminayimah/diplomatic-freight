@@ -257,13 +257,16 @@ video {
 
 /* custom nav */
 
+/* @media (min-width: 1345px)  { */
+
+
 #web.desktop {
   header {
     --padding: 0.25rem;
     --height: 48px;
     visibility: visible;
   
-    nav[datatype=website] {
+    nav[data-type="website"] {
       position: absolute;
       left: 50%;
       translate: -50%;
@@ -306,7 +309,7 @@ video {
   header {
     visibility: visible;
   }
-  nav[datatype=website] {
+  nav[data-type="website"] {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -340,7 +343,7 @@ video {
     }
   }
 
-  nav[datatype=website].menu-close {
+  nav[data-type="website"].menu-close {
     visibility: hidden;
     width: 0;
 
@@ -465,12 +468,12 @@ video {
 
 
 .tablet {
-  nav[datatype=website].menu-open {
+  nav[data-type="website"].menu-open {
     width: 60%;
   }
 }
 .mobile {
-  nav[datatype=website].menu-open {
+  nav[data-type="website"].menu-open {
     width: 100%;
   }
 }

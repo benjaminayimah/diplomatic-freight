@@ -5,6 +5,7 @@ import DropdownMenu from './DropdownMenu';
 import { formatLabel } from "@/utils/wordFormatter.js"
 import Menu from './HamburgerMenu'
 import Link from 'next/link';
+import CopyButton from './CopyButton'
 import {
   PencilIcon,
   TrashIcon,
@@ -132,11 +133,19 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
               <>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">Wallet Address</span>
-                  <div className="text-gray-600 md:text-right"><code className="text-base">{data?.wallet_address || 'N/A'}</code></div>
+                  <div className="text-gray-600 md:text-right flex items-center gap-1">
+                    <code className="text-base">{data?.wallet_address}</code>
+                    <CopyButton
+                      value={data?.wallet_address}
+                      message="Wallet address copied!"
+                      toolTip="Copy wallet address"
+                      className="h-7 w-7 hover:bg-gray-100 text-gray-500"
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">Network</span>
-                  <div className="text-gray-600 uppercase md:text-right"><code className="text-base">{data?.network || 'N/A'}</code></div>
+                  <div className="text-gray-600 uppercase md:text-right"><code className="text-base">{data?.network}</code></div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">QR Code</span>

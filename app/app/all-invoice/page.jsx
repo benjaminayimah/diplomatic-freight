@@ -24,7 +24,7 @@ import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import { useSnackbar } from "@/app/components/SnackbarContext";
 
 
-
+const pageName = "invoices"
 
 function AllInvoice() {
 
@@ -180,7 +180,7 @@ function AllInvoice() {
                     ))
                   ) : search ? (
                     <NoSearchResult
-                      type="invoices"
+                      type={pageName}
                       search={search}
                       onClick={setSearch}
                     />
@@ -189,6 +189,7 @@ function AllInvoice() {
               </div>
               { paginatedInvoices.length > 0 && (
                 <PaginationFooter
+                  itemName={pageName}
                   value={perPage}
                   onChange={setPerPage}
                   options={PAGE_OPTIONS}
@@ -198,6 +199,8 @@ function AllInvoice() {
                   onClickNext={nextPage}
                   currentPage={currentPage}
                   totalPages={totalPages}
+                  perPage={perPage}
+                  totalItems={filteredInvoices.length}
                 />
               )}
             </div>

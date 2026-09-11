@@ -10,6 +10,7 @@ function CopyButton({
   className = "",
   iconClassName = "h-4 w-4",
   duration = 2500,
+  toolTip = "Copy",
   message = "Copied to clipboard!",
 }) {
   const [copied, setCopied] = useState(false);
@@ -44,7 +45,7 @@ function CopyButton({
   }, []);
 
   return (
-    <Tooltip content={copied ? "Copied" : "Copy number"} placement="bottom">
+    <Tooltip content={copied ? "Copied" : toolTip} placement="bottom">
       <button
         type="button"
         onClick={handleCopy}

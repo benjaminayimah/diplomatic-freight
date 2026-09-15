@@ -47,7 +47,7 @@ function GalleryImages({fullSrc, opacity, index}) {
           className='inset-0 p-2 md:p-5 text-white bg-black/80 pointer-events-none absolute flex flex-col gap-2 items-center justify-center text-center'
           >
             <h1 className='text-base md:text-3xl font-medium'>Moving What Matters</h1>
-            <p className='text-xs md:text-base'>From oversized cargo to sensitive logistics, see how we keep the world moving.</p>
+            <p className='text-xs md:text-base'>From oversized cargo to sensitive logistics — see how we keep the world moving.</p>
         </motion.div>
       }
     </div>

@@ -17,8 +17,6 @@ function HomeGallery() {
     const scale9 = useTransform(scrollYProgress, [0, 1], [1, 9]);
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-
-
     const pictures = [
       {
           src: 'https://res.cloudinary.com/dl4wyqxbe/image/upload/v1766484314/alt-1_j5s4xr.webp',

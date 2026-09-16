@@ -149,7 +149,7 @@ export default function InvoicePage() {
             <div className='flex gap-2'>
               <button
                 onClick={() => setShowNote(prev => !prev)}
-                className={`grid place-items-center relative w-9 p-1 h-9 shrink-0 rounded-3xl transition duration-300 border ${showNote ? 'bg-black border-black text-white hover:bg-gray-900' : 'border-gray-200 hover:bg-gray-100 hover:text-black' }`}
+                className={`grid place-items-center relative w-9 p-1 h-9 shrink-0 rounded-3xl transition duration-300 border ${showNote ? 'bg-black border-black text-white hover:bg-gray-900' : 'border-gray-200 bg-white hover:bg-gray-100 hover:text-black' }`}
                 >
                   {
                     invoice?.personal_note && (

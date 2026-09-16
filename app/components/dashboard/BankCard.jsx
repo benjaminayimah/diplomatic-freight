@@ -133,8 +133,8 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
               <>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">Wallet Address</span>
-                  <div className="text-gray-600 md:text-right flex items-center gap-1">
-                    <code className="text-base">{data?.wallet_address}</code>
+                  <div className="text-gray-600 md:text-right flex items-center gap-1 md:max-w-[65%] max-w-full">
+                    <code className="text-base overflow-hidden whitespace-nowrap text-ellipsis">{data?.wallet_address}</code>
                     <CopyButton
                       value={data?.wallet_address}
                       message="Wallet address copied!"

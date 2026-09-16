@@ -130,11 +130,11 @@ function PrivacyPolicyClient() {
             <div className="flex flex-col gap-1.5">
               <div className="flex gap-3">
                 <div className="font-semibold">Email:</div>
-                <a href="mailTo:info@diplomaticfreight.com" className="font-medium hover:underline">info@diplomaticfreight.com</a>
+                <a href="mailTo:info@diplomaticfreight.com" className="font-medium hover:underline text-blue-600">info@diplomaticfreight.com</a>
               </div>
               <div className="flex gap-3">
                 <div className="font-semibold">Phone:</div>
-                <a href="tel:+233302908064" className="font-medium hover:underline">+233(0) 30 290 8064/5</a>
+                <a href="tel:+233302908064" className="font-medium hover:underline text-blue-600">+233(0) 30 290 8064/5</a>
               </div>
             </div>
           </div>

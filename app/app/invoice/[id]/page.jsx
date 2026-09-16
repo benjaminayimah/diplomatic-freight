@@ -109,7 +109,7 @@ export default function InvoicePage() {
 
   return (
     <ProtectedRoute>
-      <section className='app-body-wrapper pt-0! pb-[7px]!'>
+      <section className='app-body-wrapper pt-0! pb-1.75!'>
         <div className="w-full pt-2.5 pb-2.5 sticky top-29.75 z-20 bg-white/40 backdrop-blur-[6.5px]">
           <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-2'>
             <div className='flex items-center gap-3'>
@@ -197,7 +197,7 @@ export default function InvoicePage() {
             {
               showNote && (
                 <motion.div
-                  className="relative md:w-[550px] w-full "
+                  className="relative md:w-137.5 w-full "
                   initial={{ x: 320, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 320, opacity: 0 }}

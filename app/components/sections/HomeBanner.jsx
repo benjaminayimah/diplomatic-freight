@@ -129,7 +129,8 @@ function HomeBanner() {
             )
           }
         </div> */}
-      <div
+      <motion.div
+      style={{ y }}
         ref={hero.ref}
         className="absolute inset-0"
       >
@@ -162,7 +163,7 @@ function HomeBanner() {
           />
         )
       }
-      </div>
+      </motion.div>
 
       <motion.div
         style={{ y }}

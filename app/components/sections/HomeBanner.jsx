@@ -165,8 +165,8 @@ function HomeBanner() {
       }
       </motion.div>
 
-      <motion.div
-        style={{ y }}
+      <div
+        // style={{ y }}
         className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-15 lg:pl-32.5"
       >
         <div className="text-white h-full flex items-center">
@@ -223,7 +223,7 @@ function HomeBanner() {
             </p>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   )
 }

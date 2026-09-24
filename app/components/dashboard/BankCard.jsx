@@ -25,31 +25,31 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
   return (
       <div className="bank-col flex-1">
         <div className="flex flex-col px-6 py-2 border bg-white border-gray-100 rounded-2xl h-full">
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-4">
+          <div className="flex items-center justify-between py-4">
+            <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between flex-1">
               <div className="text-gray-600 font-medium uppercase flex items-center gap-2">
                 {
                   data?.payment_method === 'bank_transfer' ? (
-                    <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-blue-200 bg-blue-100">
+                    <div className="flex items-center shrink-0 justify-center h-9 w-9 rounded-lg border border-blue-200 bg-blue-100">
                       <BuildingLibraryIcon strokeWidth={1.5} className="text-base h-6 text-blue-600" />
                     </div>
                   ) : (
-                      <div className="flex items-center justify-center h-9 w-9 rounded-lg border border-teal-200 bg-teal-100">
+                      <div className="flex items-center shrink-0 justify-center h-9 w-9 rounded-lg border border-teal-200 bg-teal-100">
                         <WalletIcon strokeWidth={1.5} className="text-base h-6 text-green-600" />
                       </div>
                   )
                 }
-                <span className="whitespace-nowrap">
+                <span>
                   {formatLabel(data?.payment_method)}
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 max-w-full">
               <div>
                 {hasInvoice ? (
                   <div className="inline-flex items-center gap-1 text-sm font-base pl-2 pr-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100">
                     <InformationCircleIcon strokeWidth={1.5} className="h-4 w-4" />
-                    <div className="inline-flex gap-1 whitespace-nowrap">
+                    <div className="inline-flex gap-1 whitespace-nowrap ">
                       Used by{" "}
                       <div className="group relative">
                         <span className="underline decoration-dotted underline-offset-3 cursor-pointer font-semibold">

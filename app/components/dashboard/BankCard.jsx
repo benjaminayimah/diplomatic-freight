@@ -116,11 +116,11 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                     <span className="font-medium">Account Number</span>
-                    <div className="text-gray-600 md:text-right"> <code className="text-base">{data?.account_number || 'N/A'}</code></div>
+                    <div className="text-gray-600 md:text-right"><code className="text-base bg-gray-100 px-1 rounded-sm">{data?.account_number || 'N/A'}</code></div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                     <span className="font-medium">SWIFT Code</span>
-                    <div className="text-gray-600 md:text-right"><code className="text-base">{data?.swift_code || 'N/A'}</code></div>
+                    <div className="text-gray-600 md:text-right"><code className="text-base bg-gray-100 px-1 rounded-sm">{data?.swift_code || 'N/A'}</code></div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                     <span className="font-medium">Branch</span>
@@ -134,7 +134,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">Wallet Address</span>
                   <div className="text-gray-600 md:text-right flex items-center gap-1 md:max-w-[70%] max-w-full">
-                    <code className="text-base overflow-hidden whitespace-nowrap text-ellipsis">{data?.wallet_address}</code>
+                    <code className="text-base overflow-hidden whitespace-nowrap text-ellipsis bg-gray-100 px-1 rounded-sm">{data?.wallet_address}</code>
                     <CopyButton
                       value={data?.wallet_address}
                       message="Wallet address copied!"
@@ -145,7 +145,7 @@ function BankCard({data, onEdit, onDelete, showMenu}) {
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">Network</span>
-                  <div className="text-gray-600 uppercase md:text-right"><code className="text-base">{data?.network}</code></div>
+                  <div className="text-gray-600 uppercase md:text-right"><code className="text-base bg-gray-100 px-1 rounded-sm">{data?.network}</code></div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-2 items-start md:justify-between py-3 border-t border-dashed border-gray-200">
                   <span className="font-medium">QR Code</span>

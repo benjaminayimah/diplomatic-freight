@@ -30,6 +30,7 @@ function StaggeredText({ data, index }) {
               loop
               muted
               playsInline
+              className="border-4 border-[#ff6a3d]"
             />
           </span>
         )}

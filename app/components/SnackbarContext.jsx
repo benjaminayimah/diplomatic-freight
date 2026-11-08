@@ -128,7 +128,7 @@ export const SnackbarProvider = ({ children }) => {
             }
           `}
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 justify-between">
             <div className="flex items-center gap-2">
               <Icon type={snackbar.type} />
               <span className="flex-1 text-sm font-medium text-white wrap-break-word">

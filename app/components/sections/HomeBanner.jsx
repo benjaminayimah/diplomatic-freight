@@ -167,7 +167,7 @@ function HomeBanner() {
 
       <div
         // style={{ y }}
-        className="relative h-full container flex flex-col md:flex-row gap-5 pb-30 md:pb-0 pl-8 pr-8 md:pl-15 lg:pl-32.5"
+        className="relative h-full container flex flex-col md:flex-row gap-5 pl-8 pr-8 md:pl-15 lg:pl-32.5"
       >
         <div className="text-white h-full flex items-center">
           <h1 className="leading-none tracking-tighter">

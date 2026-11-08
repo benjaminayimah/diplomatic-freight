@@ -139,7 +139,7 @@ export const SnackbarProvider = ({ children }) => {
             {!snackbar.autoDismiss && (
               <button
                 onClick={hideSnackbar}
-                className="shrink-0 text-white/70 hover:text-white transition"
+                className="shrink-0 ml-3 text-white/70 hover:text-white transition"
                 aria-label="Close"
               >
                 ✕
